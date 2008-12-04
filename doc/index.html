@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="../styles/doc.css" type="text/css" />
+	<title>WWW SQL Designer - Documentation</title>
+</head>
+<body>
+<h1>WWW SQL Designer - Documentation</h1>
+
+<h2>Table of contents</h2>
+
+<ul>
+	<li><a href="#usage">Usage</a>
+		<ul>
+			<li><a href="#browsers">Browsers</a></li>
+			<li><a href="#basics">Basics</a></li>
+		</ul>
+	</li>
+	<li><a href="#installation">Installation</a></li>
+	<li><a href="#customization">Customization</a>
+		<ul>
+			<li><a href="#css">CSS</a></li>
+			<li><a href="#locale">Locale</a></li>
+			<li><a href="#databases">Databases</a></li>
+			<li><a href="#backends">Backends</a></li>
+		</ul>
+	</li>
+	<li><a href="#contact">Contact</a></li>
+	<li><a href="#changelog">Changelog</a></li>
+</ul>
+
+<hr/>
+
+<h2><a name="usage">Usage</a></h2>
+<p>Hello and welcome to WWW SQL Designer documentation. This page will hopefully help you with understanding 
+how WWW SQL Desginer works and how can it be tailored to suit your needs.</p>
+
+<h3><a name="browsers">Browsers</a></h3>
+
+<p>WWW SQL Designer was tested in the following browsers:</p>
+
+<ul>
+	<li>Firefox 2.x</li>
+	<li>Firefox 3.x</li>
+	<li>Internet Explorer 6</li>
+	<li>Internet Explorer 7</li>
+	<li>Internet Explorer 8</li>
+	<li>Safari 3</li>
+	<li>Opera 9.x</li>
+	<li>Konqueror 3.5.x</li>
+</ul>
+
+<p>Konqueror is the only browser (from this list) which lacks support for Smooth connectors and XSLT 
+transformations (generation of SQL scripts).</p>
+
+<h3><a name="basics">Basics</a></h3>
+
+<p>The application allows you to:</p>
+
+<ol>
+	<li>Draw E-R designs</li>
+	<li>Edit tables and rows</li>
+	<li>Manage keys</li>
+	<li>Create relations (FK constraints)</li>
+	<li>Save &amp; Load designs</li>
+	<li>Import DB schemas</li>
+</ol>
+
+<p>Most commands are intuitively available from the right sidebar. Some tasks are described below.</p>
+
+<p>To <strong>drag a table</strong>, press mouse button while pointing at table header. You can then move the 
+table around the canvas.</p>
+
+<p>To <strong>edit table properties</strong>, either double-click its heading, or select it and 
+then press 'Edit table' button in sidebar.</p>
+
+<p>To <strong>edit field properties</strong>, either double-click it, or select it and 
+then press 'Edit field' button in sidebar.</p>
+
+<p>To <strong>manage keys for a table</strong>, select a table and press 'Edit keys' button in sidebar.</p>
+
+<p>To <strong>draw a connector (relation)</strong>, first select a field which forms a Primary Key. Then click 'Create foreign key' button 
+in sidebar and click target table's heading. New field and relation will be created.</p>
+
+<p>To <strong>perform any kind of save/load/export/import task</strong>, press the 'Save/Load' button in sidebar. 
+A dialog window will appear, allowing you to perform clientside or serverside tasks.</p>
+
+<hr/>
+
+<h2><a name="installation">Installation</a></h2>
+<p>You will need to install WWW SQL Designer if you want to:</p>
+<ul>
+	<li>Use custom locale</li>
+	<li>Use custom CSS file</li>
+	<li>Use custom DB definition</li>
+	<li>Use custom server backend</li>
+</ul>
+
+<p>Just download and unpack latest application archive. There are generally no requirements, but to use 
+server-side storage, one should have a working webserver.</p>
+
+<hr/>
+
+<h2><a name="customization">Customization</a></h2>
+
+<p>Many aspects of WWW SQL Designer can be customized and enhanced. 
+If you manage to create a new locale / db / backend, feel free to send it to me. I will include your feature 
+in a distribution archive.</p>
+
+<h3><a name="css">CSS</a></h3>
+
+<p>Visual properties of the application can be tuned by editing files in <code>css/</code> subdirectory.</p>
+
+<h3><a name="locale">Locale</a></h3>
+
+<p>Locales can be edited and added in <code>locale/</code> subdirectory. New locales must be also registered in 
+<code>js/config.js</code>.</p>
+
+<h3><a name="databases">Databases</a></h3>
+
+<p>Supported databases (their datatypes and XSLT template) are stored in <code>db/</code> subdirectory. 
+Each database has a datatype definition file (<code>datatypes.xml</code>) and a XSL transformation 
+(<code>output.xsl</code>). New databases must be also registered in 
+<code>js/config.js</code>.</p></p>
+
+<h3><a name="backends">Backends</a></h3>
+
+<p>Serverside backends allow you to save, load, list and import DB designs. They are written in a serverside 
+scripting language and communicate via HTTP requests. Backends are stored in <code>backend/</code> subdirectory. 
+A brief summary of backend API follows:</p>
+
+<ul>
+	<li><h4>Saving</h4>
+		<p><strong>Request: </strong> POST <code>?action=save&amp;keyword=somename</code>, XML data contained in POST body<br/>
+		<strong>Valid responses: </strong>HTTP/201 Created, HTTP/500 Internal Server Error, HTTP/503 Service Unavailable</p>
+	</li>
+	<li><h4>Loading</h4>
+		<p><strong>Request: </strong> GET <code>?action=load&amp;keyword=somename</code><br/>
+		<strong>Valid responses: </strong>HTTP/200 OK (loaded XML in response body), HTTP/404 Not Found, HTTP/503 Service Unavailable</p>
+	</li>
+	<li><h4>Listing</h4>
+		<p><strong>Request: </strong> GET <code>?action=list</code><br/>
+		<strong>Valid responses: </strong>HTTP/200 OK (list of available designs separated by newlines in response body), HTTP/503 Service Unavailable</p>
+	</li>
+	<li><h4>Importing</h4>
+		<p><strong>Request: </strong> GET <code>?action=import</code><br/>
+		<strong>Valid responses: </strong>HTTP/200 OK (imported data in response body), HTTP/503 Service Unavailable</p>
+	</li>
+</ul>
+
+<p>For every action mentioned, the backend may also return HTTP/501 Not Implemented, meaning that this action is not supported by the backend.</p>
+<hr/>
+
+<h2><a name="contact">Contact</a></h2>
+
+<p>This tool was created by <a href="http://ondras.zarovi.cz/">Ondrej Zara</a>, &copy; 2005-2008. 
+It is released under GNU GPL licence.</p>
+
+<hr/>
+
+<h2><a name="changelog">Changelog</a></h2>
+
+<ul id="changelog">
+	<li>Version 2.3.1 (29.11.2008)
+		<ul>
+			<li>* unix newlines</li>
+			<li>* fixed FK button disabled state synchronization</li>
+			<li>* fixed Spanish translation (Cristián Pérez)</li>
+		</ul>
+	</li>
+
+	<li>Version 2.3 (18.11.2008)
+		<ul>
+			<li>* small typo in sample php-file</li>
+			<li>* comments escaping bugfix (Suzanne Dolberg)</li>
+			<li>+ better French translation (Olivier M)</li>
+			<li>+ PostgreSQL support (Michael Tesch)</li>
+			<li>* bugfix in MSSQL datatypes</li>
+			<li>* updated to oz.js 1.1</li>
+		</ul>
+	</li>
+
+	<li>Version 2.2 (25.9.2008)
+		<ul>
+			<li>+ php-sqlite DB backend (Luke Stevenson)</li>
+			<li>+ web2py (Boris Manojlovic) and  MSSQL (Sean) datatype definitions</li>
+			<li>+ Polish (Damian Jaroszewski), Spanish (Rubén Rodríguez Zepeda) and Brazilian (Paulo Marcelo) translation</li>
+			<li>* updated to oz.js 1.04</li>
+		</ul>
+	</li>
+
+	<li>Version 2.1.1 (18.7.2008)
+		<ul>
+			<li>* space after DEFAULT statement in MySQL (Patrice Ferlet, Guillaume Paton)</li>
+			<li>+ escaping apostrophes in COMMENT statements in MySQL (Patrice Ferlet, Guillaume Paton)</li>
+			<li>* better use of custom event</li>
+			<li>* updated to oz.js 1.03</li>
+		</ul>
+	</li>
+
+	<li>Version 2.1 (28.6.2008)
+		<ul>
+			<li>+ "note" attribute for datatypes (Sean)</li>
+			<li>+ French, German and Czech localization (DerHeiko, Laurent Goussard)</li>
+			<li>+ design name in document title (DerHeiko)</li>
+			<li>* updated to oz.js 1.02</li>
+		</ul>
+	</li>
+
+	<li>Version 2.0.1 (1.4.2008)
+		<ul>
+			<li>* no AUTOINCREMENT for foreign keys</li>
+			<li>* changed minimap color for selected table</li>
+			<li>* correct layering of minimap tables</li>
+		</ul>
+	</li>
+
+	<li>Version 2.0 (28.3.2008)
+		<ul>
+			<li>* rewritten from scratch</li>
+			<li>+ smooth connectors</li>
+			<li>+ key management</li>
+			<li>+ custom locales, backends, dbs</li>
+			<li>+ cookies</li>
+			<li>+ much much more</li>
+		</ul>
+	</li>
+	
+	<li>--- OBSOLETE BELOW ---</li>
+	
+	<li>Version 1.4.1 (13.1.2008)
+		<ul>
+			<li>* languages: Italian, Dutch, Traditional Chinese (Marc, Tiberti Fabio, Finjon Kiang)</li>
+		</ul>
+	</li>
+	
+	<li>Version 1.4 (25.11.2007)
+		<ul>
+			<li>* improvements from Travis Kroh: PDO-based io.php, SQLite, Symphony, XSLT for MySQL export, changed order of FK names</li>
+		</ul>
+	</li>
+
+	<li>Version 1.3.6 (28.10.2007)
+		<ul>
+			<li>* FK inherits more features from PK (thanks to Cyril Zekser)</li>
+			<li>* Fix for import from MSSQL (thanks to Andrea)</li>
+		</ul>
+	</li>
+	
+	<li>Version 1.3.5 (5.10.2007)
+		<ul>
+			<li>* FK FK inherits datatype from PK (thanks to Kevin T. Ryan)</li>
+		</ul>
+	</li>
+
+	<li>Version 1.3.4 (24.9.2007)
+		<ul>
+			<li>* two bugfixes for IE7</li>
+		</ul>
+	</li>
+
+	<li>Version 1.3.3 (27.7.2007)
+		<ul>
+			<li>* foreign Keys have editable names (revert to previous behavior)</li>
+		</ul>
+	</li>
+
+	<li>Version 1.3.2 (20.7.2007)
+		<ul>
+			<li>* patches from Tobias Stechbarth</li>
+			<li>* MEDIUMTEXT used for data storage (thanks to Areski)</li>
+		</ul>
+	</li>
+
+	<li>Version 1.3.1 (30.5.2007)
+		<ul>
+			<li>* numerous new translations</li>
+		</ul>
+	</li>
+	
+	<li>Version 1.3 (6.2.2007)
+		<ul>
+			<li>* browser crash fix (thanks to Hiroki Yoshioka)</li>
+			<li>* importing existing DB schema (not in demo)</li>
+			<li>* Brazilian Portugese (Fabio Gomes Ramos)</li>
+		</ul>
+	</li>
+
+	<li>Version 1.2.1 (31.1.2007)
+		<ul>
+			<li>* PROPEL xslt update (Dominic Pelletier)</li>
+			<li>* Default language fix (Andrej Kvasnica)</li>
+		</ul>
+	</li>
+
+	<li>Version 1.2 (21.1.2007)
+		<ul>
+			<li>* XSLT template to PROPEL xml (Dominic Pelletier)</li>
+			<li>* patched MSSQL template (Romain Fevre)</li>
+			<li>* localisation (Romain Fevre)</li>
+			<li>* Oracle support (Romain Fevre)</li>
+			<li>* CHAR and DECIMAL support (Romain Fevre)</li>
+		</ul>
+	</li>
+
+	<li>Version 1.1.8 (27.11.2006)
+		<ul>
+			<li>* patches from Alex Petrescu</li>
+		</ul>
+	</li>
+
+	<li>Version 1.1.7 (26.10.2006)
+		<ul>
+			<li>* xml2postgresql template, thanks to Gérard</li>
+			<li>* print view, thanks to Tor Edvardsson</li>
+			<li>* Listing of keywords, thanks to Tor Edvardsson</li>
+			<li>* xml2mssql template for creating Microsoft SQL scripts, thanks to Sean</li>
+			<li>* direct loading of saved schema, see FAQ</li>
+			<li>* php script resistant to magic_quotes_gpc</li>
+		</ul>
+	</li>
+
+	<li>Version 1.0 (3.10.2005)
+		<ul>
+			<li>* IE hack instead of an old &amp; ugly solution, thanks to Drew Diller</li>
+			<li>* mouse wheel scrolls minimap, thanks to Andreas Attemann</li>
+			<li>* new Settings button, does nothing :)</li>
+			<li>* more straightforward labels in i/o select</li>
+			<li>* ajax based on xmlhttp, not &lt;script&gt;</li>
+			<li>* bugfix - bad row order when exporting</li>
+			<li>* bugfix - string lengths not exported</li>
+			<li>* xslt tranformation now DIRECTLY IN BROWSER!</li>
+			<li>* button 'clear tables'</li>
+			<li>* optimized bar for lower resolutions</li>
+			<li>* major webpage changes</li>
+			<li>* all styling now in STYLES subdirectory</li>
+			<li>* changed descriptive texts on bar into &lt;label&gt;s</li>
+			<li>* fixed non-selectable user-added rows (thanks to Paul Thrasher)</li>
+			<li>* added GNU GPL licence</li>
+		</ul>
+	</li>
+</ul>
+</body>

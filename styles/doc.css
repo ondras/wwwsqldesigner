@@ -1,0 +1,19 @@
+body {
+	font-family: verdana;
+	font-size: 80%;
+}
+
+ul#changelog li {
+	font-weight: bold;
+	list-style-type: none;
+	margin-bottom: 1em;
+}
+
+ul#changelog li li {
+	font-weight: normal;
+	margin-bottom: 0em;
+}
+
+code {
+	font-size: 120%; 
+}
