@@ -1490,7 +1490,7 @@ SQL.RowManager.prototype.foreignconnect = function(e) { /* start drawing fk */
 		this.endConnect();
 	} else {
 		this.connecting = true;
-		this.dom.foreignconnect.value = "["+_("foreigconnectnpending")+"]";
+		this.dom.foreignconnect.value = "["+_("foreignconnectpending")+"]";
 	}
 }
 
