@@ -118,10 +118,11 @@ SQL.Row.prototype.setTitle = function(t) {
 
 SQL.Row.prototype.click = function(e) { /* clicked on row */
 	OZ.Event.stop(e);
+	this.dispatch("rowclick",this);
 	this.owner.owner.rowManager.select(this);
 }
 
-SQL.Row.prototype.dblclick = function(e) { /* clicked on row */
+SQL.Row.prototype.dblclick = function(e) { /* dblclicked on row */
 	OZ.Event.prevent(e);
 	OZ.Event.stop(e);
 	this.expand();
@@ -1414,8 +1415,9 @@ SQL.RowManager.prototype.init = function(owner) {
 	this.dom = {};
 	this.selected = null;
 	this.creating = false;
+	this.connecting = false;
 	
-	var ids = ["editrow","removerow","uprow","downrow","foreigncreate"];
+	var ids = ["editrow","removerow","uprow","downrow","foreigncreate","foreignconnect"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
@@ -1429,8 +1431,10 @@ SQL.RowManager.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.uprow, "click", this.bind(this.up));
 	OZ.Event.add(this.dom.downrow, "click", this.bind(this.down));
 	OZ.Event.add(this.dom.removerow, "click", this.bind(this.remove));
-	OZ.Event.add(this.dom.foreigncreate, "click", this.bind(this.foreign));
+	OZ.Event.add(this.dom.foreigncreate, "click", this.bind(this.foreigncreate));
+	OZ.Event.add(this.dom.foreignconnect, "click", this.bind(this.foreignconnect));
 	OZ.Event.add(false, "tableclick", this.bind(this.tableClick));
+	OZ.Event.add(false, "rowclick", this.bind(this.rowClick));
 	OZ.Event.add(document, "keydown", this.bind(this.press));
 }
 
@@ -1459,7 +1463,19 @@ SQL.RowManager.prototype.tableClick = function(e) { /* create relation after cli
 	this.owner.addRelation(r1, r2);
 }
 
-SQL.RowManager.prototype.foreign = function(e) { /* start creating fk */
+SQL.RowManager.prototype.rowClick = function(e) { /* draw relation after clicking target row */
+	if (!this.connecting) { return; }
+	
+	var r1 = this.selected;
+	var r2 = e.target;
+	
+	if (r1 == r2) { return; }
+	
+	this.owner.addRelation(r1, r2);
+}
+
+SQL.RowManager.prototype.foreigncreate = function(e) { /* start creating fk */
+	this.endConnect();
 	if (this.creating) {
 		this.endCreate();
 	} else {
@@ -1468,9 +1484,24 @@ SQL.RowManager.prototype.foreign = function(e) { /* start creating fk */
 	}
 }
 
+SQL.RowManager.prototype.foreignconnect = function(e) { /* start drawing fk */
+	this.endCreate();
+	if (this.connecting) {
+		this.endConnect();
+	} else {
+		this.connecting = true;
+		this.dom.foreignconnect.value = "["+_("foreigconnectnpending")+"]";
+	}
+}
+
 SQL.RowManager.prototype.endCreate = function() {
 	this.creating = false;
 	this.dom.foreigncreate.value = _("foreigncreate");
+}
+
+SQL.RowManager.prototype.endConnect = function() {
+	this.connecting = false;
+	this.dom.foreignconnect.value = _("foreignconnect");
 }
 
 SQL.RowManager.prototype.up = function(e) {
@@ -1495,22 +1526,24 @@ SQL.RowManager.prototype.remove = function(e) {
 }
 
 SQL.RowManager.prototype.redraw = function() {
+	this.endCreate();
+	this.endConnect();
 	if (this.selected) {
 		var table = this.selected.owner;
 		var rows = table.rows;
-		
 		this.dom.uprow.disabled = (rows[0] == this.selected);
 		this.dom.downrow.disabled = (rows[rows.length-1] == this.selected);
 		this.dom.removerow.disabled = false;
 		this.dom.editrow.disabled = false;
 		this.dom.foreigncreate.disabled = !(this.selected.isPrimary());
+		this.dom.foreignconnect.disabled = !(this.selected.isPrimary());
 	} else {
-		this.endCreate();
 		this.dom.uprow.disabled = true;
 		this.dom.downrow.disabled = true;
 		this.dom.removerow.disabled = true;
 		this.dom.editrow.disabled = true;
 		this.dom.foreigncreate.disabled = true;
+		this.dom.foreignconnect.disabled = true;
 	}
 }
 
@@ -1581,6 +1614,8 @@ SQL.KeyManager.prototype.build = function() {
 		this.dom.type.appendChild(o);
 	}
 
+	this.purge = this.bind(this.purge);
+
 	OZ.Event.add(this.dom.list, "change", this.bind(this.listchange));
 	OZ.Event.add(this.dom.type, "change", this.bind(this.typechange));
 	OZ.Event.add(this.dom.name, "keyup", this.bind(this.namechange));
@@ -1619,6 +1654,13 @@ SQL.KeyManager.prototype.remove = function(e) {
 	var r = this.table.keys[index];
 	this.table.removeKey(r);
 	this.sync(this.table);
+}
+
+SQL.KeyManager.prototype.purge = function() { /* remove empty keys */
+	for (var i=this.table.keys.length-1;i>=0;i--) {
+		var k = this.table.keys[i];
+		if (!k.rows.length) { this.table.removeKey(k); }
+	}
 }
 
 SQL.KeyManager.prototype.sync = function(table) { /* sync content with given table */
@@ -1728,7 +1770,7 @@ SQL.KeyManager.prototype.right = function(e) { /* remove field from index */
 
 SQL.KeyManager.prototype.open = function(table) {
 	this.sync(table);
-	this.owner.window.open(_("tablekeys"),this.dom.container);
+	this.owner.window.open(_("tablekeys"),this.dom.container,this.purge);
 }
 
 /* --------------------- window ------------ */
