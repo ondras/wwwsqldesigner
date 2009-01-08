@@ -21,6 +21,8 @@
 	<string name="newrow">new field</string>
 	<string name="foreigncreate">Create foreign key</string>
 	<string name="foreignpending">click target table</string>
+	<string name="foreignconnect">Connect foreign key</string>
+	<string name="foreignconnectpending">click target row</string>
 	<string name="confirmtable">Really delete table</string>
 	<string name="confirmrow">Really delete field</string>
 

@@ -21,6 +21,8 @@
 	<string name="newrow">nová položk</string>
 	<string name="foreigncreate">Vyrobit cizí klíč</string>
 	<string name="foreignpending">klikni na cílovou tabulku</string>
+    <string name="foreignconnect">Propojit cizí klíč</string>
+	<string name="foreignconnectpending">klikni na cílové pole</string>
 	<string name="confirmtable">Opravdu smazat tabulku</string>
 	<string name="confirmrow">Opravdu smazat položku</string>
 
