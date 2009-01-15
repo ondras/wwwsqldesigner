@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><locale>
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
 	<!-- table management -->
 	<string name="addtable">Ajouter une table</string>
 	<string name="edittable">Éditer la table</string>
@@ -10,7 +11,7 @@
 	<string name="addpending">positionner la table</string>
 	<string name="tablenamelabel">Nom</string>
 	<string name="tablecommentlabel">Commentaire</string>
-
+	
 	<!-- row management -->
 	<string name="addrow">Ajouter un champ</string>
 	<string name="editrow">Éditer un champ</string>
@@ -20,6 +21,8 @@
 	<string name="newrow">Éditer un champ</string>
 	<string name="foreigncreate">Créer une clé étrangère</string>
 	<string name="foreignpending">Cliquez la destination</string>
+	<string name="foreignconnect">Connecter une clé étrangère</string>
+	<string name="foreignconnectpending">Cliquez la propriété cible</string>
 	<string name="confirmtable">Voulez-vous vraiment supprimer cette table ?</string>
 	<string name="confirmrow">Voulez-vous vraiment supprimer ce champ ?</string>
 
@@ -32,7 +35,7 @@
 	<string name="ai">Auto-incrémental</string>
 	<string name="comment">Éditer le commentaire</string>
 	<string name="commenttext">Saisir un commentaire à propos de ce champ</string>
-
+	
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Annuler</string>
@@ -47,8 +50,8 @@
 	<string name="optionpatternnotice">%T = table primaire, %R = clé primaire, %t = table étrangère</string>
 	<string name="hide">Cacher les connecteurs lors du déplacement des tables ?</string>
 	<string name="vector">Dessiner des connecteurs « adoucis » (si le navigateur le supporte) ?</string>
-
-
+	
+	
 	<!-- keys -->
 	<string name="tablekeys">Clés</string>
 	<string name="keyslistlabel">Clés dans la table « %s »</string>
@@ -59,7 +62,7 @@
 	<string name="keyedit">Éditer la clé</string>
 	<string name="keyadd">Ajouter une clé</string>
 	<string name="keyremove">Supprimer la clé</string>
-
+	
 	<!-- io -->
 	<string name="saveload">Enregistrer / Charger</string>
 	<string name="empty">Merci de coller les données XML dans le champs prévu avant de ré-essayer.</string>
@@ -83,9 +86,9 @@
 	<string name="http500">Erreur interne du serveur</string>
 	<string name="http501">Non Implementé</string>
 	<string name="http503">Service indisponible</string>
-
+	
 	<!-- misc -->
 	<string name="xmlerror">Erreur XML</string>
 	<string name="docs">Documentation</string>
-
+	
 </locale>
