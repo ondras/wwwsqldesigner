@@ -1022,8 +1022,14 @@ SQL.Map.prototype.move = function(e) { /* mousemove */
 	var coefY = this.height / this.owner.height;
 	var left = this.l / coefX;
 	var top = this.t / coefY;
-	document.documentElement.scrollLeft = Math.round(left);
-	document.documentElement.scrollTop = Math.round(top);
+	
+	if (OZ.webkit) {
+		document.body.scrollLeft = Math.round(left);
+		document.body.scrollTop = Math.round(top);
+	} else {
+		document.documentElement.scrollLeft = Math.round(left);
+		document.documentElement.scrollTop = Math.round(top);
+	}
 	
 	this.redraw();
 }
@@ -1962,7 +1968,7 @@ SQL.Designer.prototype.init = function() {
 	this.requestLanguage();
 	this.requestDB();
 	
-	this.vector = this.getOption("vector") && (OZ.gecko || OZ.opera || OZ.safari || OZ.ie);
+	this.vector = this.getOption("vector") && (OZ.gecko || OZ.opera || OZ.webkit || OZ.ie);
 	if (this.vector) {
 		this.vector = "svg";
 		if (OZ.ie) { this.vector = "vml"; }
