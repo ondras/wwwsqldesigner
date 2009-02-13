@@ -1,4 +1,5 @@
 <?php
+	set_time_limit(0);
 	function setup_saveloadlist() {
 		define("SERVER","localhost");
 		define("USER","");
@@ -7,9 +8,9 @@
 		define("TABLE","wwwsqldesigner");
 	}
 	function setup_import() {
-		define("SERVER","tv1.dev");
-		define("USER","tvprogram");
-		define("PASSWORD","xxx");
+		define("SERVER","localhost");
+		define("USER","");
+		define("PASSWORD","");
 		define("DB","information_schema");
 	}
 	function connect() {
