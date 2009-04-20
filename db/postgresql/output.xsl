@@ -109,9 +109,9 @@
 			<xsl:for-each select="relation">
 				<xsl:text>ALTER TABLE "</xsl:text>
 				<xsl:value-of select="../../@name" />
-				<xsl:text>" ADD FOREIGN KEY (</xsl:text>
+				<xsl:text>" ADD FOREIGN KEY ("</xsl:text>
 				<xsl:value-of select="../@name" />
-				<xsl:text>) REFERENCES "</xsl:text>
+				<xsl:text>") REFERENCES "</xsl:text>
 				<xsl:value-of select="@table" />
 				<xsl:text>" ("</xsl:text>
 				<xsl:value-of select="@row" />
