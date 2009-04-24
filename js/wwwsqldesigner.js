@@ -1399,8 +1399,22 @@ SQL.TableManager.prototype.remove = function(e) {
 
 SQL.TableManager.prototype.edit = function(e) {
 	this.owner.window.open(_("edittable"), this.dom.container, this.save);
-	this.dom.name.value = this.selected.getTitle();
-	this.dom.comment.value = this.selected.getComment();
+	
+	var title = this.selected.getTitle();
+	this.dom.name.value = title;
+	try { /* throws in ie6 */
+		this.dom.comment.value = this.selected.getComment();
+	} catch(e) {}
+
+	/* pre-select table name */
+	this.dom.name.focus();
+	if (OZ.ie) {
+		try { /* throws in ie6 */
+			this.dom.name.select();
+		} catch(e) {}
+	} else {
+		this.dom.name.setSelectionRange(0, title.length);
+	} 
 }
 
 SQL.TableManager.prototype.keys = function(e) { /* open keys dialog */
