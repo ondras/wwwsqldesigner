@@ -65,9 +65,9 @@ SQL.Row.prototype.init = function(owner, title, data) {
 	SQL.Visual.prototype.init.apply(this);
 	
 	this.data.type = 0;
-	this.data.size = null;
+	this.data.size = "";
 	this.data.def = null;
-	this.data.nll = false;
+	this.data.nll = true;
 	this.data.ai = false;
 	this.data.comment = "";
 	
@@ -134,7 +134,11 @@ SQL.Row.prototype.mousedown = function(e) {
 }
 
 SQL.Row.prototype.update = function(data) { /* update subset of row data */
+	if (data.nll && "def" in data && data.def.match(/^null$/i)) { data.def = null; }
+	
 	for (var p in data) { this.data[p] = data[p]; }
+	if (!this.data.nll && this.data.def === null) { this.data.def = ""; }
+
 	var elm = this.getDataType();
 	for (var i=0;i<this.relations.length;i++) {
 		var r = this.relations[i];
@@ -252,8 +256,11 @@ SQL.Row.prototype.collapse = function() {
 
 SQL.Row.prototype.load = function() { /* put data to expanded form */
 	this.dom.name.value = this.getTitle();
-	this.dom.def.value = this.data.def;
-	this.dom.size.value = this.data.size || null;
+	var def = this.data.def;
+	if (def === null) { def = "NULL"; }
+	
+	this.dom.def.value = def;
+	this.dom.size.value = this.data.size;
 	this.dom.nll.checked = !this.data.nll;
 	this.dom.ai.checked = this.data.ai;
 }
@@ -348,10 +355,14 @@ SQL.Row.prototype.toXML = function() {
 	if (elm.getAttribute("length") == "1" && this.data.size) { t += "("+this.data.size+")"; }
 	xml += "<datatype>"+t+"</datatype>";
 	
-	if (this.data.def) {
+	if (this.data.def || this.data.def === null) {
 		var q = elm.getAttribute("quote");
-		var d = this.data.def || "";
-		if (d != "NULL" && d != "null" && d != "CURRENT_TIMESTAMP") { d = q+d+q; }
+		var d = this.data.def;
+		if (d === null) { 
+			d = "NULL"; 
+		} else if (d != "CURRENT_TIMESTAMP") { 
+			d = q+d+q; 
+		}
 		xml += "<default>"+d+"</default>";
 	}
 
@@ -374,7 +385,7 @@ SQL.Row.prototype.fromXML = function(node) {
 	var name = node.getAttribute("name");
 	this.setTitle(name);
 	
-	var obj = { type:0, size:null };
+	var obj = { type:0, size:"" };
 	obj.nll = (node.getAttribute("null") == "1");
 	obj.ai = (node.getAttribute("autoincrement") == "1");
 	
