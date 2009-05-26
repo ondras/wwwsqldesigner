@@ -134,7 +134,7 @@ SQL.Row.prototype.mousedown = function(e) {
 }
 
 SQL.Row.prototype.update = function(data) { /* update subset of row data */
-	if (data.nll && "def" in data && data.def.match(/^null$/i)) { data.def = null; }
+	if (data.nll && data.def && data.def.match(/^null$/i)) { data.def = null; }
 	
 	for (var p in data) { this.data[p] = data[p]; }
 	if (!this.data.nll && this.data.def === null) { this.data.def = ""; }
