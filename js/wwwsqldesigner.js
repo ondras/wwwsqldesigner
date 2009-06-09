@@ -430,6 +430,15 @@ SQL.Row.prototype.isPrimary = function() {
 	return false;
 }
 
+SQL.Row.prototype.isUnique = function() {
+	for (var i=0;i<this.keys.length;i++) {
+		var k = this.keys[i];
+		var t = k.getType();
+		if (t == "PRIMARY" || t == "UNIQUE") { return true; }
+	}
+	return false;
+}
+
 SQL.Row.prototype.enter = function(e) {
 	if (e.keyCode == 13) { 
 		this.collapse();
@@ -1566,8 +1575,8 @@ SQL.RowManager.prototype.redraw = function() {
 		this.dom.downrow.disabled = (rows[rows.length-1] == this.selected);
 		this.dom.removerow.disabled = false;
 		this.dom.editrow.disabled = false;
-		this.dom.foreigncreate.disabled = !(this.selected.isPrimary());
-		this.dom.foreignconnect.disabled = !(this.selected.isPrimary());
+		this.dom.foreigncreate.disabled = !(this.selected.isUnique());
+		this.dom.foreignconnect.disabled = !(this.selected.isUnique());
 	} else {
 		this.dom.uprow.disabled = true;
 		this.dom.downrow.disabled = true;
@@ -1847,7 +1856,7 @@ SQL.Window.prototype.hideThrobber = function() {
 SQL.Window.prototype.open = function(title, content, callback) {
 	this.state = 1;
 	this.callback = callback;
-	while (this.dom.title.childNodes.length > 1) { this.dom.title.removeChild(this.dom.title.childNodes[1]) }
+	while (this.dom.title.childNodes.length > 1) { this.dom.title.removeChild(this.dom.title.childNodes[1]); }
 
 	var txt = OZ.DOM.text(title);
 	this.dom.title.appendChild(txt);
