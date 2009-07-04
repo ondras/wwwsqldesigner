@@ -7,8 +7,8 @@
 	<string name="aligntables">Alinear tablas</string>
 	<string name="cleartables">Limpiar tablas</string>
 	<string name="confirmall">Realmente borrar todas las tablas</string>
-	<string name="newtable">nueva tabla</string>
-	<string name="addpending">posicionar tabla</string>
+	<string name="newtable">Nueva tabla</string>
+	<string name="addpending">Posicionar tabla</string>
 	<string name="tablenamelabel">Nombre</string>
 	<string name="tablecommentlabel">Comentario</string>
 	
@@ -18,34 +18,37 @@
 	<string name="removerow">Remover campo</string>
 	<string name="uprow">Arriba</string>
 	<string name="downrow">Abajo</string>
-	<string name="newrow">nuevo campo</string>
-	<string name="foreigncreate">Crear llave foranea</string>
-	<string name="foreignpending">hacer clic en la tabla</string>
+	<string name="newrow">Nuevo campo</string>
+	<string name="foreigncreate">Crear llave for&#225;nea</string>
+	<string name="foreignpending">Conectar llave for&#225;nea</string>
+	<string name="foreignconnect">Conectar llave for&#225;nea</string>
+	<string name="foreignconnectpending">Hacer clic en el registro</string>
 	<string name="confirmtable">Realmente borrar tabla</string>
 	<string name="confirmrow">Realmente borrar campo</string>
 
 	<!-- row edit -->
 	<string name="name">Nombre</string>
 	<string name="type">Tipo</string>
-	<string name="size">Tamaño</string>
+	<string name="size">Tama&#241;o</string>
 	<string name="def">Valor por predeterminado</string>
 	<string name="notnull">NOT NULL</string>
-	<string name="ai">Autoincremento</string>
+	<string name="ai">Auto incremento</string>
 	<string name="comment">Editar comentario</string>
 	<string name="commenttext">Entrar comentario para este campo</string>
 	
 	<!-- windows & options -->
-	<string name="windowok">OK</string>
+	<string name="windowok">Aceptar</string>
 	<string name="windowcancel">Cancelar</string>
 	<string name="throbber">Por favor esperar...</string>
-	<string name="options">Optiones</string>
+	<string name="options">Opciones</string>
 	<string name="language">Lenguaje</string>
-	<string name="db">Base de datos para nuevos diseños</string>
-	<string name="optionsnotice">Algunas optiones son aplicadas solo despues de recargar totalmente la pagina. Las Cookies deben estar habilidas para optiones de trabajo.</string>
+	<string name="db">Base de datos para nuevos dise&#241;os</string>
+	<string name="optionsnotice">Algunas opciones son aplicadas solo despúes de recargar totalmente la pagina. Las cookies deben estar 
+habilitadas para opciones de trabajo.</string>
 	<string name="snap">Tabla acceso remoto</string>
-	<string name="optionsnapnotice">En pixeles, 0 = deshabilitar acceso remoto</string>
-	<string name="pattern">Patron para nombres foraneos</string>
-	<string name="optionpatternnotice">%T = tabla primaria, %R = llave primaria, %t = tabla foranea</string>
+	<string name="optionsnapnotice">En píxeles, 0 = deshabilitar acceso remoto</string>
+	<string name="pattern">Patrón para nombres for&#225;neos</string>
+	<string name="optionpatternnotice">%T = tabla primaria, %R = llave primaria, %t = tabla for&#225;nea</string>
 	<string name="hide">Esconder conectores en la tabla al arrastrar?</string>
 	<string name="vector">Dibujar conectores suave (si son soportados por el navegador)?</string>
 	
@@ -63,7 +66,7 @@
 	
 	<!-- io -->
 	<string name="saveload">Guardar / Cargar</string>
-	<string name="empty">Favor de pegar el XML dentro del area de texto siguiente e intentar nuevamente.</string>
+	<string name="empty">Favor de pegar el XML dentro del &#225;rea de texto siguiente e intentar nuevamente.</string>
 	<string name="client">Cliente</string>
 	<string name="server">Servidor</string>
 	<string name="output">Entrada / Salida</string>
@@ -75,8 +78,8 @@
 	<string name="serverload">Cargar</string>
 	<string name="serverlist">Lista de articulos</string>
 	<string name="serverimport">Importar desde BD</string>
-	<string name="serverloadprompt">Entrar palabra bajo la cual tu diseño fue guardado:</string>
-	<string name="serversaveprompt">Entrar palabra bajo la cual tu diseño va a ser guardado:</string>
+	<string name="serverloadprompt">Entrar palabra bajo la cual tu dise&#241;o fue guardado:</string>
+	<string name="serversaveprompt">Entrar palabra bajo la cual tu dise&#241;o va a ser guardado:</string>
 	<string name="serverimportprompt">Entrar nombre de base de datos a ser importada:</string>
 	<string name="httpresponse">Respuesta del servidor</string>
 	<string name="http201">Guardado</string>
@@ -87,6 +90,6 @@
 	
 	<!-- misc -->
 	<string name="xmlerror">XML error</string>
-	<string name="docs">Documentacion</string>
+	<string name="docs">Documentación</string>
 	
 </locale>
