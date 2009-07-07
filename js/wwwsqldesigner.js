@@ -1192,7 +1192,8 @@ SQL.IO.prototype.clientload = function() {
 }
 
 SQL.IO.prototype.clientsql = function() {
-	var path = "db/"+window.DATATYPES.getAttribute("db")+"/output.xsl";
+	var bp = this.owner.getOption("staticpath");
+	var path = bp + "db/"+window.DATATYPES.getAttribute("db")+"/output.xsl";
 	this.owner.window.showThrobber();
 	OZ.Request(path, this.bind(this.finish), {xml:true});
 }
@@ -1227,7 +1228,8 @@ SQL.IO.prototype.serversave = function(e) {
 	var name = prompt(_("serversaveprompt"),"");
 	if (!name) { return; }
 	var xml = this.owner.toXML();
-	var url = "backend/"+this.dom.backend.value+"/?action=save&keyword="+encodeURIComponent(name);
+	var bp = this.owner.getOption("xhrpath");
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=save&keyword="+encodeURIComponent(name);
 	var h = {"Content-type":"application/xml"};
 	this.owner.window.showThrobber();
 	this.owner.setTitle(name);
@@ -1237,14 +1239,16 @@ SQL.IO.prototype.serversave = function(e) {
 SQL.IO.prototype.serverload = function(e, keyword) {
 	var name = keyword || prompt(_("serverloadprompt"),"");
 	if (!name) { return; }
-	var url = "backend/"+this.dom.backend.value+"/?action=load&keyword="+encodeURIComponent(name);
+	var bp = this.owner.getOption("xhrpath");
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=load&keyword="+encodeURIComponent(name);
 	this.owner.window.showThrobber();
 	this.name = name;
 	OZ.Request(url, this.loadresponse, {xml:true});
 }
 
 SQL.IO.prototype.serverlist = function(e) {
-	var url = "backend/"+this.dom.backend.value+"/?action=list";
+	var bp = this.owner.getOption("xhrpath");
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=list";
 	this.owner.window.showThrobber();
 	OZ.Request(url, this.listresponse);
 }
@@ -1252,7 +1256,8 @@ SQL.IO.prototype.serverlist = function(e) {
 SQL.IO.prototype.serverimport = function(e) {
 	var name = prompt(_("serverimportprompt"),"");
 	if (!name) { return; }
-	var url = "backend/"+this.dom.backend.value+"/?action=import&database="+name;
+	var bp = this.owner.getOption("xhrpath");
+	var url = bp + "backend/"+this.dom.backend.value+"/?action=import&database="+name;
 	this.owner.window.showThrobber();
 	OZ.Request(url, this.importresponse, {xml:true});
 }
@@ -2018,7 +2023,8 @@ SQL.Designer.prototype.init = function() {
 
 SQL.Designer.prototype.requestLanguage = function() { /* get locale file */
 	var lang = this.getOption("locale")
-	var url = "locale/"+lang+".xml";
+	var bp = this.getOption("staticpath");
+	var url = bp + "locale/"+lang+".xml";
 	OZ.Request(url, this.bind(this.languageResponse), {method:"get", xml:true});
 }
 
@@ -2037,7 +2043,8 @@ SQL.Designer.prototype.languageResponse = function(xmlDoc) {
 
 SQL.Designer.prototype.requestDB = function() { /* get datatypes file */
 	var db = this.getOption("db");
-	var url = "db/"+db+"/datatypes.xml";
+	var bp = this.getOption("staticpath");
+	var url = bp + "db/"+db+"/datatypes.xml";
 	OZ.Request(url, this.bind(this.dbResponse), {method:"get", xml:true});
 }
 
@@ -2137,6 +2144,8 @@ SQL.Designer.prototype.getOption = function(name) {
 	switch (name) {
 		case "locale": return CONFIG.DEFAULT_LOCALE;
 		case "db": return CONFIG.DEFAULT_DB;
+		case "staticpath": return CONFIG.STATIC_PATH || "";
+		case "xhrpath": return CONFIG.XHR_PATH || "";
 		case "snap": return 0;
 		case "pattern": return "%R_%T";
 		case "hide": return false;
