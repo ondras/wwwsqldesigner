@@ -348,12 +348,12 @@ SQL.Row.prototype.toXML = function() {
 	var t = this.getTitle().replace(/"/g,"&quot;");
 	var nn = (this.data.nll ? "1" : "0");
 	var ai = (this.data.ai ? "1" : "0");
-	xml += '<row name="'+t+'" null="'+nn+'" autoincrement="'+ai+'">';
+	xml += '<row name="'+t+'" null="'+nn+'" autoincrement="'+ai+'">\n';
 
 	var elm = this.getDataType();
 	var t = elm.getAttribute("sql");
 	if (elm.getAttribute("length") == "1" && this.data.size) { t += "("+this.data.size+")"; }
-	xml += "<datatype>"+t+"</datatype>";
+	xml += "<datatype>"+t+"</datatype>\n";
 	
 	if (this.data.def || this.data.def === null) {
 		var q = elm.getAttribute("quote");
@@ -369,15 +369,15 @@ SQL.Row.prototype.toXML = function() {
 	for (var i=0;i<this.relations.length;i++) {
 		var r = this.relations[i];
 		if (r.row2 != this) { continue; }
-		xml += '<relation table="'+r.row1.owner.getTitle()+'" row="'+r.row1.getTitle()+'" />';
+		xml += '<relation table="'+r.row1.owner.getTitle()+'" row="'+r.row1.getTitle()+'" />\n';
 	}
 	
 	if (this.data.comment) { 
 		var escaped = this.data.comment.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;");
-		xml += "<comment>"+escaped+"</comment>"; 
+		xml += "<comment>"+escaped+"</comment>\n"; 
 	}
 	
-	xml += "</row>";
+	xml += "</row>\n";
 	return xml;
 }
 
@@ -800,7 +800,7 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 SQL.Table.prototype.toXML = function() {
 	var t = this.getTitle().replace(/"/g,"&quot;");
 	var xml = "";
-	xml += '<table x="'+this.x+'" y="'+this.y+'" name="'+t+'">';
+	xml += '<table x="'+this.x+'" y="'+this.y+'" name="'+t+'">\n';
 	for (var i=0;i<this.rows.length;i++) {
 		xml += this.rows[i].toXML();
 	}
@@ -810,9 +810,9 @@ SQL.Table.prototype.toXML = function() {
 	var c = this.getComment();
 	if (c) { 
 		c = c.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;");
-		xml += "<comment>"+c+"</comment>"; 
+		xml += "<comment>"+c+"</comment>\n"; 
 	}
-	xml += "</table>";
+	xml += "</table>\n";
 	return xml;
 }
 
@@ -965,12 +965,12 @@ SQL.Key.prototype.getLabel = function() {
 
 SQL.Key.prototype.toXML = function() {
 	var xml = "";
-	xml += '<key type="'+this.getType()+'" name="'+this.getName()+'">';
+	xml += '<key type="'+this.getType()+'" name="'+this.getName()+'">\n';
 	for (var i=0;i<this.rows.length;i++) {
 		var r = this.rows[i];
-		xml += '<part>'+r.getTitle()+'</part>';
+		xml += '<part>'+r.getTitle()+'</part>\n';
 	}
-	xml += '</key>';
+	xml += '</key>\n';
 	return xml;
 }
 
@@ -1352,6 +1352,7 @@ SQL.TableManager.prototype.init = function(owner) {
 SQL.TableManager.prototype.addRow = function(e) {
 	var newrow = this.selected.addRow(_("newrow"));
 	this.owner.rowManager.select(newrow);
+	newrow.expand();
 }
 
 SQL.TableManager.prototype.select = function(table) { /* activate table */
@@ -2211,8 +2212,8 @@ SQL.Designer.prototype.findNamedTable = function(name) { /* find row specified a
 }
 
 SQL.Designer.prototype.toXML = function() {
-	var xml = '<?xml version="1.0" encoding="utf-8" ?>';
-	xml += '<sql>';
+	var xml = '<?xml version="1.0" encoding="utf-8" ?>\n';
+	xml += '<sql>\n';
 	
 	/* serialize datatypes */
 	if (window.XMLSerializer) {
@@ -2227,7 +2228,7 @@ SQL.Designer.prototype.toXML = function() {
 	for (var i=0;i<this.tables.length;i++) {
 		xml += this.tables[i].toXML();
 	}
-	xml += "</sql>";
+	xml += "</sql>\n";
 	return xml;
 }
 
