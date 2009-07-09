@@ -30,6 +30,7 @@
 	<string name="size">Rozmiar</string>
 	<string name="def">Domyślnie</string>
 	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Edytuj komentarz</string>
 	<string name="commenttext">Wpisz komentarz dla tego pola</string>

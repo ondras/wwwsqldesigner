@@ -18,7 +18,7 @@
 	<string name="removerow">Smazat položku</string>
 	<string name="uprow">Nahoru</string>
 	<string name="downrow">Dolů</string>
-	<string name="newrow">nová položk</string>
+	<string name="newrow">nová položka</string>
 	<string name="foreigncreate">Vyrobit cizí klíč</string>
 	<string name="foreignpending">klikni na cílovou tabulku</string>
     <string name="foreignconnect">Propojit cizí klíč</string>
@@ -32,6 +32,7 @@
 	<string name="size">Velikost</string>
 	<string name="def">Výchozí</string>
 	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Upravit komentář</string>
 	<string name="commenttext">VLožte komentář pro tuto položku</string>

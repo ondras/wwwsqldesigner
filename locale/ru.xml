@@ -30,6 +30,7 @@
 	<string name="size">Размер</string>
 	<string name="def">По умолчанию</string>
 	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Изменить коментарий</string>
 	<string name="commenttext">Введите коментарий для этого поля</string>

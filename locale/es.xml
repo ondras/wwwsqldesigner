@@ -32,6 +32,7 @@
 	<string name="size">Tama&#241;o</string>
 	<string name="def">Valor por predeterminado</string>
 	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
 	<string name="ai">Auto incremento</string>
 	<string name="comment">Editar comentario</string>
 	<string name="commenttext">Entrar comentario para este campo</string>

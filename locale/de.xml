@@ -32,6 +32,7 @@
 	<string name="size">Größe</string>
 	<string name="def">Default</string>
 	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Kommentar bearbeiten</string>
 	<string name="commenttext">Kommentar zu diesem Feld eintragen:</string>

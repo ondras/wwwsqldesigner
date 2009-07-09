@@ -191,7 +191,7 @@ SQL.Row.prototype.buildContent = function() {
 
 	this.dom.nll = OZ.DOM.elm("input");
 	this.dom.nll.type = "checkbox";
-	elms.push(["notnull",this.dom.nll]);
+	elms.push(["null",this.dom.nll]);
 	
 	this.dom.commentbtn = OZ.DOM.elm("input");
 	this.dom.commentbtn.type = "button";
@@ -241,7 +241,7 @@ SQL.Row.prototype.collapse = function() {
 		type: this.dom.type.selectedIndex,
 		def: this.dom.def.value,
 		size: this.dom.size.value,
-		nll: !this.dom.nll.checked,
+		nll: this.dom.nll.checked,
 		ai: this.dom.ai.checked
 	}
 
@@ -261,7 +261,7 @@ SQL.Row.prototype.load = function() { /* put data to expanded form */
 	
 	this.dom.def.value = def;
 	this.dom.size.value = this.data.size;
-	this.dom.nll.checked = !this.data.nll;
+	this.dom.nll.checked = this.data.nll;
 	this.dom.ai.checked = this.data.ai;
 }
 
