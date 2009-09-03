@@ -78,7 +78,7 @@
 			}
 			$keyword = ( isset( $_GET['keyword'] ) ? $_GET['keyword'] : '' );
 			$keyword = sqlite_escape_string( $keyword );
-			$result = sqlite_query( "SELECT `data` FROM ".TABLE." WHERE keyword = '$keyword'" , $GLOBALS['sqlConnect'] );
+			$result = sqlite_query( "SELECT data FROM ".TABLE." WHERE keyword = '$keyword'" , $GLOBALS['sqlConnect'] );
 			$row = sqlite_fetch_array( $result );
 			if( !$row ) {
 				header( 'HTTP/1.0 404 Not Found' );
