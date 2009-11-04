@@ -21,6 +21,11 @@
 	<string name="newrow">Novo campo</string>
 	<string name="foreigncreate">Criar chave estrangeira</string>
 	<string name="foreignpending">Selecione a tabela alvo(destino)</string>
+
+    <string name="foreignconnect">?</string>
+	<string name="foreignconnectpending">?</string>
+    <string name="foreigndisconnect">?</string>
+
 	<string name="confirmtable">Deseja realmente deletar a tabela</string>
 	<string name="confirmrow">Deseja realmente deletar o campo</string>
 

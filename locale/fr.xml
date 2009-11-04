@@ -23,6 +23,7 @@
 	<string name="foreignpending">Cliquez la destination</string>
 	<string name="foreignconnect">Connecter une clé étrangère</string>
 	<string name="foreignconnectpending">Cliquez la propriété cible</string>
+	<string name="foreigndisconnect">Supprimer une clé étrangère</string>
 	<string name="confirmtable">Voulez-vous vraiment supprimer cette table ?</string>
 	<string name="confirmrow">Voulez-vous vraiment supprimer ce champ ?</string>
 

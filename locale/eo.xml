@@ -23,6 +23,7 @@
 	<string name="foreignpending">alklaki la celan tabelon</string>
 	<string name="foreignconnect">Konekti fremdan ŝlosilon</string>
 	<string name="foreignconnectpending">alklaki la celan atributon</string>
+	<string name="foreigndisconnect">Forigi la celan atributon</string>
 	<string name="confirmtable">Ja forigi la tabelon</string>
 	<string name="confirmrow">Ja forigi la kampon</string>
 

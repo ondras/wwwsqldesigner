@@ -23,6 +23,7 @@
 	<string name="foreignpending">Ziel-Tabelle wählen</string>
 	<string name="foreignconnect">Fremdschlüssel Verknüpfung</string>
 	<string name="foreignconnectpending">Ziel-Zeile auswählen</string>
+	<string name="foreigndisconnect">Ziel-Zeile entfernen</string>
 	<string name="confirmtable">Tabelle wirklich löschen</string>
 	<string name="confirmrow">Feld wirklich löschen</string>
 

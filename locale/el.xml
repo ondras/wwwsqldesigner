@@ -23,6 +23,7 @@
 	<string name="foreignpending">Κάντε κλικ στο άλλο πίνακα</string>
 	<string name="foreignconnect">Σένδεση ξένου κλειδιού</string>
 	<string name="foreignconnectpending">Κάντε κλικ στη γραμμή</string>
+	<string name="foreigndisconnect">Κάντε κλικ πεδίου</string>
 	<string name="confirmtable">Διαγραφή πίνακα. Είστε σίγουρος</string>
 	<string name="confirmrow">Διαγραφή πεδίου. Είστε σίγουρος</string>
 

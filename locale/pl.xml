@@ -21,6 +21,9 @@
 	<string name="newrow">nowe pole</string>
 	<string name="foreigncreate">Utwórz klucz zewnętrzny</string>
 	<string name="foreignpending">kliknij w docelową tabelę</string>
+    <string name="foreignconnect">Propojit cizí klíč</string>
+	<string name="foreignconnectpending">klikni na cílové pole</string>
+    <string name="foreigndisconnect">Smazat cizí klíč</string>
 	<string name="confirmtable">Czy na pewno usunąć tabelę</string>
 	<string name="confirmrow">Czy na pewno usunąć pole</string>
 

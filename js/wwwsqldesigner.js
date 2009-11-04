@@ -1463,7 +1463,7 @@ SQL.RowManager.prototype.init = function(owner) {
 	this.creating = false;
 	this.connecting = false;
 	
-	var ids = ["editrow","removerow","uprow","downrow","foreigncreate","foreignconnect"];
+	var ids = ["editrow","removerow","uprow","downrow","foreigncreate","foreignconnect","foreigndisconnect"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
@@ -1479,6 +1479,7 @@ SQL.RowManager.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.removerow, "click", this.bind(this.remove));
 	OZ.Event.add(this.dom.foreigncreate, "click", this.bind(this.foreigncreate));
 	OZ.Event.add(this.dom.foreignconnect, "click", this.bind(this.foreignconnect));
+	OZ.Event.add(this.dom.foreigndisconnect, "click", this.bind(this.foreigndisconnect));
 	OZ.Event.add(false, "tableclick", this.bind(this.tableClick));
 	OZ.Event.add(false, "rowclick", this.bind(this.rowClick));
 	OZ.Event.add(document, "keydown", this.bind(this.press));
@@ -1540,6 +1541,15 @@ SQL.RowManager.prototype.foreignconnect = function(e) { /* start drawing fk */
 	}
 }
 
+SQL.RowManager.prototype.foreigndisconnect = function(e) { /* remove connector */
+	var rels = this.selected.relations;
+	for (var i=rels.length-1;i>=0;i--) {
+		var r = rels[i];
+		if (r.row2 == this.selected) { this.owner.removeRelation(r); }
+	}
+	this.redraw();
+}
+
 SQL.RowManager.prototype.endCreate = function() {
 	this.creating = false;
 	this.dom.foreigncreate.value = _("foreigncreate");
@@ -1583,6 +1593,14 @@ SQL.RowManager.prototype.redraw = function() {
 		this.dom.editrow.disabled = false;
 		this.dom.foreigncreate.disabled = !(this.selected.isUnique());
 		this.dom.foreignconnect.disabled = !(this.selected.isUnique());
+		
+		this.dom.foreigndisconnect.disabled = true;
+		var rels = this.selected.relations;
+		for (var i=0;i<rels.length;i++) {
+			var r = rels[i];
+			if (r.row2 == this.selected) { this.dom.foreigndisconnect.disabled = false; }
+		}
+		
 	} else {
 		this.dom.uprow.disabled = true;
 		this.dom.downrow.disabled = true;
@@ -1590,6 +1608,7 @@ SQL.RowManager.prototype.redraw = function() {
 		this.dom.editrow.disabled = true;
 		this.dom.foreigncreate.disabled = true;
 		this.dom.foreignconnect.disabled = true;
+		this.dom.foreigndisconnect.disabled = true;
 	}
 }
 

@@ -23,6 +23,7 @@
 	<string name="foreignpending">kattintson a cél-táblára</string>
 	<string name="foreignconnect">Idegen kulcs kapcsolása</string>
 	<string name="foreignconnectpending">kattintson a cél-mezőre</string>
+	<string name="foreigndisconnect">Mező kulcs létrehozása</string>
 	<string name="confirmtable">Valóban töröljem a táblát</string>
 	<string name="confirmrow">Valóban töröljem a mezőt</string>
 

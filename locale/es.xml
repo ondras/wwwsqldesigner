@@ -23,6 +23,7 @@
 	<string name="foreignpending">Conectar llave for&#225;nea</string>
 	<string name="foreignconnect">Conectar llave for&#225;nea</string>
 	<string name="foreignconnectpending">Hacer clic en el registro</string>
+	<string name="foreigndisconnect">Remover llave for&#225;nea</string>
 	<string name="confirmtable">Realmente borrar tabla</string>
 	<string name="confirmrow">Realmente borrar campo</string>
 

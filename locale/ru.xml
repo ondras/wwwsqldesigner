@@ -21,6 +21,9 @@
 	<string name="newrow">новое поле</string>
 	<string name="foreigncreate">Создать внешний ключь</string>
 	<string name="foreignpending">щелкните по целевой таблице</string>
+    <string name="foreignconnect">?</string>
+	<string name="foreignconnectpending">?</string>
+    <string name="foreigndisconnect">?</string>
 	<string name="confirmtable">Действительно удалить таблицу</string>
 	<string name="confirmrow">Действительно удалить поле</string>
 

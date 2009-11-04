@@ -23,6 +23,7 @@
 	<string name="foreignpending">klikni na cílovou tabulku</string>
     <string name="foreignconnect">Propojit cizí klíč</string>
 	<string name="foreignconnectpending">klikni na cílové pole</string>
+    <string name="foreigndisconnect">Smazat cizí klíč</string>
 	<string name="confirmtable">Opravdu smazat tabulku</string>
 	<string name="confirmrow">Opravdu smazat položku</string>
 
