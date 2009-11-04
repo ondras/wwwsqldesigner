@@ -1091,6 +1091,7 @@ SQL.IO = OZ.Class();
 
 SQL.IO.prototype.init = function(owner) {
 	this.owner = owner;
+	this._name = ""; /* last used keyword */
 	this.dom = {
 		container:OZ.$("io")
 	};
@@ -1225,8 +1226,9 @@ SQL.IO.prototype.finish = function(xslDoc) {
 }
 
 SQL.IO.prototype.serversave = function(e) {
-	var name = prompt(_("serversaveprompt"),"");
+	var name = prompt(_("serversaveprompt"), this._name);
 	if (!name) { return; }
+	this._name = name;
 	var xml = this.owner.toXML();
 	var bp = this.owner.getOption("xhrpath");
 	var url = bp + "backend/"+this.dom.backend.value+"/?action=save&keyword="+encodeURIComponent(name);
@@ -1237,8 +1239,9 @@ SQL.IO.prototype.serversave = function(e) {
 }
 
 SQL.IO.prototype.serverload = function(e, keyword) {
-	var name = keyword || prompt(_("serverloadprompt"),"");
+	var name = keyword || prompt(_("serverloadprompt"), this._name);
 	if (!name) { return; }
+	this._name = name;
 	var bp = this.owner.getOption("xhrpath");
 	var url = bp + "backend/"+this.dom.backend.value+"/?action=load&keyword="+encodeURIComponent(name);
 	this.owner.window.showThrobber();
@@ -1254,7 +1257,7 @@ SQL.IO.prototype.serverlist = function(e) {
 }
 
 SQL.IO.prototype.serverimport = function(e) {
-	var name = prompt(_("serverimportprompt"),"");
+	var name = prompt(_("serverimportprompt"), "");
 	if (!name) { return; }
 	var bp = this.owner.getOption("xhrpath");
 	var url = bp + "backend/"+this.dom.backend.value+"/?action=import&database="+name;
