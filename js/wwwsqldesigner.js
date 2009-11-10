@@ -1348,6 +1348,7 @@ SQL.TableManager.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.aligntables, "click", this.owner.bind(this.owner.alignTables));
 	OZ.Event.add(this.dom.edittable, "click", this.bind(this.edit));
 	OZ.Event.add(this.dom.tablekeys, "click", this.bind(this.keys));
+	OZ.Event.add(document, "keydown", this.bind(this.press));
 
 	this.dom.container.parentNode.removeChild(this.dom.container);
 }
@@ -1453,6 +1454,18 @@ SQL.TableManager.prototype.keys = function(e) { /* open keys dialog */
 SQL.TableManager.prototype.save = function() {
 	this.selected.setTitle(this.dom.name.value);
 	this.selected.setComment(this.dom.comment.value);
+}
+
+SQL.TableManager.prototype.press = function(e) {
+	if (!this.selected) { return; }
+	/* do not process keypresses if a row is selected */
+	if (this.owner.rowManager.selected) { return; }
+	switch (e.keyCode) {
+		case 46:
+			this.remove();
+			OZ.Event.prevent(e);
+		break;
+	}
 }
 
 /* --------------------- row manager ------------ */
@@ -1624,6 +1637,10 @@ SQL.RowManager.prototype.press = function(e) {
 		break;
 		case 40:
 			this.down();
+			OZ.Event.prevent(e);
+		break;
+		case 46:
+			this.remove();
 			OZ.Event.prevent(e);
 		break;
 		case 13:
