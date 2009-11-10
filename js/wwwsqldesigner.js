@@ -2326,7 +2326,7 @@ SQL.Designer.prototype.getTypeIndex = function(label) {
 		var types = window.DATATYPES.getElementsByTagName("type");
 		for (var i=0;i<types.length;i++) {
 			var l = types[i].getAttribute("label");
-			if (l) this.typeIndex[l] = i;
+			if (l) { this.typeIndex[l] = i; }
 		}
 	}
 	return this.typeIndex[label];
@@ -2334,8 +2334,8 @@ SQL.Designer.prototype.getTypeIndex = function(label) {
 
 SQL.Designer.prototype.getFKTypeFor = function(typeIndex) {
 	if (!this.fkTypeFor) {
-		var types = window.DATATYPES.getElementsByTagName("type");
 		this.fkTypeFor = {};
+		var types = window.DATATYPES.getElementsByTagName("type");
 		for (var i=0;i<types.length;i++) {
 			this.fkTypeFor[i] = i;
 			var fk = types[i].getAttribute("fk");
