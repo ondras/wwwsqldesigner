@@ -46,12 +46,12 @@
 	<string name="language">Język</string>
 	<string name="db">Bazy danych dla nowych projektów</string>
 	<string name="optionsnotice">Niektóre opcje są zatwierdzane wyłącznie po kompletnym przeładowaniu strony. Ciasteczka muszą być akceptowane dla działania opcji.</string>
-	<string name="snap">Ustalana odległość tabel</string>
-	<string name="optionsnapnotice">W pikselach, 0 = wyłącznie ustalania</string>
-	<string name="pattern">Wzorzec dla zewnętrznych nazw</string>
-	<string name="optionpatternnotice">%T = główna tabela, %R = klucz główny, %t = zewnętrzna tabela</string>
+	<string name="snap">Moduł siatki układu tabel</string>
+	<string name="optionsnapnotice">w pikselach, 0 = siatka wyłączona</string>
+	<string name="pattern">Wzorzec nazw pól zewnętrznych</string>
+	<string name="optionpatternnotice">%T = tabela główna, %R = klucz główny, %t = tabela zewnętrzna</string>
 	<string name="hide">Ukryć złącza w tabeli podczas przeciągania?</string>
-	<string name="vector">Rysuj pływające złącza (jesli wsperane jest przez przeglądarkę)?</string>
+	<string name="vector">Rysować pływające złącza (jesli są wspierane przez przeglądarkę)?</string>
 	
 	
 	<!-- keys -->
@@ -90,7 +90,7 @@
 	<string name="http503">Serwer niedostępny</string>
 	
 	<!-- misc -->
-	<string name="xmlerror">XML error</string>
+	<string name="xmlerror">Błąd XML</string>
 	<string name="docs">Dokumentacja</string>
 	
 </locale>
