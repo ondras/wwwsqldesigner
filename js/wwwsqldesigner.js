@@ -134,6 +134,7 @@ SQL.Row.prototype.mousedown = function(e) {
 }
 
 SQL.Row.prototype.update = function(data) { /* update subset of row data */
+	var des = SQL.Designer;
 	if (data.nll && data.def && data.def.match(/^null$/i)) { data.def = null; }
 	
 	for (var p in data) { this.data[p] = data[p]; }
@@ -142,7 +143,7 @@ SQL.Row.prototype.update = function(data) { /* update subset of row data */
 	var elm = this.getDataType();
 	for (var i=0;i<this.relations.length;i++) {
 		var r = this.relations[i];
-		if (r.row1 == this) { r.row2.update({type:this.data.type,size:this.data.size}); }
+		if (r.row1 == this) { r.row2.update({type:des.getFKTypeFor(this.data.type),size:this.data.size}); }
 	}
 	this.redraw();
 }
@@ -1522,6 +1523,7 @@ SQL.RowManager.prototype.tableClick = function(e) { /* create relation after cli
 	p = p.replace(/%R/g,r1.getTitle());
 	
 	var r2 = t2.addRow(p, r1.data);
+	r2.update({"type":SQL.Designer.getFKTypeFor(r1.data.type)});
 	r2.update({"ai":false});
 	this.owner.addRelation(r1, r2);
 }
@@ -2044,6 +2046,9 @@ SQL.Designer.prototype.init = function() {
 
 	this.flag = 2;
 	
+	this.typeIndex = false;
+	this.fkTypeFor = false;
+
 	this.requestLanguage();
 	this.requestDB();
 	
@@ -2313,4 +2318,29 @@ SQL.Designer.prototype.removeSelection = function() {
 	if (!sel) { return; }
 	if (sel.empty) { sel.empty(); }
 	if (sel.removeAllRanges) { sel.removeAllRanges(); }
+}
+
+SQL.Designer.prototype.getTypeIndex = function(label) {
+	if (!this.typeIndex) {
+		this.typeIndex = {};
+		var types = window.DATATYPES.getElementsByTagName("type");
+		for (var i=0;i<types.length;i++) {
+			var l = types[i].getAttribute("label");
+			if (l) this.typeIndex[l] = i;
+		}
+	}
+	return this.typeIndex[label];
+}
+
+SQL.Designer.prototype.getFKTypeFor = function(typeIndex) {
+	if (!this.fkTypeFor) {
+		var types = window.DATATYPES.getElementsByTagName("type");
+		this.fkTypeFor = {};
+		for (var i=0;i<types.length;i++) {
+			this.fkTypeFor[i] = i;
+			var fk = types[i].getAttribute("fk");
+			if (fk) { this.fkTypeFor[i] = this.getTypeIndex(fk); }
+		}
+	}
+	return this.fkTypeFor[typeIndex];
 }
