@@ -632,6 +632,7 @@ SQL.Table.prototype.init = function(owner, name, x, y, z) {
 	this.x = x || 0;
 	this.y = y || 0;
 	this.setZ(z);
+	this.snap();
 }
 
 SQL.Table.prototype._build = function() {
@@ -769,22 +770,28 @@ SQL.Table.prototype.redraw = function() {
 	for (var i=0;i<rs.length;i++) { rs[i].redraw(); }
 }
 
-SQL.Table.prototype.moveBy = function(dx, dy, snap) {
+SQL.Table.prototype.moveBy = function(dx, dy) {
 	this.x += dx;
 	this.y += dy;
 	
-	if (snap) {
-		this.x = Math.round(this.x / snap) * snap;
-		this.y = Math.round(this.y / snap) * snap;
-	}
-	
+	this.snap();
 	this.redraw();
 }
 
 SQL.Table.prototype.moveTo = function(x, y) {
 	this.x = x;
 	this.y = y;
+
+	this.snap();
 	this.redraw();
+}
+
+SQL.Table.prototype.snap = function() {
+	var snap = parseInt(SQL.Designer.getOption("snap"));
+	if (snap) {
+		this.x = Math.round(this.x / snap) * snap;
+		this.y = Math.round(this.y / snap) * snap;
+	}
 }
 
 SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
@@ -792,8 +799,8 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	this.owner.tableManager.select(this);
 
 	SQL.Table.active = this;
-	SQL.Table.x = e.clientX;
-	SQL.Table.y = e.clientY;
+	SQL.Table.x = this.x - e.clientX; /* position relative to mouse cursor */ 
+	SQL.Table.y = this.y - e.clientY;
 	
 	if (this.owner.getOption("hide")) { this.hideRelations(); }
 }
@@ -882,13 +889,12 @@ SQL.Table.prototype.getComment = function() {
 
 SQL.Table.move = function(e) { /* mousemove */
 	var t = SQL.Table;
+	var d = SQL.Designer;
 	if (!t.active) { return; }
 	SQL.Designer.removeSelection();
-	var dx = e.clientX - t.x;
-	var dy = e.clientY - t.y;
-	t.active.moveBy(dx, dy);
-	t.x = e.clientX;
-	t.y = e.clientY;
+	var x = t.x + e.clientX;
+	var y = t.y + e.clientY;
+	t.active.moveTo(x, y);
 }
 
 SQL.Table.up = function(e) {
@@ -896,7 +902,6 @@ SQL.Table.up = function(e) {
 	var d = SQL.Designer;
 	if (!t.active) { return; }
 	if (d.getOption("hide")) { t.active.showRelations(); }
-	t.active.moveBy(0,0, parseInt(d.getOption("snap")));
 	t.active = false;
 }
 
