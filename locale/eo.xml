@@ -4,6 +4,7 @@
 	<string name="addtable">Aldoni la tabelon</string>
 	<string name="edittable">Modifi la tabelon</string>
 	<string name="removetable">Forigi la tabelon</string>
+	<string name="removetables">Forigi la tabelojn</string>
 	<string name="aligntables">Ĝisrandigi la tabelojn</string>
 	<string name="cleartables">Vakigi la tabelon</string>
 	<string name="confirmall">Ja forigi ĉiujn tabelojn</string>

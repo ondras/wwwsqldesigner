@@ -4,6 +4,7 @@
 	<string name="addtable">Tábla létrehozása</string>
 	<string name="edittable">Tábla módosítása</string>
 	<string name="removetable">Tábla törlése</string>
+	<string name="removetables">Táblak törlése</string>
 	<string name="aligntables">Táblák rendezése</string>
 	<string name="cleartables">Táblák törlése</string>
 	<string name="confirmall">Valóban töröljem az összes táblát</string>

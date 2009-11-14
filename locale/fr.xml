@@ -4,6 +4,7 @@
 	<string name="addtable">Ajouter une table</string>
 	<string name="edittable">Éditer la table</string>
 	<string name="removetable">Supprimer la table</string>
+	<string name="removetables">Supprimer les tables</string>
 	<string name="aligntables">Aligner les tables</string>
 	<string name="cleartables">Supprimer les tables</string>
 	<string name="confirmall">Vraiment supprimer toutes les tables</string>

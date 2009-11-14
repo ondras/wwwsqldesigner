@@ -4,6 +4,7 @@
 	<string name="addtable">Přidat tabulku</string>
 	<string name="edittable">Upravit tabulku</string>
 	<string name="removetable">Smazat tabulku</string>
+	<string name="removetables">Smazat tabulky</string>
 	<string name="aligntables">Srovnat tabulky</string>
 	<string name="cleartables">Zrušit tabulky</string>
 	<string name="confirmall">Opravdu zrušit všechny tabulky</string>

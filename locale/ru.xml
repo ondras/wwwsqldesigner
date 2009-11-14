@@ -4,6 +4,7 @@
 	<string name="addtable">Добавить таблицу</string>
 	<string name="edittable">Редактировать таблицу</string>
 	<string name="removetable">Удалить таблицу</string>
+	<string name="removetables">Удалить таблицы</string>
 	<string name="aligntables">Выровнять таблицы</string>
 	<string name="cleartables">Очистить таблицы</string>
 	<string name="confirmall">Действительно удалить все таблицы</string>

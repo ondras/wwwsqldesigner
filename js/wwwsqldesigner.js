@@ -796,11 +796,21 @@ SQL.Table.prototype.snap = function() {
 
 SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	OZ.Event.prevent(e);
-	this.owner.tableManager.select(this);
+	/* a non-shift click within a selection preserves the selection */
+	if (e.shiftKey || ! this.selected) {
+		this.owner.tableManager.select(this, e.shiftKey);
+	}
 
-	SQL.Table.active = this;
-	SQL.Table.x = this.x - e.clientX; /* position relative to mouse cursor */ 
-	SQL.Table.y = this.y - e.clientY;
+	var t = SQL.Table;
+	t.active = this.owner.tableManager.selection;
+	var n = t.active.length;
+	t.x = new Array(n);
+	t.y = new Array(n);
+	for (i in SQL.Table.active) {
+		/* position relative to mouse cursor */ 
+		t.x[i] = t.active[i].x - e.clientX;
+		t.y[i] = t.active[i].y - e.clientY;
+	}
 	
 	if (this.owner.getOption("hide")) { this.hideRelations(); }
 }
@@ -889,12 +899,13 @@ SQL.Table.prototype.getComment = function() {
 
 SQL.Table.move = function(e) { /* mousemove */
 	var t = SQL.Table;
-	var d = SQL.Designer;
 	if (!t.active) { return; }
 	SQL.Designer.removeSelection();
-	var x = t.x + e.clientX;
-	var y = t.y + e.clientY;
-	t.active.moveTo(x, y);
+	for (var i in t.active) {
+		var x = t.x[i] + e.clientX;
+		var y = t.y[i] + e.clientY;
+		t.active[i].moveTo(x,y);
+	}
 }
 
 SQL.Table.up = function(e) {
@@ -1323,7 +1334,7 @@ SQL.TableManager.prototype.init = function(owner) {
 		name:OZ.$("tablename"),
 		comment:OZ.$("tablecomment")
 	};
-	this.selected = null;
+	this.selection = [];
 	this.adding = false;
 	
 	var ids = ["addtable","removetable","aligntables","cleartables","addrow","edittable","tablekeys"];
@@ -1360,31 +1371,53 @@ SQL.TableManager.prototype.init = function(owner) {
 }
 
 SQL.TableManager.prototype.addRow = function(e) {
-	var newrow = this.selected.addRow(_("newrow"));
+	var newrow = this.selection[0].addRow(_("newrow"));
 	this.owner.rowManager.select(newrow);
 	newrow.expand();
 }
 
-SQL.TableManager.prototype.select = function(table) { /* activate table */
-	if (this.selected === table) { return; }
-	this.selected = table;
+SQL.TableManager.prototype.select = function(table, multi) { /* activate table */
+	if (table) {
+		if (multi) {
+			var i = this.selection.indexOf(table);
+			if (i < 0) {
+				this.selection.push(table);
+			} else {
+				this.selection.splice(i, 1);
+			}
+		} else {
+			if (this.selection[0] === table) { return; }
+			this.selection = [table];
+		}
+	} else {
+		this.selection = [];
+	}
 	
 	var tables = this.owner.tables;
 	for (var i=0;i<tables.length;i++) {
 		tables[i].deselect();
 	}
-	if (this.selected) {
-		this.dom.removetable.disabled = false;
+	if (this.selection.length == 1) {
 		this.dom.addrow.disabled = false;
 		this.dom.edittable.disabled = false;
 		this.dom.tablekeys.disabled = false;
-		this.owner.raise(this.selected);
-		this.selected.select();
+		this.dom.removetable.value = _("removetable");
 	} else {
-		this.dom.removetable.disabled = true;
 		this.dom.addrow.disabled = true;
 		this.dom.edittable.disabled = true;
 		this.dom.tablekeys.disabled = true;
+	}
+	if (this.selection.length) {
+		this.dom.removetable.disabled = false;
+		if (this.selection.length > 1) { this.dom.removetable.value = _("removetables"); }
+	} else {
+		this.dom.removetable.disabled = true;
+		this.dom.removetable.value = _("removetable");
+	}
+	for (var t in this.selection) {
+		t = this.selection[t];
+		t.owner.raise(t);
+		t.select();
 	}
 }
 
@@ -1404,7 +1437,7 @@ SQL.TableManager.prototype.click = function(e) { /* finish adding new table */
 	}
 	this.select(newtable);
 	this.owner.rowManager.select(false);
-	if (this.selected) { this.edit(e); }
+	if (this.selection.length == 1) { this.edit(e); }
 }
 
 SQL.TableManager.prototype.preAdd = function(e) { /* click add new table */
@@ -1428,18 +1461,21 @@ SQL.TableManager.prototype.clear = function(e) { /* remove all tables */
 }
 
 SQL.TableManager.prototype.remove = function(e) {
-	var result = confirm(_("confirmtable")+" '"+this.selected.getTitle()+"' ?");
+	var titles = this.selection.slice(0);
+	for (var i in titles) { titles[i] = "'"+titles[i].getTitle()+"'"; }
+	var result = confirm(_("confirmtable")+" "+titles.join(", ")+"?");
 	if (!result) { return; }
-	this.owner.removeTable(this.selected);
+	var sel = this.selection.slice(0);
+	for (var i in sel) { this.owner.removeTable(sel[i]); }
 }
 
 SQL.TableManager.prototype.edit = function(e) {
 	this.owner.window.open(_("edittable"), this.dom.container, this.save);
 	
-	var title = this.selected.getTitle();
+	var title = this.selection[0].getTitle();
 	this.dom.name.value = title;
 	try { /* throws in ie6 */
-		this.dom.comment.value = this.selected.getComment();
+		this.dom.comment.value = this.selection[0].getComment();
 	} catch(e) {}
 
 	/* pre-select table name */
@@ -1454,16 +1490,16 @@ SQL.TableManager.prototype.edit = function(e) {
 }
 
 SQL.TableManager.prototype.keys = function(e) { /* open keys dialog */
-	this.owner.keyManager.open(this.selected);
+	this.owner.keyManager.open(this.selection[0]);
 }
 
 SQL.TableManager.prototype.save = function() {
-	this.selected.setTitle(this.dom.name.value);
-	this.selected.setComment(this.dom.comment.value);
+	this.selection[0].setTitle(this.dom.name.value);
+	this.selection[0].setComment(this.dom.comment.value);
 }
 
 SQL.TableManager.prototype.press = function(e) {
-	if (!this.selected) { return; }
+	if (! this.selection.length) { return; }
 	/* do not process keypresses if a row is selected */
 	if (this.owner.rowManager.selected) { return; }
 	switch (e.keyCode) {
