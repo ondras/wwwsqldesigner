@@ -93,7 +93,7 @@
 )</xsl:text>
 
 		<xsl:if test="comment">
-			<xsl:text> COMMENT '</xsl:text>
+			<xsl:text> COMMENT='</xsl:text>
 			<xsl:call-template name="replace-substring">
 				<xsl:with-param name="value" select="comment" />
 				<xsl:with-param name="from" select='"&apos;"' />
