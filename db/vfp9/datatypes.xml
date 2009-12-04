@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<datatypes db="vfp9">
+	<group label="Keys" color="rgb(250,250,100)">
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+	</group>
+	<group label="Numeric" color="rgb(255,255,200)">
+		<type label="Integer (not key)" length="0" sql="Integer" quote="" />
+		<type label="Numeric" length="1" sql="Numeric" quote="" />
+		<type label="Double" length="1" sql="Double" quote="" />
+		<type label="Float" length="1" sql="Float" quote="" />
+	</group>
+
+	<group label="Logical" color="rgb(100,100,255)">
+		<type label="Logical" length="0" sql="Logical" quote="'"/>
+	</group>
+	
+	<group label="Text short (NOCPTR->DEFAULT)" color="rgb(255,200,200)">
+		<type label="Character" length="1" sql="Character" quote="'"/>
+		<type label="Varchar" length="1" sql="Varchar"  quote="'"/>
+	</group>
+	<group label="Text long (NOCPTR->DEFAULT)" color="rgb(255,150,150)">
+		<type label="Memo" length="0" sql="Memo" quote="'"/>
+	</group>
+
+	<group label="Date/Time" color="rgb(150,255,150)">
+		<type label="Date" length="0" sql="Date" quote="'" />
+		<type label="Datetime" length="0" sql="Datetime" quote="'" />
+	</group>
+
+	<group label="Currency" color="rgb(200,100,255)">
+		<type label="Currency" length="0" sql="Currency" quote="'"/>
+	</group>
+	
+	<group label="Binary/Hexa" color="rgb(150,200,255)">
+		<type label="Varbinary" length="1" sql="Varbinary" quote="'"/>
+		<type label="Blob" length="0" sql="Blob" quote="'"/>
+		<type label="General" length="0" sql="General" quote="'"/>
+	</group>
+</datatypes>
