@@ -26,22 +26,26 @@
 
 
 <!-- parameters/setting -->
-	<xsl:text>LPARAMETERS teLongName, tcCommand
+	<xsl:text>LPARAMETERS teLongName, tcCommand, tcPath
 </xsl:text>
 		<xsl:text>* [teLongName] False: set llDbc=.F. and generates "FREE", Empty: generates without "FREE" and "NAME", otherwise generates "NAME teLongName"
 </xsl:text>
-		<xsl:text>* [tcCommand] if used, &amp;tcCommand command will run after CREATE TABLE
+		<xsl:text>* [tcCommand] if used, &amp;tcCommand command will run after CREATE TABLE, f.e. "= MyProc( ALIAS(), m.lcTableComment, @lacComments )"
+</xsl:text>
+		<xsl:text>* [tcPath] path where tables will be created (if not used, tables will be created in current folder)
 
 </xsl:text>
-	<xsl:text>LOCAL llDbc, lcFreeOrName, lnIndex
+	<xsl:text>LOCAL ARRAY lacComments[1,2]
+</xsl:text>
+	<xsl:text>LOCAL llDbc, lcFreeOrName, lcTableComment
 </xsl:text>
 	<xsl:text>llDbc = VARTYPE( m.teLongName )=[C]
 </xsl:text>
-		<xsl:text>* True not supported yet: Improve db\vfp9\output.xsl and remove "xsl:if test=[1=2]" from it
+	<xsl:text>	* no special support for llDbc=True yet (you could improve db\vfp9\output.xsl and remove "xsl:if test=[1=2]" from it)
 </xsl:text>
 	<xsl:text>lcFreeOrName = IIF( m.llDbc, IIF( EMPTY( m.teLongName ), [], [NAME "] + m.teLongName + ["] ), [FREE] )
 </xsl:text>
-	<xsl:text>lnIndex = IIF( VARTYPE( m.teIndex )=[L], 0, IIF( EMPTY( m.teIndex ), 1, 2 ) )
+	<xsl:text>tcPath = IIF( VARTYPE( m.tcPath )=[L], [], ADDBS( m.tcPath ) )
 </xsl:text>
 	<xsl:text>
 </xsl:text>
@@ -49,36 +53,36 @@
 
 <!-- tables -->
 	<xsl:for-each select="table">
-		<xsl:text>ERASE </xsl:text>
+		<xsl:text>ERASE '</xsl:text>
 		<xsl:value-of select="@name" />
-		<xsl:text>.dbf</xsl:text>
+		<xsl:text>.dbf'</xsl:text>
 		<xsl:text>
 </xsl:text>
-		<xsl:text>ERASE </xsl:text>
+		<xsl:text>ERASE '</xsl:text>
 		<xsl:value-of select="@name" />
-		<xsl:text>.fpt</xsl:text>
+		<xsl:text>.fpt'</xsl:text>
 		<xsl:text>
 </xsl:text>
-		<xsl:text>ERASE </xsl:text>
+		<xsl:text>ERASE '</xsl:text>
 		<xsl:value-of select="@name" />
-		<xsl:text>.cdx</xsl:text>
+		<xsl:text>.cdx'</xsl:text>
 		<xsl:text>
 </xsl:text>
-		<xsl:text>ERASE </xsl:text>
+		<xsl:text>ERASE '</xsl:text>
 		<xsl:value-of select="@name" />
-		<xsl:text>.bak</xsl:text>
+		<xsl:text>.bak'</xsl:text>
 		<xsl:text>
 </xsl:text>
-		<xsl:text>ERASE </xsl:text>
+		<xsl:text>ERASE '</xsl:text>
 		<xsl:value-of select="@name" />
-		<xsl:text>.tbk</xsl:text>
+		<xsl:text>.tbk'</xsl:text>
 		<xsl:text>
 
 </xsl:text>
 
-		<xsl:text>CREATE TABLE </xsl:text>
+		<xsl:text>CREATE TABLE (m.tcPath + '</xsl:text>
 		<xsl:value-of select="@name" />
-		<xsl:text> &amp;lcFreeOrName</xsl:text>
+		<xsl:text>') &amp;lcFreeOrName</xsl:text>
 		<xsl:text> ( ;
 </xsl:text>
 		<xsl:for-each select="row">
@@ -102,7 +106,8 @@
 
 			<xsl:if test="default">
 				<!-- VFP9 Support DEFAULT.., NOCPTRANS, ..<xsl:text>DEFAULT </xsl:text> -->
-				<xsl:value-of select="default" />
+				<xsl:variable name="cdefault" select="default"/>
+				<xsl:value-of select="substring($cdefault,2,string-length($cdefault)-2)" />
 				<xsl:text> </xsl:text>
 			</xsl:if>
 
@@ -154,26 +159,39 @@
 		<xsl:text>)
 
 </xsl:text>
-<xsl:if test="1=2"> <!-- VFP9 no .dbc support yet -->
+		<xsl:text>lcTableComment = '</xsl:text>
+		<xsl:call-template name="replace-substring">
+			<xsl:with-param name="value" select="comment" />
+			<xsl:with-param name="from" select='"&apos;"' />
+			<xsl:with-param name="to" select='"&apos;&apos;"' />
+		</xsl:call-template>
+		<xsl:text>'
+</xsl:text>
 
-		<xsl:if test="comment">
-			<xsl:text> COMMENT '</xsl:text>
+
+<!-- VFP9 call command/function after table was created -->
+		<xsl:text>DIMENSION lacComments[FCOUNT(),2]
+</xsl:text>
+		<xsl:for-each select="row">
+			<xsl:text>	lacComments[</xsl:text>
+			<xsl:value-of select="position()" />
+			<xsl:text>,1] = '</xsl:text>
+			<xsl:value-of select="@name" />
+			<xsl:text>'
+</xsl:text>
+			<xsl:text>	lacComments[</xsl:text>
+			<xsl:value-of select="position()" />
+			<xsl:text>,2] = '</xsl:text>
 			<xsl:call-template name="replace-substring">
 				<xsl:with-param name="value" select="comment" />
 				<xsl:with-param name="from" select='"&apos;"' />
 				<xsl:with-param name="to" select='"&apos;&apos;"' />
 			</xsl:call-template>
-			<xsl:text>'</xsl:text>
-		</xsl:if>
-		
-		<xsl:text>;
-
+			<xsl:text>'
 </xsl:text>
-</xsl:if> <!-- VFP9 no .dbc support yet -->
-
-
-
-<!-- VFP9 call command/function after table was created -->
+		</xsl:for-each>
+		<xsl:text>
+</xsl:text>
 		<xsl:text>IF NOT EMPTY( m.tcCommand )
 </xsl:text>
 		<xsl:text>	&amp;tcCommand
