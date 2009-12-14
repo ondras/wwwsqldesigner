@@ -16,7 +16,7 @@ var OZ = {
 			if (element) {
 				if (element.addEventListener) {
 					element.addEventListener(event,fnc,false);
-				} else if (element && element.attachEvent) {
+				} else if (element.attachEvent) {
 					fnc = function() { return cb.apply(elm,arguments); }
 					element.attachEvent("on"+event,fnc);
 				}
@@ -31,7 +31,7 @@ var OZ = {
 			if (elm) {
 				if (elm.removeListener) {
 					elm.removeEventListener(e[1],e[2],false);
-				} else if (elm && elm.detachEvent) {
+				} else if (elm.detachEvent) {
 					elm.detachEvent("on"+e[1],e[2]);
 				}
 			}
