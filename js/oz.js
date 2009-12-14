@@ -1,4 +1,4 @@
-/* (c) 2008 Ondrej Zara, 1.1 */
+/* (c) 2007 - now() Ondrej Zara, 1.3 */
 var OZ = {
 	$:function(x) { return typeof(x) == "string" ? document.getElementById(x) : x; },
 	opera:!!window.opera,
@@ -9,19 +9,17 @@ var OZ = {
 	Event:{
 		_id:0,
 		_cache:{},
-		_standard:["click","dblclick","mousedown","mouseup","mouseover","mouseout","mousemove","keypress","keydown","keyup",
-					"load","unload","abort","error","resize","scroll","select","change","submit","reset","focus","blur"],
 		add:function(elm,event,cb) {
 			var id = OZ.Event._id++;
 			var element = OZ.$(elm);
 			var fnc = cb;
-			if (OZ.Event._standard.indexOf(event) != -1) {
-				if (document.addEventListener) {
+			if (element) {
+				if (element.addEventListener) {
 					element.addEventListener(event,fnc,false);
-				} else if (document.attachEvent) {
+				} else if (element && element.attachEvent) {
 					fnc = function() { return cb.apply(elm,arguments); }
 					element.attachEvent("on"+event,fnc);
-				} else { return false; }
+				}
 			}
 			OZ.Event._cache[id] = [element,event,fnc];
 			return id;
@@ -29,11 +27,12 @@ var OZ = {
 		remove:function(id) {
 			var e = OZ.Event._cache[id];
 			if (!e) { return; }
-			if (OZ.Event._standard.indexOf(e[1]) != -1) {
-				if (document.removeEventListener) {
-					e[0].removeEventListener(e[1],e[2],false);
-				} else if (document.detachEvent) {
-					e[0].detachEvent("on"+e[1],e[2]);
+			var elm = e[0];
+			if (elm) {
+				if (elm.removeListener) {
+					elm.removeEventListener(e[1],e[2],false);
+				} else if (elm && elm.detachEvent) {
+					elm.detachEvent("on"+e[1],e[2]);
 				}
 			}
 			delete OZ.Event._cache[id];
@@ -47,7 +46,7 @@ var OZ = {
 			var init = arguments.callee.prototype.init;
 			if (init) { init.apply(this,arguments); }
 		};
-		c.inherit = function(parent) {
+		c.implement = function(parent) {
 			for (var p in parent.prototype) { this.prototype[p] = parent.prototype[p]; }
 			return this;
 		};
@@ -132,19 +131,23 @@ var OZ = {
 			var y = node.clientHeight;
 			return [x,y];
 		},
-		hasClass:function(node,className) {
-			var arr = OZ.$(node).className.toString().split(" ");
+		hasClass:function(node, className) {
+			var cn = OZ.$(node).className;
+			var arr = (cn ? cn.split(" ") : []);
 			return (arr.indexOf(className) != -1);
 		},
 		addClass:function(node,className) {
-			if (OZ.DOM.hasClass(node,className)) { return; }
-			var arr = OZ.$(node).className.toString().split(" ");
+			if (OZ.DOM.hasClass(node, className)) { return; }
+			var cn = OZ.$(node).className;
+			var arr = (cn ? cn.split(" ") : []);
 			arr.push(className);
 			OZ.$(node).className = arr.join(" ");
 		},
-		removeClass:function(node,className) {
-			if (!OZ.DOM.hasClass(node,className)) { return; }
-			var arr = OZ.$(node).className.toString().split(" ").filter(function($){ return $ != className; });
+		removeClass:function(node, className) {
+			if (!OZ.DOM.hasClass(node, className)) { return; }
+			var cn = OZ.$(node).className;
+			var arr = (cn ? cn.split(" ") : []);
+			var arr = arr.filter(function($){ return $ != className; });
 			OZ.$(node).className = arr.join(" ");
 		},
 		append:function() {
