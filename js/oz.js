@@ -29,7 +29,7 @@ var OZ = {
 			if (!e) { return; }
 			var elm = e[0];
 			if (elm) {
-				if (elm.removeListener) {
+				if (elm.removeEventListener) {
 					elm.removeEventListener(e[1],e[2],false);
 				} else if (elm.detachEvent) {
 					elm.detachEvent("on"+e[1],e[2]);
