@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locale>
+	<!-- tabella management -->
+	<string name="addtabella">Aggiungi tabella</string>
+	<string name="edittabella">Modifica tabella</string>
+	<string name="removetabella">Elimina tabella</string>
+	<string name="aligntabellas">Align tabellas</string>
+	<string name="cleartabellas">Svuota tabellas</string>
+	<string name="confirmall">Elimina tutte le tabelle</string>
+	<string name="newtabella">nuova tabella</string>
+	<string name="addpending">posiziona tabella</string>
+	<string name="tabellanamelabel">Nome</string>
+	<string name="tabellacommentlabel">Commento</string>
+	
+	<!-- row management -->
+	<string name="addrow">Aggiungi campo</string>
+	<string name="editrow">Modifica campo</string>
+	<string name="removerow">Elimina campo</string>
+	<string name="uprow">Su</string>
+	<string name="downrow">Giù</string>
+	<string name="newrow">nuovo campo</string>
+	<string name="foreigncreate">Crea foreign key</string>
+	<string name="foreignpending">click target tabella</string>
+	<string name="foreignconnect">Connetti foreign key</string>
+	<string name="foreignconnectpending">click target row</string>
+	<string name="foreigndisconnect">Elimina foreign key</string>
+	<string name="confirmtabella">Elimina tabella</string>
+	<string name="confirmrow">Elimina campo</string>
+
+	<!-- row edit -->
+	<string name="name">Nome</string>
+	<string name="type">Tipo</string>
+	<string name="size">Dimensione</string>
+	<string name="def">Default</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincrement</string>
+	<string name="comment">Modifica commento</string>
+	<string name="commenttext">Inserisci commento per questo campo</string>
+	
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Cancel</string>
+	<string name="throbber">Attendere prego...</string>
+	<string name="options">Opzioni</string>
+	<string name="language">Lingua</string>
+	<string name="db">Database per nuovi design</string>
+	<string name="optionsnotice">Talune opzioni sono applicate solo dopo un reload della pagina. I Cookies devo essere abilitati nel browser perchè le opzioni funzionino.</string>
+	<string name="snap">Table snap distance</string>
+	<string name="optionsnapnotice">In pixels, 0 = disable snapping</string>
+	<string name="pattern">Pattern per i nomi esterni</string>
+	<string name="optionpatternnotice">%T = primary tabella, %R = primary key, %t = foreign tabella</string>
+	<string name="hide">Hide connectors on tabella drag?</string>
+	<string name="vector">Disegna linee "smooth" (se supportate dal browser)?</string>
+	
+	
+	<!-- keys -->
+	<string name="tabellakeys">Chiavi</string>
+	<string name="keyslistlabel">Chiavi in tabella "%s"</string>
+	<string name="keytypelabel">Type:</string>
+	<string name="keynamelabel">Name:</string>
+	<string name="keyfieldslabel">Campi nella chiave</string>
+	<string name="keyavaillabel">Campi disponibili</string>
+	<string name="keyedit">Modifica chiave</string>
+	<string name="keyadd">Aggiungi chiave</string>
+	<string name="keyremove">Elimina chiave</string>
+	
+	<!-- io -->
+	<string name="saveload">Save / Load</string>
+	<string name="empty">Incollare i dati XML data nella textarea sotto e riprovare.</string>
+	<string name="client">Client</string>
+	<string name="server">Server</string>
+	<string name="output">Input / Output</string>
+	<string name="clientsave">Salva XML</string>
+	<string name="clientload">Carica XML</string>
+	<string name="clientsql">Genera SQL</string>
+	<string name="backendlabel">Server backend:</string>
+	<string name="serversave">Salva</string>
+	<string name="serverload">Carica</string>
+	<string name="serverlist">Elenca item</string>
+	<string name="serverimport">Importa da DB</string>
+	<string name="serverloadprompt">Inserire nome con il quale si è salvato il progetto:</string>
+	<string name="serversaveprompt">Inserire nome con il quale salvare il progettoEnter:</string>
+	<string name="serverimportprompt">Nome del database da importare:</string>
+	<string name="httpresponse">Server response</string>
+	<string name="http201">Saved</string>
+	<string name="http404">Not Found</string>
+	<string name="http500">Internal Server Error</string>
+	<string name="http501">Non Implementato</string>
+	<string name="http503">Service Non Disponibile</string>
+	
+	<!-- misc -->
+	<string name="xmlerror">Errore XML </string>
+	<string name="docs">Documentazione</string>
+	
+</locale>
