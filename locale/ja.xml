@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">テーブルを追加</string>
+	<string name="edittable">テーブルを編集</string>
+	<string name="removetable">テーブルを削除</string>
+	<string name="aligntables">テーブルを整列</string>
+	<string name="cleartables">全テーブルを削除</string>
+	<string name="confirmall">全テーブルを削除しますか</string>
+	<string name="newtable">新規テーブル</string>
+	<string name="addpending">テーブルを配置</string>
+	<string name="tablenamelabel">テーブル名</string>
+	<string name="tablecommentlabel">コメント</string>
+	
+	<!-- row management -->
+	<string name="addrow">列を追加</string>
+	<string name="editrow">列を編集</string>
+	<string name="removerow">列を削除</string>
+	<string name="uprow">上に</string>
+	<string name="downrow">下に</string>
+	<string name="newrow">新規列</string>
+	<string name="foreigncreate">外部キーとして移動</string>
+	<string name="foreignpending">対象テーブルを選択</string>
+	<string name="foreignconnect">外部キーを接続</string>
+	<string name="foreignconnectpending">対象列を選択</string>
+	<string name="foreigndisconnect">外部キーを削除</string>
+	<string name="confirmtable">テーブルを削除しますか</string>
+	<string name="confirmrow">列を削除しますか</string>
+
+	<!-- row edit -->
+	<string name="name">列名</string>
+	<string name="type">型</string>
+	<string name="size">サイズ</string>
+	<string name="def">デフォルト値</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">自動採番</string>
+	<string name="comment">コメントを編集</string>
+	<string name="commenttext">列のコメントを入力</string>
+	
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">キャンセル</string>
+	<string name="throbber">しばらくお待ちください...</string>
+	<string name="options">オプション</string>
+	<string name="language">言語</string>
+	<string name="db">新しい設計で使用するデータベース</string>
+	<string name="optionsnotice">印は再読込後に反映されるオプションです。これらを動作させるにはクッキーを有効にしてください。</string>
+	<string name="snap">テーブルのスナップ単位</string>
+	<string name="optionsnapnotice">ピクセル（0 = スナップ無効）</string>
+	<string name="pattern">外部キーの命名規則</string>
+	<string name="optionpatternnotice">%T = 親テーブル, %R = プライマリーキー, %t = 子テーブル</string>
+	<string name="hide">テーブルをドラッグ中は線を隠す</string>
+	<string name="vector">滑らかな線を使う（要ブラウザのサポート）</string>
+	
+	
+	<!-- keys -->
+	<string name="tablekeys">キーの設定</string>
+	<string name="keyslistlabel">テーブル"%s"のキー</string>
+	<string name="keytypelabel">種類:</string>
+	<string name="keynamelabel">キー名:</string>
+	<string name="keyfieldslabel">キーの対象列</string>
+	<string name="keyavaillabel">選択可能な列</string>
+	<string name="keyedit">キーを編集</string>
+	<string name="keyadd">キーを追加</string>
+	<string name="keyremove">キーを削除</string>
+	
+	<!-- io -->
+	<string name="saveload">保存／読み込み</string>
+	<string name="empty">下の入出力欄にXMLデータを貼りつけてから実行してください。</string>
+	<string name="client">クライアント</string>
+	<string name="server">サーバ</string>
+	<string name="output">入力出欄</string>
+	<string name="clientsave">XMLを出力</string>
+	<string name="clientload">XMLを読込</string>
+	<string name="clientsql">SQLを生成</string>
+	<string name="backendlabel">サーバのバックエンド:</string>
+	<string name="serversave">保存</string>
+	<string name="serverload">読込</string>
+	<string name="serverlist">一覧</string>
+	<string name="serverimport">DBからインポート</string>
+	<string name="serverloadprompt">読み込む設計名を入力してください:</string>
+	<string name="serversaveprompt">保存する設計名を入力してください:</string>
+	<string name="serverimportprompt">インポートするDB名を入力してください:</string>
+	<string name="httpresponse">サーバレスポンス</string>
+	<string name="http201">Saved</string>
+	<string name="http404">Not Found</string>
+	<string name="http500">Internal Server Error</string>
+	<string name="http501">Not Implemented</string>
+	<string name="http503">Service Unavailable</string>
+	
+	<!-- misc -->
+	<string name="xmlerror">XMLエラー</string>
+	<string name="docs">ドキュメント</string>
+	
+</locale>
