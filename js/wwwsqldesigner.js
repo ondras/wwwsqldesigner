@@ -806,7 +806,7 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	var n = t.active.length;
 	t.x = new Array(n);
 	t.y = new Array(n);
-	for (i in SQL.Table.active) {
+	for (var i=0;i<n;i++) {
 		/* position relative to mouse cursor */ 
 		t.x[i] = t.active[i].x - e.clientX;
 		t.y[i] = t.active[i].y - e.clientY;
@@ -903,7 +903,7 @@ SQL.Table.prototype.getComment = function() {
 SQL.Table.prototype.move = function(e) { /* mousemove */
 	var t = SQL.Table;
 	SQL.Designer.removeSelection();
-	for (var i in t.active) {
+	for (var i=0;i<t.active.length;i++) {
 		var x = t.x[i] + e.clientX;
 		var y = t.y[i] + e.clientY;
 		t.active[i].moveTo(x,y);
@@ -1417,8 +1417,8 @@ SQL.TableManager.prototype.select = function(table, multi) { /* activate table *
 		this.dom.removetable.disabled = true;
 		this.dom.removetable.value = _("removetable");
 	}
-	for (var t in this.selection) {
-		t = this.selection[t];
+	for (var i=0;i<this.selection.length;i++) {
+		var t = this.selection[i];
 		t.owner.raise(t);
 		t.select();
 	}
@@ -1465,11 +1465,11 @@ SQL.TableManager.prototype.clear = function(e) { /* remove all tables */
 
 SQL.TableManager.prototype.remove = function(e) {
 	var titles = this.selection.slice(0);
-	for (var i in titles) { titles[i] = "'"+titles[i].getTitle()+"'"; }
+	for (var i=0;i<titles.length;i++) { titles[i] = "'"+titles[i].getTitle()+"'"; }
 	var result = confirm(_("confirmtable")+" "+titles.join(", ")+"?");
 	if (!result) { return; }
 	var sel = this.selection.slice(0);
-	for (var i in sel) { this.owner.removeTable(sel[i]); }
+	for (var i=0;i<sel.length;i++) { this.owner.removeTable(sel[i]); }
 }
 
 SQL.TableManager.prototype.edit = function(e) {
