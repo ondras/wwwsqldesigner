@@ -813,6 +813,9 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	}
 	
 	if (this.owner.getOption("hide")) { this.hideRelations(); }
+	
+	this.documentMove = OZ.Event.add(document, "mousemove", this.bind(this.move));
+	this.documentUp = OZ.Event.add(document, "mouseup", this.bind(this.up));
 }
 
 SQL.Table.prototype.toXML = function() {
@@ -897,9 +900,8 @@ SQL.Table.prototype.getComment = function() {
 	return this.data.comment;
 }
 
-SQL.Table.move = function(e) { /* mousemove */
+SQL.Table.prototype.move = function(e) { /* mousemove */
 	var t = SQL.Table;
-	if (!t.active) { return; }
 	SQL.Designer.removeSelection();
 	for (var i in t.active) {
 		var x = t.x[i] + e.clientX;
@@ -908,16 +910,14 @@ SQL.Table.move = function(e) { /* mousemove */
 	}
 }
 
-SQL.Table.up = function(e) {
+SQL.Table.prototype.up = function(e) {
 	var t = SQL.Table;
 	var d = SQL.Designer;
-	if (!t.active) { return; }
 	if (d.getOption("hide")) { t.active.showRelations(); }
 	t.active = false;
+	OZ.Event.remove(this.documentMove);
+	OZ.Event.remove(this.documentUp);
 }
-
-OZ.Event.add(document, "mousemove", SQL.Table.move);
-OZ.Event.add(document, "mouseup", SQL.Table.up);
 
 SQL.Table.prototype.destroy = function() {
 	SQL.Visual.prototype.destroy.apply(this);
@@ -1023,8 +1023,6 @@ SQL.Map.prototype.init = function(owner) {
 	OZ.Event.add(window, "resize", this.sync);
 	OZ.Event.add(window, "scroll", this.sync);
 	OZ.Event.add(this.dom.container, "mousedown", this.bind(this.down));
-	OZ.Event.add(document, "mousemove", this.bind(this.move));
-	OZ.Event.add(document, "mouseup", this.bind(this.up));
 }
 
 SQL.Map.prototype.down = function(e) { /* mousedown - move view and start drag */
@@ -1035,6 +1033,9 @@ SQL.Map.prototype.down = function(e) { /* mousedown - move view and start drag *
 	this.x = Math.round(pos[0] + this.l + this.w/2);
 	this.y = Math.round(pos[1] + this.t + this.h/2);
 	this.move(e);
+
+	this.documentMove = OZ.Event.add(document, "mousemove", this.bind(this.move));
+	this.documentUp = OZ.Event.add(document, "mouseup", this.bind(this.up));
 }
 
 SQL.Map.prototype.move = function(e) { /* mousemove */
@@ -1074,6 +1075,8 @@ SQL.Map.prototype.move = function(e) { /* mousemove */
 SQL.Map.prototype.up = function(e) { /* mouseup */
 	this.flag = false;
 	this.dom.container.style.cursor = "";
+	OZ.Event.remove(this.documentMove);
+	OZ.Event.remove(this.documentUp);
 }
 
 SQL.Map.prototype.sync = function() { /* when window changes, adjust map */
