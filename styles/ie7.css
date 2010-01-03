@@ -13,3 +13,7 @@ v\:* {
 #keys, #opts {
 	width: expression(eval(document.documentElement.clientWidth)/2);
 }
+
+#rubberband {
+	filter: alpha(opacity=50);
+}

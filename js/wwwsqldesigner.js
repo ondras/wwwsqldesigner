@@ -765,6 +765,9 @@ SQL.Table.prototype.redraw = function() {
 	this.dom.mini.style.height = Math.round(h)+"px";
 	this.dom.mini.style.left = Math.round(x)+"px";
 	this.dom.mini.style.top = Math.round(y)+"px";
+
+	this.width = this.dom.container.offsetWidth;
+	this.height = this.dom.container.offsetHeight;
 	
 	var rs = this.getRelations();
 	for (var i=0;i<rs.length;i++) { rs[i].redraw(); }
@@ -795,6 +798,7 @@ SQL.Table.prototype.snap = function() {
 }
 
 SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
+	OZ.Event.stop(e);
 	OZ.Event.prevent(e);
 	/* a non-shift click within a selection preserves the selection */
 	if (e.shiftKey || ! this.selected) {
@@ -1000,6 +1004,56 @@ SQL.Key.prototype.fromXML = function(node) {
 		var row = this.owner.findNamedRow(name);
 		this.addRow(row);
 	}
+}
+
+/* --------------------- rubberband -------------------- */
+
+SQL.Rubberband = OZ.Class().extend(SQL.Visual);
+
+SQL.Rubberband.prototype.init = function(owner) {
+	this.owner = owner;
+	SQL.Visual.prototype.init.apply(this);
+	this.dom.container = this.dom.content = OZ.$("rubberband");
+	OZ.Event.add("area", "mousedown", this.bind(this.down));
+}
+
+SQL.Rubberband.prototype.down = function(e) {
+	OZ.Event.prevent(e);
+	var scroll = OZ.DOM.scroll();
+	this.x = this.x0 = e.clientX + scroll[0];
+	this.y = this.y0 = e.clientY + scroll[1];
+	this.width = 0;
+	this.height = 0;
+	this.redraw();
+	this.documentMove = OZ.Event.add(document, "mousemove", this.bind(this.move));
+	this.documentUp = OZ.Event.add(document, "mouseup", this.bind(this.up));
+}
+
+SQL.Rubberband.prototype.move = function(e) {
+	var scroll = OZ.DOM.scroll();
+	var x = e.clientX + scroll[0];
+	var y = e.clientY + scroll[1];
+	this.width = Math.abs(x-this.x0);
+	this.height = Math.abs(y-this.y0);
+	if (x<this.x0) { this.x = x; } else { this.x = this.x0; }
+	if (y<this.y0) { this.y = y; } else { this.y = this.y0; }
+	this.redraw();
+	this.dom.container.style.visibility = "visible";	
+}
+
+SQL.Rubberband.prototype.up = function(e) {
+	OZ.Event.prevent(e);
+	this.dom.container.style.visibility = "hidden";
+	OZ.Event.remove(this.documentMove);
+	OZ.Event.remove(this.documentUp);
+	this.owner.tableManager.selectRect(this.x, this.y, this.width, this.height);
+}
+
+SQL.Rubberband.prototype.redraw = function() {
+	this.dom.container.style.left = this.x+"px";
+	this.dom.container.style.top = this.y+"px";
+	this.dom.container.style.width = this.width+"px";
+	this.dom.container.style.height = this.height+"px";
 }
 
 /* --------------------- minimap ------------ */
@@ -1395,7 +1449,10 @@ SQL.TableManager.prototype.select = function(table, multi) { /* activate table *
 	} else {
 		this.selection = [];
 	}
-	
+	this.processSelection();
+}
+
+SQL.TableManager.prototype.processSelection = function() {
 	var tables = this.owner.tables;
 	for (var i=0;i<tables.length;i++) {
 		tables[i].deselect();
@@ -1422,6 +1479,24 @@ SQL.TableManager.prototype.select = function(table, multi) { /* activate table *
 		t.owner.raise(t);
 		t.select();
 	}
+}
+
+SQL.TableManager.prototype.selectRect = function(x,y,width,height) { /* select all tables intersecting a rectangle */
+	this.selection = [];
+	var tables = this.owner.tables;
+	var x1 = x+width;
+	var y1 = y+height;
+	for (var i=0;i<tables.length;i++) {
+		var t = tables[i];
+		var tx = t.x;
+		var tx1 = t.x+t.width;
+		var ty = t.y;
+		var ty1 = t.y+t.height;
+		if (((tx>=x && tx<x1) || (tx1>=x && tx1<x1) || (tx<x && tx1>x1)) &&
+		    ((ty>=y && ty<y1) || (ty1>=y && ty1<y1) || (ty<y && ty1>y1)))
+			{ this.selection.push(t); }
+	}
+	this.processSelection();
 }
 
 SQL.TableManager.prototype.click = function(e) { /* finish adding new table */
@@ -2147,6 +2222,7 @@ SQL.Designer.prototype.dbResponse = function(xmlDoc) {
 
 SQL.Designer.prototype.init2 = function() { /* secondary init, after locale & datatypes were retrieved */
 	this.map = new SQL.Map(this);
+	this.rubberband = new SQL.Rubberband(this);
 	this.tableManager = new SQL.TableManager(this);
 	this.rowManager = new SQL.RowManager(this);
 	this.keyManager = new SQL.KeyManager(this);

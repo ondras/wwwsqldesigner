@@ -227,3 +227,12 @@ label, input, select {
 	top: 2px;
 	right: 3px;
 }
+
+#rubberband {
+	position: absolute;
+	border: 1px solid #000;
+	background: #888;
+	opacity: 0.5;
+	z-index: 99;
+	visibility: hidden;
+}
