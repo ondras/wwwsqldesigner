@@ -27,5 +27,6 @@
 	<group label="Miscellaneous" color="rgb(200,200,255)">
 		<type label="ENUM" length="1" sql="ENUM" quote="" />
 		<type label="SET" length="1" sql="SET" quote="" />
+		<type label="Bit" length="0" sql="bit" quote="" />
 	</group>
 </datatypes>
