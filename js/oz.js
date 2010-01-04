@@ -1,4 +1,4 @@
-/* (c) 2007 - now() Ondrej Zara, 1.3 */
+/* (c) 2007 - now() Ondrej Zara, 1.5 */
 var OZ = {
 	$:function(x) { return typeof(x) == "string" ? document.getElementById(x) : x; },
 	opera:!!window.opera,
@@ -8,7 +8,8 @@ var OZ = {
 	khtml:!!navigator.userAgent.match(/khtml/i) || !!navigator.userAgent.match(/konqueror/i),
 	Event:{
 		_id:0,
-		_cache:{},
+		_byName:{},
+		_byID:{},
 		add:function(elm,event,cb) {
 			var id = OZ.Event._id++;
 			var element = OZ.$(elm);
@@ -21,12 +22,16 @@ var OZ = {
 					element.attachEvent("on"+event,fnc);
 				}
 			}
-			OZ.Event._cache[id] = [element,event,fnc];
+			if (!(event in OZ.Event._byName)) { OZ.Event._byName[event] = {}; }
+			var obj = OZ.Event._byName[event];
+			obj[id] = [element,event,fnc];
+			OZ.Event._byID[id] = obj;
 			return id;
 		},
 		remove:function(id) {
-			var e = OZ.Event._cache[id];
-			if (!e) { return; }
+			var obj = OZ.Event._byID[id];
+			if (!obj) { return; }
+			var e = obj[id];
 			var elm = e[0];
 			if (elm) {
 				if (elm.removeEventListener) {
@@ -35,7 +40,8 @@ var OZ = {
 					elm.detachEvent("on"+e[1],e[2]);
 				}
 			}
-			delete OZ.Event._cache[id];
+			delete OZ.Event._byID[id];
+			delete obj[id];
 		},
 		stop:function(e) { e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true; },
 		prevent:function(e) { e.preventDefault ? e.preventDefault() : e.returnValue = false; },
@@ -56,12 +62,7 @@ var OZ = {
 			this.prototype = new tmp();
 			return this;
 		};
-		c.prototype.bind = function(fnc) {
-			var obj = this;
-			return function() {
-				return fnc.apply(obj,arguments);
-			}
-		};
+		c.prototype.bind = function(fnc) { return fnc.bind(this); };
 		c.prototype.dispatch = function(type, data) {
 			var obj = {
 				type:type,
@@ -70,9 +71,10 @@ var OZ = {
 				data:data
 			}
 			var tocall = [];
-			for (var p in OZ.Event._cache) {
-				var item = OZ.Event._cache[p];
-				if (item[1] == type && (!item[0] || item[0] == this)) { tocall.push(item[2]); }
+			var list = OZ.Event._byName[type];
+			for (var id in list) {
+				var item = list[id];
+				if (!item[0] || item[0] == this) { tocall.push(item[2]); }
 			}
 			var len = tocall.length;
 			for (var i=0;i<len;i++) { tocall[i](obj); }
@@ -217,6 +219,16 @@ var OZ = {
 		return xhr;
 	}
 }
+
+if (!Function.prototype.bind) {
+	Function.prototype.bind = function(thisObj) { 
+		var fn = this;
+		var args = Array.prototype.slice.call(arguments, 1); 
+		return function() { 
+			return fn.apply(thisObj, args.concat(Array.prototype.slice.call(arguments))); 
+		}
+	}
+};
 
 if (!Array.prototype.indexOf) { 
 	Array.prototype.indexOf = function(item, from) {
