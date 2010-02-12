@@ -47,7 +47,7 @@
 				$name  = $row["COLUMN_NAME"];
 				$type  = $row["COLUMN_TYPE"];
 				$comment = (isset($row["COLUMN_COMMENT"]) ? $row["COLUMN_COMMENT"] : "");
-				$null = ($row["IS_NULLABLE"] == "YES" ? "0" : "1");
+				$null = ($row["IS_NULLABLE"] == "YES" ? "1" : "0");
 				$def = $row["COLUMN_DEFAULT"];
 				$ai = (preg_match("/auto_increment/i",$row["EXTRA"]) ? "1" : "0");
 				if ($def == "NULL") { $def = ""; }
