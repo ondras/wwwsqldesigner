@@ -20,14 +20,26 @@
 				<xsl:text>NOT NULL </xsl:text>
 			</xsl:if> 
 			
-			<xsl:if test="@autoincrement = 1">
-				<xsl:text>AUTOINCREMENT </xsl:text>
-			</xsl:if> 
 
 			<xsl:if test="default">
 				<xsl:text>DEFAULT </xsl:text>
 				<xsl:value-of select="default" />
 			</xsl:if>
+			
+			<xsl:variable name="name" select="@name" />
+			<xsl:for-each select="../key">
+				<xsl:if test="@type = 'PRIMARY'">
+					<xsl:for-each select="part">
+						<xsl:if test="$name = .">
+							<xsl:text>PRIMARY KEY </xsl:text>
+						</xsl:if>
+					</xsl:for-each>
+				</xsl:if>
+			</xsl:for-each>
+
+			<xsl:if test="@autoincrement = 1">
+				<xsl:text>AUTOINCREMENT </xsl:text>
+			</xsl:if> 
 
 			<xsl:if test="not (position()=last())">
 				<xsl:text>,
@@ -37,13 +49,10 @@
 		
 <!-- keys -->
 		<xsl:for-each select="key">
-			<xsl:if test="@type = 'PRIMARY' or @type = 'UNIQUE'">
+			<xsl:if test="@type = 'UNIQUE'">
 				<xsl:text>,
 </xsl:text>
-				<xsl:choose>
-					<xsl:when test="@type = 'PRIMARY'">PRIMARY KEY (</xsl:when>
-					<xsl:when test="@type = 'UNIQUE'">UNIQUE (</xsl:when>
-				</xsl:choose>
+				<xsl:text>UNIQUE (</xsl:text>
 				
 				<xsl:for-each select="part">
 					<xsl:value-of select="." />
