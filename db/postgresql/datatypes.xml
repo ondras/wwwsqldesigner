@@ -27,6 +27,7 @@
 		<type label="Interval" length="1" sql="INTERVAL" quote="'" />
 		<type label="Timestamp" length="1" sql="TIMESTAMP" quote="'" />
 		<type label="Timestamp w/ TZ" length="0" sql="TIMESTAMP WITH TIMEZONE" quote="'" />
+		<type label="Timestamp wo/ TZ" length="0" sql="TIMESTAMP WITHOUT TIME ZONE" quote="'" />
 	</group>
 
 	<group label="Miscellaneous" color="rgb(200,200,255)">
@@ -35,5 +36,6 @@
 		<type label="Bit Varying" length="1" sql="VARBIT" re="BIT VARYING" quote="'" />
 		<type label="Inet Host Addr" length="0" sql="INET" quote="'" />
 		<type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'" />
+		<type label="Geometry" length="0" sql="GEOMETRY" quote="'" />
 	</group>
 </datatypes>
