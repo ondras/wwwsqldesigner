@@ -146,7 +146,7 @@
 				}
 				$keyname1 = $keyname;
 			}
-			$xml .= '</key>';
+			if ($keyname1 != "") { $xml .= '</key>'; }
 			$xml .= "</table>";
 
 		}
