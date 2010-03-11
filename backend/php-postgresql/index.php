@@ -139,6 +139,7 @@
 				$keyname = $row2["constraint_name"];
 				if ($keyname != $keyname1) {
 					if ($keyname1 != "") { $xml .= '</key>'; }
+					if ($row2["constraint_type"] == "PRIMARY KEY") { $row2["constraint_type"] = "PRIMARY"; }
 					$xml .= '<key name="'.$keyname.'" type="'.$row2["constraint_type"].'">';
 					$xml .= isset($row2["column_name"]) ? '<part>'.$row2["column_name"].'</part>' : "";
 				} else {
