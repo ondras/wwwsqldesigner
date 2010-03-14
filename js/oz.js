@@ -1,4 +1,4 @@
-/* (c) 2007 - now() Ondrej Zara, 1.5 */
+/* (c) 2007 - now() Ondrej Zara, 1.6 */
 var OZ = {
 	$:function(x) { return typeof(x) == "string" ? document.getElementById(x) : x; },
 	opera:!!window.opera,
@@ -60,6 +60,7 @@ var OZ = {
 			var tmp = function(){};
 			tmp.prototype = parent.prototype;
 			this.prototype = new tmp();
+			this.prototype.constructor = this;
 			return this;
 		};
 		c.prototype.bind = function(fnc) { return fnc.bind(this); };

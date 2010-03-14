@@ -346,7 +346,7 @@ SQL.Row.prototype.destroy = function() {
 SQL.Row.prototype.toXML = function() {
 	var xml = "";
 	
-	var t = this.getTitle().replace(/"/g,"&quot;");
+	var t = this.getTitle().replace(/"/g,"&quot;"); //"
 	var nn = (this.data.nll ? "1" : "0");
 	var ai = (this.data.ai ? "1" : "0");
 	xml += '<row name="'+t+'" null="'+nn+'" autoincrement="'+ai+'">\n';
@@ -449,8 +449,9 @@ SQL.Row.prototype.enter = function(e) {
 /* --------------------------- relation (connector) ----------- */
 
 SQL.Relation = OZ.Class().extend(SQL.Visual);
-
+SQL.Relation._counter = 0;
 SQL.Relation.prototype.init = function(owner, row1, row2) {
+	this.constructor._counter++;
 	this.owner = owner;
 	this.row1 = row1;
 	this.row2 = row2;
@@ -461,12 +462,18 @@ SQL.Relation.prototype.init = function(owner, row1, row2) {
 	this.row2.addRelation(this);
 	
 	this.dom = [];
+	if (CONFIG.RELATION_COLORS) {
+		var colorIndex = this.constructor._counter - 1;
+		var color = CONFIG.RELATION_COLORS[colorIndex % CONFIG.RELATION_COLORS.length];
+	} else {
+		var color = "#000";
+	}
 	
 	if (this.owner.vector == "svg") {
 		var path = document.createElementNS(this.owner.svgNS, "path");
-		path.setAttribute("stroke","black");
-		path.setAttribute("stroke-width",CONFIG.RELATION_THICKNESS);
-		path.setAttribute("fill","none");
+		path.setAttribute("stroke", color);
+		path.setAttribute("stroke-width", CONFIG.RELATION_THICKNESS);
+		path.setAttribute("fill", "none");
 		this.owner.dom.svg.appendChild(path);
 		this.dom.push(path);
 	} else if (this.owner.vector == "vml") {
@@ -476,7 +483,7 @@ SQL.Relation.prototype.init = function(owner, row1, row2) {
 		curve.to = "0 0";
 		curve.control1 = "10 10";
 		curve.control2 = "100 300";
-		curve.strokecolor = "#000";
+		curve.strokecolor = color;
 		curve.filled = false;
 		this.owner.dom.content.appendChild(curve);
 		this.dom.push(curve);
