@@ -152,7 +152,7 @@
 			// index
 			$qstr = 'SELECT pcx."relname" as "INDEX_NAME", pa."attname" as
 				"COLUMN_NAME", * FROM "pg_index" pi LEFT JOIN "pg_class" pcx ON pi."indexrelid"  =
-				pcx."oid" LEFT JOIN "pg_class" pci ON pi."indrelid" = pci."oid" LEFT JOIN1
+				pcx."oid" LEFT JOIN "pg_class" pci ON pi."indrelid" = pci."oid" LEFT JOIN
 				"pg_attribute" pa ON pa."attrelid" = pci."oid" AND pa."attnum" = ANY(pi."indkey")
 				WHERE pci."relname" = \''.$table.'\' order by pa."attnum"';
 			$result2 = pg_query($conn, $qstr);
