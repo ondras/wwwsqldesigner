@@ -148,6 +148,50 @@
 				$keyname1 = $keyname;
 			}
 			if ($keyname1 != "") { $xml .= '</key>'; }
+
+			// index
+			$qstr = 'SELECT pcx."relname" as "INDEX_NAME", pa."attname" as
+				"COLUMN_NAME", * FROM "pg_index" pi LEFT JOIN "pg_class" pcx ON pi."indexrelid"  =
+				pcx."oid" LEFT JOIN "pg_class" pci ON pi."indrelid" = pci."oid" LEFT JOIN1
+				"pg_attribute" pa ON pa."attrelid" = pci."oid" AND pa."attnum" = ANY(pi."indkey")
+				WHERE pci."relname" = \''.$table.'\' order by pa."attnum"';
+			$result2 = pg_query($conn, $qstr);
+			$idx = array();
+			while ($row2 = pg_fetch_array($result2)) {
+				$name = $row2["INDEX_NAME"];
+				if (array_key_exists($name, $idx)) {
+					$obj = $idx[$name];
+				} else {
+					$t = "INDEX";
+					if ($row2['indisunique'] == 't') {
+						$t = "UNIQUE";
+						break;
+					}
+					if ($row2['indisprimary'] == 't') {
+						$t = "PRIMARY";
+						break;
+					}
+
+					$obj = array(
+						"columns" => array(),
+						"type" => $t
+					);
+				}
+
+				$obj["columns"][] = $row2["COLUMN_NAME"];
+				$idx[$name] = $obj;
+			}
+
+			foreach ($idx as $name=>$obj) {
+				$xmlkey = '<key name="'.$name.'" type="'.$obj["type"].'">';
+				for ($i=0;$i<count($obj["columns"]);$i++) {
+					$col = $obj["columns"][$i];
+					$xmlkey .= '<part>'.$col.'</part>';
+				}
+				$xmlkey .= '</key>';
+				$xml .= $xmlkey;
+			}
+
 			$xml .= "</table>";
 
 		}
