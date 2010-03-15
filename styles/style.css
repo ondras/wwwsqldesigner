@@ -153,6 +153,14 @@ body {
 	font-weight: bold;
 }
 
+.key {
+	font-style: italic;
+}
+
+.primary.key {
+	font-style: normal;
+}
+
 .comment {
 	font-size: 80%;
 	font-weight: normal;

@@ -271,6 +271,7 @@ SQL.Row.prototype.redraw = function() {
 	this.dom.container.style.backgroundColor = color;
 	OZ.DOM.removeClass(this.dom.container,"primary");
 	if (this.isPrimary()) { OZ.DOM.addClass(this.dom.container,"primary"); }
+	if (this.isKey()) { OZ.DOM.addClass(this.dom.container,"key"); }
 	this.dom.selected.style.display = (this.selected ? "" : "none");
 	this.owner.redraw();
 	this.owner.owner.rowManager.redraw();
@@ -438,6 +439,10 @@ SQL.Row.prototype.isUnique = function() {
 		if (t == "PRIMARY" || t == "UNIQUE") { return true; }
 	}
 	return false;
+}
+
+SQL.Row.prototype.isKey = function() {
+	return this.keys.length > 0;
 }
 
 SQL.Row.prototype.enter = function(e) {
@@ -830,7 +835,7 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 }
 
 SQL.Table.prototype.toXML = function() {
-	var t = this.getTitle().replace(/"/g,"&quot;");
+	var t = this.getTitle().replace(/"/g,"&quot;"); //"
 	var xml = "";
 	xml += '<table x="'+this.x+'" y="'+this.y+'" name="'+t+'">\n';
 	for (var i=0;i<this.rows.length;i++) {
