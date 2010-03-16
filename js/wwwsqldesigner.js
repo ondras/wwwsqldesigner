@@ -658,13 +658,6 @@ SQL.Table.prototype._build = function() {
 	OZ.Event.add(this.dom.container,"click",this.bind(this.click));
 	OZ.Event.add(this.dom.container,"dblclick",this.bind(this.dblclick));
 	OZ.Event.add(this.dom.container,"mousedown",this.bind(this.down));
-	
-	/* shadows */
-	var cn = ["shadow-corner","shadow-right","shadow-bottom"];
-	for (var i=0;i<cn.length;i++) {
-		var d = OZ.DOM.elm("div",{className:cn[i]});
-		this.dom.container.appendChild(d);
-	}
 }
 
 SQL.Table.prototype.setTitle = function(t) {

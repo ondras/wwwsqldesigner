@@ -22,33 +22,11 @@ body {
 	right: 0px;
 	width: 150px;
 	padding: 5px;
-}
-
-#bar .shadow-corner {
-	width: 8px;
-	height: 8px;
-	position: absolute;
-	left: -8px;
-	bottom: -8px;
-	background-image: url(../images/bar_corner.png);
-}
-
-#bar .shadow-left {
-	width: 8px;
-	height: 100%;
-	position: absolute;
-	left: -8px;
-	top: 0px;
-	background-image: url(../images/bar_left.png);
-}
-
-#bar .shadow-bottom {
-	width: 100%;
-	height: 8px;
-	position: absolute;
-	left: 0px;
-	bottom: -8px;
-	background-image: url(../images/bar_bottom.png);
+	-moz-box-shadow: -4px 4px 8px #888; /* FF 3.5+ */
+	-webkit-box-shadow: -4px 4px 8px #888; /* Safari 3.0+, Chrome */
+	box-shadow: -4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=-4px, OffY=4px, Color='#888888'); /* IE6, IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=-4px, OffY=4px, Color='#888888')"; /* IE8 */
 }
 
 #bar input {
@@ -98,35 +76,12 @@ body {
 	background-color: #ddd;
 	cursor: pointer;
 	z-index: 10;
+	-moz-box-shadow: 4px 4px 8px #888; /* FF 3.5+ */
+	-webkit-box-shadow: 4px 4px 8px #888; /* Safari 3.0+, Chrome */
+	box-shadow: 4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
+	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4px, OffY=4px, Color='#888888'); /* IE6, IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=4px, OffY=4px, Color='#888888')"; /* IE8 */
 }
-
-.table .shadow-corner {
-	width: 8px;
-	height: 8px;
-	position: absolute;
-	right: -8px;
-	bottom: -8px;
-	background-image: url(../images/table_corner.png);
-}
-
-.table .shadow-right {
-	width: 8px;
-	height: 100%;
-	position: absolute;
-	right: -8px;
-	top: 0px;
-	background-image: url(../images/table_right.png);
-}
-
-.table .shadow-bottom {
-	width: 100%;
-	height: 8px;
-	position: absolute;
-	left: 0px;
-	bottom: -8px;
-	background-image: url(../images/table_bottom.png);
-}
-
 
 .table_selected {
 	border: 2px solid #000;
