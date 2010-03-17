@@ -178,6 +178,8 @@ class LayerPGSQL extends AbstractLayer
         $keys = array();
         foreach($contraints as $constraint)
         {
+            if($constraint['type'] == 'CHECK')
+                continue;
             if($constraint['type'] == 'PRIMARY KEY')
                 $constraint['type'] = 'PRIMARY';
             self::$keys[$constraint['table']][$constraint['name']]['type'] = $constraint['type'];
@@ -187,8 +189,8 @@ class LayerPGSQL extends AbstractLayer
         {
             if($index['unique'] == 't' || $index['primary'] == 't')
                 continue;
-            self::$keys[$constraint['table']][$index['name']]['type'] = 'INDEX';
-            self::$keys[$constraint['table']][$index['name']]['columns'][] = $index['column'];
+            self::$keys[$index['table']][$index['name']]['type'] = 'INDEX';
+            self::$keys[$index['table']][$index['name']]['columns'][] = $index['column'];
         }
 
         return self::$keys[$table['name']];

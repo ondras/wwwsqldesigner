@@ -166,8 +166,8 @@ class LayerMYSQL extends AbstractLayer
                 $index['type'] = 'UNIQUE';
             if($index['name'] == 'PRIMARY')
                 $index['type'] = 'PRIMARY';
-            self::$keys[$constraint['table']][$index['name']]['type'] = $index['type'];
-            self::$keys[$constraint['table']][$index['name']]['columns'][] = $index['column'];
+            self::$keys[$index['table']][$index['name']]['type'] = $index['type'];
+            self::$keys[$index['table']][$index['name']]['columns'][] = $index['column'];
         }
 
         return self::$keys[$table['name']];
