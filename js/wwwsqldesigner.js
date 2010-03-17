@@ -1072,7 +1072,7 @@ SQL.Map.prototype.init = function(owner) {
 	this.width = this.dom.container.offsetWidth - 2;
 	this.height = this.dom.container.offsetHeight - 2;
 	
-	this.dom.port = OZ.DOM.elm("div",{className:"port",zIndex:10});
+	this.dom.port = OZ.DOM.elm("div",{className:"port", zIndex:1});
 	this.dom.container.appendChild(this.dom.port);
 	this.sync = this.bind(this.sync);
 	
@@ -2252,6 +2252,8 @@ SQL.Designer.prototype.getMaxZ = function() { /* find max zIndex */
 		var z = this.tables[i].getZ();
 		if (z > max) { max = z; }
 	}
+	
+	OZ.$("controls").style.zIndex = max+5;
 	return max;
 }
 

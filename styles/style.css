@@ -8,13 +8,18 @@ body {
 }
 
 #area {
-	z-index: 1;
+	position: relative;
 	width: 2000px;
 	height: 2000px;
 }
 
+#controls {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
 #bar {
-	z-index: 100;
 	text-align: center;
 	background-color: #ccc;
 	position: fixed; 
@@ -41,7 +46,6 @@ body {
 }
 
 #minimap {
-	z-index: 100;
 	position: fixed;
 	width: 100px;
 	height: 100px;
@@ -75,7 +79,6 @@ body {
 	border: 1px solid #000;
 	background-color: #ddd;
 	cursor: pointer;
-	z-index: 10;
 	-moz-box-shadow: 4px 4px 8px #888; /* FF 3.5+ */
 	-webkit-box-shadow: 4px 4px 8px #888; /* Safari 3.0+, Chrome */
 	box-shadow: 4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
@@ -136,13 +139,11 @@ body {
 	background-color: #000;
 	opacity: 0.5;
 	visibility: hidden;
-	z-index: 102;
 }
 
 #window {
 	position: absolute;
 	visibility: hidden;
-	z-index: 103;
 	background-color: #fff;
 	border: 6px double #333;
 }
@@ -196,6 +197,5 @@ label, input, select {
 	border: 1px solid #000;
 	background: #888;
 	opacity: 0.5;
-	z-index: 99;
 	visibility: hidden;
 }
