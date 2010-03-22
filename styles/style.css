@@ -30,8 +30,8 @@ body {
 	-moz-box-shadow: -4px 4px 8px #888; /* FF 3.5+ */
 	-webkit-box-shadow: -4px 4px 8px #888; /* Safari 3.0+, Chrome */
 	box-shadow: -4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
-	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=-4px, OffY=4px, Color='#888888'); /* IE6, IE7 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=-4px, OffY=4px, Color='#888888')"; /* IE8 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=215, Color='#888888'); /* IE 6, IE 7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=215, Color='#888888')"; /* IE 8 */
 }
 
 #bar input {
@@ -82,8 +82,8 @@ body {
 	-moz-box-shadow: 4px 4px 8px #888; /* FF 3.5+ */
 	-webkit-box-shadow: 4px 4px 8px #888; /* Safari 3.0+, Chrome */
 	box-shadow: 4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
-	filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4px, OffY=4px, Color='#888888'); /* IE6, IE7 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=4px, OffY=4px, Color='#888888')"; /* IE8 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888'); /* IE 6, IE 7 */
+	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888'); /* IE 8 */
 }
 
 .table_selected {
