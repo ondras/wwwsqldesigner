@@ -347,7 +347,7 @@ SQL.Row.prototype.destroy = function() {
 SQL.Row.prototype.toXML = function() {
 	var xml = "";
 	
-	var t = this.getTitle().replace(/"/g,"&quot;"); //"
+	var t = this.getTitle().replace(/"/g,"&quot;"); // ""
 	var nn = (this.data.nll ? "1" : "0");
 	var ai = (this.data.ai ? "1" : "0");
 	xml += '<row name="'+t+'" null="'+nn+'" autoincrement="'+ai+'">\n';
@@ -926,6 +926,7 @@ SQL.Table.prototype.up = function(e) {
 	t.active = false;
 	OZ.Event.remove(this.documentMove);
 	OZ.Event.remove(this.documentUp);
+	this.owner.sync();
 }
 
 SQL.Table.prototype.destroy = function() {
@@ -2165,17 +2166,16 @@ SQL.Designer.prototype.init = function() {
 	SQL.Visual.prototype.init.apply(this);
 	
 	this.dom.container = this.dom.content = OZ.$("area");
-	this.width = this.dom.container.offsetWidth;
-	this.height = this.dom.container.offsetHeight;
-
-	this.flag = 2;
+	this.minSize = [
+		this.dom.container.offsetWidth,
+		this.dom.container.offsetHeight
+	];
+	this.width = this.minSize[0];
+	this.height = this.minSize[1];
 	
 	this.typeIndex = false;
 	this.fkTypeFor = false;
 
-	this.requestLanguage();
-	this.requestDB();
-	
 	this.vector = this.getOption("vector") && (OZ.gecko || OZ.opera || OZ.webkit || OZ.ie);
 	if (this.vector) {
 		this.vector = "svg";
@@ -2184,9 +2184,31 @@ SQL.Designer.prototype.init = function() {
 	if (this.vector == "svg") {
 		this.svgNS = "http://www.w3.org/2000/svg";
 		this.dom.svg = document.createElementNS(this.svgNS, "svg");
-		this.dom.svg.setAttribute("width",this.dom.container.offsetWidth);
-		this.dom.svg.setAttribute("height",this.dom.container.offsetHeight);
 		this.dom.content.appendChild(this.dom.svg);
+	}
+
+	this.flag = 2;
+	this.requestLanguage();
+	this.requestDB();
+}
+
+/* update area size */
+SQL.Designer.prototype.sync = function() {
+	var w = this.minSize[0];
+	var h = this.minSize[0];
+	for (var i=0;i<this.tables.length;i++) {
+		var t = this.tables[i];
+		w = Math.max(w, t.x + t.width);
+		h = Math.max(h, t.y + t.height);
+	}
+	
+	this.width = w;
+	this.height = h;
+	this.map.sync();
+
+	if (this.vector == "svg") {	
+		this.dom.svg.setAttribute("width", this.width);
+		this.dom.svg.setAttribute("height", this.height);
 	}
 }
 
@@ -2234,6 +2256,8 @@ SQL.Designer.prototype.init2 = function() { /* secondary init, after locale & da
 	this.io = new SQL.IO(this);
 	this.options = new SQL.Options(this);
 	this.window = new SQL.Window(this);
+
+	this.sync();
 	
 	OZ.$("docs").value = _("docs");
 
@@ -2374,6 +2398,8 @@ SQL.Designer.prototype.alignTables = function() {
 		x += 10 + w;
 		if (h > max) { max = h; }
 	}
+
+	this.sync();
 }
 
 SQL.Designer.prototype.findNamedTable = function(name) { /* find row specified as table(row) */
