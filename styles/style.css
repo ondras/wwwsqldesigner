@@ -26,7 +26,7 @@ body {
 	top: 0px;
 	right: 0px;
 	width: 150px;
-	padding: 5px;
+	padding: 0px 5px 5px;
 	-moz-box-shadow: -4px 4px 8px #888; /* FF 3.5+ */
 	-webkit-box-shadow: -4px 4px 8px #888; /* Safari 3.0+, Chrome */
 	box-shadow: -4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
@@ -43,6 +43,27 @@ body {
 #bar input.small {
 	width: 45%;
 	display: inline;
+}
+
+#toggle {
+	padding: 5px 0px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	background-position: 50% 5px;
+	background-repeat: no-repeat;
+	height: 5px;
+}
+
+#toggle:hover {
+	background-color: #bbb;
+}
+
+#toggle.on {
+	background-image: url(../images/up.gif);
+}
+
+#toggle.off {
+	background-image: url(../images/down.gif);
 }
 
 #minimap {
