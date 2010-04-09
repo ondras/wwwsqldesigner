@@ -270,6 +270,7 @@ SQL.Row.prototype.redraw = function() {
 	var color = this.getColor();
 	this.dom.container.style.backgroundColor = color;
 	OZ.DOM.removeClass(this.dom.container,"primary");
+	OZ.DOM.removeClass(this.dom.container,"key");
 	if (this.isPrimary()) { OZ.DOM.addClass(this.dom.container,"primary"); }
 	if (this.isKey()) { OZ.DOM.addClass(this.dom.container,"key"); }
 	this.dom.selected.style.display = (this.selected ? "" : "none");
