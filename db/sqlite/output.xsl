@@ -24,6 +24,7 @@
 			<xsl:if test="default">
 				<xsl:text>DEFAULT </xsl:text>
 				<xsl:value-of select="default" />
+				<xsl:text> </xsl:text>
 			</xsl:if>
 			
 			<xsl:variable name="name" select="@name" />
