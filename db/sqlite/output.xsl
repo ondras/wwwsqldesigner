@@ -48,10 +48,8 @@
 				<xsl:value-of select="@table" />
 				<xsl:text> (</xsl:text>
 				<xsl:value-of select="@row" />
-				<xsl:text>)
-</xsl:text>
+				<xsl:text>)</xsl:text>
 			</xsl:for-each>
-
 
 			<xsl:if test="not (position()=last())">
 				<xsl:text>,
