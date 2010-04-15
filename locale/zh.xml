@@ -9,7 +9,7 @@
 	<string name="confirmall">真的要删除所有表么</string>
 	<string name="newtable">TableName</string>
 	<string name="addpending">放置表格……</string>
-	<string name="tablenamelabel">名称</string>
+	<string name="tablenamelabel">表名</string>
 	<string name="tablecommentlabel">注释</string>
 	
 	<!-- row management -->
@@ -18,7 +18,7 @@
 	<string name="removerow">删除列</string>
 	<string name="uprow">提上</string>
 	<string name="downrow">拉下</string>
-	<string name="newrow">newrow</string>
+	<string name="newrow">newfield</string>
 	<string name="foreigncreate">创建外连表格列</string>
 	<string name="foreignpending">点击选择目标表</string>
 	<string name="foreignconnect">连接到外部列</string>
@@ -28,15 +28,15 @@
 	<string name="confirmrow">真的删除列么</string>
 
 	<!-- row edit -->
-	<string name="name">名称</string>
+	<string name="name">列名</string>
 	<string name="type">类型</string>
 	<string name="size">大小</string>
 	<string name="def">默认</string>
 	<string name="notnull">不能为空</string>
-	<string name="null">空</string>
+	<string name="null">可留空</string>
 	<string name="ai">自增长</string>
-	<string name="comment">修改备注</string>
-	<string name="commenttext">输入此列的备注</string>
+	<string name="comment">改备注</string>
+	<string name="commenttext">输入此列备注</string>
 	
 	<!-- windows & options -->
 	<string name="windowok">搞定</string>
@@ -55,8 +55,8 @@
 	
 	
 	<!-- keys -->
-	<string name="tablekeys">列属性</string>
-	<string name="keyslistlabel">在 "%s" 表中的列名</string>
+	<string name="tablekeys">列关键属性</string>
+	<string name="keyslistlabel">在 "%s" 表中可用列属性</string>
 	<string name="keytypelabel">类型:</string>
 	<string name="keynamelabel">属性名称:</string>
 	<string name="keyfieldslabel">此属性中的列</string>
@@ -73,7 +73,7 @@
 	<string name="output">输入 / 输出</string>
 	<string name="clientsave">保存为XML</string>
 	<string name="clientload">载入XML</string>
-	<string name="clientsql">初始化为数据库脚本</string>
+	<string name="clientsql">传化为数据库脚本</string>
 	<string name="backendlabel">Server backend:</string>
 	<string name="serversave">保存</string>
 	<string name="serverload">载入</string>
