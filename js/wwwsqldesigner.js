@@ -348,7 +348,7 @@ SQL.Row.prototype.destroy = function() {
 SQL.Row.prototype.toXML = function() {
 	var xml = "";
 	
-	var t = this.getTitle().replace(/"/g,"&quot;"); // ""
+	var t = this.getTitle().replace(/"/g,"&quot;"); // "
 	var nn = (this.data.nll ? "1" : "0");
 	var ai = (this.data.ai ? "1" : "0");
 	xml += '<row name="'+t+'" null="'+nn+'" autoincrement="'+ai+'">\n';
@@ -2528,3 +2528,5 @@ SQL.Designer.prototype.getFKTypeFor = function(typeIndex) {
 	}
 	return this.fkTypeFor[typeIndex];
 }
+
+OZ.Event.add(window, "beforeunload", OZ.Event.prevent);
