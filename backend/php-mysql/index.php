@@ -39,7 +39,7 @@
 			$table = $row["TABLE_NAME"];
 			$xml .= '<table name="'.$table.'">';
 			$comment = (isset($row["TABLE_COMMENT"]) ? $row["TABLE_COMMENT"] : "");
-			if ($comment) { $xml .= '<comment>'.$comment.'</comment>'; }
+			if ($comment) { $xml .= '<comment>'.htmlspecialchars($comment).'</comment>'; }
 
 			$q = "SELECT * FROM COLUMNS WHERE TABLE_NAME = '".$table."' AND TABLE_SCHEMA = '".$db."'";
 			$result2 = mysql_query($q);
@@ -54,7 +54,7 @@
 				$xml .= '<row name="'.$name.'" null="'.$null.'" autoincrement="'.$ai.'">';
 				$xml .= '<datatype>'.strtoupper($type).'</datatype>';
 				$xml .= '<default>'.$def.'</default>';
-				if ($comment) { $xml .= '<comment>'.$comment.'</comment>'; }
+				if ($comment) { $xml .= '<comment>'.htmlspecialchars($comment).'</comment>'; }
 
 				/* fk constraints */
 				$q = "SELECT
