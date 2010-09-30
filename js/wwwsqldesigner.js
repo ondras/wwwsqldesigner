@@ -348,14 +348,14 @@ SQL.Row.prototype.destroy = function() {
 SQL.Row.prototype.toXML = function() {
 	var xml = "";
 	
-	var t = this.getTitle().replace(/"/g,"&quot;"); // "
+	var t = this.getTitle().replace(/"/g,"&quot;");
 	var nn = (this.data.nll ? "1" : "0");
 	var ai = (this.data.ai ? "1" : "0");
 	xml += '<row name="'+t+'" null="'+nn+'" autoincrement="'+ai+'">\n';
 
 	var elm = this.getDataType();
 	var t = elm.getAttribute("sql");
-	if (elm.getAttribute("length") == "1" && this.data.size) { t += "("+this.data.size+")"; }
+	if (this.data.size.length) { t += "("+this.data.size+")"; }
 	xml += "<datatype>"+t+"</datatype>\n";
 	
 	if (this.data.def || this.data.def === null) {
@@ -634,6 +634,7 @@ SQL.Table.prototype.init = function(owner, name, x, y, z) {
 	this.rows = [];
 	this.keys = [];
 	this.zIndex = 0;
+	this._ec = [];
 
 	this.flag = false;
 	this.selected = false;
@@ -656,9 +657,11 @@ SQL.Table.prototype._build = function() {
 	OZ.DOM.append([this.dom.container,this.dom.title,this.dom.content]);
 	this.owner.map.dom.content.appendChild(this.dom.mini);
 
-	OZ.Event.add(this.dom.container,"click",this.bind(this.click));
-	OZ.Event.add(this.dom.container,"dblclick",this.bind(this.dblclick));
-	OZ.Event.add(this.dom.container,"mousedown",this.bind(this.down));
+	this._ec.push(OZ.Event.add(this.dom.container, "click", this.bind(this.click)));
+	this._ec.push(OZ.Event.add(this.dom.container, "dblclick", this.bind(this.dblclick)));
+	this._ec.push(OZ.Event.add(this.dom.container, "mousedown", this.bind(this.down)));
+	this._ec.push(OZ.Event.add(this.dom.container, "touchstart", this.bind(this.down)));
+	this._ec.push(OZ.Event.add(this.dom.container, "touchmove", OZ.Event.prevent));
 }
 
 SQL.Table.prototype.setTitle = function(t) {
@@ -806,6 +809,18 @@ SQL.Table.prototype.snap = function() {
 SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	OZ.Event.stop(e);
 	OZ.Event.prevent(e);
+	
+	/* touch? */
+	if (e.type == "touchstart") {
+		var event = e.touches[0];
+		var moveEvent = "touchmove";
+		var upEvent = "touchend";
+	} else {
+		var event = e;
+		var moveEvent = "mousemove";
+		var upEvent = "mouseup";
+	}
+	
 	/* a non-shift click within a selection preserves the selection */
 	if (e.shiftKey || ! this.selected) {
 		this.owner.tableManager.select(this, e.shiftKey);
@@ -818,18 +833,18 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	t.y = new Array(n);
 	for (var i=0;i<n;i++) {
 		/* position relative to mouse cursor */ 
-		t.x[i] = t.active[i].x - e.clientX;
-		t.y[i] = t.active[i].y - e.clientY;
+		t.x[i] = t.active[i].x - event.clientX;
+		t.y[i] = t.active[i].y - event.clientY;
 	}
 	
 	if (this.owner.getOption("hide")) { this.hideRelations(); }
 	
-	this.documentMove = OZ.Event.add(document, "mousemove", this.bind(this.move));
-	this.documentUp = OZ.Event.add(document, "mouseup", this.bind(this.up));
+	this.documentMove = OZ.Event.add(document, moveEvent, this.bind(this.move));
+	this.documentUp = OZ.Event.add(document, upEvent, this.bind(this.up));
 }
 
 SQL.Table.prototype.toXML = function() {
-	var t = this.getTitle().replace(/"/g,"&quot;"); //"
+	var t = this.getTitle().replace(/"/g,"&quot;");
 	var xml = "";
 	xml += '<table x="'+this.x+'" y="'+this.y+'" name="'+t+'">\n';
 	for (var i=0;i<this.rows.length;i++) {
@@ -913,9 +928,16 @@ SQL.Table.prototype.getComment = function() {
 SQL.Table.prototype.move = function(e) { /* mousemove */
 	var t = SQL.Table;
 	SQL.Designer.removeSelection();
+	if (e.type == "touchmove") {
+		if (e.touches.length > 1) { return; }
+		var event = e.touches[0];
+	} else {
+		var event = e;
+	}
+
 	for (var i=0;i<t.active.length;i++) {
-		var x = t.x[i] + e.clientX;
-		var y = t.y[i] + e.clientY;
+		var x = t.x[i] + event.clientX;
+		var y = t.y[i] + event.clientY;
 		t.active[i].moveTo(x,y);
 	}
 }
@@ -936,6 +958,7 @@ SQL.Table.prototype.destroy = function() {
 	while (this.rows.length) {
 		this.removeRow(this.rows[0]);
 	}
+	this._ec.forEach(OZ.Event.remove, OZ.Event);
 }
 
 /* --------------------- db index ------------ */
@@ -1084,6 +1107,8 @@ SQL.Map.prototype.init = function(owner) {
 	OZ.Event.add(window, "resize", this.sync);
 	OZ.Event.add(window, "scroll", this.sync);
 	OZ.Event.add(this.dom.container, "mousedown", this.bind(this.down));
+	OZ.Event.add(this.dom.container, "touchstart", this.bind(this.down));
+	OZ.Event.add(this.dom.container, "touchmove", OZ.Event.prevent);
 }
 
 SQL.Map.prototype.down = function(e) { /* mousedown - move view and start drag */
@@ -1094,17 +1119,32 @@ SQL.Map.prototype.down = function(e) { /* mousedown - move view and start drag *
 	this.x = Math.round(pos[0] + this.l + this.w/2);
 	this.y = Math.round(pos[1] + this.t + this.h/2);
 	this.move(e);
+	
+	if (e.type == "touchstart") {
+		var eventMove = "touchmove";
+		var eventUp = "touchend";
+	} else {
+		var eventMove = "mousemove";
+		var eventUp = "mouseup";
+	}
 
-	this.documentMove = OZ.Event.add(document, "mousemove", this.bind(this.move));
-	this.documentUp = OZ.Event.add(document, "mouseup", this.bind(this.up));
+	this.documentMove = OZ.Event.add(document, eventMove, this.bind(this.move));
+	this.documentUp = OZ.Event.add(document, eventUp, this.bind(this.up));
 }
 
 SQL.Map.prototype.move = function(e) { /* mousemove */
 	if (!this.flag) { return; }
 	OZ.Event.prevent(e);
 	
-	var dx = e.clientX - this.x;
-	var dy = e.clientY - this.y;
+	if (e.type.match(/touch/)) {
+		if (e.touches.length > 1) { return; }
+		var event = e.touches[0];
+	} else {
+		var event = e;
+	}
+	
+	var dx = event.clientX - this.x;
+	var dy = event.clientY - this.y;
 	if (this.l + dx < 0) { dx = -this.l; }
 	if (this.t + dy < 0) { dy = -this.t; }
 	if (this.l + this.w + 4 + dx > this.width) { dx = this.width - 4 - this.l - this.w; }
@@ -1177,13 +1217,17 @@ SQL.IO.prototype.init = function(owner) {
 		container:OZ.$("io")
 	};
 
-	var ids = ["saveload","clientsave","clientload","clientsql","serversave","serverload","serverlist","serverimport"];
+	var ids = ["saveload", "clientsave", "clientload", "clientsql", 
+				"quicksave", "serversave", "serverload",
+				"serverlist", "serverimport"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
 		this.dom[id] = elm;
 		elm.value = _(id);
 	}
+	
+	this.dom.quicksave.value += " (F2)";
 
 	var ids = ["client","server","output","backendlabel"];
 	for (var i=0;i<ids.length;i++) {
@@ -1207,10 +1251,12 @@ SQL.IO.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.clientsave, "click", this.bind(this.clientsave));
 	OZ.Event.add(this.dom.clientload, "click", this.bind(this.clientload));
 	OZ.Event.add(this.dom.clientsql, "click", this.bind(this.clientsql));
+	OZ.Event.add(this.dom.quicksave, "click", this.bind(this.quicksave));
 	OZ.Event.add(this.dom.serversave, "click", this.bind(this.serversave));
 	OZ.Event.add(this.dom.serverload, "click", this.bind(this.serverload));
 	OZ.Event.add(this.dom.serverlist, "click", this.bind(this.serverlist));
 	OZ.Event.add(this.dom.serverimport, "click", this.bind(this.serverimport));
+	OZ.Event.add(document, "keydown", this.bind(this.press));
 	this.build();
 }
 
@@ -1306,8 +1352,8 @@ SQL.IO.prototype.finish = function(xslDoc) {
 	this.dom.ta.value = sql;
 }
 
-SQL.IO.prototype.serversave = function(e) {
-	var name = prompt(_("serversaveprompt"), this._name);
+SQL.IO.prototype.serversave = function(e, keyword) {
+	var name = keyword || prompt(_("serversaveprompt"), this._name);
 	if (!name) { return; }
 	this._name = name;
 	var xml = this.owner.toXML();
@@ -1317,6 +1363,10 @@ SQL.IO.prototype.serversave = function(e) {
 	this.owner.window.showThrobber();
 	this.owner.setTitle(name);
 	OZ.Request(url, this.saveresponse, {xml:true, method:"post", data:xml, headers:h});
+}
+
+SQL.IO.prototype.quicksave = function(e) {
+	this.serversave(e, this._name);
 }
 
 SQL.IO.prototype.serverload = function(e, keyword) {
@@ -1384,6 +1434,14 @@ SQL.IO.prototype.importresponse = function(data, code) {
 	if (!this.check(code)) { return; }
 	if (this.fromXML(data)) {
 		this.owner.alignTables();
+	}
+}
+
+SQL.IO.prototype.press = function(e) {
+	switch (e.keyCode) {
+		case 113:
+			this.quicksave(e);
+		break;
 	}
 }
 
@@ -2441,6 +2499,8 @@ SQL.Designer.prototype.findNamedTable = function(name) { /* find row specified a
 
 SQL.Designer.prototype.toXML = function() {
 	var xml = '<?xml version="1.0" encoding="utf-8" ?>\n';
+	xml += '<!-- SQL XML created by WWW SQL Designer, http://code.google.com/p/wwwsqldesigner/ -->\n';
+	xml += '<!-- Active URL: ' + location.href + ' -->\n';
 	xml += '<sql>\n';
 	
 	/* serialize datatypes */

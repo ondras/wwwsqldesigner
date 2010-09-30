@@ -28,6 +28,7 @@
 		<type label="Char" length="0" sql="char" quote="'" bytes="n" note="Fixed-length character data with a maximum length of 8,000 characters" />
 		<type label="Varchar" length="1" sql="varchar" quote="'" bytes="m &lt;= n" note="Variable-length data with a maximum of 8,000 characters" />
 		<type label="Text" length="1" sql="text"  quote="'" bytes="&lt;= 2,147,483,647" note="Variable-length data with a maximum length of 2,147,483,647 characters" />
+		<type label="XML" length="0" sql="xml"  quote="'" bytes="n" note="XML" />
 	</group>
 
 	<group label="Unicode Character" color="rgb(255,200,200)">

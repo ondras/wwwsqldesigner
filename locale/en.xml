@@ -77,6 +77,7 @@
 	<string name="clientsql">Generate SQL</string>
 	<string name="backendlabel">Server backend:</string>
 	<string name="serversave">Save</string>
+	<string name="quicksave">Quicksave</string>
 	<string name="serverload">Load</string>
 	<string name="serverlist">List items</string>
 	<string name="serverimport">Import from DB</string>

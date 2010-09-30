@@ -77,6 +77,7 @@
 	<string name="clientsql">Generovat SQL</string>
 	<string name="backendlabel">Server backend:</string>
 	<string name="serversave">Uložit</string>
+	<string name="quicksave">Rychle uložit</string>
 	<string name="serverload">Načíst</string>
 	<string name="serverlist">Vypsat položky</string>
 	<string name="serverimport">Importovat z databáze</string>
