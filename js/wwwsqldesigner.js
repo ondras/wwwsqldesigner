@@ -217,7 +217,8 @@ SQL.Row.prototype.buildContent = function() {
 
 SQL.Row.prototype.changeComment = function(e) {
 	var c = prompt(_("commenttext"),this.data.comment);
-	this.data.comment = c || "";
+	if (c === null) { return; }
+	this.data.comment = c;
 	this.dom.comment.innerHTML = this.data.comment;
 }
 
