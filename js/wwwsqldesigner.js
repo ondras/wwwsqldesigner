@@ -838,7 +838,11 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 		t.y[i] = t.active[i].y - event.clientY;
 	}
 	
-	if (this.owner.getOption("hide")) { this.hideRelations(); }
+	if (this.owner.getOption("hide")) { 
+		for (var i=0;i<n;i++) {
+			t.active[i].hideRelations();
+		}
+	}
 	
 	this.documentMove = OZ.Event.add(document, moveEvent, this.bind(this.move));
 	this.documentUp = OZ.Event.add(document, upEvent, this.bind(this.up));
@@ -946,7 +950,12 @@ SQL.Table.prototype.move = function(e) { /* mousemove */
 SQL.Table.prototype.up = function(e) {
 	var t = SQL.Table;
 	var d = SQL.Designer;
-	if (d.getOption("hide")) { t.active.showRelations(); }
+	if (d.getOption("hide")) { 
+		for (var i=0;i<t.active.length;i++) {
+			t.active[i].showRelations(); 
+			t.active[i].redraw();
+		}
+	}
 	t.active = false;
 	OZ.Event.remove(this.documentMove);
 	OZ.Event.remove(this.documentUp);
