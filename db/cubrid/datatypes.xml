@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<datatypes db="cubrid">
+	<group label="Numeric" color="rgb(238,238,170)">
+    <type label="Short" length="0" sql="SHORT" quote="" />
+    <type label="Smallint" length="0" sql="SMALLINT" quote="" />
+		<type label="Integer" length="0" sql="INTEGER" quote="" />
+    <type label="Bigint" length="0" sql="BIGINT" quote="" />
+
+		<type label="Numeric / Decimal" length="1" sql="DECIMAL" quote="" />
+		<type label="Float / Single precision" length="0" sql="FLOAT" quote="" />
+		<type label="Double precision" length="0" sql="DOUBLE" quote="" />
+
+    <type label="Monetary" length="0" sql="MONETARY" re="MONETARY" quote="" />
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR"  quote="'"/>
+		<type label="String" length="0" sql="STRING" quote="'"/>
+	</group>
+
+  <group label="National Character" color="rgb(255,225,200)">
+    <type label="Nchar" length="1" sql="NCHAR" quote="'"/>
+    <type label="Nchar Varying" length="1" sql="NCHAR VARYING"  quote="'"/>
+  </group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'" />
+		<type label="Time" length="0" sql="TIME" quote="'" />
+		<type label="Datetime" length="0" sql="DATETIME" quote="'" />
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'" />
+	</group>
+	
+	<group label="Collections" color="rgb(200,200,255)">
+		<type label="Set" length="0" sql="SET" quote="" />
+    <type label="Multiset" length="0" sql="MULTISET" quote="" />
+    <type label="List" length="0" sql="LIST" quote="" />
+	</group>
+
+  <group label="Bit strings" color="rgb(200,200,200)">
+    <type label="Bit" length="1" sql="BIT" quote=""/>
+    <type label="Bit Varying" length="1" sql="BIT VARYING" quote=""/>
+  </group>
+</datatypes>

@@ -1,11 +1,11 @@
 var CONFIG = {
-	AVAILABLE_DBS: ["mysql", "sqlite", "web2py", "mssql", "postgresql", "oracle", "sqlalchemy", "vfp9"],
+	AVAILABLE_DBS: ["mysql", "sqlite", "web2py", "mssql", "postgresql", "oracle", "sqlalchemy", "vfp9", "cubrid"],
 	DEFAULT_DB: "mysql",
 
-	AVAILABLE_LOCALES: ["cs", "de", "el", "en", "eo", "es", "fr", "hu", "it", "ja", "pl", "pt_BR", "ru", "zh"],
+	AVAILABLE_LOCALES: ["cs", "de", "el", "en", "eo", "es", "fr", "hu", "it", "ja", "pl", "pt_BR", "ro", "ru", "zh"],
 	DEFAULT_LOCALE: "en",
 	
-	AVAILABLE_BACKENDS: ["php-mysql", "php-blank", "php-file", "php-sqlite", "php-mysql+file", "php-postgresql", "php-pdo", "perl-file"],
+	AVAILABLE_BACKENDS: ["php-mysql", "php-blank", "php-file", "php-sqlite", "php-mysql+file", "php-postgresql", "php-pdo", "perl-file", "php-cubrid"],
 	DEFAULT_BACKEND: ["php-mysql"],
 
 	RELATION_THICKNESS: 2,

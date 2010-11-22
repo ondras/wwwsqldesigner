@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Adauga tabela</string>
+	<string name="edittable">Editeaza tabela</string>
+	<string name="removetable">Sterge tabela</string>
+	<string name="removetables">Sterge tabelele</string>
+	<string name="aligntables">Aliniaza tabelele</string>
+	<string name="cleartables">Sterge tabelele</string>
+	<string name="confirmall">Sterge toate tabelele</string>
+	<string name="newtable">(nume tabela)</string>
+	<string name="addpending">plaseaza tabela</string>
+	<string name="tablenamelabel">Nume</string>
+	<string name="tablecommentlabel">Comentariu</string>
+	
+	<!-- row management -->
+	<string name="addrow">Adauga coloana</string>
+	<string name="editrow">Editeaza coloana</string>
+	<string name="removerow">Sterge coloana</string>
+	<string name="uprow">Sus</string>
+	<string name="downrow">Jos</string>
+	<string name="newrow">coloana noua</string>
+	<string name="foreigncreate">Creaza FK</string>
+	<string name="foreignpending">alege destinatie</string>
+	<string name="foreignconnect">Conexiune FK</string>
+	<string name="foreignconnectpending">alege destinatie</string>
+	<string name="foreigndisconnect">Sterge FK</string>
+	<string name="confirmtable">Sterge tabela</string>
+	<string name="confirmrow">Sterge coloana</string>
+
+	<!-- editare rand -->
+	<string name="name">Nume</string>
+	<string name="type">Tip</string>
+	<string name="size">Dimensiune</string>
+	<string name="def">Valoare default</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Auto increment</string>
+	<string name="comment">Editare comentariu</string>
+	<string name="commenttext">Introduceti comentariul pentru aceasta coloana:</string>
+	
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Anuleaza</string>
+	<string name="throbber">Asteptati va rog...</string>
+	<string name="options">Optiuni</string>
+	<string name="language">Limbaj</string>
+	<string name="db">Baza de date pentru design</string>
+	<string name="optionsnotice">Anumite optiuni devin active numai dupa o reincarcare completa a paginii. Cookies trebuie sa fie activate pentru browser.</string>
+	<string name="snap">Distanta automata intre tabele</string>
+	<string name="optionsnapnotice">In pixeli, 0 = dezactiveaza asezarea automata</string>
+	<string name="pattern">Modelul pentru nume de Foreign Keys</string>
+	<string name="optionpatternnotice">%T = Tabela primara, %R = Primary key, %t = Tabela cu Foreign key</string>
+	<string name="hide">Ascunde conexiunile la mutarea tabelei?</string>
+	<string name="vector">Deseneaza folosind "smooth connectors" (daca browserul suporta)?</string>
+	
+	
+	<!-- keys -->
+	<string name="tablekeys">Keys / Indexes</string>
+	<string name="keyslistlabel">Keys / Indexes in tabela "%s"</string>
+	<string name="keytypelabel">Tip:</string>
+	<string name="keynamelabel">Nume:</string>
+	<string name="keyfieldslabel">Campuri selectate</string>
+	<string name="keyavaillabel">Campuri disponibile</string>
+	<string name="keyedit">Editeaza</string>
+	<string name="keyadd">Adauga</string>
+	<string name="keyremove">Sterge</string>
+	
+	<!-- io -->
+	<string name="saveload">Salveaza / Incarca</string>
+	<string name="empty">Introduceti codul XML si re-incercati.</string>
+	<string name="client">Client</string>
+	<string name="server">Server</string>
+	<string name="output">Input / Output</string>
+	<string name="clientsave">Genereaza XML</string>
+	<string name="clientload">Incarca din XML</string>
+	<string name="clientsql">Genereaza SQL</string>
+	<string name="backendlabel">Server backend:</string>
+	<string name="serversave">Salveaza</string>
+	<string name="serverload">Incarca</string>
+	<string name="serverlist">Lista de salvari</string>
+	<string name="serverimport">Import tabele din baza de date</string>
+	<string name="serverloadprompt">Introduceti numele sub care a fost salvat design-ul:</string>
+	<string name="serversaveprompt">Introduceti numele sub care va fi salvat design-ul:</string>
+	<string name="serverimportprompt">Introduceti numele bazei de date care va fi importata:</string>
+	<string name="httpresponse">Server response</string>
+	<string name="http201">Salvare efectuata</string>
+	<string name="http404">Not Found</string>
+	<string name="http500">Internal Server Error</string>
+	<string name="http501">Not Implemented</string>
+	<string name="http503">Service Unavailable</string>
+	
+	<!-- diverse -->
+	<string name="xmlerror">Eroare XML</string>
+	<string name="docs">Documentatie</string>
+	
+</locale>
