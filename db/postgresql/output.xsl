@@ -35,7 +35,20 @@
 			<xsl:value-of select="@name" />
 			<xsl:text>" </xsl:text>
 
-			<xsl:value-of select="datatype" />
+            <xsl:choose>
+                <xsl:when test="@autoincrement = 1">
+                    <!-- use postgresql SERIAL shortcut for columns marked as
+                    auto-increment. this creates integer column,
+                    corresponding sequence, and default expression for the
+                    column with nextval(). see:
+                    http://www.postgresql.org/docs/current/static/datatype-numeric.html#DATATYPE-SERIAL
+                    -->
+                    <xsl:text> SERIAL</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="datatype" />
+                </xsl:otherwise>
+            </xsl:choose>
 			<xsl:text> </xsl:text>
 			
 			<xsl:if test="@null = 0">
@@ -43,19 +56,17 @@
 			</xsl:if> 
 			
 			<xsl:if test="default">
-				<xsl:text>DEFAULT </xsl:text>
-				<xsl:value-of select="default" />
-				<xsl:text> </xsl:text>
+                <xsl:if test=" default != 'NULL' and default != NULL ">
+                    <xsl:text>DEFAULT </xsl:text>
+                    <xsl:value-of select="default" />
+                    <xsl:text> </xsl:text>
+                </xsl:if>
 			</xsl:if>
 
 			<xsl:if test="comment">
-				<xsl:text>/* COMMENT '</xsl:text>
-				<xsl:call-template name="replace-substring">
-					<xsl:with-param name="value" select="comment" />
-					<xsl:with-param name="from" select='"&apos;"' />
-					<xsl:with-param name="to" select='"&apos;&apos;"' />
-				</xsl:call-template>
-                                <xsl:text>' */</xsl:text>
+				<xsl:text>/* </xsl:text>
+                <xsl:value-of select="comment"/>
+                <xsl:text> */</xsl:text>
 			</xsl:if>
 
 			<xsl:if test="not (position()=last())">
@@ -85,22 +96,42 @@
 		</xsl:for-each>
 		
 		<xsl:text>
-)</xsl:text>
+);
+</xsl:text>
 
 		<xsl:if test="comment">
-			<xsl:text> /* </xsl:text>
-			<xsl:call-template name="replace-substring">
+            <xsl:text>COMMENT ON TABLE "</xsl:text>
+            <xsl:value-of select="@name"/>
+            <xsl:text>" IS '</xsl:text>
+            <xsl:call-template name="replace-substring">
 				<xsl:with-param name="value" select="comment" />
 				<xsl:with-param name="from" select='"&apos;"' />
 				<xsl:with-param name="to" select='"&apos;&apos;"' />
 			</xsl:call-template>
-                        <xsl:text>*/</xsl:text>
+            <xsl:text>';
+</xsl:text>
 		</xsl:if>
 		
-		<xsl:text>;
-
+<!-- column comments -->
+		<xsl:for-each select="row">
+			<xsl:if test="comment">
+                <xsl:text>COMMENT ON COLUMN "</xsl:text>
+                <xsl:value-of select="../@name"/>
+                <xsl:text>"."</xsl:text>
+                <xsl:value-of select="@name"/>
+                <xsl:text>" IS '</xsl:text>
+				<xsl:call-template name="replace-substring">
+					<xsl:with-param name="value" select="comment" />
+					<xsl:with-param name="from" select='"&apos;"' />
+					<xsl:with-param name="to" select='"&apos;&apos;"' />
+				</xsl:call-template>
+                <xsl:text>';
 </xsl:text>
+			</xsl:if>
+		</xsl:for-each>
 
+		<xsl:text>
+</xsl:text>
 	</xsl:for-each>
 
 <!-- fk -->

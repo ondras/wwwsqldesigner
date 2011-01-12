@@ -23,10 +23,10 @@
 	<group label="Date &amp; Time" color="rgb(200,255,200)">
 		<type label="Date" length="0" sql="DATE" quote="'" />
 		<type label="Time" length="1" sql="TIME" quote="'" />
-		<type label="Time w/ TZ" length="0" sql="TIME WITH TIMEZONE" quote="'" />
+		<type label="Time w/ TZ" length="0" sql="TIME WITH TIME ZONE" quote="'" />
 		<type label="Interval" length="1" sql="INTERVAL" quote="'" />
 		<type label="Timestamp" length="1" sql="TIMESTAMP" quote="'" />
-		<type label="Timestamp w/ TZ" length="0" sql="TIMESTAMP WITH TIMEZONE" quote="'" />
+		<type label="Timestamp w/ TZ" length="0" sql="TIMESTAMP WITH TIME ZONE" quote="'" />
 		<type label="Timestamp wo/ TZ" length="0" sql="TIMESTAMP WITHOUT TIME ZONE" quote="'" />
 	</group>
 
