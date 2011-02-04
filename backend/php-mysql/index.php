@@ -48,7 +48,13 @@
 				$type  = $row["COLUMN_TYPE"];
 				$comment = (isset($row["COLUMN_COMMENT"]) ? $row["COLUMN_COMMENT"] : "");
 				$null = ($row["IS_NULLABLE"] == "YES" ? "1" : "0");
-				$def = $row["COLUMN_DEFAULT"];
+
+				if (preg_match("/binary/i",$row["COLUMN_TYPE"])) {
+					$def = bin2hex($row["COLUMN_DEFAULT"]);
+				} else {
+					$def = $row["COLUMN_DEFAULT"];
+				}
+
 				$ai = (preg_match("/auto_increment/i",$row["EXTRA"]) ? "1" : "0");
 				if ($def == "NULL") { $def = ""; }
 				$xml .= '<row name="'.$name.'" null="'.$null.'" autoincrement="'.$ai.'">';
