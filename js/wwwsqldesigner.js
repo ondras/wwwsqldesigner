@@ -1274,13 +1274,20 @@ SQL.IO.prototype.build = function() {
 	OZ.DOM.clear(this.dom.backend);
 
 	var bs = CONFIG.AVAILABLE_BACKENDS;
-	var def = CONFIG.DEFAULT_BACKEND;
+	var be = CONFIG.DEFAULT_BACKEND;
+	var r = window.location.search.substring(1).match(/backend=([^&]*)/);
+	if (r) {
+		req = r[1];
+		if (bs.indexOf(req) != -1) {
+		  be = req;
+		}
+	}
 	for (var i=0;i<bs.length;i++) {
 		var o = OZ.DOM.elm("option");
 		o.value = bs[i];
 		o.innerHTML = bs[i];
 		this.dom.backend.appendChild(o);
-		if (bs[i] == def) { this.dom.backend.selectedIndex = i; }
+		if (bs[i] == be) { this.dom.backend.selectedIndex = i; }
 	}
 }
 
