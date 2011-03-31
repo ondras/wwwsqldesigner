@@ -275,6 +275,7 @@ SQL.Row.prototype.redraw = function() {
 	if (this.isPrimary()) { OZ.DOM.addClass(this.dom.container,"primary"); }
 	if (this.isKey()) { OZ.DOM.addClass(this.dom.container,"key"); }
 	this.dom.selected.style.display = (this.selected ? "" : "none");
+	this.dom.container.title = this.data.comment;
 	this.owner.redraw();
 	this.owner.owner.rowManager.redraw();
 }
@@ -924,6 +925,7 @@ SQL.Table.prototype.removeKey = function(i) {
 
 SQL.Table.prototype.setComment = function(c) {
 	this.data.comment = c;
+	this.dom.title.title = this.data.comment;
 }
 
 SQL.Table.prototype.getComment = function() {
