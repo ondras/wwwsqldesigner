@@ -810,7 +810,6 @@ SQL.Table.prototype.snap = function() {
 
 SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	OZ.Event.stop(e);
-	OZ.Event.prevent(e);
 	
 	/* touch? */
 	if (e.type == "touchstart") {
