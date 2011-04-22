@@ -53,7 +53,7 @@
 	<string name="optionpatternnotice">%T = primární tabulka, %R = primární klíč, %t = cizí tabulka</string>
 	<string name="hide">Schovat spojovníky při tažení tabulkou?</string>
 	<string name="vector">Vykreslovat oblé spojovníky (pakliže to prohlížeč podporuje)?</string>
-	
+	<string name="showsize">Zobrazovat velikost polí v tabulce?</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Klíče</string>

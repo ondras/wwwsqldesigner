@@ -113,7 +113,10 @@ SQL.Row.prototype.setTitle = function(t) {
 		var tt = r.row2.getTitle().replace(new RegExp(old,"g"),t);
 		if (tt != r.row2.getTitle()) { r.row2.setTitle(tt); }
 	}
-	SQL.Visual.prototype.setTitle.apply(this, [t]);
+	
+	var title = t;
+	if (SQL.Designer.getOption("showsize") && this.data.size) { title += " (" + this.data.size + ")"; }
+	SQL.Visual.prototype.setTitle.apply(this, [title]);
 }
 
 SQL.Row.prototype.click = function(e) { /* clicked on row */
@@ -238,7 +241,6 @@ SQL.Row.prototype.collapse = function() {
 	if (!this.expanded) { return; }
 	this.expanded = false;
 
-	this.setTitle(this.dom.name.value);
 	var data = {
 		type: this.dom.type.selectedIndex,
 		def: this.dom.def.value,
@@ -251,6 +253,7 @@ SQL.Row.prototype.collapse = function() {
 	this.dom.content.style.display = "none";
 	this.dom.title.style.display = "block";
 	this.update(data);
+	this.setTitle(this.dom.name.value);
 	/* gecko hack */
 	this.owner.moveBy(1,1);
 	this.owner.moveBy(-1,-1); 
@@ -388,7 +391,6 @@ SQL.Row.prototype.toXML = function() {
 
 SQL.Row.prototype.fromXML = function(node) {
 	var name = node.getAttribute("name");
-	this.setTitle(name);
 	
 	var obj = { type:0, size:"" };
 	obj.nll = (node.getAttribute("null") == "1");
@@ -425,6 +427,7 @@ SQL.Row.prototype.fromXML = function(node) {
 	}
 
 	this.update(obj);
+	this.setTitle(name);
 }
 
 SQL.Row.prototype.isPrimary = function() {
@@ -2180,8 +2183,9 @@ SQL.Options.prototype.build = function() {
 	this.dom.optionpattern = OZ.$("optionpattern");
 	this.dom.optionhide = OZ.$("optionhide");
 	this.dom.optionvector = OZ.$("optionvector");
+	this.dom.optionshowsize = OZ.$("optionshowsize");
 
-	var ids = ["language","db","snap","pattern","hide","vector","optionsnapnotice","optionpatternnotice","optionsnotice"];
+	var ids = ["language","db","snap","pattern","hide","vector","showsize","optionsnapnotice","optionpatternnotice","optionsnotice","optionshowsize"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
@@ -2219,6 +2223,7 @@ SQL.Options.prototype.save = function() {
 	this.owner.setOption("pattern",this.dom.optionpattern.value);
 	this.owner.setOption("hide",this.dom.optionhide.checked ? "1" : "");
 	this.owner.setOption("vector",this.dom.optionvector.checked ? "1" : "");
+	this.owner.setOption("showsize",this.dom.optionshowsize.checked ? "1" : "");
 }
 
 SQL.Options.prototype.click = function() {
@@ -2227,6 +2232,7 @@ SQL.Options.prototype.click = function() {
 	this.dom.optionpattern.value = this.owner.getOption("pattern");
 	this.dom.optionhide.checked = this.owner.getOption("hide");
 	this.dom.optionvector.checked = this.owner.getOption("vector");
+	this.dom.optionshowsize.checked = this.owner.getOption("showsize");
 }
 
 /* ------------------ minimize/restore bar ----------- */
@@ -2450,6 +2456,7 @@ SQL.Designer.prototype.getOption = function(name) {
 		case "staticpath": return CONFIG.STATIC_PATH || "";
 		case "xhrpath": return CONFIG.XHR_PATH || "";
 		case "snap": return 0;
+		case "showsize": return 0;
 		case "pattern": return "%R_%T";
 		case "hide": return false;
 		case "vector": return true;
