@@ -71,9 +71,10 @@
 			<xsl:value-of select="datatype" />
 			<xsl:text></xsl:text>
 			
-			<xsl:if test="@null = 0">
-				<xsl:text> NOT NULL</xsl:text>
-			</xsl:if> 
+			<xsl:choose>
+				<xsl:when test="@null = 0"> NOT NULL</xsl:when>
+				<xsl:otherwise> NULL</xsl:otherwise>
+			</xsl:choose>
 			
 			<xsl:if test="@autoincrement = 1">
 				<xsl:text> AUTO_INCREMENT</xsl:text>
