@@ -1663,9 +1663,13 @@ SQL.TableManager.prototype.save = function() {
 }
 
 SQL.TableManager.prototype.press = function(e) {
-	if (! this.selection.length) { return; }
-	/* do not process keypresses if a row is selected */
-	if (this.owner.rowManager.selected) { return; }
+	var target = OZ.Event.target(e).nodeName.toLowerCase();
+	if (target == "textarea" || target == "input") { return; } /* not when in form field */
+	
+	if (this.owner.rowManager.selected) { return; } /* do not process keypresses if a row is selected */
+
+	if (!this.selection.length) { return; } /* nothing if selection is active */
+
 	switch (e.keyCode) {
 		case 46:
 			this.remove();
@@ -1837,6 +1841,10 @@ SQL.RowManager.prototype.redraw = function() {
 
 SQL.RowManager.prototype.press = function(e) {
 	if (!this.selected) { return; }
+	
+	var target = OZ.Event.target(e).nodeName.toLowerCase();
+	if (target == "textarea" || target == "input") { return; } /* not when in form field */
+	
 	switch (e.keyCode) {
 		case 38:
 			this.up();
