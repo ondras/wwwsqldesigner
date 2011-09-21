@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- tabell management -->
+	<string name="addtable">Skapa tabell</string>
+	<string name="edittable">Redigera tabell</string>
+	<string name="removetable">Ta bort tabell</string>
+	<string name="removetables">Ta bort tabeller</string>
+	<string name="aligntables">Räta upp tabeller</string>
+	<string name="cleartables">Ta bort alla tabeller</string>
+	<string name="confirmall">Vill du verkligen ta bort alla tabeller</string>
+	<string name="newtable">Ny tabell</string>
+	<string name="addpending">Placera tabell</string>
+	<string name="tablenamelabel">Namn</string>
+	<string name="tablecommentlabel">Kommentar</string>
+	
+	<!-- row management -->
+	<string name="addrow">Lägg till fält</string>
+	<string name="editrow">Redigera fält</string>
+	<string name="removerow">Ta bort field</string>
+	<string name="uprow">Upp</string>
+	<string name="downrow">Ner</string>
+	<string name="newrow">Ny field</string>
+	<string name="foreigncreate">Skapa främmande nyckel</string>
+	<string name="foreignpending">Klicka på motsvarande tabell</string>
+	<string name="foreignconnect">Anslut främmande nycke</string>
+	<string name="foreignconnectpending">Välj motsvarande rad</string>
+	<string name="foreigndisconnect">Ta bort främmande nyckel</string>
+	<string name="confirmtable">Vill du verkligen ta bort denna tabell?</string>
+	<string name="confirmrow">Vill du verkligen ta bort detta fält?</string>
+
+	<!-- row edit -->
+	<string name="name">Namn</string>
+	<string name="type">Typ</string>
+	<string name="size">Storlek</string>
+	<string name="def">Standard</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincrement</string>
+	<string name="comment">Redigera kommentar</string>
+	<string name="commenttext">Ange kommentar för detta fält</string>
+	
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Avbryt</string>
+	<string name="throbber">Var god vänta...</string>
+	<string name="options">Alternativ</string>
+	<string name="language">Språk</string>
+	<string name="db">Databas for nya designer</string>
+	<string name="optionsnotice">Vissa alternativ ändras bara efter att du laddat om sidan. Cookies krävs för att alternativ ska fungera.</string>
+	<string name="snap">Tabellers fästavstånd</string>
+	<string name="optionsnapnotice">Ange pixlar, 0 = stäng av fästning</string>
+	<string name="pattern">Mönster för främmande namn</string>
+	<string name="optionpatternnotice">%T = primär tabell, %R = primär nycke, %t = främmande tabell</string>
+	<string name="hide">Dölj anslutningar när du drar i tabellen?</string>
+	<string name="vector">Rita mjuka anslutningar (om din webbläsare stöder det)?</string>
+	
+	
+	<!-- keys -->
+	<string name="tablekeys">Nycklar</string>
+	<string name="keyslistlabel">Nycklar i tabellen "%s"</string>
+	<string name="keytypelabel">Typ:</string>
+	<string name="keynamelabel">Namn:</string>
+	<string name="keyfieldslabel">Fields in nyckel</string>
+	<string name="keyavaillabel">Available fields</string>
+	<string name="keyedit">Edit nyckel</string>
+	<string name="keyadd">Add key</string>
+	<string name="keyremove">Ta bort key</string>
+	
+	<!-- io -->
+	<string name="saveload">Spara / Ladda</string>
+	<string name="empty">Vänligen klistra in XML i textrutan nedan och försök igen.</string>
+	<string name="client">Klient</string>
+	<string name="server">Server</string>
+	<string name="output">Input / Output</string>
+	<string name="clientsave">Spara XML</string>
+	<string name="clientload">Ladda XML</string>
+	<string name="clientsql">Generera SQL</string>
+	<string name="backendlabel">Server backend:</string>
+	<string name="serversave">Spara</string>
+	<string name="serverload">Ladda</string>
+	<string name="serverlist">Lista innehåll</string>
+	<string name="serverimport">Importera från DB</string>
+	<string name="serverloadprompt">Ange vilket nyckelord din design sparades under:</string>
+	<string name="serversaveprompt">Ange vilket nyckelord din design ska sparas under:</string>
+	<string name="serverimportprompt">Ange namnet på databasen som ska importeras:</string>
+	<string name="httpresponse">Serversvar</string>
+	<string name="http201">Sparad</string>
+	<string name="http404">Ej funnen</string>
+	<string name="http500">Intert serverfel</string>
+	<string name="http501">Ej implementerat</string>
+	<string name="http503">Service Unavailable</string>
+	
+	<!-- misc -->
+	<string name="xmlerror">XML error</string>
+	<string name="docs">Dokumentation</string>
+	
+</locale>
