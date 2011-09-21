@@ -17,9 +17,8 @@ SQL.Visual.prototype.init = function() {
 
 SQL.Visual.prototype._init = function() {
 	this.dom = {
-		container:OZ.DOM.elm("div"),
-		content:OZ.DOM.elm("div"),
-		title:OZ.DOM.elm("div",{className:"title"})
+		container: null,
+		title: null
 	};
 	this.data = {
 		title:""
@@ -76,20 +75,26 @@ SQL.Row.prototype.init = function(owner, title, data) {
 }
 
 SQL.Row.prototype._build = function() {
-	this.dom.container.className = "row";
-	this.dom.content.style.display = "none";
+	this.dom.container = OZ.DOM.elm("tbody");
+	
+	this.dom.content = OZ.DOM.elm("tr");
+	this.dom.selected = OZ.DOM.elm("div", {className:"selected",innerHTML:"&raquo;&nbsp;"});
+	this.dom.title = OZ.DOM.elm("div", {className:"title"});
+	var td1 = OZ.DOM.elm("td");
+	var td2 = OZ.DOM.elm("td", {className:"typehint"});
+	this.dom.typehint = td2;
+
+	OZ.DOM.append(
+		[this.dom.container, this.dom.content],
+		[this.dom.content, td1, td2],
+		[td1, this.dom.selected, this.dom.title]
+	);
 	
 	this.enter = this.bind(this.enter);
 	this.changeComment = this.bind(this.changeComment);
-	
-	this.dom.selected = OZ.DOM.elm("span",{className:"row_selected"});
-	this.dom.selected.innerHTML = "&raquo;&nbsp;";
-	
-	OZ.DOM.append([this.dom.container,this.dom.selected,this.dom.title,this.dom.content]);
 
-	OZ.Event.add(this.dom.container,"click",this.bind(this.click));
-	OZ.Event.add(this.dom.container,"dblclick",this.bind(this.dblclick));
-	OZ.Event.add(this.dom.container,"mousedown",this.bind(this.mousedown));
+	OZ.Event.add(this.dom.container, "click",this.bind(this.click));
+	OZ.Event.add(this.dom.container, "dblclick",this.bind(this.dblclick));
 }
 
 SQL.Row.prototype.select = function() {
@@ -120,8 +125,7 @@ SQL.Row.prototype.setTitle = function(t) {
 }
 
 SQL.Row.prototype.click = function(e) { /* clicked on row */
-	OZ.Event.stop(e);
-	this.dispatch("rowclick",this);
+	this.dispatch("rowclick", this);
 	this.owner.owner.rowManager.select(this);
 }
 
@@ -129,11 +133,6 @@ SQL.Row.prototype.dblclick = function(e) { /* dblclicked on row */
 	OZ.Event.prevent(e);
 	OZ.Event.stop(e);
 	this.expand();
-}
-
-SQL.Row.prototype.mousedown = function(e) {
-	OZ.Event.stop(e);
-	this.owner.owner.tableManager.select(this.owner);
 }
 
 SQL.Row.prototype.update = function(data) { /* update subset of row data */
@@ -171,7 +170,9 @@ SQL.Row.prototype.down = function() { /* shift down */
 	this.redraw();
 }
 
-SQL.Row.prototype.buildContent = function() {
+SQL.Row.prototype.buildEdit = function() {
+	OZ.DOM.clear(this.dom.container);
+	
 	var elms = [];
 	this.dom.name = OZ.DOM.elm("input");
 	this.dom.name.type = "text";
@@ -197,6 +198,9 @@ SQL.Row.prototype.buildContent = function() {
 	this.dom.nll.type = "checkbox";
 	elms.push(["null",this.dom.nll]);
 	
+	this.dom.comment = OZ.DOM.elm("span",{className:"comment"});
+	this.dom.comment.innerHTML = this.data.comment;
+
 	this.dom.commentbtn = OZ.DOM.elm("input");
 	this.dom.commentbtn.type = "button";
 	this.dom.commentbtn.value = _("comment");
@@ -205,17 +209,27 @@ SQL.Row.prototype.buildContent = function() {
 
 	for (var i=0;i<elms.length;i++) {
 		var row = elms[i];
+		var tr = OZ.DOM.elm("tr");
+		var td1 = OZ.DOM.elm("td");
+		var td2 = OZ.DOM.elm("td");
 		var l = OZ.DOM.text(_(row[0])+": ");
-		this.dom.content.appendChild(l);
-		this.dom.content.appendChild(row[1]);
-		this.dom.content.appendChild(OZ.DOM.elm("br"));
+		OZ.DOM.append(
+			[tr, td1, td2],
+			[td1, l],
+			[td2, row[1]]
+		);
+		this.dom.container.appendChild(tr);
 	}
 	
-	this.dom.comment = OZ.DOM.elm("span",{className:"comment"});
-	this.dom.comment.innerHTML = this.data.comment;
-	
-	this.dom.content.appendChild(this.dom.comment);
-	this.dom.content.appendChild(this.dom.commentbtn);
+	var tr = OZ.DOM.elm("tr");
+	var td1 = OZ.DOM.elm("td");
+	var td2 = OZ.DOM.elm("td");
+	OZ.DOM.append(
+		[tr, td1, td2],
+		[td1, this.dom.comment],
+		[td2, this.dom.commentbtn]
+	);
+	this.dom.container.appendChild(tr);
 }
 
 SQL.Row.prototype.changeComment = function(e) {
@@ -228,9 +242,7 @@ SQL.Row.prototype.changeComment = function(e) {
 SQL.Row.prototype.expand = function() {
 	if (this.expanded) { return; }
 	this.expanded = true;
-	this.dom.title.style.display = "none";
-	this.dom.content.style.display = "block";
-	this.buildContent();
+	this.buildEdit();
 	this.load();
 	this.redraw();
 	this.dom.name.focus();
@@ -248,15 +260,12 @@ SQL.Row.prototype.collapse = function() {
 		nll: this.dom.nll.checked,
 		ai: this.dom.ai.checked
 	}
+	
+	OZ.DOM.clear(this.dom.container);
+	this.dom.container.appendChild(this.dom.content);
 
-	OZ.DOM.clear(this.dom.content);
-	this.dom.content.style.display = "none";
-	this.dom.title.style.display = "block";
 	this.update(data);
 	this.setTitle(this.dom.name.value);
-	/* gecko hack */
-	this.owner.moveBy(1,1);
-	this.owner.moveBy(-1,-1); 
 }
 
 SQL.Row.prototype.load = function() { /* put data to expanded form */
@@ -273,12 +282,20 @@ SQL.Row.prototype.load = function() { /* put data to expanded form */
 SQL.Row.prototype.redraw = function() {
 	var color = this.getColor();
 	this.dom.container.style.backgroundColor = color;
-	OZ.DOM.removeClass(this.dom.container,"primary");
-	OZ.DOM.removeClass(this.dom.container,"key");
-	if (this.isPrimary()) { OZ.DOM.addClass(this.dom.container,"primary"); }
-	if (this.isKey()) { OZ.DOM.addClass(this.dom.container,"key"); }
+	OZ.DOM.removeClass(this.dom.title, "primary");
+	OZ.DOM.removeClass(this.dom.title, "key");
+	if (this.isPrimary()) { OZ.DOM.addClass(this.dom.title, "primary"); }
+	if (this.isKey()) { OZ.DOM.addClass(this.dom.title, "key"); }
 	this.dom.selected.style.display = (this.selected ? "" : "none");
 	this.dom.container.title = this.data.comment;
+	
+	if (this.owner.owner.getOption("showtype")) {
+		var elm = this.getDataType();
+		var t = elm.getAttribute("sql");
+		if (this.data.size.length) { t += "("+this.data.size+")"; }
+		this.dom.typehint.innerHTML = t;
+	}
+	
 	this.owner.redraw();
 	this.owner.owner.rowManager.redraw();
 }
@@ -480,34 +497,23 @@ SQL.Relation.prototype.init = function(owner, row1, row2) {
 		var color = "#000";
 	}
 	
-	if (this.owner.vector == "svg") {
+	if (this.owner.vector) {
 		var path = document.createElementNS(this.owner.svgNS, "path");
 		path.setAttribute("stroke", color);
 		path.setAttribute("stroke-width", CONFIG.RELATION_THICKNESS);
 		path.setAttribute("fill", "none");
 		this.owner.dom.svg.appendChild(path);
 		this.dom.push(path);
-	} else if (this.owner.vector == "vml") {
-		var curve = OZ.DOM.elm("v:curve");
-		curve.strokeweight = CONFIG.RELATION_THICKNESS+"px";
-		curve.from = "0 0";
-		curve.to = "0 0";
-		curve.control1 = "10 10";
-		curve.control2 = "100 300";
-		curve.strokecolor = color;
-		curve.filled = false;
-		this.owner.dom.content.appendChild(curve);
-		this.dom.push(curve);
 	} else {
 		for (var i=0;i<3;i++) {
-			var div = OZ.DOM.elm("div",{position:"absolute",className:"relation"});
+			var div = OZ.DOM.elm("div",{position:"absolute",className:"relation",backgroundColor:color});
 			this.dom.push(div);
 			if (i & 1) { /* middle */
 				OZ.Style.set(div,{width:CONFIG.RELATION_THICKNESS+"px"});
 			} else { /* first & last */
 				OZ.Style.set(div,{height:CONFIG.RELATION_THICKNESS+"px"});
 			}
-			this.owner.dom.content.appendChild(div);
+			this.owner.dom.container.appendChild(div);
 		}
 	}
 	
@@ -529,15 +535,10 @@ SQL.Relation.prototype.hide = function() {
 }
 
 SQL.Relation.prototype.redrawNormal = function(p1, p2, half) {
-	if (this.owner.vector == "svg") {
+	if (this.owner.vector) {
 		var str = "M "+p1[0]+" "+p1[1]+" C "+(p1[0] + half)+" "+p1[1]+" ";
 		str += (p2[0]-half)+" "+p2[1]+" "+p2[0]+" "+p2[1];
 		this.dom[0].setAttribute("d",str);
-	} else if (this.owner.vector == "vml") {
-		this.dom[0].from = p1[0]+" "+p1[1];
-		this.dom[0].to = p2[0]+" "+p2[1];
-		this.dom[0].control1 = (p1[0]+half)+" "+p1[1];
-		this.dom[0].control2 = (p2[0]-half)+" "+p2[1];
 	} else {
 		this.dom[0].style.left = p1[0]+"px";
 		this.dom[0].style.top = p1[1]+"px";
@@ -554,15 +555,10 @@ SQL.Relation.prototype.redrawNormal = function(p1, p2, half) {
 }
 
 SQL.Relation.prototype.redrawSide = function(p1, p2, x) {
-	if (this.owner.vector == "svg") {
+	if (this.owner.vector) {
 		var str = "M "+p1[0]+" "+p1[1]+" C "+x+" "+p1[1]+" ";
 		str += x+" "+p2[1]+" "+p2[0]+" "+p2[1];
 		this.dom[0].setAttribute("d",str);
-	} else if (this.owner.vector == "vml") {
-		this.dom[0].from = p1[0]+" "+p1[1];
-		this.dom[0].to = p2[0]+" "+p2[1];
-		this.dom[0].control1 = x+" "+p1[1];
-		this.dom[0].control2 = x+" "+p2[1];
 	} else {
 		this.dom[0].style.left = Math.min(x,p1[0])+"px";
 		this.dom[0].style.top = p1[1]+"px";
@@ -646,7 +642,6 @@ SQL.Table.prototype.init = function(owner, name, x, y, z) {
 	SQL.Visual.prototype.init.apply(this);
 	this.data.comment = "";
 	
-	this.dom.container.className = "table";
 	this.setTitle(name);
 	this.x = x || 0;
 	this.y = y || 0;
@@ -655,12 +650,21 @@ SQL.Table.prototype.init = function(owner, name, x, y, z) {
 }
 
 SQL.Table.prototype._build = function() {
-	this.dom.mini = OZ.DOM.elm("div",{className:"mini"});
+	this.dom.container = OZ.DOM.elm("div", {className:"table"});
+	this.dom.content = OZ.DOM.elm("table");
+	var thead = OZ.DOM.elm("thead");
+	var tr = OZ.DOM.elm("tr");
+	this.dom.title = OZ.DOM.elm("td", {className:"title", colSpan:2});
 	
-	this.dom.title.className = "table_title";
-
-	OZ.DOM.append([this.dom.container,this.dom.title,this.dom.content]);
-	this.owner.map.dom.content.appendChild(this.dom.mini);
+	OZ.DOM.append(
+		[this.dom.container, this.dom.content],
+		[this.dom.content, thead],
+		[thead, tr],
+		[tr, this.dom.title]
+	);
+	
+	this.dom.mini = OZ.DOM.elm("div", {className:"mini"});
+	this.owner.map.dom.container.appendChild(this.dom.mini);
 
 	this._ec.push(OZ.Event.add(this.dom.container, "click", this.bind(this.click)));
 	this._ec.push(OZ.Event.add(this.dom.container, "dblclick", this.bind(this.dblclick)));
@@ -707,27 +711,33 @@ SQL.Table.prototype.hideRelations = function() {
 
 SQL.Table.prototype.click = function(e) {
 	OZ.Event.stop(e);
+	var t = OZ.Event.target(e);
+	this.owner.tableManager.select(this);
+	
+	if (t != this.dom.title) { return; } /* click on row */
+
 	this.dispatch("tableclick",this);
 	this.owner.rowManager.select(false);
 }
 
-SQL.Table.prototype.dblclick = function() {
-	this.owner.tableManager.edit();
+SQL.Table.prototype.dblclick = function(e) {
+	var t = OZ.Event.target(e);
+	if (t == this.dom.title) { this.owner.tableManager.edit(); }
 }
 
 SQL.Table.prototype.select = function() { 
 	if (this.selected) { return; }
 	this.selected = true;
-	OZ.DOM.addClass(this.dom.container,"table_selected");
-	OZ.DOM.addClass(this.dom.mini,"mini_selected");
+	OZ.DOM.addClass(this.dom.container, "selected");
+	OZ.DOM.addClass(this.dom.mini, "mini_selected");
 	this.redraw();
 }
 
 SQL.Table.prototype.deselect = function() { 
 	if (!this.selected) { return; }
 	this.selected = false;
-	OZ.DOM.removeClass(this.dom.container,"table_selected");
-	OZ.DOM.removeClass(this.dom.mini,"mini_selected");
+	OZ.DOM.removeClass(this.dom.container, "selected");
+	OZ.DOM.removeClass(this.dom.mini, "mini_selected");
 	this.redraw();
 }
 
@@ -813,6 +823,8 @@ SQL.Table.prototype.snap = function() {
 
 SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 	OZ.Event.stop(e);
+	var t = OZ.Event.target(e);
+	if (t != this.dom.title) { return; } /* on a row */
 	
 	/* touch? */
 	if (e.type == "touchstart") {
@@ -1057,7 +1069,7 @@ SQL.Rubberband = OZ.Class().extend(SQL.Visual);
 SQL.Rubberband.prototype.init = function(owner) {
 	this.owner = owner;
 	SQL.Visual.prototype.init.apply(this);
-	this.dom.container = this.dom.content = OZ.$("rubberband");
+	this.dom.container = OZ.$("rubberband");
 	OZ.Event.add("area", "mousedown", this.bind(this.down));
 }
 
@@ -1107,7 +1119,7 @@ SQL.Map = OZ.Class().extend(SQL.Visual);
 SQL.Map.prototype.init = function(owner) {
 	this.owner = owner;
 	SQL.Visual.prototype.init.apply(this);
-	this.dom.container = this.dom.content = OZ.$("minimap");
+	this.dom.container = OZ.$("minimap");
 	this.width = this.dom.container.offsetWidth - 2;
 	this.height = this.dom.container.offsetHeight - 2;
 	
@@ -2192,8 +2204,9 @@ SQL.Options.prototype.build = function() {
 	this.dom.optionhide = OZ.$("optionhide");
 	this.dom.optionvector = OZ.$("optionvector");
 	this.dom.optionshowsize = OZ.$("optionshowsize");
+	this.dom.optionshowtype = OZ.$("optionshowtype");
 
-	var ids = ["language","db","snap","pattern","hide","vector","showsize","optionsnapnotice","optionpatternnotice","optionsnotice","optionshowsize"];
+	var ids = ["language","db","snap","pattern","hide","vector","showsize","showtype","optionsnapnotice","optionpatternnotice","optionsnotice"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
@@ -2232,6 +2245,7 @@ SQL.Options.prototype.save = function() {
 	this.owner.setOption("hide",this.dom.optionhide.checked ? "1" : "");
 	this.owner.setOption("vector",this.dom.optionvector.checked ? "1" : "");
 	this.owner.setOption("showsize",this.dom.optionshowsize.checked ? "1" : "");
+	this.owner.setOption("showtype",this.dom.optionshowtype.checked ? "1" : "");
 }
 
 SQL.Options.prototype.click = function() {
@@ -2241,6 +2255,7 @@ SQL.Options.prototype.click = function() {
 	this.dom.optionhide.checked = this.owner.getOption("hide");
 	this.dom.optionvector.checked = this.owner.getOption("vector");
 	this.dom.optionshowsize.checked = this.owner.getOption("showsize");
+	this.dom.optionshowtype.checked = this.owner.getOption("showtype");
 }
 
 /* ------------------ minimize/restore bar ----------- */
@@ -2286,7 +2301,7 @@ SQL.Designer.prototype.init = function() {
 	SQL.Visual.prototype.init.apply(this);
 	new SQL.Toggle(OZ.$("toggle"));
 	
-	this.dom.container = this.dom.content = OZ.$("area");
+	this.dom.container = OZ.$("area");
 	this.minSize = [
 		this.dom.container.offsetWidth,
 		this.dom.container.offsetHeight
@@ -2297,15 +2312,11 @@ SQL.Designer.prototype.init = function() {
 	this.typeIndex = false;
 	this.fkTypeFor = false;
 
-	this.vector = this.getOption("vector") && (OZ.gecko || OZ.opera || OZ.webkit || OZ.ie);
+	this.vector = this.getOption("vector") && document.createElementNS;
 	if (this.vector) {
-		this.vector = "svg";
-		if (OZ.ie) { this.vector = "vml"; }
-	}
-	if (this.vector == "svg") {
 		this.svgNS = "http://www.w3.org/2000/svg";
 		this.dom.svg = document.createElementNS(this.svgNS, "svg");
-		this.dom.content.appendChild(this.dom.svg);
+		this.dom.container.appendChild(this.dom.svg);
 	}
 
 	this.flag = 2;
@@ -2327,7 +2338,7 @@ SQL.Designer.prototype.sync = function() {
 	this.height = h;
 	this.map.sync();
 
-	if (this.vector == "svg") {	
+	if (this.vector) {	
 		this.dom.svg.setAttribute("width", this.width);
 		this.dom.svg.setAttribute("height", this.height);
 	}
@@ -2406,8 +2417,7 @@ SQL.Designer.prototype.addTable = function(name, x, y) {
 	var max = this.getMaxZ();
 	var t = new SQL.Table(this, name, x, y, max+1);
 	this.tables.push(t);
-	this.dom.content.appendChild(t.dom.container);
-	t.redraw();
+	this.dom.container.appendChild(t.dom.container);
 	return t;
 }
 
@@ -2465,6 +2475,7 @@ SQL.Designer.prototype.getOption = function(name) {
 		case "xhrpath": return CONFIG.XHR_PATH || "";
 		case "snap": return 0;
 		case "showsize": return 0;
+		case "showtype": return 0;
 		case "pattern": return "%R_%T";
 		case "hide": return false;
 		case "vector": return true;
@@ -2561,6 +2572,11 @@ SQL.Designer.prototype.fromXML = function(node) {
 	for (var i=0;i<tables.length;i++) {
 		var t = this.addTable("", 0, 0);
 		t.fromXML(tables[i]);
+	}
+
+	for (var i=0;i<this.tables.length;i++) { /* ff one-pixel shift hack */
+		this.tables[i].select(); 
+		this.tables[i].deselect(); 
 	}
 
 	/* relations */

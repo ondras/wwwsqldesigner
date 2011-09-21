@@ -54,6 +54,7 @@
 	<string name="hide">Hide connectors on table drag?</string>
 	<string name="vector">Draw smooth connectors (if supported by browser)?</string>
 	<string name="showsize">Show field size in table design?</string>
+	<string name="showtype">Show field datatype in table design?</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Keys</string>
