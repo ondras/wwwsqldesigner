@@ -11,7 +11,7 @@
 	<string name="newtable">nowa tabela</string>
 	<string name="addpending">miejsce tabeli</string>
 	<string name="tablenamelabel">Nazwa</string>
-	<string name="tablecommentlabel">Komentarz</string>
+	<string name="tablecommentlabel">Opis</string>
 	
 	<!-- row management -->
 	<string name="addrow">Dodaj pole</string>
@@ -22,9 +22,9 @@
 	<string name="newrow">nowe pole</string>
 	<string name="foreigncreate">Utwórz klucz zewnętrzny</string>
 	<string name="foreignpending">kliknij w docelową tabelę</string>
-    <string name="foreignconnect">Dołącz klucz zewnętrzny</string>
-	<string name="foreignconnectpending">Kliknij w docelowe pole</string>
-    <string name="foreigndisconnect">Usuń klucz zewnętrzny</string>
+	<string name="foreignconnect">Utwórz klucz zewnętrzny</string>
+	<string name="foreignconnectpending">kliknij w docelową tabelę</string>
+	<string name="foreigndisconnect">Smazat cizí klíč</string>
 	<string name="confirmtable">Czy na pewno usunąć tabelę</string>
 	<string name="confirmrow">Czy na pewno usunąć pole</string>
 
@@ -33,9 +33,9 @@
 	<string name="type">Typ</string>
 	<string name="size">Rozmiar</string>
 	<string name="def">Domyślnie</string>
-	<string name="notnull">NOT NULL</string>
-	<string name="null">NULL</string>
-	<string name="ai">Autoincrement</string>
+	<string name="notnull">Niepuste</string>
+	<string name="null">Zerowy</string>
+	<string name="ai">Automatyczne zwiększanie o 1</string>
 	<string name="comment">Edytuj komentarz</string>
 	<string name="commenttext">Wpisz komentarz dla tego pola</string>
 	
@@ -47,13 +47,14 @@
 	<string name="language">Język</string>
 	<string name="db">Bazy danych dla nowych projektów</string>
 	<string name="optionsnotice">Niektóre opcje są zatwierdzane wyłącznie po kompletnym przeładowaniu strony. Ciasteczka muszą być akceptowane dla działania opcji.</string>
-	<string name="snap">Moduł siatki układu tabel</string>
-	<string name="optionsnapnotice">w pikselach, 0 = siatka wyłączona</string>
-	<string name="pattern">Wzorzec nazw pól zewnętrznych</string>
-	<string name="optionpatternnotice">%T = tabela główna, %R = klucz główny, %t = tabela zewnętrzna</string>
+	<string name="snap">Ustalana odległość tabel</string>
+	<string name="optionsnapnotice">W pikselach, 0 = wyłącznie ustalania</string>
+	<string name="pattern">Wzorzec dla zewnętrznych nazw</string>
+	<string name="optionpatternnotice">%T = główna tabela, %R = klucz główny, %t = zewnętrzna tabela</string>
 	<string name="hide">Ukryć złącza w tabeli podczas przeciągania?</string>
-	<string name="vector">Rysować pływające złącza (jesli są wspierane przez przeglądarkę)?</string>
-	
+	<string name="vector">Rysuj pływające złącza (jesli wsperane jest przez przeglądarkę)?</string>
+	<string name="showsize">Show field size in table design?</string>	
+	<string name="showtype">Show field datatype in table design?</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Klucze</string>
@@ -77,7 +78,8 @@
 	<string name="clientsql">Generuj SQL</string>
 	<string name="backendlabel">Serwer wejściowy:</string>
 	<string name="serversave">Zapisz</string>
-	<string name="serverload">Załaduj</string>
+	<string name="quicksave">Quicksave</string>
+	<string name="serverload">Otwórz</string>
 	<string name="serverlist">Lista pozycji</string>
 	<string name="serverimport">Importuj z DB</string>
 	<string name="serverloadprompt">Wpisz słowo kluczowe pod którym twój projekt został zapisany:</string>
@@ -85,9 +87,9 @@
 	<string name="serverimportprompt">Wpisz nazwę bazy danych do zaimportowania:</string>
 	<string name="httpresponse">Odpowiedź serwera</string>
 	<string name="http201">Zapisano</string>
-	<string name="http404">Nie znaleniono</string>
+	<string name="http404">Nie znaleziono</string>
 	<string name="http500">Wewnętrzny błąd serwera</string>
-	<string name="http501">Nie zaimplementowane</string>
+	<string name="http501">Niezaimplementowane</string>
 	<string name="http503">Serwer niedostępny</string>
 	
 	<!-- misc -->

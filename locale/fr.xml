@@ -24,7 +24,7 @@
 	<string name="foreignpending">Cliquez la destination</string>
 	<string name="foreignconnect">Connecter une clé étrangère</string>
 	<string name="foreignconnectpending">Cliquez la propriété cible</string>
-	<string name="foreigndisconnect">Supprimer une clé étrangère</string>
+	<string name="foreigndisconnect">Supprimer la clé étrangère</string>
 	<string name="confirmtable">Voulez-vous vraiment supprimer cette table ?</string>
 	<string name="confirmrow">Voulez-vous vraiment supprimer ce champ ?</string>
 
@@ -34,7 +34,7 @@
 	<string name="size">Taille</string>
 	<string name="def">Défaut</string>
 	<string name="notnull">NON NUL</string>
-	<string name="null">NULL</string>
+	<string name="null">valeur nulle</string>
 	<string name="ai">Auto-incrémental</string>
 	<string name="comment">Éditer le commentaire</string>
 	<string name="commenttext">Saisir un commentaire à propos de ce champ</string>
@@ -53,7 +53,8 @@
 	<string name="optionpatternnotice">%T = table primaire, %R = clé primaire, %t = table étrangère</string>
 	<string name="hide">Cacher les connecteurs lors du déplacement des tables ?</string>
 	<string name="vector">Dessiner des connecteurs « adoucis » (si le navigateur le supporte) ?</string>
-	
+	<string name="showsize">Afficher la taille du champ dans le schéma de table ?</string>	
+	<string name="showtype">Afficher le type du champ dans le schéma de table ?</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Clés</string>
@@ -77,6 +78,7 @@
 	<string name="clientsql">Génerer SQL</string>
 	<string name="backendlabel">Méthode du serveur :</string>
 	<string name="serversave">Enregistrer</string>
+	<string name="quicksave">Enregistrer rapidement</string>
 	<string name="serverload">Charger</string>
 	<string name="serverlist">Éléments disponibles</string>
 	<string name="serverimport">Importer d'une base de données</string>

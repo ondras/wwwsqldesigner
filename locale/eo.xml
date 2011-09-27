@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locale>
 	<!-- table management -->
-	<string name="addtable">Aldoni la tabelon</string>
+	<string name="addtable">Aldoni tabelon</string>
 	<string name="edittable">Modifi la tabelon</string>
 	<string name="removetable">Forigi la tabelon</string>
 	<string name="removetables">Forigi la tabelojn</string>
@@ -24,7 +24,7 @@
 	<string name="foreignpending">alklaki la celan tabelon</string>
 	<string name="foreignconnect">Konekti fremdan ŝlosilon</string>
 	<string name="foreignconnectpending">alklaki la celan atributon</string>
-	<string name="foreigndisconnect">Forigi la celan atributon</string>
+	<string name="foreigndisconnect">Forigi fremdan ŝlosilon</string>
 	<string name="confirmtable">Ja forigi la tabelon</string>
 	<string name="confirmrow">Ja forigi la kampon</string>
 
@@ -32,8 +32,9 @@
 	<string name="name">Nomo</string>
 	<string name="type">Tipo</string>
 	<string name="size">Grandeco</string>
-	<string name="def">Defaŭlta</string>
+	<string name="def">Defaŭlte</string>
 	<string name="notnull">NE NUL</string>
+	<string name="null">Senvalora</string>
 	<string name="ai">Memalkremento</string>
 	<string name="comment">Modifi la komenton</string>
 	<string name="commenttext">Entajpi komenton por tiu kampo</string>
@@ -42,17 +43,18 @@
 	<string name="windowok">Jes</string>
 	<string name="windowcancel">Rezigni</string>
 	<string name="throbber">Bonvolu atendi...</string>
-	<string name="options">Opcioj</string>
+	<string name="options">Agordoj</string>
 	<string name="language">Lingvo</string>
 	<string name="db">Datumbazoj por novaj kreoj</string>
-	<string name="optionsnotice">Kelkaj opcioj estas aplikotaj post plena ŝarĝo de paĝo. Kuketoj devas esti ebligataj por ke la opcioj funkcias.</string>
+	<string name="optionsnotice">Kelkaj agordoj estas aplikotaj post plena ŝarĝo de paĝo. Kuketoj devas esti ebligataj por ke la agordoj funkcias.</string>
 	<string name="snap">Kapto-distanco de tabelo</string>
 	<string name="optionsnapnotice">En rastrumeroj, 0 = malebligi kapton</string>
 	<string name="pattern">Motivo por fremdaj nomoj</string>
 	<string name="optionpatternnotice">%T = ĉefa tabelo, %R = ĉefa ŝlosilo, %t = fremda tabelo</string>
 	<string name="hide">Ĉu kaŝi konektiloj dum treno de tabelo?</string>
 	<string name="vector">Desegni glatajn konektilojn (se subtenata de retumilo)?</string>
-	
+	<string name="showsize">Show field size in table design?</string>	
+	<string name="showtype">Show field datatype in table design?</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Klavoj</string>
@@ -60,7 +62,7 @@
 	<string name="keytypelabel">Tipo:</string>
 	<string name="keynamelabel">Nomo:</string>
 	<string name="keyfieldslabel">Kampoj en klavo</string>
-	<string name="keyavaillabel">Disponeblaj ŝlosilon</string>
+	<string name="keyavaillabel">Disponeblaj kampoj</string>
 	<string name="keyedit">Modifi ŝlosilon</string>
 	<string name="keyadd">Aldoni ŝlosilon</string>
 	<string name="keyremove">Forigi ŝlosilon</string>
@@ -76,6 +78,7 @@
 	<string name="clientsql">Krei SQL</string>
 	<string name="backendlabel">Servila administro:</string>
 	<string name="serversave">Konservi</string>
+	<string name="quicksave">Quicksave</string>
 	<string name="serverload">Ŝargi</string>
 	<string name="serverlist">Listigi erojn</string>
 	<string name="serverimport">Importi el datumbazo</string>
