@@ -119,9 +119,7 @@ SQL.Row.prototype.setTitle = function(t) {
 		if (tt != r.row2.getTitle()) { r.row2.setTitle(tt); }
 	}
 	
-	var title = t;
-	if (SQL.Designer.getOption("showsize") && this.data.size) { title += " (" + this.data.size + ")"; }
-	SQL.Visual.prototype.setTitle.apply(this, [title]);
+	SQL.Visual.prototype.setTitle.apply(this, [t]);
 }
 
 SQL.Row.prototype.click = function(e) { /* clicked on row */
@@ -289,13 +287,17 @@ SQL.Row.prototype.redraw = function() {
 	this.dom.selected.style.display = (this.selected ? "" : "none");
 	this.dom.container.title = this.data.comment;
 	
+	var typehint = [];
 	if (this.owner.owner.getOption("showtype")) {
 		var elm = this.getDataType();
-		var t = elm.getAttribute("sql");
-		if (this.data.size.length) { t += "("+this.data.size+")"; }
-		this.dom.typehint.innerHTML = t;
+		typehint.push(elm.getAttribute("sql"));
 	}
 	
+	if (this.owner.owner.getOption("showsize") && this.data.size) {
+		typehint.push("(" + this.data.size + ")");
+	}
+	
+	this.dom.typehint.innerHTML = typehint.join(" ");
 	this.owner.redraw();
 	this.owner.owner.rowManager.redraw();
 }
