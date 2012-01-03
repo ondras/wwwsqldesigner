@@ -2640,4 +2640,4 @@ SQL.Designer.prototype.getFKTypeFor = function(typeIndex) {
 	return this.fkTypeFor[typeIndex];
 }
 
-OZ.Event.add(window, "beforeunload", OZ.Event.prevent);
+OZ.Event.add(window, "beforeunload", function(e) { OZ.Event.prevent(e); return ""; });
