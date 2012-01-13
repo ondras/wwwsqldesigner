@@ -86,6 +86,15 @@
 				<xsl:text></xsl:text>
 			</xsl:if>
 
+			<xsl:if test="comment">
+				<xsl-text> COMMENT '</xsl-text>
+				<xsl:call-template name="replace-substring">
+					<xsl:with-param name="value" select="substring(comment, 1, 60)" />
+					<xsl:with-param name="from" select='"&apos;"' />
+					<xsl:with-param name="to" select='"&apos;&apos;"' />
+				</xsl:call-template>
+				<xsl-text>'</xsl-text>
+			</xsl:if>
 
 			<xsl:if test="not (position()=last())">
 				<xsl:text>,
@@ -120,7 +129,7 @@
 
 
     <xsl:if test="comment">
-<xsl-text> COMMENT='</xsl-text>
+<xsl-text> COMMENT '</xsl-text>
             <xsl:call-template name="replace-substring">
                     <xsl:with-param name="value" select="substring(comment, 1, 60)" />
                     <xsl:with-param name="from" select='"&apos;"' />
