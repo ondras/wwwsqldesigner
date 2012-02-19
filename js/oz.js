@@ -1,6 +1,7 @@
-/* (c) 2007 - now() Ondrej Zara, 1.6 */
+/* (c) 2007 - now() Ondrej Zara, 1.7 */
 var OZ = {
 	$:function(x) { return typeof(x) == "string" ? document.getElementById(x) : x; },
+	select: function(x) { return document.querySelectorAll(x); },
 	opera:!!window.opera,
 	ie:!!document.attachEvent && !window.opera,
 	gecko:!!document.getAnonymousElementByAttribute,
@@ -13,35 +14,41 @@ var OZ = {
 		add:function(elm,event,cb) {
 			var id = OZ.Event._id++;
 			var element = OZ.$(elm);
-			var fnc = cb;
-			if (element) {
-				if (element.addEventListener) {
-					element.addEventListener(event,fnc,false);
-				} else if (element.attachEvent) {
-					fnc = function() { return cb.apply(elm,arguments); }
-					element.attachEvent("on"+event,fnc);
+			var fnc = (element && element.attachEvent ? function() { return cb.apply(element,arguments); } : cb);
+			var rec = [element,event,fnc];
+			var parts = event.split(" ");
+			while (parts.length) {
+				var e = parts.pop();
+				if (element) {
+					if (element.addEventListener) {
+						element.addEventListener(e,fnc,false);
+					} else if (element.attachEvent) {
+						element.attachEvent("on"+e,fnc);
+					}
 				}
+				if (!(e in OZ.Event._byName)) { OZ.Event._byName[e] = {}; }
+				OZ.Event._byName[e][id] = rec;
 			}
-			if (!(event in OZ.Event._byName)) { OZ.Event._byName[event] = {}; }
-			var obj = OZ.Event._byName[event];
-			obj[id] = [element,event,fnc];
-			OZ.Event._byID[id] = obj;
+			OZ.Event._byID[id] = rec;
 			return id;
 		},
 		remove:function(id) {
-			var obj = OZ.Event._byID[id];
-			if (!obj) { return; }
-			var e = obj[id];
-			var elm = e[0];
-			if (elm) {
-				if (elm.removeEventListener) {
-					elm.removeEventListener(e[1],e[2],false);
-				} else if (elm.detachEvent) {
-					elm.detachEvent("on"+e[1],e[2]);
+			var rec = OZ.Event._byID[id];
+			if (!rec) { return; }
+			var elm = rec[0];
+			var parts = rec[1].split(" ");
+			while (parts.length) {
+				var e = parts.pop();
+				if (elm) {
+					if (elm.removeEventListener) {
+						elm.removeEventListener(e,rec[2],false);
+					} else if (elm.detachEvent) {
+						elm.detachEvent("on"+e,rec[2]);
+					}
 				}
+				delete OZ.Event._byName[e][id];
 			}
 			delete OZ.Event._byID[id];
-			delete obj[id];
 		},
 		stop:function(e) { e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true; },
 		prevent:function(e) { e.preventDefault ? e.preventDefault() : e.returnValue = false; },
@@ -127,12 +134,8 @@ var OZ = {
 			var y = document.documentElement.scrollTop || document.body.scrollTop || 0;
 			return [x,y];
 		},
-		win:function() {
-			var node = (document.compatMode == "CSS1Compat" ? document.documentElement : document.body);
-			if (OZ.opera && parseFloat(navigator.appVersion) < 9.5) { node = document.body; }
-			var x = node.clientWidth;
-			var y = node.clientHeight;
-			return [x,y];
+		win:function(avail) {
+			return (avail ? [window.innerWidth,window.innerHeight] : [document.documentElement.clientWidth,document.documentElement.clientHeight]);
 		},
 		hasClass:function(node, className) {
 			var cn = OZ.$(node).className;
