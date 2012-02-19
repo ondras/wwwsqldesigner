@@ -1475,6 +1475,9 @@ SQL.IO.prototype.importresponse = function(data, code) {
 SQL.IO.prototype.press = function(e) {
 	switch (e.keyCode) {
 		case 113:
+			if (OZ.opera) {
+				e.preventDefault();
+			}
 			this.quicksave(e);
 		break;
 	}
