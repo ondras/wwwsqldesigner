@@ -67,6 +67,7 @@
 						(SELECT pg_catalog.obj_description(c.oid, 'pg_class')) as comment
 				FROM pg_catalog.pg_class c 
 				WHERE c.relname !~ '^(pg_|sql_)' AND relkind = 'r'
+				ORDER BY table_name;
 		;";
 
 		$result = pg_query($conn, $qstr);
@@ -80,6 +81,7 @@
 				SELECT *, col_description(".$table_oid.",ordinal_position) as column_comment 
 				FROM information_schema.columns 
 				WHERE table_name = '".$table."'
+				ORDER BY ordinal_position
 			;";
 			$result2 = pg_query($conn, $qstr);
 			while ($row = pg_fetch_array($result2)) {
@@ -140,6 +142,10 @@
 				if ($keyname != $keyname1) {
 					if ($keyname1 != "") { $xml .= '</key>'; }
 					if ($row2["constraint_type"] == "PRIMARY KEY") { $row2["constraint_type"] = "PRIMARY"; }
+					if (endsWith($keyname, '_not_null') and $row2["constraint_type"] === "CHECK") {
+						$keyname = "";
+						continue;
+					}
 					$xml .= '<key name="'.$keyname.'" type="'.$row2["constraint_type"].'">';
 					$xml .= isset($row2["column_name"]) ? '<part>'.$row2["column_name"].'</part>' : "";
 				} else {
@@ -198,6 +204,11 @@
 		$arr[] = $xml;
 		$arr[] = '</sql>';
 		return implode("\n",$arr);
+	}
+
+	function endsWith($haystack, $needle)
+	{
+		return (substr($haystack, -strlen($needle)) === $needle);
 	}
 
 	$a = (isset($_GET["action"]) ? $_GET["action"] : false);
