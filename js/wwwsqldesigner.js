@@ -1245,7 +1245,7 @@ SQL.IO.prototype.init = function(owner) {
 		container:OZ.$("io")
 	};
 
-	var ids = ["saveload", "clientsave", "clientload", "clientsql", 
+	var ids = ["saveload","clientlocalsave", "clientsave", "clientlocalload","clientload", "clientsql", 
 				"quicksave", "serversave", "serverload",
 				"serverlist", "serverimport"];
 	for (var i=0;i<ids.length;i++) {
@@ -1276,7 +1276,9 @@ SQL.IO.prototype.init = function(owner) {
 	this.importresponse = this.bind(this.importresponse);
 	
 	OZ.Event.add(this.dom.saveload, "click", this.bind(this.click));
+	OZ.Event.add(this.dom.clientlocalsave, "click", this.bind(this.clientlocalsave));
 	OZ.Event.add(this.dom.clientsave, "click", this.bind(this.clientsave));
+	OZ.Event.add(this.dom.clientlocalload, "click", this.bind(this.clientlocalload));
 	OZ.Event.add(this.dom.clientload, "click", this.bind(this.clientload));
 	OZ.Event.add(this.dom.clientsql, "click", this.bind(this.clientsql));
 	OZ.Event.add(this.dom.quicksave, "click", this.bind(this.quicksave));
@@ -1353,6 +1355,67 @@ SQL.IO.prototype.clientload = function() {
 	}
 	this.fromXML(xmlDoc);
 }
+
+SQL.IO.prototype.clientlocalsave = function() {
+	if (!window.localStorage) { 
+		alert("Sorry, your browser does not seem to support localStorage.");
+		return;
+	}
+	
+	var xml = this.owner.toXML();
+	if (xml.length >= (5*1024*1024)/2) { /* this is a very big db structure... */
+		alert("Warning: your database structure is above 5 megabytes in size, this is above the localStorage single key limit allowed by some browsers, example Mozilla Firefox 10");
+		return;
+	}
+
+	var key = prompt(_("serversaveprompt"), this._name) || "default";
+	key = "wwwsqldesigner_databases_"+key;
+	
+	try {
+		localStorage.setItem(key, xml);
+		if (localStorage.getItem(key) != xml) { throw new Error("Content verification failed"); }
+	} catch (e) {
+		alert("Error saving database structure to localStorage! ("+e.message+")");
+	}
+}
+
+
+
+SQL.IO.prototype.clientlocalload = function() {
+	if (!window.localStorage) { 
+		alert("Sorry, your browser does not seem to support localStorage.");
+		return;
+	}
+	
+	var key = prompt(_("serverloadprompt"), this._name) || "default";
+	key = "wwwsqldesigner_databases_"+key;
+	
+	try {
+		var xml = localStorage.getItem(key);
+		if (!xml) { throw new Error("No data available"); }
+	} catch (e) {
+		alert("Error loading database structure from localStorage! ("+e.message+")");
+		return;
+	}
+	
+	try {
+		if (window.DOMParser) {
+			var parser = new DOMParser();
+			var xmlDoc = parser.parseFromString(xml, "text/xml");
+		} else if (window.ActiveXObject) {
+			var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+			xmlDoc.loadXML(xml);
+		} else {
+			throw new Error("No XML parser available.");
+		}
+	} catch(e) { 
+		alert(_("xmlerror")+': '+e.message);
+		return;
+	}
+
+	this.fromXML(xmlDoc);
+}
+
 
 SQL.IO.prototype.clientsql = function() {
 	var bp = this.owner.getOption("staticpath");
@@ -1924,6 +1987,7 @@ SQL.KeyManager.prototype.build = function() {
 	}
 	
 	var types = ["PRIMARY","INDEX","UNIQUE","FULLTEXT"];
+	OZ.DOM.clear(this.dom.type);
 	for (var i=0;i<types.length;i++) {
 		var o = OZ.DOM.elm("option");
 		o.innerHTML = types[i];
@@ -2219,6 +2283,7 @@ SQL.Options.prototype.build = function() {
 	}
 	
 	var ls = CONFIG.AVAILABLE_LOCALES;
+	OZ.DOM.clear(this.dom.optionlocale);
 	for (var i=0;i<ls.length;i++) {
 		var o = OZ.DOM.elm("option");
 		o.value = ls[i];
@@ -2228,6 +2293,7 @@ SQL.Options.prototype.build = function() {
 	}
 
 	var dbs = CONFIG.AVAILABLE_DBS;
+	OZ.DOM.clear(this.dom.optiondb);
 	for (var i=0;i<dbs.length;i++) {
 		var o = OZ.DOM.elm("option");
 		o.value = dbs[i];

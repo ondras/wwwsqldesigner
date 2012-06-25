@@ -75,6 +75,8 @@
 	<string name="output">Vstup / Výstup</string>
 	<string name="clientsave">Uložit XML</string>
 	<string name="clientload">Načíst XML</string>
+	<string name="clientlocalsave">Uložit v prohlížeči</string>
+	<string name="clientlocalload">Načíst z prohlížeče</string>
 	<string name="clientsql">Generovat SQL</string>
 	<string name="backendlabel">Server backend:</string>
 	<string name="serversave">Uložit</string>
