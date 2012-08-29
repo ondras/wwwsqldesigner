@@ -481,27 +481,30 @@ SQL.Row.prototype.enter = function(e) {
 SQL.Relation = OZ.Class().extend(SQL.Visual);
 SQL.Relation._counter = 0;
 SQL.Relation.prototype.init = function(owner, row1, row2) {
-	this.constructor._counter++;
 	this.owner = owner;
 	this.row1 = row1;
 	this.row2 = row2;
+	this.color = "#000";
 	this.hidden = false;
 	SQL.Visual.prototype.init.apply(this);
-	
+
+	/* if one of the rows already has relations, inherit color */
+	var all = row1.relations.concat(row2.relations);
+	if (all.length) { /* inherit */
+		this.color = all[0].getColor();
+	} else if (CONFIG.RELATION_COLORS) { /* pick next */
+		this.constructor._counter++;
+		var colorIndex = this.constructor._counter - 1;
+		this.color = CONFIG.RELATION_COLORS[colorIndex % CONFIG.RELATION_COLORS.length];
+	}
+
 	this.row1.addRelation(this);
 	this.row2.addRelation(this);
-	
 	this.dom = [];
-	if (CONFIG.RELATION_COLORS) {
-		var colorIndex = this.constructor._counter - 1;
-		var color = CONFIG.RELATION_COLORS[colorIndex % CONFIG.RELATION_COLORS.length];
-	} else {
-		var color = "#000";
-	}
 	
 	if (this.owner.vector) {
 		var path = document.createElementNS(this.owner.svgNS, "path");
-		path.setAttribute("stroke", color);
+		path.setAttribute("stroke", this.color);
 		path.setAttribute("stroke-width", CONFIG.RELATION_THICKNESS);
 		path.setAttribute("fill", "none");
 		this.owner.dom.svg.appendChild(path);
@@ -511,15 +514,19 @@ SQL.Relation.prototype.init = function(owner, row1, row2) {
 			var div = OZ.DOM.elm("div",{position:"absolute",className:"relation",backgroundColor:color});
 			this.dom.push(div);
 			if (i & 1) { /* middle */
-				OZ.Style.set(div,{width:CONFIG.RELATION_THICKNESS+"px"});
+				OZ.Style.set(div, {width:CONFIG.RELATION_THICKNESS+"px"});
 			} else { /* first & last */
-				OZ.Style.set(div,{height:CONFIG.RELATION_THICKNESS+"px"});
+				OZ.Style.set(div, {height:CONFIG.RELATION_THICKNESS+"px"});
 			}
 			this.owner.dom.container.appendChild(div);
 		}
 	}
 	
 	this.redraw();
+}
+
+SQL.Relation.prototype.getColor = function() {
+	return this.color;
 }
 
 SQL.Relation.prototype.show = function() {
