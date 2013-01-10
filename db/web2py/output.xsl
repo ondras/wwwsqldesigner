@@ -85,10 +85,11 @@
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="@name"/>
-							<xsl:text>", dbOBJECT.</xsl:text>
+							<xsl:text>", "reference </xsl:text>
 							<xsl:for-each select="relation">
 								<xsl:value-of select="@table"/>
 							</xsl:for-each>
+							<xsl:text>"</xsl:text>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:when>
@@ -119,7 +120,7 @@
 		<xsl:text>    dbOBJECT = DAL('gae')                           # connect to Google BigTable &#xa;</xsl:text>
 		<xsl:text>    session.connect(request, response, db=dbOBJECT) # and store sessions and tickets there &#xa;</xsl:text>
 		<xsl:text>else:                                               # else use a normal relational database &#xa;</xsl:text>
-		<xsl:text>    dbOBJECT = SQLDB("sqlite://dbOBJECT.db")&#xa;&#xa;</xsl:text>
+		<xsl:text>    dbOBJECT = DAL("sqlite://dbOBJECT.db")&#xa;&#xa;</xsl:text>
 		<!-- doing two pass: first ignore tables with relations as they will raise exception if table referenced still does not exist (not instantiated) -->
 		<!-- this is not bullet proff but should be sufficient for small projects will be in TODO :) -->
 		<xsl:for-each select="table">
