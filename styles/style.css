@@ -5,6 +5,11 @@ body {
 	margin: 0px;
 	background: url(../images/back.gif) fixed; 
 	visibility: hidden;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #area {
