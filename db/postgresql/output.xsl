@@ -56,7 +56,7 @@
 			</xsl:if> 
 			
 			<xsl:if test="default">
-                <xsl:if test=" default != 'NULL' and default != NULL ">
+                <xsl:if test=" default != 'NULL' ">
                     <xsl:text>DEFAULT </xsl:text>
                     <xsl:value-of select="default" />
                     <xsl:text> </xsl:text>
