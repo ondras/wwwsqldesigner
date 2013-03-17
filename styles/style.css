@@ -3,7 +3,7 @@ body {
 	font-size: small;
 	padding: 0px;
 	margin: 0px;
-	background: url(../images/back.gif) fixed; 
+  background: #FFF;
 	visibility: hidden;
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
@@ -14,6 +14,7 @@ body {
 
 #area {
 	position: relative;
+	background: transparent url(../images/back.png);
 	width: 2000px;
 	height: 2000px;
 }
