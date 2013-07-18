@@ -968,6 +968,8 @@ SQL.Table.prototype.move = function(e) { /* mousemove */
 	for (var i=0;i<t.active.length;i++) {
 		var x = t.x[i] + event.clientX;
 		var y = t.y[i] + event.clientY;
+		x = Math.max(x, 0);
+		y = Math.max(y, 0);
 		t.active[i].moveTo(x,y);
 	}
 }
