@@ -1377,8 +1377,9 @@ SQL.IO.prototype.clientlocalsave = function() {
 		return;
 	}
 
-	var key = prompt(_("serversaveprompt"), this._name) || "default";
-	key = "wwwsqldesigner_databases_"+key;
+	var key = prompt(_("serversaveprompt"), this._name);
+	if (key === null) { return; }
+	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
 		localStorage.setItem(key, xml);
@@ -1396,8 +1397,9 @@ SQL.IO.prototype.clientlocalload = function() {
 		return;
 	}
 	
-	var key = prompt(_("serverloadprompt"), this._name) || "default";
-	key = "wwwsqldesigner_databases_"+key;
+	var key = prompt(_("serverloadprompt"), this._name);
+	if (key === null) { return; }
+	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
 		var xml = localStorage.getItem(key);
