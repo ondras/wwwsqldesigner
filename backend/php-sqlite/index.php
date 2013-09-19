@@ -1,4 +1,6 @@
 <?php
+	$pdo = null;
+
 	function setup_saveloadlist() {
 		define( "FILE" , "wwwsqldesigner.sqlite" );
 		define( "TABLE" , "wwwsqldesigner" );
@@ -8,9 +10,11 @@
         die;
 	}
 	function connect() {
+		global $pdo;
+		$initReq = false;
         if( !file_exists( FILE ) ) $initReq = true;
-		$GLOBALS['sqlConnect'] = sqlite_open(  FILE , 0666 );
-		if( !$GLOBALS['sqlConnect'] ) return false;
+        $pdo = new PDO("sqlite:" . FILE);
+		if( !$pdo ) return false;
         if( $initReq ) {
             $initSQL = "CREATE TABLE wwwsqldesigner (
                           keyword varchar(30) NOT NULL default '',
@@ -18,8 +22,8 @@
                           dt DATETIME DEFAULT CURRENT_TIMESTAMP ,
                           PRIMARY KEY ( keyword )
                         );";
-            $res = sqlite_exec( $initSQL , $GLOBALS['sqlConnect'] );
-            return $res;
+            $res = $pdo->exec( $initSQL );
+            return ($res !== false);
         }
 		return true;
 	}
@@ -35,9 +39,10 @@
 				header( 'HTTP/1.0 503 Service Unavailable' );
 				break;
 			}
-			$result = sqlite_query( "SELECT keyword FROM ".TABLE." ORDER BY dt DESC" , $GLOBALS['sqlConnect'] );
-			if( sqlite_num_rows( $result )>0 ) {
-                while( $row = sqlite_fetch_array( $result ) ) {
+			$result = $pdo->query( "SELECT keyword FROM ".TABLE);
+			$data = $result->fetchAll();
+			if( count($data) > 0 ) {
+				foreach ($data as $row) {
                     echo $row['keyword']."\n";
                 }
             } else {
@@ -50,26 +55,29 @@
 				header( 'HTTP/1.0 503 Service Unavailable' );
 				break;
 			}
+
 			$keyword = ( isset( $_GET['keyword'] ) ? $_GET['keyword'] : '' );
-			$keyword = sqlite_escape_string( $keyword );
 			$data = file_get_contents( "php://input" );
 			if( get_magic_quotes_gpc()
                 || get_magic_quotes_runtime() ) {
 			   $data = stripslashes( $data );
 			}
-			$data = sqlite_escape_string( $data );
-			$r = sqlite_query( "SELECT * FROM ".TABLE." WHERE keyword = '$keyword'" , $GLOBALS['sqlConnect'] );
-			if( sqlite_num_rows($r)>0 ) {
-				$res = sqlite_query( "UPDATE ".TABLE." SET data = '$data' WHERE keyword = '$keyword'" , $GLOBALS['sqlConnect'] );
+
+			$statement = $pdo->prepare("SELECT COUNT(*) AS c FROM ".TABLE." WHERE keyword = ?");
+			$statement->execute(array($keyword));
+			$result = $statement->fetchAll();
+			if ($result[0]["c"] > 0) {
+				$result = $pdo->prepare( "UPDATE ".TABLE." SET data = ? WHERE keyword = ?")->execute(array($data, $keyword));
 			} else {
-				$res = sqlite_query( "INSERT INTO ".TABLE." (keyword, data) VALUES ('$keyword', '$data')" , $GLOBALS['sqlConnect'] );
+				$result = $pdo->prepare( "INSERT INTO ".TABLE." (keyword, data) VALUES (?, ?)")->execute(array($keyword, $data));
 			}
-			if( !$res ) {
+
+			if( !$result ) {
 				header( 'HTTP/1.0 500 Internal Server Error' );
 			} else {
 				header( 'HTTP/1.0 201 Created' );
 			}
-            break;
+        break;
 		case 'load' :
 			setup_saveloadlist();
 			if ( !connect() ) {
@@ -77,14 +85,16 @@
 				break;
 			}
 			$keyword = ( isset( $_GET['keyword'] ) ? $_GET['keyword'] : '' );
-			$keyword = sqlite_escape_string( $keyword );
-			$result = sqlite_query( "SELECT data FROM ".TABLE." WHERE keyword = '$keyword'" , $GLOBALS['sqlConnect'] );
-			$row = sqlite_fetch_array( $result );
-			if( !$row ) {
+
+			$statement = $pdo->prepare( "SELECT data FROM ".TABLE." WHERE keyword = ?");
+			$statement->execute(array($keyword));
+			$data = $statement->fetchAll();
+
+			if( !count($data) ) {
 				header( 'HTTP/1.0 404 Not Found' );
 			} else {
 				header( 'Content-type: text/xml' );
-				echo $row['data'];
+				echo $data[0]['data'];
 			}
             break;
 		case 'import' :
