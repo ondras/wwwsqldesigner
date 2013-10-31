@@ -68,7 +68,7 @@ class LayerMYSQL extends AbstractLayer
         $req = '
                 SELECT
                     '.self::protect('TABLE_NAME').' as '.self::protect('name').',
-                    '.self::protect('TABLE_COMMENT').' as '.self::protect('comment').',
+                    '.self::protect('TABLE_COMMENT').' as '.self::protect('comment').'
                 FROM '.self::protect('TABLES').'
                 WHERE
                     '.self::protect('TABLE_SCHEMA').' = ?
@@ -148,7 +148,7 @@ class LayerMYSQL extends AbstractLayer
                     '.self::protect('TABLE_NAME').' as '.self::protect('table').',
                     '.self::protect('INDEX_NAME').' as '.self::protect('name').',
                     '.self::protect('INDEX_TYPE').' as '.self::protect('type').',
-                    '.self::protect('COLUMN_NAME').' as '.self::protect('column').'
+                    '.self::protect('COLUMN_NAME').' as '.self::protect('column').',
                     '.self::protect('NON_UNIQUE').' as '.self::protect('non_unique').'
                 FROM '.self::protect('STATISTICS').'
                 WHERE
@@ -170,9 +170,12 @@ class LayerMYSQL extends AbstractLayer
             self::$keys[$index['table']][$index['name']]['columns'][] = $index['column'];
         }
 
-        return self::$keys[$table['name']];
+		if (isset(self::$keys[$table['name']])) {
+			return self::$keys[$table['name']];
+		} else {
+			return array();
+		}
     }
-
 }
 
 ?>
