@@ -1352,7 +1352,7 @@ SQL.IO.prototype.clientload = function() {
 		if (window.DOMParser) {
 			var parser = new DOMParser();
 			var xmlDoc = parser.parseFromString(xml, "text/xml");
-		} else if (window.ActiveXObject) {
+		} else if (window.ActiveXObject || "ActiveXObject" in window) {
 			var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
 			xmlDoc.loadXML(xml);
 		} else {
@@ -1413,7 +1413,7 @@ SQL.IO.prototype.clientlocalload = function() {
 		if (window.DOMParser) {
 			var parser = new DOMParser();
 			var xmlDoc = parser.parseFromString(xml, "text/xml");
-		} else if (window.ActiveXObject) {
+		} else if (window.ActiveXObject || "ActiveXObject" in window) {
 			var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
 			xmlDoc.loadXML(xml);
 		} else {
@@ -1447,7 +1447,7 @@ SQL.IO.prototype.finish = function(xslDoc) {
 			xsl.importStylesheet(xslDoc);
 			var result = xsl.transformToDocument(xmlDoc);
 			sql = result.documentElement.textContent;
-		} else if (window.ActiveXObject) {
+		} else if (window.ActiveXObject || "ActiveXObject" in window) {
 			var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
 			xmlDoc.loadXML(xml);
 			sql = xmlDoc.transformNode(xslDoc);
