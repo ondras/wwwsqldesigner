@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <datatypes db="mysql">
 	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" quote="" />
 	 	<type label="TINYINT" length="0" sql="TINYINT" quote="" />
 	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote="" />
 	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote="" />
 	 	<type label="INT" length="0" sql="INT" quote="" />
-		<type label="Integer" length="0" sql="INTEGER" quote="" />
 		<type label="BIGINT" length="0" sql="BIGINT" quote="" />
 		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote="" />
 		<type label="Single precision" length="0" sql="FLOAT" quote="" />
