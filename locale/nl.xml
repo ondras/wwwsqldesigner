@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Tabel toevoegen</string>
+	<string name="edittable">Bewerk tabel</string>
+	<string name="removetable">Verwijder tabel</string>
+	<string name="removetables">Verwijder tabellen</string>
+	<string name="aligntables">Uitlijnen tabellen</string>
+	<string name="cleartables">Tabellen schonen</string>
+	<string name="confirmall">Wilt u echt alle tabellen verwijderen</string>
+	<string name="newtable">Nieuwe tabel</string>
+	<string name="addpending">Positioneer tabel</string>
+	<string name="tablenamelabel">Naam</string>
+	<string name="tablecommentlabel">Opmerkingen</string>
+	
+	<!-- row management -->
+	<string name="addrow">Veld toevoegen</string>
+	<string name="editrow">Veld bewerken</string>
+	<string name="removerow">Veld verwijderen</string>
+	<string name="uprow">Op</string>
+	<string name="downrow">Neer</string>
+	<string name="newrow">nieuwe veld</string>
+	<string name="foreigncreate">Maak relatie</string>
+	<string name="foreignpending">Click op doeltabel</string>
+	<string name="foreignconnect">Verbind relatie</string>
+	<string name="foreignconnectpending">Click op doelveld</string>
+	<string name="foreigndisconnect">Verwijder relatie</string>
+	<string name="confirmtable">Tabel verwijderen?</string>
+	<string name="confirmrow">Veld verwijderen?</string>
+
+	<!-- row edit -->
+	<string name="name">Naam</string>
+	<string name="type">Type</string>
+	<string name="size">Omvang</string>
+	<string name="def">Standaard</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincrement</string>
+	<string name="comment">Bewerk opmerkingen</string>
+	<string name="commenttext">Geef opmerkingen voor dit veld</string>
+	
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Annuleer</string>
+	<string name="throbber">Even geduld...</string>
+	<string name="options">Opties</string>
+	<string name="language">Taal</string>
+	<string name="db">Database voor nieuwe ontwerpen</string>
+	<string name="optionsnotice">Sommige opties worden pas geldig na het volledig opnieuw laden van de pagina. Cookies moeten zijn toegestaan voor een juiste werking.</string>
+	<string name="snap">Tabel snap afstand</string>
+	<string name="optionsnapnotice">In pixels, 0 = uitzetten snap</string>
+	<string name="pattern">Patroon voor relatie velden</string>
+	<string name="optionpatternnotice">%T = primaire tabel, %R = primaire sleutel, %t = verwezen tabel.</string>
+	<string name="hide">Verberg relaties tijdens verplaatsen van de tabel?</string>
+	<string name="vector">Teken gekromde relaties (als de browser dit ondersteund)?</string>
+	<string name="showsize">Toon veld omvang in tabelontwerp?</string>
+	<string name="showtype">Toon veld type in tabelontwerp?</string>
+	
+	<!-- keys -->
+	<string name="tablekeys">Sleutels</string>
+	<string name="keyslistlabel">Sleutels in tabel "%s"</string>
+	<string name="keytypelabel">Type:</string>
+	<string name="keynamelabel">Naam:</string>
+	<string name="keyfieldslabel">Velden in sleutel</string>
+	<string name="keyavaillabel">Beschikbare velden</string>
+	<string name="keyedit">Bewerk sleutel</string>
+	<string name="keyadd">Voeg sleutel toe</string>
+	<string name="keyremove">Verwijder sleutel</string>
+	
+	<!-- io -->
+	<string name="saveload">Opslaan / laden</string>
+	<string name="empty">Please paste XML data into the text area below and try again.</string>
+	<string name="client">Lokaal</string>
+	<string name="server">Server</string>
+	<string name="output">Input / Output</string>
+	<string name="clientsave">XML Opslaan</string>
+	<string name="clientload">XML Laden</string>
+	<string name="clientlocalsave">Opslaan in Browser</string>
+	<string name="clientlocalload">Laden uit Browser</string>
+	<string name="clientsql">Genereer SQL</string>
+	<string name="backendlabel">Server:</string>
+	<string name="serversave">Opslaan</string>
+	<string name="quicksave">Snel opslaan</string>
+	<string name="serverload">Laden</string>
+	<string name="serverlist">Toon lijst</string>
+	<string name="serverimport">Import uit DB</string>
+	<string name="serverloadprompt">Enter keyword under which your design was saved:</string>
+	<string name="serversaveprompt">Enter keyword under which your design will be saved:</string>
+	<string name="serverimportprompt">Enter name of database to be imported:</string>
+	<string name="httpresponse">Reactie van server</string>
+	<string name="http201">Opgeslagen</string>
+	<string name="http404">Niet gevonden</string>
+	<string name="http500">Interne Server Fout</string>
+	<string name="http501">Niet geimplementeerd</string>
+	<string name="http503">Niet beschikbaar</string>
+	
+	<!-- misc -->
+	<string name="xmlerror">XML fout</string>
+	<string name="docs">Documentatie</string>
+	
+</locale>
