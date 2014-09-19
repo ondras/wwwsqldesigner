@@ -75,6 +75,9 @@
 	<string name="output">Entrée / Sortie</string>
 	<string name="clientsave">Enregistrer XML</string>
 	<string name="clientload">Charger XML</string>
+	<string name="clientlocalsave">Enregistrer dans le navigateur</string>
+	<string name="clientlocalload">Charger depuis le navigateur</string>
+	<string name="clientlocallist">Lister depuis le navigateur</string>
 	<string name="clientsql">Génerer SQL</string>
 	<string name="backendlabel">Méthode du serveur :</string>
 	<string name="serversave">Enregistrer</string>

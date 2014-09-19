@@ -1254,7 +1254,7 @@ SQL.IO.prototype.init = function(owner) {
 		container:OZ.$("io")
 	};
 
-	var ids = ["saveload","clientlocalsave", "clientsave", "clientlocalload","clientload", "clientsql", 
+	var ids = ["saveload","clientlocalsave", "clientsave", "clientlocalload", "clientlocallist","clientload", "clientsql", 
 				"quicksave", "serversave", "serverload",
 				"serverlist", "serverimport"];
 	for (var i=0;i<ids.length;i++) {
@@ -1288,6 +1288,7 @@ SQL.IO.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.clientlocalsave, "click", this.bind(this.clientlocalsave));
 	OZ.Event.add(this.dom.clientsave, "click", this.bind(this.clientsave));
 	OZ.Event.add(this.dom.clientlocalload, "click", this.bind(this.clientlocalload));
+	OZ.Event.add(this.dom.clientlocallist, "click", this.bind(this.clientlocallist));
 	OZ.Event.add(this.dom.clientload, "click", this.bind(this.clientload));
 	OZ.Event.add(this.dom.clientsql, "click", this.bind(this.clientsql));
 	OZ.Event.add(this.dom.quicksave, "click", this.bind(this.quicksave));
@@ -1427,6 +1428,38 @@ SQL.IO.prototype.clientlocalload = function() {
 	this.fromXML(xmlDoc);
 }
 
+SQL.IO.prototype.clientlocallist = function() {
+    if (!window.localStorage) { 
+        alert("Sorry, your browser does not seem to support localStorage.");
+        return;
+    }
+    
+    /* --- Define some usefull vars --- */
+    var baseKeysName = "wwwsqldesigner_databases_";
+    var localLen = localStorage.length;
+    var data = "";
+    var schemasFound = false;
+    var code = 200;
+    
+    /* --- work --- */
+    try {
+        for (var i = 0; i< localLen; ++i) {
+            var key = localStorage.key(i);
+            if((new RegExp(baseKeysName)).test(key)) {
+                var result = key.substring(baseKeysName.length);
+                schemasFound = true;
+                data += result + "\n";
+            }
+        }
+        if (!schemasFound) {
+            throw new Error("No data available");
+        }
+    }  catch (e) {
+        alert("Error loading database names from localStorage! ("+e.message+")");
+        return;
+    }
+    this.listresponse(data, code);
+}
 
 SQL.IO.prototype.clientsql = function() {
 	var bp = this.owner.getOption("staticpath");

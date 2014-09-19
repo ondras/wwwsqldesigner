@@ -77,6 +77,7 @@
 	<string name="clientload">Load XML</string>
 	<string name="clientlocalsave">Save in Browser</string>
 	<string name="clientlocalload">Load from Browser</string>
+	<string name="clientlocallist">List from Browser</string>
 	<string name="clientsql">Generate SQL</string>
 	<string name="backendlabel">Server backend:</string>
 	<string name="serversave">Save</string>
