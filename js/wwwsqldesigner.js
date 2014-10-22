@@ -511,7 +511,7 @@ SQL.Relation.prototype.init = function(owner, row1, row2) {
 		this.dom.push(path);
 	} else {
 		for (var i=0;i<3;i++) {
-			var div = OZ.DOM.elm("div",{position:"absolute",className:"relation",backgroundColor:color});
+			var div = OZ.DOM.elm("div",{position:"absolute",className:"relation",backgroundColor:this.color});
 			this.dom.push(div);
 			if (i & 1) { /* middle */
 				OZ.Style.set(div, {width:CONFIG.RELATION_THICKNESS+"px"});
