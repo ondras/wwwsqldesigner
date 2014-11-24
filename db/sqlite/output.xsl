@@ -5,15 +5,14 @@
 
 <!-- tables -->
 	<xsl:for-each select="table">
-		<xsl:text>CREATE TABLE </xsl:text>
+		<xsl:text>CREATE TABLE '</xsl:text>
 		<xsl:value-of select="@name" />
-		<xsl:text> (
+		<xsl:text>' (
 </xsl:text>
 		<xsl:for-each select="row">
 			<xsl:variable name="name" select="@name" />
 
-			<xsl:value-of select="@name" />
-			<xsl:text> </xsl:text>
+			<xsl:text>'</xsl:text><xsl:value-of select="@name" /><xsl:text>' </xsl:text>
 	
 			<xsl:value-of select="datatype" />
 			
@@ -44,11 +43,11 @@
 
 			<!-- fk -->
 			<xsl:for-each select="relation">
-				<xsl:text> REFERENCES </xsl:text>
+				<xsl:text> REFERENCES '</xsl:text>
 				<xsl:value-of select="@table" />
-				<xsl:text> (</xsl:text>
+				<xsl:text>' ('</xsl:text>
 				<xsl:value-of select="@row" />
-				<xsl:text>)</xsl:text>
+				<xsl:text>')</xsl:text>
 			</xsl:for-each>
 
 			<xsl:if test="not (position()=last())">
@@ -89,18 +88,18 @@
 	<xsl:for-each select="table">
 		<xsl:for-each select="key">
 			<xsl:if test="@type = 'INDEX'">
-				<xsl:text>CREATE INDEX </xsl:text>
+				<xsl:text>CREATE INDEX '</xsl:text>
 				<xsl:value-of select="@name" />
-				<xsl:text> ON </xsl:text>
+				<xsl:text>' ON '</xsl:text>
 				<xsl:value-of select="../@name" />
-				<xsl:text> (</xsl:text>
+				<xsl:text>' ('</xsl:text>
 				<xsl:for-each select="part">
 					<xsl:value-of select="." />
 					<xsl:if test="not (position() = last())">
-						<xsl:text>, </xsl:text>
+						<xsl:text>', '</xsl:text>
 					</xsl:if>
 				</xsl:for-each>
-				<xsl:text>);
+				<xsl:text>');
 </xsl:text>
 			</xsl:if>
 		</xsl:for-each>
