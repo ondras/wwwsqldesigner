@@ -23,10 +23,9 @@
 			}
 			$res = mysqli_select_db($this->getLink(), DB);
 			if (!$res){
-				// try to create the DataBase and table
-				if(!$this->setup_first_time()){
-					return false;
-				}
+				// Data Base Not configured
+				echo "You have to configure the DataBase";
+				return false;
 			}
 			return true;
 		}
