@@ -2658,7 +2658,7 @@ SQL.Designer.prototype.findNamedTable = function(name) { /* find row specified a
 
 SQL.Designer.prototype.toXML = function() {
 	var xml = '<?xml version="1.0" encoding="utf-8" ?>\n';
-	xml += '<!-- SQL XML created by WWW SQL Designer, http://code.google.com/p/wwwsqldesigner/ -->\n';
+	xml += '<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->\n';
 	xml += '<!-- Active URL: ' + location.href + ' -->\n';
 	xml += '<sql>\n';
 	

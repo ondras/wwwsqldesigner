@@ -15,6 +15,10 @@ If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/web
 
 # News
 
+## Moved to GitHub
+
+Google Code is closing down, we are now completely migrated to GitHub.
+
 ## Experimental real-time collaboration version
 
 Thanks to Bharat Patil: http://bharat.whiteboard.jit.su/
