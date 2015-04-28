@@ -26,6 +26,7 @@
 
 <!-- tables -->
 	<xsl:for-each select="table">
+		<xsl:variable name="table" select="@name" />
 		<xsl:text>CREATE TABLE `</xsl:text>
 		<xsl:value-of select="@name" />
 		<xsl:text>` (
@@ -50,16 +51,6 @@
 				<xsl:text>DEFAULT </xsl:text>
 				<xsl:value-of select="default" />
 				<xsl:text> </xsl:text>
-			</xsl:if>
-
-			<xsl:if test="comment">
-				<xsl:text>COMMENT '</xsl:text>
-				<xsl:call-template name="replace-substring">
-					<xsl:with-param name="value" select="comment" />
-					<xsl:with-param name="from" select='"&apos;"' />
-					<xsl:with-param name="to" select='"&apos;&apos;"' />
-				</xsl:call-template>
-				<xsl:text>' </xsl:text>
 			</xsl:if>
 
 			<xsl:if test="not (position()=last())">
@@ -90,22 +81,39 @@
 		</xsl:for-each>
 		
 		<xsl:text>
-)</xsl:text>
+);
+</xsl:text>
 
 		<xsl:if test="comment">
-			<xsl:text> COMMENT '</xsl:text>
+			<xsl:text>COMMENT ON TABLE `</xsl:text>
+			<xsl:value-of select="@name" />
+			<xsl:text>` IS '</xsl:text>
 			<xsl:call-template name="replace-substring">
 				<xsl:with-param name="value" select="comment" />
 				<xsl:with-param name="from" select='"&apos;"' />
 				<xsl:with-param name="to" select='"&apos;&apos;"' />
 			</xsl:call-template>
-			<xsl:text>'</xsl:text>
+			<xsl:text>';
+</xsl:text>
 		</xsl:if>
 		
-		<xsl:text>;
-
+		<xsl:for-each select="row">
+			<xsl:if test="comment">
+				<xsl:text>COMMENT ON COLUMN `</xsl:text>
+				<xsl:value-of select="$table" />
+				<xsl:text>`.`</xsl:text>
+				<xsl:value-of select="@name" />
+				<xsl:text>` IS '</xsl:text>
+				<xsl:call-template name="replace-substring">
+					<xsl:with-param name="value" select="comment" />
+					<xsl:with-param name="from" select='"&apos;"' />
+					<xsl:with-param name="to" select='"&apos;&apos;"' />
+				</xsl:call-template>
+				<xsl:text>';
 </xsl:text>
-
+			</xsl:if>
+		</xsl:for-each>
+		
 	</xsl:for-each>
 
 <!-- fk -->
