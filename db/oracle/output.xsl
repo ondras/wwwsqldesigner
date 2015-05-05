@@ -42,10 +42,12 @@
 			<xsl:if test="@null = 0">
 				<xsl:text>NOT NULL </xsl:text>
 			</xsl:if> 
-			
+
+			<!-- needs to be fixed using sequences
 			<xsl:if test="@autoincrement = 1">
 				<xsl:text>AUTO_INCREMENT </xsl:text>
 			</xsl:if> 
+			-->
 
 			<xsl:if test="default">
 				<xsl:text>DEFAULT </xsl:text>
