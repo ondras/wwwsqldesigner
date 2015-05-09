@@ -1398,7 +1398,15 @@ SQL.IO.prototype.clientlocalload = function() {
 		return;
 	}
 	
-	var key = prompt(_("serverloadprompt"), this._name);
+	savedDesigns = '';
+
+    	localPrefix = 'wwwsqldesigner_databases_';
+    	for (var key in localStorage){
+      		if (key.substr(0,localPrefix.length)==localPrefix)
+			savedDesigns += key.substr(localPrefix.length,key.length)+'\n';
+    	}
+	
+	var key = prompt(_("serverloadprompt")+'\nYour saved designs:\n'+savedDesigns, this._name);
 	if (key === null) { return; }
 	key = "wwwsqldesigner_databases_" + (key || "default");
 	
