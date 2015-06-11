@@ -1272,7 +1272,8 @@ SQL.IO = OZ.Class();
 
 SQL.IO.prototype.init = function(owner) {
 	this.owner = owner;
-	this._name = ""; /* last used keyword */
+	this._name = ""; /* last used name with server load/save */
+	this.lastUsedName = ""; /* last used name with local storage or dropbox load/save */
 	this.dom = {
 		container:OZ.$("io")
 	};
@@ -1325,6 +1326,8 @@ SQL.IO.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.serverimport, "click", this.bind(this.serverimport));
 	OZ.Event.add(document, "keydown", this.bind(this.press));
 	this.build();
+	
+	this.dropBoxInit ();
 }
 
 SQL.IO.prototype.build = function() {
@@ -1398,6 +1401,19 @@ SQL.IO.prototype.clientload = function() {
 	this.fromXMLText(xml);
 }
 
+SQL.IO.prototype.promptName = function(title, suffix) {
+	var lastUsedName = this.owner.getOption("lastUsedName") || this.lastUsedName;
+	var name = prompt(_(title), lastUsedName);
+	if (!name) { return null; }
+	if (suffix && name.endsWith(suffix)) {
+		// remove suffix from name
+		name = name.substr(0, name.length-4);
+	}
+	this.owner.setOption("lastUsedName", name);
+	this.lastUsedName = name;	// save this also in variable in case cookies are disabled
+	return name;
+}
+
 SQL.IO.prototype.clientlocalsave = function() {
 	if (!window.localStorage) { 
 		alert("Sorry, your browser does not seem to support localStorage.");
@@ -1410,9 +1426,8 @@ SQL.IO.prototype.clientlocalsave = function() {
 		return;
 	}
 
-	var key = prompt(_("serversaveprompt"), this._name);
+	var key = this.promptName("serversaveprompt");
 	if (!key) { return; }
-	this._name = key;
 	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
@@ -1429,9 +1444,7 @@ SQL.IO.prototype.clientlocalload = function() {
 		return;
 	}
 	
-	var key = prompt(_("serverloadprompt"), this._name);
-	if (!key) { return; }
-	this._name = key;
+	var key = this.promptName("serverloadprompt");
 	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
@@ -1484,13 +1497,13 @@ SQL.IO.prototype.clientlocallist = function() {
  * The following code uses this lib: https://github.com/dropbox/dropbox-js
  */
 
-var dropboxClient = null;
-
-var dropBoxInit = function()
+SQL.IO.prototype.dropBoxInit = function()
 {
-	if (dropboxAppKey && Dropbox.isBrowserSupported()) {
-	dropboxClient = new Dropbox.Client({ key: dropboxAppKey });
+	if (dropboxAppKey) {
+		this.dropboxClient = new Dropbox.Client({ key: dropboxAppKey });
 } else {
+		this.dropboxClient = null;
+
 		// Hide the Dropbox buttons and divider
 		var elems = document.querySelectorAll("[id^=dropbox]");	// gets all tags whose id start with "dropbox"
 		[].slice.call(elems).forEach(
@@ -1499,7 +1512,7 @@ var dropBoxInit = function()
 	}
 }
 
-var showDropboxError = function(error) {
+SQL.IO.prototype.showDropboxError = function(error) {
 	var prefix = _("Dropbox error")+": ";
 	var msg = error.status;
 
@@ -1546,17 +1559,17 @@ var showDropboxError = function(error) {
 	alert (prefix+msg);
 };
 
-var showDropboxAuthenticate = function() {
-	if (!dropboxClient) return false;
+SQL.IO.prototype.showDropboxAuthenticate = function() {
+	if (!this.dropboxClient) return false;
 
 	// We want to use a popup window for authentication as the default redirection won't work for us as it'll make us lose our schema data
-	dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: "dropbox-oauth-receiver.html" }));
+	this.dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: "dropbox-oauth-receiver.html" }));
 
 	// Now let's authenticate us
 	var success = false;
-	dropboxClient.authenticate( function(error, client) {
+	this.dropboxClient.authenticate( function(error, client) {
 		if (error) {
-			showDropboxError(error);
+			this.showDropboxError(error);
 			return;
 		}
 		success = true;
@@ -1566,56 +1579,51 @@ var showDropboxAuthenticate = function() {
 }
 
 SQL.IO.prototype.dropboxsave = function() {
-	if (!showDropboxAuthenticate()) return;
+	if (!this.showDropboxAuthenticate()) return;
 	
-	var key = prompt(_("serversaveprompt"), this._name);
+	var key = this.promptName("serversaveprompt", ".xml");
 	if (!key) { return; }
-	if (key.endsWith(".xml")) {
-		// remove ".xml" from name
-		key = key.substr(0, key.length-4);
-	}
-	this._name = key;
 	var filename = (key || "default") + ".xml";
 	
+	var sql_io = this;
+	sql_io.listresponse("Saving...", 200);
 	var xml = this.owner.toXML();
-	dropboxClient.writeFile(filename, xml, function(error, stat) {
+	this.dropboxClient.writeFile(filename, xml, function(error, stat) {
 		if (error) {
-			return showDropboxError(error);
+			sql_io.listresponse("", 200);
+			return this.showDropboxError(error);
 		}
-		alert(filename+" "+_("was saved to Dropbox"));
+		sql_io.listresponse(filename+" "+_("was saved to Dropbox"), 200);
 	});
 }
 
 SQL.IO.prototype.dropboxload = function() {
-	if (!showDropboxAuthenticate()) return;
+	if (!this.showDropboxAuthenticate()) return;
 
-	var key = prompt(_("serverloadprompt"), this._name);
+	var key = this.promptName("serverloadprompt", ".xml");
 	if (!key) { return; }
-	if (key.endsWith(".xml")) {
-		// remove ".xml" from name
-		key = key.substr(0, key.length-4);
-	}
-	this._name = key;
 	var filename = (key || "default") + ".xml";
 	
 	var sql_io = this;
-	dropboxClient.readFile(filename, function(error, data) {
+	sql_io.listresponse("Loading...", 200);
+	this.dropboxClient.readFile(filename, function(error, data) {
+		sql_io.listresponse("", 200);
 		if (error) {
-			return showDropboxError(error);
+			return this.showDropboxError(error);
 		}
 		sql_io.fromXMLText(data);
 	});
 }
 
 SQL.IO.prototype.dropboxlist = function() {
-	if (!showDropboxAuthenticate()) return;
+	if (!this.showDropboxAuthenticate()) return;
     
 	var sql_io = this;
 	sql_io.listresponse("Loading...", 200);
-	dropboxClient.readdir("/", function(error, entries) {
+	this.dropboxClient.readdir("/", function(error, entries) {
 		if (error) {
 			sql_io.listresponse("", 200);
-			return showDropboxError(error);
+			return this.showDropboxError(error);
 		}
 		var data = entries.join("\n")+"\n";
 		sql_io.listresponse(data, 200);
@@ -2601,8 +2609,6 @@ SQL.Designer.prototype.init = function() {
 	this.flag = 2;
 	this.requestLanguage();
 	this.requestDB();
-	
-	dropBoxInit ();
 }
 
 /* update area size */
