@@ -147,24 +147,28 @@
 		<table>
 			<tbody>
 				<tr>
-					<td>
+					<td style="width:60%">
 						<fieldset>
 							<legend id="client"></legend>
+							<div id="singlerow">
 							<input type="button" id="clientsave" /> 
 							<input type="button" id="clientload" />
-							<br/>
-							<input type="button" id="clientdropboxsave" /><!--should get hidden if 'Dropbox.isBrowserSupported()' is false-->
-							<input type="button" id="clientdropboxload" /><!--should get hidden if 'Dropbox.isBrowserSupported()' is false-->
-							<input type="button" id="clientdropboxlist" /><!--should get hidden if 'Dropbox.isBrowserSupported()' is false-->
-							<br/>
+							</div>
+							<div id="singlerow">
 							<input type="button" id="clientlocalsave" />
 							<input type="button" id="clientlocalload" />
 							<input type="button" id="clientlocallist" />
+							</div>
+							<div id="singlerow">
+								<input type="button" id="dropboxsave" /><!-- may get hidden by dropBoxInit() -->
+								<input type="button" id="dropboxload" /><!-- may get hidden by dropBoxInit() -->
+								<input type="button" id="dropboxlist" /><!-- may get hidden by dropBoxInit() -->
+							</div>
 							<hr/>
 							<input type="button" id="clientsql" />
 						</fieldset>
 					</td>
-					<td>
+					<td style="width:40%">
 						<fieldset>
 							<legend id="server"></legend>
 							<label for="backend" id="backendlabel"></label> <select id="backend"><option></option></select>

@@ -3,7 +3,7 @@ body {
 	font-size: small;
 	padding: 0px;
 	margin: 0px;
-  background: #FFF;
+	background: #FFF;
 	visibility: hidden;
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
@@ -211,8 +211,8 @@ body {
 }
 
 #textarea {
-	width: 600px;
-	height: 100px;
+	width: 650px;
+	height: 200px;
 }
 
 #opts {

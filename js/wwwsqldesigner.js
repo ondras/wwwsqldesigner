@@ -1278,7 +1278,7 @@ SQL.IO.prototype.init = function(owner) {
 	};
 
 	var ids = ["saveload","clientlocalsave", "clientsave", "clientlocalload", "clientlocallist","clientload", "clientsql", 
-				"clientdropboxsave", "clientdropboxload", "clientdropboxlist",
+				"dropboxsave", "dropboxload", "dropboxlist",
 				"quicksave", "serversave", "serverload",
 				"serverlist", "serverimport"];
 	for (var i=0;i<ids.length;i++) {
@@ -1314,9 +1314,9 @@ SQL.IO.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.clientlocalload, "click", this.bind(this.clientlocalload));
 	OZ.Event.add(this.dom.clientlocallist, "click", this.bind(this.clientlocallist));
 	OZ.Event.add(this.dom.clientload, "click", this.bind(this.clientload));
-	OZ.Event.add(this.dom.clientdropboxload, "click", this.bind(this.clientdropboxload));
-	OZ.Event.add(this.dom.clientdropboxsave, "click", this.bind(this.clientdropboxsave));
-	OZ.Event.add(this.dom.clientdropboxlist, "click", this.bind(this.clientdropboxlist));
+	OZ.Event.add(this.dom.dropboxload, "click", this.bind(this.dropboxload));
+	OZ.Event.add(this.dom.dropboxsave, "click", this.bind(this.dropboxsave));
+	OZ.Event.add(this.dom.dropboxlist, "click", this.bind(this.dropboxlist));
 	OZ.Event.add(this.dom.clientsql, "click", this.bind(this.clientsql));
 	OZ.Event.add(this.dom.quicksave, "click", this.bind(this.quicksave));
 	OZ.Event.add(this.dom.serversave, "click", this.bind(this.serversave));
@@ -1486,10 +1486,17 @@ SQL.IO.prototype.clientlocallist = function() {
 
 var dropboxClient = null;
 
-if (dropboxAppKey) {
+var dropBoxInit = function()
+{
+	if (dropboxAppKey && Dropbox.isBrowserSupported()) {
 	dropboxClient = new Dropbox.Client({ key: dropboxAppKey });
 } else {
-	// Here we should remove the Dropbox buttons but I (TT) honestly don't know how to do that without including something like jquery.
+		// Hide the Dropbox buttons and divider
+		var elems = document.querySelectorAll("[id^=dropbox]");	// gets all tags whose id start with "dropbox"
+		[].slice.call(elems).forEach(
+			function(elem) { elem.style.display = "none"; }
+		);
+	}
 }
 
 var showDropboxError = function(error) {
@@ -1558,7 +1565,7 @@ var showDropboxAuthenticate = function() {
 	return success;
 }
 
-SQL.IO.prototype.clientdropboxsave = function() {
+SQL.IO.prototype.dropboxsave = function() {
 	if (!showDropboxAuthenticate()) return;
 	
 	var key = prompt(_("serversaveprompt"), this._name);
@@ -1579,7 +1586,7 @@ SQL.IO.prototype.clientdropboxsave = function() {
 	});
 }
 
-SQL.IO.prototype.clientdropboxload = function() {
+SQL.IO.prototype.dropboxload = function() {
 	if (!showDropboxAuthenticate()) return;
 
 	var key = prompt(_("serverloadprompt"), this._name);
@@ -1600,7 +1607,7 @@ SQL.IO.prototype.clientdropboxload = function() {
 	});
 }
 
-SQL.IO.prototype.clientdropboxlist = function() {
+SQL.IO.prototype.dropboxlist = function() {
 	if (!showDropboxAuthenticate()) return;
     
 	var sql_io = this;
@@ -1648,7 +1655,7 @@ SQL.IO.prototype.finish = function(xslDoc) {
 		alert(_("xmlerror")+': '+e.message);
 		return;
 	}
-	this.dom.ta.value = sql;
+	this.dom.ta.value = sql.trim();
 }
 
 SQL.IO.prototype.serversave = function(e, keyword) {
@@ -2594,6 +2601,8 @@ SQL.Designer.prototype.init = function() {
 	this.flag = 2;
 	this.requestLanguage();
 	this.requestDB();
+	
+	dropBoxInit ();
 }
 
 /* update area size */
