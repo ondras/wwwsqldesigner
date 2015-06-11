@@ -46,13 +46,13 @@
 	<string name="options">Einstellungen</string>
 	<string name="language">Sprache</string>
 	<string name="db">Datenbank für neue Diagramme</string>
-	<string name="optionsnotice">Einige Optionen werden erst nach einem erneutem Seitenaufruf wirksam. Cookies müssen aktiviert sein.</string>
+	<string name="optionsnotice">Einige Optionen werden erst nach einem erneutem Seitenaufruf wirksam. Cookies müssen erlaubt sein.</string>
 	<string name="snap">Tabellen Ausrichtungsabstand</string>
 	<string name="optionsnapnotice">in Pixel, 0 = einrasten deaktivieren</string>
 	<string name="pattern">Format für die Namen der Fremdschlüssel</string>
 	<string name="optionpatternnotice">%T = Primärtabelle, %R = Primärschlüssel, %t = Fremdtabelle</string>
 	<string name="hide">Verstecke Verbindungslinien beim bewegen von Tabellen?</string>
-	<string name="vector">Zeichne gegrümmte Verbindungslinien (Browser abhängig)?</string>
+	<string name="vector">Zeichne gegrümmte Verbindungslinien (Browser-abhängig)?</string>
 	
 	
 	<!-- keys -->
