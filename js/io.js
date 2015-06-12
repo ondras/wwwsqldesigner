@@ -1,8 +1,4 @@
-/* --------------------- io ------------ */
-
-SQL.IO = OZ.Class();
-
-SQL.IO.prototype.init = function(owner) {
+SQL.IO = function(owner) {
 	this.owner = owner;
 	this._name = ""; /* last used name with server load/save */
 	this.lastUsedName = ""; /* last used name with local storage or dropbox load/save */
@@ -39,27 +35,27 @@ SQL.IO.prototype.init = function(owner) {
 	this.dom.container.parentNode.removeChild(this.dom.container);
 	this.dom.container.style.visibility = "";
 	
-	this.saveresponse = this.bind(this.saveresponse);
-	this.loadresponse = this.bind(this.loadresponse);
-	this.listresponse = this.bind(this.listresponse);
-	this.importresponse = this.bind(this.importresponse);
+	this.saveresponse = this.saveresponse.bind(this);
+	this.loadresponse = this.loadresponse.bind(this);
+	this.listresponse = this.listresponse.bind(this);
+	this.importresponse = this.importresponse.bind(this);
 	
-	OZ.Event.add(this.dom.saveload, "click", this.bind(this.click));
-	OZ.Event.add(this.dom.clientlocalsave, "click", this.bind(this.clientlocalsave));
-	OZ.Event.add(this.dom.clientsave, "click", this.bind(this.clientsave));
-	OZ.Event.add(this.dom.clientlocalload, "click", this.bind(this.clientlocalload));
-	OZ.Event.add(this.dom.clientlocallist, "click", this.bind(this.clientlocallist));
-	OZ.Event.add(this.dom.clientload, "click", this.bind(this.clientload));
-	OZ.Event.add(this.dom.dropboxload, "click", this.bind(this.dropboxload));
-	OZ.Event.add(this.dom.dropboxsave, "click", this.bind(this.dropboxsave));
-	OZ.Event.add(this.dom.dropboxlist, "click", this.bind(this.dropboxlist));
-	OZ.Event.add(this.dom.clientsql, "click", this.bind(this.clientsql));
-	OZ.Event.add(this.dom.quicksave, "click", this.bind(this.quicksave));
-	OZ.Event.add(this.dom.serversave, "click", this.bind(this.serversave));
-	OZ.Event.add(this.dom.serverload, "click", this.bind(this.serverload));
-	OZ.Event.add(this.dom.serverlist, "click", this.bind(this.serverlist));
-	OZ.Event.add(this.dom.serverimport, "click", this.bind(this.serverimport));
-	OZ.Event.add(document, "keydown", this.bind(this.press));
+	OZ.Event.add(this.dom.saveload, "click", this.click.bind(this));
+	OZ.Event.add(this.dom.clientlocalsave, "click", this.clientlocalsave.bind(this));
+	OZ.Event.add(this.dom.clientsave, "click", this.clientsave.bind(this));
+	OZ.Event.add(this.dom.clientlocalload, "click", this.clientlocalload.bind(this));
+	OZ.Event.add(this.dom.clientlocallist, "click", this.clientlocallist.bind(this));
+	OZ.Event.add(this.dom.clientload, "click", this.clientload.bind(this));
+	OZ.Event.add(this.dom.dropboxload, "click", this.dropboxload.bind(this));
+	OZ.Event.add(this.dom.dropboxsave, "click", this.dropboxsave.bind(this));
+	OZ.Event.add(this.dom.dropboxlist, "click", this.dropboxlist.bind(this));
+	OZ.Event.add(this.dom.clientsql, "click", this.clientsql.bind(this));
+	OZ.Event.add(this.dom.quicksave, "click", this.quicksave.bind(this));
+	OZ.Event.add(this.dom.serversave, "click", this.serversave.bind(this));
+	OZ.Event.add(this.dom.serverload, "click", this.serverload.bind(this));
+	OZ.Event.add(this.dom.serverlist, "click", this.serverlist.bind(this));
+	OZ.Event.add(this.dom.serverimport, "click", this.serverimport.bind(this));
+	OZ.Event.add(document, "keydown", this.press.bind(this));
 	this.build();
 }
 
@@ -367,7 +363,7 @@ SQL.IO.prototype.clientsql = function() {
 	var bp = this.owner.getOption("staticpath");
 	var path = bp + "db/"+window.DATATYPES.getAttribute("db")+"/output.xsl";
 	this.owner.window.showThrobber();
-	OZ.Request(path, this.bind(this.finish), {xml:true});
+	OZ.Request(path, this.finish.bind(this), {xml:true});
 }
 
 SQL.IO.prototype.finish = function(xslDoc) {

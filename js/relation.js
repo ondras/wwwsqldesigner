@@ -1,14 +1,12 @@
 /* --------------------------- relation (connector) ----------- */
 
-SQL.Relation = OZ.Class().extend(SQL.Visual);
-SQL.Relation._counter = 0;
-SQL.Relation.prototype.init = function(owner, row1, row2) {
+SQL.Relation = function(owner, row1, row2) {
 	this.owner = owner;
 	this.row1 = row1;
 	this.row2 = row2;
 	this.color = "#000";
 	this.hidden = false;
-	SQL.Visual.prototype.init.apply(this);
+	SQL.Visual.apply(this);
 
 	/* if one of the rows already has relations, inherit color */
 	var all = row1.relations.concat(row2.relations);
@@ -46,6 +44,8 @@ SQL.Relation.prototype.init = function(owner, row1, row2) {
 	
 	this.redraw();
 }
+SQL.Relation._counter = 0;
+SQL.Relation.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Relation.prototype.getColor = function() {
 	return this.color;

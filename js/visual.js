@@ -1,7 +1,5 @@
 /* -------------------- base visual element -------------------- */
-
-SQL.Visual = OZ.Class(); /* abstract parent */
-SQL.Visual.prototype.init = function() {
+SQL.Visual = function() {
 	this._init();
 	this._build();
 }

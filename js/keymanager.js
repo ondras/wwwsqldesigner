@@ -1,8 +1,6 @@
 /* ----------------- key manager ---------- */
 
-SQL.KeyManager = OZ.Class();
-
-SQL.KeyManager.prototype.init = function(owner) {
+SQL.KeyManager = function(owner) {
 	this.owner = owner;
 	this.dom = {
 		container:OZ.$("keys")
@@ -44,15 +42,15 @@ SQL.KeyManager.prototype.build = function() {
 		this.dom.type.appendChild(o);
 	}
 
-	this.purge = this.bind(this.purge);
+	this.purge = this.purge.bind(this);
 
-	OZ.Event.add(this.dom.list, "change", this.bind(this.listchange));
-	OZ.Event.add(this.dom.type, "change", this.bind(this.typechange));
-	OZ.Event.add(this.dom.name, "keyup", this.bind(this.namechange));
-	OZ.Event.add(this.dom.keyadd, "click", this.bind(this.add));
-	OZ.Event.add(this.dom.keyremove, "click", this.bind(this.remove));
-	OZ.Event.add(this.dom.left, "click", this.bind(this.left));
-	OZ.Event.add(this.dom.right, "click", this.bind(this.right));
+	OZ.Event.add(this.dom.list, "change", this.listchange.bind(this));
+	OZ.Event.add(this.dom.type, "change", this.typechange.bind(this));
+	OZ.Event.add(this.dom.name, "keyup", this.namechange.bind(this));
+	OZ.Event.add(this.dom.keyadd, "click", this.add.bind(this));
+	OZ.Event.add(this.dom.keyremove, "click", this.remove.bind(this));
+	OZ.Event.add(this.dom.left, "click", this.left.bind(this));
+	OZ.Event.add(this.dom.right, "click", this.right.bind(this));
 	
 	this.dom.container.parentNode.removeChild(this.dom.container);
 }

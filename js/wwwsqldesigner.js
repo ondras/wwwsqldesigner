@@ -1,15 +1,11 @@
-/* --------------------- www sql designer ------------ */
-
-SQL.Designer = OZ.Class().extend(SQL.Visual);
-
-SQL.Designer.prototype.init = function() {
+SQL.Designer = function() {
 	SQL.Designer = this;
 	
 	this.tables = [];
 	this.relations = [];
 	this.title = document.title;
 	
-	SQL.Visual.prototype.init.apply(this);
+	SQL.Visual.apply(this);
 	new SQL.Toggle(OZ.$("toggle"));
 	
 	this.dom.container = OZ.$("area");
@@ -34,6 +30,7 @@ SQL.Designer.prototype.init = function() {
 	this.requestLanguage();
 	this.requestDB();
 }
+SQL.Designer.prototype = Object.create(SQL.Visual.prototype);
 
 /* update area size */
 SQL.Designer.prototype.sync = function() {
@@ -59,7 +56,7 @@ SQL.Designer.prototype.requestLanguage = function() { /* get locale file */
 	var lang = this.getOption("locale")
 	var bp = this.getOption("staticpath");
 	var url = bp + "locale/"+lang+".xml";
-	OZ.Request(url, this.bind(this.languageResponse), {method:"get", xml:true});
+	OZ.Request(url, this.languageResponse.bind(this), {method:"get", xml:true});
 }
 
 SQL.Designer.prototype.languageResponse = function(xmlDoc) {
@@ -79,7 +76,7 @@ SQL.Designer.prototype.requestDB = function() { /* get datatypes file */
 	var db = this.getOption("db");
 	var bp = this.getOption("staticpath");
 	var url = bp + "db/"+db+"/datatypes.xml";
-	OZ.Request(url, this.bind(this.dbResponse), {method:"get", xml:true});
+	OZ.Request(url, this.dbResponse.bind(this), {method:"get", xml:true});
 }
 
 SQL.Designer.prototype.dbResponse = function(xmlDoc) {
@@ -347,8 +344,4 @@ SQL.Designer.prototype.getFKTypeFor = function(typeIndex) {
 		}
 	}
 	return this.fkTypeFor[typeIndex];
-}
-
-window.onbeforeunload = function(e) {
-	return ""; /* some browsers will show this text, some won't. */
 }

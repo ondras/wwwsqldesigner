@@ -1,13 +1,12 @@
 /* --------------------- rubberband -------------------- */
 
-SQL.Rubberband = OZ.Class().extend(SQL.Visual);
-
-SQL.Rubberband.prototype.init = function(owner) {
+SQL.Rubberband = function(owner) {
 	this.owner = owner;
-	SQL.Visual.prototype.init.apply(this);
+	SQL.Visual.apply(this);
 	this.dom.container = OZ.$("rubberband");
-	OZ.Event.add("area", "mousedown", this.bind(this.down));
+	OZ.Event.add("area", "mousedown", this.down.bind(this));
 }
+SQL.Rubberband.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Rubberband.prototype.down = function(e) {
 	OZ.Event.prevent(e);
@@ -17,8 +16,8 @@ SQL.Rubberband.prototype.down = function(e) {
 	this.width = 0;
 	this.height = 0;
 	this.redraw();
-	this.documentMove = OZ.Event.add(document, "mousemove", this.bind(this.move));
-	this.documentUp = OZ.Event.add(document, "mouseup", this.bind(this.up));
+	this.documentMove = OZ.Event.add(document, "mousemove", this.move.bind(this));
+	this.documentUp = OZ.Event.add(document, "mouseup", this.up.bind(this));
 }
 
 SQL.Rubberband.prototype.move = function(e) {

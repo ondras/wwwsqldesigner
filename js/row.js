@@ -1,15 +1,12 @@
 /* --------------------- table row ( = db column) ------------ */
-
-SQL.Row = OZ.Class().extend(SQL.Visual);
-
-SQL.Row.prototype.init = function(owner, title, data) {
+SQL.Row = function(owner, title, data) {
 	this.owner = owner;
 	this.relations = [];
 	this.keys = [];
 	this.selected = false;
 	this.expanded = false;
 	
-	SQL.Visual.prototype.init.apply(this);
+	SQL.Visual.apply(this);
 	
 	this.data.type = 0;
 	this.data.size = "";
@@ -21,6 +18,7 @@ SQL.Row.prototype.init = function(owner, title, data) {
 	if (data) { this.update(data); }
 	this.setTitle(title);
 }
+SQL.Row.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Row.prototype._build = function() {
 	this.dom.container = OZ.DOM.elm("tbody");
@@ -38,11 +36,11 @@ SQL.Row.prototype._build = function() {
 		[td1, this.dom.selected, this.dom.title]
 	);
 	
-	this.enter = this.bind(this.enter);
-	this.changeComment = this.bind(this.changeComment);
+	this.enter = this.enter.bind(this);
+	this.changeComment = this.changeComment.bind(this);
 
-	OZ.Event.add(this.dom.container, "click",this.bind(this.click));
-	OZ.Event.add(this.dom.container, "dblclick",this.bind(this.dblclick));
+	OZ.Event.add(this.dom.container, "click",this.click.bind(this));
+	OZ.Event.add(this.dom.container, "dblclick",this.dblclick.bind(this));
 }
 
 SQL.Row.prototype.select = function() {
@@ -71,7 +69,7 @@ SQL.Row.prototype.setTitle = function(t) {
 }
 
 SQL.Row.prototype.click = function(e) { /* clicked on row */
-	this.dispatch("rowclick", this);
+	SQL.publish("rowclick", this);
 	this.owner.owner.rowManager.select(this);
 }
 

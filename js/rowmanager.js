@@ -1,8 +1,5 @@
 /* --------------------- row manager ------------ */
-
-SQL.RowManager = OZ.Class();
-
-SQL.RowManager.prototype.init = function(owner) {
+SQL.RowManager = function(owner) {
 	this.owner = owner;
 	this.dom = {};
 	this.selected = null;
@@ -19,16 +16,17 @@ SQL.RowManager.prototype.init = function(owner) {
 
 	this.select(false);
 	
-	OZ.Event.add(this.dom.editrow, "click", this.bind(this.edit));
-	OZ.Event.add(this.dom.uprow, "click", this.bind(this.up));
-	OZ.Event.add(this.dom.downrow, "click", this.bind(this.down));
-	OZ.Event.add(this.dom.removerow, "click", this.bind(this.remove));
-	OZ.Event.add(this.dom.foreigncreate, "click", this.bind(this.foreigncreate));
-	OZ.Event.add(this.dom.foreignconnect, "click", this.bind(this.foreignconnect));
-	OZ.Event.add(this.dom.foreigndisconnect, "click", this.bind(this.foreigndisconnect));
-	OZ.Event.add(false, "tableclick", this.bind(this.tableClick));
-	OZ.Event.add(false, "rowclick", this.bind(this.rowClick));
-	OZ.Event.add(document, "keydown", this.bind(this.press));
+	OZ.Event.add(this.dom.editrow, "click", this.edit.bind(this));
+	OZ.Event.add(this.dom.uprow, "click", this.up.bind(this));
+	OZ.Event.add(this.dom.downrow, "click", this.down.bind(this));
+	OZ.Event.add(this.dom.removerow, "click", this.remove.bind(this));
+	OZ.Event.add(this.dom.foreigncreate, "click", this.foreigncreate.bind(this));
+	OZ.Event.add(this.dom.foreignconnect, "click", this.foreignconnect.bind(this));
+	OZ.Event.add(this.dom.foreigndisconnect, "click", this.foreigndisconnect.bind(this));
+	OZ.Event.add(document, "keydown", this.press.bind(this));
+
+	SQL.subscribe("tableclick", this.tableClick.bind(this));
+	SQL.subscribe("rowclick", this.rowClick.bind(this));
 }
 
 SQL.RowManager.prototype.select = function(row) { /* activate a row */

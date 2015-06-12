@@ -1,8 +1,5 @@
 /* --------------------- db table ------------ */
-
-SQL.Table = OZ.Class().extend(SQL.Visual);
-
-SQL.Table.prototype.init = function(owner, name, x, y, z) {
+SQL.Table = function(owner, name, x, y, z) {
 	this.owner = owner;
 	this.rows = [];
 	this.keys = [];
@@ -11,7 +8,7 @@ SQL.Table.prototype.init = function(owner, name, x, y, z) {
 
 	this.flag = false;
 	this.selected = false;
-	SQL.Visual.prototype.init.apply(this);
+	SQL.Visual.apply(this);
 	this.data.comment = "";
 	
 	this.setTitle(name);
@@ -20,6 +17,7 @@ SQL.Table.prototype.init = function(owner, name, x, y, z) {
 	this.setZ(z);
 	this.snap();
 }
+SQL.Table.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Table.prototype._build = function() {
 	this.dom.container = OZ.DOM.elm("div", {className:"table"});
@@ -38,10 +36,10 @@ SQL.Table.prototype._build = function() {
 	this.dom.mini = OZ.DOM.elm("div", {className:"mini"});
 	this.owner.map.dom.container.appendChild(this.dom.mini);
 
-	this._ec.push(OZ.Event.add(this.dom.container, "click", this.bind(this.click)));
-	this._ec.push(OZ.Event.add(this.dom.container, "dblclick", this.bind(this.dblclick)));
-	this._ec.push(OZ.Event.add(this.dom.container, "mousedown", this.bind(this.down)));
-	this._ec.push(OZ.Event.add(this.dom.container, "touchstart", this.bind(this.down)));
+	this._ec.push(OZ.Event.add(this.dom.container, "click", this.click.bind(this)));
+	this._ec.push(OZ.Event.add(this.dom.container, "dblclick", this.dblclick.bind(this)));
+	this._ec.push(OZ.Event.add(this.dom.container, "mousedown", this.down.bind(this)));
+	this._ec.push(OZ.Event.add(this.dom.container, "touchstart", this.down.bind(this)));
 	this._ec.push(OZ.Event.add(this.dom.container, "touchmove", OZ.Event.prevent));
 }
 
@@ -88,7 +86,7 @@ SQL.Table.prototype.click = function(e) {
 	
 	if (t != this.dom.title) { return; } /* click on row */
 
-	this.dispatch("tableclick",this);
+	SQL.publish("tableclick", this);
 	this.owner.rowManager.select(false);
 }
 
@@ -231,8 +229,8 @@ SQL.Table.prototype.down = function(e) { /* mousedown - start drag */
 		}
 	}
 	
-	this.documentMove = OZ.Event.add(document, moveEvent, this.bind(this.move));
-	this.documentUp = OZ.Event.add(document, upEvent, this.bind(this.up));
+	this.documentMove = OZ.Event.add(document, moveEvent, this.move.bind(this));
+	this.documentUp = OZ.Event.add(document, upEvent, this.up.bind(this));
 }
 
 SQL.Table.prototype.toXML = function() {

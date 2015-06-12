@@ -1,14 +1,12 @@
 /* --------------------- db index ------------ */
-
-SQL.Key = OZ.Class().extend(SQL.Visual);
-
-SQL.Key.prototype.init = function(owner, type, name) {
+SQL.Key = function(owner, type, name) {
 	this.owner = owner;
 	this.rows = [];
 	this.type = type || "INDEX";
 	this.name = name || "";
-	SQL.Visual.prototype.init.apply(this);
+	SQL.Visual.apply(this);
 }
+SQL.Key.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Key.prototype.setName = function(n) {
 	this.name = n;

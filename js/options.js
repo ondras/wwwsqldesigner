@@ -1,15 +1,13 @@
 /* --------------------- options ------------ */
 
-SQL.Options = OZ.Class();
-
-SQL.Options.prototype.init = function(owner) {
+SQL.Options = function(owner) {
 	this.owner = owner;
 	this.dom = {
 		container:OZ.$("opts"),
 		btn:OZ.$("options")
 	}
 	this.dom.btn.value = _("options");
-	this.save = this.bind(this.save);
+	this.save = this.save.bind(this);
 	this.build();
 }
 
@@ -51,7 +49,7 @@ SQL.Options.prototype.build = function() {
 	}
 
 	
-	OZ.Event.add(this.dom.btn, "click", this.bind(this.click));
+	OZ.Event.add(this.dom.btn, "click", this.click.bind(this));
 	
 	this.dom.container.parentNode.removeChild(this.dom.container);
 }
@@ -75,33 +73,4 @@ SQL.Options.prototype.click = function() {
 	this.dom.optionvector.checked = this.owner.getOption("vector");
 	this.dom.optionshowsize.checked = this.owner.getOption("showsize");
 	this.dom.optionshowtype.checked = this.owner.getOption("showtype");
-}
-
-/* ------------------ minimize/restore bar ----------- */
-
-SQL.Toggle = OZ.Class();
-
-SQL.Toggle.prototype.init = function(elm) {
-	this._state = null;
-	this._elm = elm;
-	OZ.Event.add(elm, "click", this._click.bind(this));
-	
-	var defaultState = true;
-	if (document.location.href.match(/toolbar=hidden/)) { defaultState = false; }
-	this._switch(defaultState);
-}
-
-SQL.Toggle.prototype._click = function(e) {
-	this._switch(!this._state);
-}
-
-SQL.Toggle.prototype._switch = function(state) {
-	this._state = state;
-	if (this._state) {
-		OZ.$("bar").style.height = "";
-	} else {
-		OZ.$("bar").style.overflow = "hidden";
-		OZ.$("bar").style.height = this._elm.offsetHeight + "px";
-	}
-	this._elm.className = (this._state ? "on" : "off");
 }

@@ -1,8 +1,6 @@
 /* --------------------- table manager ------------ */
 
-SQL.TableManager = OZ.Class();
-
-SQL.TableManager.prototype.init = function(owner) {
+SQL.TableManager = function(owner) {
 	this.owner = owner;
 	this.dom = {
 		container:OZ.$("table"),
@@ -30,17 +28,17 @@ SQL.TableManager.prototype.init = function(owner) {
 	
 	this.select(false);
 	
-	this.save = this.bind(this.save);
+	this.save = this.save.bind(this);
 	
-	OZ.Event.add("area", "click", this.bind(this.click));
-	OZ.Event.add(this.dom.addtable, "click", this.bind(this.preAdd));
-	OZ.Event.add(this.dom.removetable, "click", this.bind(this.remove));
-	OZ.Event.add(this.dom.cleartables, "click", this.bind(this.clear));
-	OZ.Event.add(this.dom.addrow, "click", this.bind(this.addRow));
-	OZ.Event.add(this.dom.aligntables, "click", this.owner.bind(this.owner.alignTables));
-	OZ.Event.add(this.dom.edittable, "click", this.bind(this.edit));
-	OZ.Event.add(this.dom.tablekeys, "click", this.bind(this.keys));
-	OZ.Event.add(document, "keydown", this.bind(this.press));
+	OZ.Event.add("area", "click", this.click.bind(this));
+	OZ.Event.add(this.dom.addtable, "click", this.preAdd.bind(this));
+	OZ.Event.add(this.dom.removetable, "click", this.remove.bind(this));
+	OZ.Event.add(this.dom.cleartables, "click", this.clear.bind(this));
+	OZ.Event.add(this.dom.addrow, "click", this.addRow.bind(this));
+	OZ.Event.add(this.dom.aligntables, "click", this.owner.alignTables.bind(this.owner));
+	OZ.Event.add(this.dom.edittable, "click", this.edit.bind(this));
+	OZ.Event.add(this.dom.tablekeys, "click", this.keys.bind(this));
+	OZ.Event.add(document, "keydown", this.press.bind(this));
 
 	this.dom.container.parentNode.removeChild(this.dom.container);
 }
