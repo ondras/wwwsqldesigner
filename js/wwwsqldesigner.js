@@ -1,6 +1,29 @@
+/* -------------------- configuration -------------------- */
+
+/*
+ * The key below needs to be set individually by you if you want to use the Dropbox load/save feature.
+ * To do that, first sign up with Dropbox (may require a specific developer / SDK sign-up), go to
+ * https://www.dropbox.com/developers/apps and use "Create app" to add a new app. Call it, for instance,
+ * "wwwsqldesigner", and give it the "App Folder" permission. Unter "OAuth 2", "Redirect URIs", add
+ * the URL to the "dropbox-oauth-receiver.html" file on your server. E.g, if you install wwwsqldesigner
+ * on your local web server under "http://localhost/sqldesigner/", then add
+ * http://localhost/sqldesigner/dropbox-oauth-receiver.html as a Redirection URI.
+ * Copy the shown "App key" and paste it here below:
+ */
+var dropboxAppKey = null; // "your app key";
+
+
+/* -------------------- globals -------------------- */
+
 function _(str) { /* getText */
 	if (!(str in window.LOCALE)) { return str; }
 	return window.LOCALE[str];
+}
+
+if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
 }
 
 var DATATYPES = false;
@@ -1249,12 +1272,14 @@ SQL.IO = OZ.Class();
 
 SQL.IO.prototype.init = function(owner) {
 	this.owner = owner;
-	this._name = ""; /* last used keyword */
+	this._name = ""; /* last used name with server load/save */
+	this.lastUsedName = ""; /* last used name with local storage or dropbox load/save */
 	this.dom = {
 		container:OZ.$("io")
 	};
 
 	var ids = ["saveload","clientlocalsave", "clientsave", "clientlocalload", "clientlocallist","clientload", "clientsql", 
+				"dropboxsave", "dropboxload", "dropboxlist",
 				"quicksave", "serversave", "serverload",
 				"serverlist", "serverimport"];
 	for (var i=0;i<ids.length;i++) {
@@ -1290,6 +1315,9 @@ SQL.IO.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.clientlocalload, "click", this.bind(this.clientlocalload));
 	OZ.Event.add(this.dom.clientlocallist, "click", this.bind(this.clientlocallist));
 	OZ.Event.add(this.dom.clientload, "click", this.bind(this.clientload));
+	OZ.Event.add(this.dom.dropboxload, "click", this.bind(this.dropboxload));
+	OZ.Event.add(this.dom.dropboxsave, "click", this.bind(this.dropboxsave));
+	OZ.Event.add(this.dom.dropboxlist, "click", this.bind(this.dropboxlist));
 	OZ.Event.add(this.dom.clientsql, "click", this.bind(this.clientsql));
 	OZ.Event.add(this.dom.quicksave, "click", this.bind(this.quicksave));
 	OZ.Event.add(this.dom.serversave, "click", this.bind(this.serversave));
@@ -1298,6 +1326,8 @@ SQL.IO.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.serverimport, "click", this.bind(this.serverimport));
 	OZ.Event.add(document, "keydown", this.bind(this.press));
 	this.build();
+	
+	this.dropBoxInit ();
 }
 
 SQL.IO.prototype.build = function() {
@@ -1328,6 +1358,24 @@ SQL.IO.prototype.click = function() { /* open io dialog */
 	this.owner.window.open(_("saveload"),this.dom.container);
 }
 
+SQL.IO.prototype.fromXMLText = function(xml) {
+	try {
+		if (window.DOMParser) {
+			var parser = new DOMParser();
+			var xmlDoc = parser.parseFromString(xml, "text/xml");
+		} else if (window.ActiveXObject || "ActiveXObject" in window) {
+			var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+			xmlDoc.loadXML(xml);
+		} else {
+			throw new Error("No XML parser available.");
+		}
+	} catch(e) { 
+		alert(_("xmlerror")+': '+e.message);
+		return;
+	}
+	this.fromXML(xmlDoc);
+}
+
 SQL.IO.prototype.fromXML = function(xmlDoc) {
 	if (!xmlDoc || !xmlDoc.documentElement) {
 		alert(_("xmlerror")+': Null document');
@@ -1349,21 +1397,21 @@ SQL.IO.prototype.clientload = function() {
 		alert(_("empty"));
 		return;
 	}
-	try {
-		if (window.DOMParser) {
-			var parser = new DOMParser();
-			var xmlDoc = parser.parseFromString(xml, "text/xml");
-		} else if (window.ActiveXObject || "ActiveXObject" in window) {
-			var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-			xmlDoc.loadXML(xml);
-		} else {
-			throw new Error("No XML parser available.");
-		}
-	} catch(e) { 
-		alert(_("xmlerror")+': '+e.message);
-		return;
+
+	this.fromXMLText(xml);
+}
+
+SQL.IO.prototype.promptName = function(title, suffix) {
+	var lastUsedName = this.owner.getOption("lastUsedName") || this.lastUsedName;
+	var name = prompt(_(title), lastUsedName);
+	if (!name) { return null; }
+	if (suffix && name.endsWith(suffix)) {
+		// remove suffix from name
+		name = name.substr(0, name.length-4);
 	}
-	this.fromXML(xmlDoc);
+	this.owner.setOption("lastUsedName", name);
+	this.lastUsedName = name;	// save this also in variable in case cookies are disabled
+	return name;
 }
 
 SQL.IO.prototype.clientlocalsave = function() {
@@ -1378,8 +1426,8 @@ SQL.IO.prototype.clientlocalsave = function() {
 		return;
 	}
 
-	var key = prompt(_("serversaveprompt"), this._name);
-	if (key === null) { return; }
+	var key = this.promptName("serversaveprompt");
+	if (!key) { return; }
 	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
@@ -1390,16 +1438,13 @@ SQL.IO.prototype.clientlocalsave = function() {
 	}
 }
 
-
-
 SQL.IO.prototype.clientlocalload = function() {
 	if (!window.localStorage) { 
 		alert("Sorry, your browser does not seem to support localStorage.");
 		return;
 	}
 	
-	var key = prompt(_("serverloadprompt"), this._name);
-	if (key === null) { return; }
+	var key = this.promptName("serverloadprompt");
 	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
@@ -1410,22 +1455,7 @@ SQL.IO.prototype.clientlocalload = function() {
 		return;
 	}
 	
-	try {
-		if (window.DOMParser) {
-			var parser = new DOMParser();
-			var xmlDoc = parser.parseFromString(xml, "text/xml");
-		} else if (window.ActiveXObject || "ActiveXObject" in window) {
-			var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-			xmlDoc.loadXML(xml);
-		} else {
-			throw new Error("No XML parser available.");
-		}
-	} catch(e) { 
-		alert(_("xmlerror")+': '+e.message);
-		return;
-	}
-
-	this.fromXML(xmlDoc);
+	this.fromXMLText(xml);
 }
 
 SQL.IO.prototype.clientlocallist = function() {
@@ -1434,7 +1464,7 @@ SQL.IO.prototype.clientlocallist = function() {
         return;
     }
     
-    /* --- Define some usefull vars --- */
+    /* --- Define some useful vars --- */
     var baseKeysName = "wwwsqldesigner_databases_";
     var localLen = localStorage.length;
     var data = "";
@@ -1460,6 +1490,148 @@ SQL.IO.prototype.clientlocallist = function() {
     }
     this.listresponse(data, code);
 }
+
+/* ------------------------- Dropbox start ------------------------ */
+
+/*
+ * The following code uses this lib: https://github.com/dropbox/dropbox-js
+ */
+
+SQL.IO.prototype.dropBoxInit = function()
+{
+	if (dropboxAppKey) {
+		this.dropboxClient = new Dropbox.Client({ key: dropboxAppKey });
+} else {
+		this.dropboxClient = null;
+
+		// Hide the Dropbox buttons and divider
+		var elems = document.querySelectorAll("[id^=dropbox]");	// gets all tags whose id start with "dropbox"
+		[].slice.call(elems).forEach(
+			function(elem) { elem.style.display = "none"; }
+		);
+	}
+}
+
+SQL.IO.prototype.showDropboxError = function(error) {
+	var prefix = _("Dropbox error")+": ";
+	var msg = error.status;
+
+	switch (error.status) {
+	  case Dropbox.ApiError.INVALID_TOKEN:
+		// If you're using dropbox.js, the only cause behind this error is that
+		// the user token expired.
+		// Get the user through the authentication flow again.
+		msg = _("Invalid Token (expired)");
+		break;
+
+	  case Dropbox.ApiError.NOT_FOUND:
+		// The file or folder you tried to access is not in the user's Dropbox.
+		// Handling this error is specific to your application.
+		msg = _("File not found");
+		break;
+
+	  case Dropbox.ApiError.OVER_QUOTA:
+		// The user is over their Dropbox quota.
+		// Tell them their Dropbox is full. Refreshing the page won't help.
+		msg = _("Dropbox is full");
+		break;
+
+	  case Dropbox.ApiError.RATE_LIMITED:
+		// Too many API requests. Tell the user to try again later.
+		// Long-term, optimize your code to use fewer API calls.
+		break;
+
+	  case Dropbox.ApiError.NETWORK_ERROR:
+		// An error occurred at the XMLHttpRequest layer.
+		// Most likely, the user's network connection is down.
+		// API calls will not succeed until the user gets back online.
+		msg = _("Network error");
+		break;
+
+	  case Dropbox.ApiError.INVALID_PARAM:
+	  case Dropbox.ApiError.OAUTH_ERROR:
+	  case Dropbox.ApiError.INVALID_METHOD:
+	  default:
+		// Caused by a bug in dropbox.js, in your application, or in Dropbox.
+		// Tell the user an error occurred, ask them to refresh the page.
+	}
+
+	alert (prefix+msg);
+};
+
+SQL.IO.prototype.showDropboxAuthenticate = function() {
+	if (!this.dropboxClient) return false;
+
+	// We want to use a popup window for authentication as the default redirection won't work for us as it'll make us lose our schema data
+	this.dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: "dropbox-oauth-receiver.html" }));
+
+	// Now let's authenticate us
+	var success = false;
+	this.dropboxClient.authenticate( function(error, client) {
+		if (error) {
+			this.showDropboxError(error);
+			return;
+		}
+		success = true;
+		return;
+	});
+	return success;
+}
+
+SQL.IO.prototype.dropboxsave = function() {
+	if (!this.showDropboxAuthenticate()) return;
+	
+	var key = this.promptName("serversaveprompt", ".xml");
+	if (!key) { return; }
+	var filename = (key || "default") + ".xml";
+	
+	var sql_io = this;
+	sql_io.listresponse("Saving...", 200);
+	var xml = this.owner.toXML();
+	this.dropboxClient.writeFile(filename, xml, function(error, stat) {
+		if (error) {
+			sql_io.listresponse("", 200);
+			return this.showDropboxError(error);
+		}
+		sql_io.listresponse(filename+" "+_("was saved to Dropbox"), 200);
+	});
+}
+
+SQL.IO.prototype.dropboxload = function() {
+	if (!this.showDropboxAuthenticate()) return;
+
+	var key = this.promptName("serverloadprompt", ".xml");
+	if (!key) { return; }
+	var filename = (key || "default") + ".xml";
+	
+	var sql_io = this;
+	sql_io.listresponse("Loading...", 200);
+	this.dropboxClient.readFile(filename, function(error, data) {
+		sql_io.listresponse("", 200);
+		if (error) {
+			return this.showDropboxError(error);
+		}
+		sql_io.fromXMLText(data);
+	});
+}
+
+SQL.IO.prototype.dropboxlist = function() {
+	if (!this.showDropboxAuthenticate()) return;
+    
+	var sql_io = this;
+	sql_io.listresponse("Loading...", 200);
+	this.dropboxClient.readdir("/", function(error, entries) {
+		if (error) {
+			sql_io.listresponse("", 200);
+			return this.showDropboxError(error);
+		}
+		var data = entries.join("\n")+"\n";
+		sql_io.listresponse(data, 200);
+	});
+}
+
+
+/* ------------------------- Dropbox end ------------------------ */
 
 SQL.IO.prototype.clientsql = function() {
 	var bp = this.owner.getOption("staticpath");
@@ -1491,7 +1663,7 @@ SQL.IO.prototype.finish = function(xslDoc) {
 		alert(_("xmlerror")+': '+e.message);
 		return;
 	}
-	this.dom.ta.value = sql;
+	this.dom.ta.value = sql.trim();
 }
 
 SQL.IO.prototype.serversave = function(e, keyword) {

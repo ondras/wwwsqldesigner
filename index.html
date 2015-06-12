@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
 	<script type="text/javascript" src="js/oz.js"></script>
 	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
 	<script type="text/javascript" src="js/wwwsqldesigner.js"></script>
 </head>
 
@@ -146,19 +147,28 @@
 		<table>
 			<tbody>
 				<tr>
-					<td>
+					<td style="width:60%">
 						<fieldset>
 							<legend id="client"></legend>
+							<div id="singlerow">
 							<input type="button" id="clientsave" /> 
 							<input type="button" id="clientload" />
+							</div>
+							<div id="singlerow">
 							<input type="button" id="clientlocalsave" />
 							<input type="button" id="clientlocalload" />
 							<input type="button" id="clientlocallist" />
+							</div>
+							<div id="singlerow">
+								<input type="button" id="dropboxsave" /><!-- may get hidden by dropBoxInit() -->
+								<input type="button" id="dropboxload" /><!-- may get hidden by dropBoxInit() -->
+								<input type="button" id="dropboxlist" /><!-- may get hidden by dropBoxInit() -->
+							</div>
 							<hr/>
 							<input type="button" id="clientsql" />
 						</fieldset>
 					</td>
-					<td>
+					<td style="width:40%">
 						<fieldset>
 							<legend id="server"></legend>
 							<label for="backend" id="backendlabel"></label> <select id="backend"><option></option></select>
