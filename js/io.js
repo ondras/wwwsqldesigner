@@ -32,7 +32,10 @@ SQL.IO.prototype.init = function(owner) {
 	
 	this.dom.ta = OZ.$("textarea");
 	this.dom.backend = OZ.$("backend");
-	
+
+	/* init dropbox before hiding the container so it can adjust its buttons */	
+	this.dropBoxInit();
+
 	this.dom.container.parentNode.removeChild(this.dom.container);
 	this.dom.container.style.visibility = "";
 	
@@ -58,8 +61,6 @@ SQL.IO.prototype.init = function(owner) {
 	OZ.Event.add(this.dom.serverimport, "click", this.bind(this.serverimport));
 	OZ.Event.add(document, "keydown", this.bind(this.press));
 	this.build();
-	
-	this.dropBoxInit ();
 }
 
 SQL.IO.prototype.build = function() {
@@ -191,52 +192,49 @@ SQL.IO.prototype.clientlocalload = function() {
 }
 
 SQL.IO.prototype.clientlocallist = function() {
-    if (!window.localStorage) { 
-        alert("Sorry, your browser does not seem to support localStorage.");
-        return;
-    }
-    
-    /* --- Define some useful vars --- */
-    var baseKeysName = "wwwsqldesigner_databases_";
-    var localLen = localStorage.length;
-    var data = "";
-    var schemasFound = false;
-    var code = 200;
-    
-    /* --- work --- */
-    try {
-        for (var i = 0; i< localLen; ++i) {
-            var key = localStorage.key(i);
-            if((new RegExp(baseKeysName)).test(key)) {
-                var result = key.substring(baseKeysName.length);
-                schemasFound = true;
-                data += result + "\n";
-            }
-        }
-        if (!schemasFound) {
-            throw new Error("No data available");
-        }
-    }  catch (e) {
-        alert("Error loading database names from localStorage! ("+e.message+")");
-        return;
-    }
-    this.listresponse(data, code);
+	if (!window.localStorage) { 
+		alert("Sorry, your browser does not seem to support localStorage.");
+		return;
+	}
+	
+	/* --- Define some useful vars --- */
+	var baseKeysName = "wwwsqldesigner_databases_";
+	var localLen = localStorage.length;
+	var data = "";
+	var schemasFound = false;
+	var code = 200;
+	
+	/* --- work --- */
+	try {
+		for (var i = 0; i< localLen; ++i) {
+			var key = localStorage.key(i);
+			if((new RegExp(baseKeysName)).test(key)) {
+				var result = key.substring(baseKeysName.length);
+				schemasFound = true;
+				data += result + "\n";
+			}
+		}
+		if (!schemasFound) {
+			throw new Error("No data available");
+		}
+	}  catch (e) {
+		alert("Error loading database names from localStorage! ("+e.message+")");
+		return;
+	}
+	this.listresponse(data, code);
 }
 
 /* ------------------------- Dropbox start ------------------------ */
 
-/*
+/**
  * The following code uses this lib: https://github.com/dropbox/dropbox-js
  */
-
-SQL.IO.prototype.dropBoxInit = function()
-{
-	if (dropboxAppKey) {
-		this.dropboxClient = new Dropbox.Client({ key: dropboxAppKey });
-} else {
+SQL.IO.prototype.dropBoxInit = function() {
+	if (CONFIG.DROPBOX_KEY) {
+		this.dropboxClient = new Dropbox.Client({ key: CONFIG.DROPBOX_KEY });
+	} else {
 		this.dropboxClient = null;
-
-		// Hide the Dropbox buttons and divider
+		// Hide the Dropbox buttons
 		var elems = document.querySelectorAll("[id^=dropbox]");	// gets all tags whose id start with "dropbox"
 		[].slice.call(elems).forEach(
 			function(elem) { elem.style.display = "none"; }
@@ -349,7 +347,7 @@ SQL.IO.prototype.dropboxload = function() {
 
 SQL.IO.prototype.dropboxlist = function() {
 	if (!this.showDropboxAuthenticate()) return;
-    
+	
 	var sql_io = this;
 	sql_io.listresponse("Loading...", 200);
 	this.dropboxClient.readdir("/", function(error, entries) {
