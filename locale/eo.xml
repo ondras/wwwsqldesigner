@@ -70,9 +70,6 @@
 	<!-- io -->
 	<string name="saveload">Konservi / Ŝargi</string>
 	<string name="empty">Bonvolu alglui XML datumon en la tekst-zono sube kaj provi de nove.</string>
-	<string name="client">Kliento</string>
-	<string name="server">Servilo</string>
-	<string name="output">Enigo / Eligo</string>
 	<string name="clientsave">Konservi XML</string>
 	<string name="clientload">Ŝargi XML</string>
 	<string name="clientsql">Krei SQL</string>

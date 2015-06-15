@@ -13,8 +13,8 @@ SQL.Relation = function(owner, row1, row2) {
 	if (all.length) { /* inherit */
 		this.color = all[0].getColor();
 	} else if (CONFIG.RELATION_COLORS) { /* pick next */
-		this.constructor._counter++;
-		var colorIndex = this.constructor._counter - 1;
+		SQL.Relation._counter++;
+		var colorIndex = SQL.Relation._counter - 1;
 		this.color = CONFIG.RELATION_COLORS[colorIndex % CONFIG.RELATION_COLORS.length];
 	}
 

@@ -93,20 +93,14 @@ SQL.Designer.prototype.init2 = function() { /* secondary init, after locale & da
 	this.tableManager = new SQL.TableManager(this);
 	this.rowManager = new SQL.RowManager(this);
 	this.keyManager = new SQL.KeyManager(this);
-	this.io = new SQL.IO(this);
 	this.options = new SQL.Options(this);
 	this.window = new SQL.Window(this);
+	this.io = new SQL.IO(this);
 
 	this.sync();
 	
 	OZ.$("docs").value = _("docs");
 
-	var url = window.location.href;
-	var r = url.match(/keyword=([^&]+)/);
-	if (r) {
-		var keyword = r[1];
-		this.io.serverload(false, keyword);
-	}
 	document.body.style.visibility = "visible";
 }
 

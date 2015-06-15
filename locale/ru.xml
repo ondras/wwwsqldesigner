@@ -69,9 +69,6 @@
 	<!-- io -->
 	<string name="saveload">Сохранить / Загрузить</string>
 	<string name="empty">Пожалуйста, вставьте XML данные в поле ниже и попробуйте ещё раз.</string>
-	<string name="client">Клиент</string>
-	<string name="server">Сервер</string>
-	<string name="output">Ввод / Вывод</string>
 	<string name="clientsave">Сохранить XML</string>
 	<string name="clientload">Загрузить XML</string>
 	<string name="clientsql">Генерировать SQL</string>

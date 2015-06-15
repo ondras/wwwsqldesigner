@@ -70,9 +70,6 @@
 	<!-- io -->
 	<string name="saveload">Salva / Carica</string>
 	<string name="empty">Reincolla i dati XML nell'area sottostante e prova di nuovo.</string>
-	<string name="client">Intestatario</string>
-	<string name="server">Server</string>
-	<string name="output">Ingresso / Uscita</string>
 	<string name="clientsave">Salva XML</string>
 	<string name="clientload">Carica XML</string>
 	<string name="clientsql">Genera SQL</string>

@@ -69,9 +69,6 @@
 	<!-- io -->
 	<string name="saveload">Αποθήκ./Άνοιγμα</string>
 	<string name="empty">Κάντε επικόλληση των δεδομένων XML στο πεδίο κειμένου παρακάτω και δοκιμάστε ξανά.</string>
-	<string name="client">Πελάτης</string>
-	<string name="server">Διακομιστής</string>
-	<string name="output">Εισαγωγή/Εξαγωγή</string>
 	<string name="clientsave">Αποθήκευση XML</string>
 	<string name="clientload">Άνοιγμα XML</string>
 	<string name="clientsql">Δημιουργία SQL</string>

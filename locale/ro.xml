@@ -69,9 +69,6 @@
 	<!-- io -->
 	<string name="saveload">Salveaza / Incarca</string>
 	<string name="empty">Introduceti codul XML si re-incercati.</string>
-	<string name="client">Client</string>
-	<string name="server">Server</string>
-	<string name="output">Input / Output</string>
 	<string name="clientsave">Genereaza XML</string>
 	<string name="clientload">Incarca din XML</string>
 	<string name="clientsql">Genereaza SQL</string>

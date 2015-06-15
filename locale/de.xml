@@ -69,9 +69,6 @@
 	<!-- io -->
 	<string name="saveload">Speichern / Laden</string>
 	<string name="empty">Bitte fügen Sie die XML-Daten in das untere Textfeld ein und versuchen es erneut.</string>
-	<string name="client">Client</string>
-	<string name="server">Server</string>
-	<string name="output">Eingabe / Ausgabe</string>
 	<string name="clientsave">XML speichern</string>
 	<string name="clientload">XML laden</string>
 	<string name="clientsql">SQL erzeugen</string>

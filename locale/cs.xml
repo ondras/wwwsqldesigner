@@ -70,9 +70,11 @@
 	<!-- io -->
 	<string name="saveload">Uložit / Načíst</string>
 	<string name="empty">Prosím vložte XML data do textového pole níže.</string>
-	<string name="client">Klient</string>
-	<string name="server">Server</string>
-	<string name="output">Vstup / Výstup</string>
+	<string name="storage">Úložiště</string>
+	<string name="storage.browser">V prohlížeči</string>
+	<string name="storage.clipboard">Schránka</string>
+	<string name="storage.rest">Vzdálený REST server</string>
+	<string name="storage.dropbox">Dropbox</string>
 	<string name="clientsave">Uložit XML</string>
 	<string name="clientload">Načíst XML</string>
 	<string name="clientlocalsave">Uložit v prohlížeči</string>

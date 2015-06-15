@@ -26,5 +26,4 @@ var CONFIG = {
 	 * Copy the shown "App key" and paste it here below:
 	 */
 	DROPBOX_KEY: null // "your app key";
-
 }

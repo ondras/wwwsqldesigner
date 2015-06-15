@@ -69,9 +69,6 @@
 	<!-- io -->
 	<string name="saveload">Salvar / Carregar</string>
 	<string name="empty">Por favor cole os dados XML na área de texto abaixo e tente novamente.</string>
-	<string name="client">Cliente</string>
-	<string name="server">Servidor</string>
-	<string name="output">Entrada / Saída</string>
 	<string name="clientsave">Salvar XML</string>
 	<string name="clientload">Carregar XML</string>
 	<string name="clientsql">Gerar SQL</string>

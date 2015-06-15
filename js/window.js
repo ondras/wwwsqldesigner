@@ -16,7 +16,7 @@ SQL.Window = function(owner) {
 	this.dom.throbber.alt = this.dom.throbber.title = _("throbber");
 	OZ.Event.add(this.dom.ok, "click", this.ok.bind(this));
 	OZ.Event.add(this.dom.cancel, "click", this.close.bind(this));
-	OZ.Event.add(document, "keydown", this.key.bind(this));
+	OZ.Event.add(window, "keydown", this.key.bind(this));
 	
 	this.sync = this.sync.bind(this);
 	

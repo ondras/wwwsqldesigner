@@ -70,9 +70,11 @@
 	<!-- io -->
 	<string name="saveload">Save / Load</string>
 	<string name="empty">Please paste XML data into the text area below and try again.</string>
-	<string name="client">Client</string>
-	<string name="server">Server</string>
-	<string name="output">Input / Output</string>
+	<string name="storage">Storage</string>
+	<string name="storage.browser">Browser storage</string>
+	<string name="storage.clipboard">System clipboard</string>
+	<string name="storage.rest">Remote REST server</string>
+	<string name="storage.dropbox">Dropbox</string>
 	<string name="clientsave">Save XML</string>
 	<string name="clientload">Load XML</string>
 	<string name="clientlocalsave">Save in Browser</string>

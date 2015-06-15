@@ -40,7 +40,7 @@ body {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=215, Color='#888888')"; /* IE 8 */
 }
 
-#bar input {
+#bar input, #bar button {
 	display: block;
 	width: 90%;
 	margin: auto;
@@ -228,7 +228,7 @@ legend {
 	font-weight: bold;
 }
 
-label, input, select {
+label, input, button, select {
 	vertical-align: middle;
 }
 

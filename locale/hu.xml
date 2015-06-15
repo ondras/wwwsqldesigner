@@ -69,9 +69,6 @@
 	<!-- io -->
 	<string name="saveload">Mentés / Beolvasás</string>
 	<string name="empty">Kérem illessze be az XML-tartalmat az alábbi szöveges mezőbe, és próbálja újra.</string>
-	<string name="client">Kliens</string>
-	<string name="server">Szerver</string>
-	<string name="output">Bemenet / Kimenet</string>
 	<string name="clientsave">XML mentése</string>
 	<string name="clientload">XML beolvasása</string>
 	<string name="clientsql">SQL generálása</string>

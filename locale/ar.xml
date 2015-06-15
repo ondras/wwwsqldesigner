@@ -68,9 +68,6 @@
 	<!-- io -->
 	<string name="saveload">حفظ / تحميل</string>
 	<string name="empty">قم بوضع بيانات نموذج XML في المربع أدناه، ثم حاول مرّة أخرى.</string>
-	<string name="client">العميل</string>
-	<string name="server">الخادم</string>
-	<string name="output">المدخلات / المخرجات</string>
 	<string name="clientsave">حفظ كنموذح XML</string>
 	<string name="clientload">إستيراد نموذج XML</string>
 	<string name="clientsql">حفظ كنموذج SQL</string>

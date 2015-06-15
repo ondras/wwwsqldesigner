@@ -23,7 +23,7 @@ SQL.RowManager = function(owner) {
 	OZ.Event.add(this.dom.foreigncreate, "click", this.foreigncreate.bind(this));
 	OZ.Event.add(this.dom.foreignconnect, "click", this.foreignconnect.bind(this));
 	OZ.Event.add(this.dom.foreigndisconnect, "click", this.foreigndisconnect.bind(this));
-	OZ.Event.add(document, "keydown", this.press.bind(this));
+	OZ.Event.add(window, "keydown", this.press.bind(this));
 
 	SQL.subscribe("tableclick", this.tableClick.bind(this));
 	SQL.subscribe("rowclick", this.rowClick.bind(this));

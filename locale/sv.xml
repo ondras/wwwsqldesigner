@@ -69,9 +69,6 @@
 	<!-- io -->
 	<string name="saveload">Spara / Ladda</string>
 	<string name="empty">Vänligen klistra in XML i textrutan nedan och försök igen.</string>
-	<string name="client">Klient</string>
-	<string name="server">Server</string>
-	<string name="output">Input / Output</string>
 	<string name="clientsave">Spara XML</string>
 	<string name="clientload">Ladda XML</string>
 	<string name="clientsql">Generera SQL</string>

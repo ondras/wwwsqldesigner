@@ -38,7 +38,7 @@ SQL.TableManager = function(owner) {
 	OZ.Event.add(this.dom.aligntables, "click", this.owner.alignTables.bind(this.owner));
 	OZ.Event.add(this.dom.edittable, "click", this.edit.bind(this));
 	OZ.Event.add(this.dom.tablekeys, "click", this.keys.bind(this));
-	OZ.Event.add(document, "keydown", this.press.bind(this));
+	OZ.Event.add(window, "keydown", this.press.bind(this));
 
 	this.dom.container.parentNode.removeChild(this.dom.container);
 }

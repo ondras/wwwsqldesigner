@@ -70,9 +70,6 @@ habilitadas para opciones de trabajo.</string>
 	<!-- io -->
 	<string name="saveload">Guardar / Cargar</string>
 	<string name="empty">Favor de pegar el XML dentro del &#225;rea de texto siguiente e intentar nuevamente.</string>
-	<string name="client">Cliente</string>
-	<string name="server">Servidor</string>
-	<string name="output">Entrada / Salida</string>
 	<string name="clientsave">Guardar XML</string>
 	<string name="clientload">Cargar XML</string>
 	<string name="clientsql">Generar SQL</string>

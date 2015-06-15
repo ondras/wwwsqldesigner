@@ -10,8 +10,6 @@
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1" />
  	<meta charset="utf-8" />
 	<link rel="stylesheet" href="styles/style.css" media="all" />     
-	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="styles/ie6.css" /><![endif]-->
-	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="styles/ie7.css" /><![endif]-->
 	<link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
 
@@ -27,6 +25,11 @@
 	<script src="js/map.js"></script>
 	<script src="js/toggle.js"></script>
 	<script src="js/io.js"></script>
+	<script src="js/storage.js"></script>
+	<script src="js/storage.browser.js"></script>
+	<script src="js/storage.clipboard.js"></script>
+	<script src="js/storage.rest.js"></script>
+	<script src="js/storage.dropbox.js"></script>
 	<script src="js/tablemanager.js"></script>
 	<script src="js/rowmanager.js"></script>
 	<script src="js/keymanager.js"></script>
@@ -41,7 +44,7 @@
 	<div id="controls">
 		<div id="bar">
 			<div id="toggle"></div>
-			<input type="button" id="saveload" />
+			<button id="saveload"></button>
 
 			<hr/>
 
@@ -160,53 +163,12 @@
 	</div>
 	
 	<div id="io">
-		<table>
-			<tbody>
-				<tr>
-					<td style="width:60%">
-						<fieldset>
-							<legend id="client"></legend>
-							<div id="singlerow">
-							<input type="button" id="clientsave" /> 
-							<input type="button" id="clientload" />
-							</div>
-							<div id="singlerow">
-							<input type="button" id="clientlocalsave" />
-							<input type="button" id="clientlocalload" />
-							<input type="button" id="clientlocallist" />
-							</div>
-							<div id="singlerow">
-								<input type="button" id="dropboxsave" /><!-- may get hidden by dropBoxInit() -->
-								<input type="button" id="dropboxload" /><!-- may get hidden by dropBoxInit() -->
-								<input type="button" id="dropboxlist" /><!-- may get hidden by dropBoxInit() -->
-							</div>
-							<hr/>
-							<input type="button" id="clientsql" />
-						</fieldset>
-					</td>
-					<td style="width:40%">
-						<fieldset>
-							<legend id="server"></legend>
-							<label for="backend" id="backendlabel"></label> <select id="backend"><option></option></select>
-							<hr/>
-							<input type="button" id="serversave" /> 
-							<input type="button" id="quicksave" /> 
-							<input type="button" id="serverload" /> 
-							<input type="button" id="serverlist" /> 
-							<input type="button" id="serverimport" /> 
-						</fieldset>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<fieldset>
-							<legend id="output"></legend>
-							<textarea id="textarea" rows="1" cols="1"></textarea><!--modified by javascript later-->
-						</fieldset>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<span id="storage"></span>: <select></select>
+		<div id="io-content"></div>
+		<hr/>
+		<button id="quicksave"></button>
+		<button id="clientsql"></button>
+		<textarea id="textarea" rows="1" cols="1"></textarea>
 	</div>
 	
 	<div id="keys">
