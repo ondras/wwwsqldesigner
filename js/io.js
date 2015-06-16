@@ -153,6 +153,7 @@ SQL.IO.prototype._storageChange = function(e) {
 }
 
 SQL.IO.prototype._setStorage = function(index) {
+	this.dom.select.selectedIndex = index;
 	this._currentStorage && this._currentStorage.deactivate();
 	this.dom.content.innerHTML = "";
 
