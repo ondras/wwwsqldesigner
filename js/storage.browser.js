@@ -52,7 +52,7 @@ SQL.Storage.Browser.prototype._load = function(keyword) {
 SQL.Storage.Browser.prototype._clickSave = function(e) {
 	var keyword = this._dom.list.value;
 	if (!keyword) {
-		keyword = this.owner.promptName("serversaveprompt");
+		keyword = prompt(_("serversaveprompt"));
 		if (!keyword) { return; }
 	}
 
@@ -82,17 +82,16 @@ SQL.Storage.Browser.prototype._list = function() {
 
 	this._dom.list.innerHTML = "";
 
-	if (results.length) {
-		results.forEach(function(result) {
-			var option = document.createElement("option");
-			option.innerHTML = result;
-			this._dom.list.appendChild(option);
-		}.bind(this));
-	} else {
-		var empty = document.createElement("option");
-		empty.innerHTML = "[no saved designs]";
-		empty.value = "";
-		this._dom.list.appendChild(empty);
-	}
+	var empty = document.createElement("option");
+	empty.innerHTML = "[create a new design]";
+	empty.value = "";
+	this._dom.list.appendChild(empty);
+
+	results.forEach(function(result) {
+		var option = document.createElement("option");
+		option.innerHTML = result;
+		this._dom.list.appendChild(option);
+	}.bind(this));
+
 	this._dom.list.value = this._keyword;
 }
