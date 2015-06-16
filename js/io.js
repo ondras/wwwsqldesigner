@@ -250,7 +250,8 @@ SQL.IO.prototype.showDropboxError = function(error) {
 		// If you're using dropbox.js, the only cause behind this error is that
 		// the user token expired.
 		// Get the user through the authentication flow again.
-		msg = _("Invalid Token (expired)");
+		msg = _("Token expired - retry the operation, authenticating again with Dropbox");
+		this.dropboxClient.reset();
 		break;
 
 	  case Dropbox.ApiError.NOT_FOUND:
@@ -288,76 +289,80 @@ SQL.IO.prototype.showDropboxError = function(error) {
 	alert (prefix+msg);
 };
 
-SQL.IO.prototype.showDropboxAuthenticate = function() {
+SQL.IO.prototype.showDropboxAuthenticate = function(connectedCallBack) {
 	if (!this.dropboxClient) return false;
 
 	// We want to use a popup window for authentication as the default redirection won't work for us as it'll make us lose our schema data
-	this.dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: "dropbox-oauth-receiver.html" }));
+	var href = window.location.href;
+	var prefix = href.substring(0, href.lastIndexOf('/')) + "/";
+	this.dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: prefix+"dropbox-oauth-receiver.html" }));
 
 	// Now let's authenticate us
-	var success = false;
-	this.dropboxClient.authenticate( function(error, client) {
+	var sql_io = this;
+	sql_io.dropboxClient.authenticate( function(error, client) {
 		if (error) {
-			this.showDropboxError(error);
-			return;
+			sql_io.showDropboxError(error);
+		} else {
+			// We're authenticated
+			connectedCallBack();
 		}
-		success = true;
 		return;
 	});
-	return success;
+
+	return true;
 }
 
 SQL.IO.prototype.dropboxsave = function() {
-	if (!this.showDropboxAuthenticate()) return;
-	
-	var key = this.promptName("serversaveprompt", ".xml");
-	if (!key) { return; }
-
-	var filename = (key || "default") + ".xml";
-	
 	var sql_io = this;
-	sql_io.listresponse("Saving...", 200);
-	var xml = this.owner.toXML();
-	this.dropboxClient.writeFile(filename, xml, function(error, stat) {
-		if (error) {
-			sql_io.listresponse("", 200);
-			return this.showDropboxError(error);
-		}
-		sql_io.listresponse(filename+" "+_("was saved to Dropbox"), 200);
+	sql_io.showDropboxAuthenticate( function() {
+		var key = sql_io.promptName("serversaveprompt", ".xml");
+		if (!key) { return; }
+
+		var filename = (key || "default") + ".xml";
+	
+		sql_io.listresponse("Saving...", 200);
+		var xml = sql_io.owner.toXML();
+		sql_io.dropboxClient.writeFile(filename, xml, function(error, stat) {
+			if (error) {
+				sql_io.listresponse("", 200);
+				return sql_io.showDropboxError(error);
+			}
+			sql_io.listresponse(filename+" "+_("was saved to Dropbox"), 200);
+		});
 	});
 }
 
 SQL.IO.prototype.dropboxload = function() {
-	if (!this.showDropboxAuthenticate()) return;
-
-	var key = this.promptName("serverloadprompt", ".xml");
-	if (!key) { return; }
-
-	var filename = (key || "default") + ".xml";
-	
 	var sql_io = this;
-	sql_io.listresponse("Loading...", 200);
-	this.dropboxClient.readFile(filename, function(error, data) {
-		sql_io.listresponse("", 200);
-		if (error) {
-			return this.showDropboxError(error);
-		}
-		sql_io.fromXMLText(data);
+	sql_io.showDropboxAuthenticate( function() {
+		var key = sql_io.promptName("serverloadprompt", ".xml");
+		if (!key) { return; }
+
+		var filename = (key || "default") + ".xml";
+	
+		sql_io.listresponse("Loading...", 200);
+		sql_io.dropboxClient.readFile(filename, function(error, data) {
+			sql_io.listresponse("", 200);
+			if (error) {
+				return sql_io.showDropboxError(error);
+			}
+			sql_io.fromXMLText(data);
+		});
 	});
 }
 
 SQL.IO.prototype.dropboxlist = function() {
-	if (!this.showDropboxAuthenticate()) return;
-	
 	var sql_io = this;
-	sql_io.listresponse("Loading...", 200);
-	this.dropboxClient.readdir("/", function(error, entries) {
-		if (error) {
-			sql_io.listresponse("", 200);
-			return this.showDropboxError(error);
-		}
-		var data = entries.join("\n")+"\n";
-		sql_io.listresponse(data, 200);
+	sql_io.showDropboxAuthenticate( function() {
+		sql_io.listresponse("Loading...", 200);
+		sql_io.dropboxClient.readdir("/", function(error, entries) {
+			if (error) {
+				sql_io.listresponse("", 200);
+				return sql_io.showDropboxError(error);
+			}
+			var data = entries.join("\n")+"\n";
+			sql_io.listresponse(data, 200);
+		});
 	});
 }
 
