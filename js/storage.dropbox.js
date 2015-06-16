@@ -27,7 +27,8 @@ SQL.Storage.Dropbox.prototype.showDropboxError = function(error) {
 		// If you're using dropbox.js, the only cause behind this error is that
 		// the user token expired.
 		// Get the user through the authentication flow again.
-		msg = _("Invalid Token (expired)");
+		msg = _("Token expired - retry the operation, authenticating again with Dropbox");
+		this.dropboxClient.reset();
 		break;
 
 	  case Dropbox.ApiError.NOT_FOUND:
@@ -62,61 +63,67 @@ SQL.Storage.Dropbox.prototype.showDropboxError = function(error) {
 		// Tell the user an error occurred, ask them to refresh the page.
 	}
 
-	alert(prefix+msg);
+	alert (prefix+msg);
 };
 
-SQL.Storage.Dropbox.prototype.showDropboxAuthenticate = function() {
+SQL.Storage.Dropbox.prototype.authenticate = function(connectedCallBack) {
 	if (!this.dropboxClient) return false;
 
-	// We want to use a popup window for authentication as the default redirection won't work for us as it'll make us lose our schema data
-	this.dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: "dropbox-oauth-receiver.html" }));
+	// We want to use a popup window for authentication as the default redirection
+	//  won't work for us as it'll make us lose our schema data
+	var href = window.location.href;
+	var prefix = href.substring(0, href.lastIndexOf("/")) + "/";
+	this.dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: prefix+"dropbox-oauth-receiver.html" }));
 
 	// Now let's authenticate us
-	var success = false;
+	var us = this;
 	this.dropboxClient.authenticate( function(error, client) {
 		if (error) {
-			this.showDropboxError(error);
-			return;
+			us.showDropboxError(error);
+		} else {
+			// We're authenticated
+			connectedCallBack();
 		}
-		success = true;
-		return;
 	});
-	return success;
+
+	return true;
 }
 
 SQL.Storage.Dropbox.prototype._save = function(keyword) {
-	if (!this.showDropboxAuthenticate()) return;
+	var us = this;
+	us.authenticate( function() {
+		var xml = us.owner.owner.toXML();
+		var filename = keyword + ".xml";
+		us.owner.owner.window.showThrobber();
 
-	var xml = this.owner.owner.toXML();
-	var filename = keyword + ".xml";
-	this.owner.owner.window.showThrobber();
-
-	this.dropboxClient.writeFile(filename, xml, function(error, stat) {
-		this.owner.owner.window.hideThrobber();
-		if (error) {
-			this.showDropboxError(error);
-		} else {
-			this._keyword = keyword;
-			this.owner.getArea().value = filename+" "+_("was saved to Dropbox");
-		}
-	}.bind(this));
+		us.dropboxClient.writeFile(filename, xml, function(error, stat) {
+			us.owner.owner.window.hideThrobber();
+			if (error) {
+				us.showDropboxError(error);
+			} else {
+				us._keyword = keyword;
+				us.owner.getArea().value = filename+" "+_("was saved to Dropbox");
+			}
+		}.bind(us));
+	});
 }
 
 SQL.Storage.Dropbox.prototype._load = function(keyword) {
-	if (!this.showDropboxAuthenticate()) return;
+	var us = this;
+	us.authenticate( function() {
+		var filename = keyword + ".xml";
+		us.owner.owner.window.showThrobber();
 
-	var filename = keyword + ".xml";
-	this.owner.owner.window.showThrobber();
-
-	this.dropboxClient.readFile(filename, function(error, data) {
-		this.owner.owner.window.hideThrobber();
-		if (error) {
-			this.showDropboxError(error);
-		} else {
-			this.owner.fromXMLText(data);
-			this._keyword = keyword;
-		}
-	}.bind(this));
+		us.dropboxClient.readFile(filename, function(error, data) {
+			us.owner.owner.window.hideThrobber();
+			if (error) {
+				us.showDropboxError(error);
+			} else {
+				us.owner.fromXMLText(data);
+				us._keyword = keyword;
+			}
+		}.bind(us));
+	});
 }
 
 SQL.Storage.Dropbox.prototype._clickSave = function(e) {
@@ -132,15 +139,16 @@ SQL.Storage.Dropbox.prototype._clickLoad = function(e) {
 }
 
 SQL.Storage.Dropbox.prototype._clickList = function(e) {
-	if (!this.showDropboxAuthenticate()) return;
-	
-	this.owner.owner.window.showThrobber();
-	this.dropboxClient.readdir("/", function(error, entries) {
-		this.owner.owner.window.hideThrobber();
-		if (error) {
-			this.showDropboxError(error);
-		} else {
-			this.owner.getArea().value = entries.join("\n")+"\n"
-		}
-	}.bind(this));
+	var us = this;
+	us.authenticate( function() {
+		us.owner.owner.window.showThrobber();
+		us.dropboxClient.readdir("/", function(error, entries) {
+			us.owner.owner.window.hideThrobber();
+			if (error) {
+				us.showDropboxError(error);
+			} else {
+				us.owner.getArea().value = entries.join("\n")+"\n"
+			}
+		}.bind(us));
+	});
 }
