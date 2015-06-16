@@ -157,6 +157,7 @@ SQL.IO.prototype.clientlocalsave = function() {
 
 	var key = this.promptName("serversaveprompt");
 	if (!key) { return; }
+
 	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
@@ -174,6 +175,8 @@ SQL.IO.prototype.clientlocalload = function() {
 	}
 	
 	var key = this.promptName("serverloadprompt");
+	if (!key) { return; }
+
 	key = "wwwsqldesigner_databases_" + (key || "default");
 	
 	try {
@@ -309,6 +312,7 @@ SQL.IO.prototype.dropboxsave = function() {
 	
 	var key = this.promptName("serversaveprompt", ".xml");
 	if (!key) { return; }
+
 	var filename = (key || "default") + ".xml";
 	
 	var sql_io = this;
@@ -328,6 +332,7 @@ SQL.IO.prototype.dropboxload = function() {
 
 	var key = this.promptName("serverloadprompt", ".xml");
 	if (!key) { return; }
+
 	var filename = (key || "default") + ".xml";
 	
 	var sql_io = this;
