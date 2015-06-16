@@ -76,54 +76,51 @@ SQL.Storage.Dropbox.prototype.authenticate = function(connectedCallBack) {
 	this.dropboxClient.authDriver(new Dropbox.AuthDriver.Popup({ receiverUrl: prefix+"dropbox-oauth-receiver.html" }));
 
 	// Now let's authenticate us
-	var us = this;
 	this.dropboxClient.authenticate( function(error, client) {
 		if (error) {
-			us.showDropboxError(error);
+			this.showDropboxError(error);
 		} else {
 			// We're authenticated
 			connectedCallBack();
 		}
-	});
+	}.bind(this));
 
 	return true;
 }
 
 SQL.Storage.Dropbox.prototype._save = function(keyword) {
-	var us = this;
-	us.authenticate( function() {
-		var xml = us.owner.owner.toXML();
+	this.authenticate( function() {
+		var xml = this.owner.owner.toXML();
 		var filename = keyword + ".xml";
-		us.owner.owner.window.showThrobber();
+		this.owner.owner.window.showThrobber();
 
-		us.dropboxClient.writeFile(filename, xml, function(error, stat) {
-			us.owner.owner.window.hideThrobber();
+		this.dropboxClient.writeFile(filename, xml, function(error, stat) {
+			this.owner.owner.window.hideThrobber();
 			if (error) {
-				us.showDropboxError(error);
+				this.showDropboxError(error);
 			} else {
-				us._keyword = keyword;
-				us.owner.getArea().value = filename+" "+_("was saved to Dropbox");
+				this._keyword = keyword;
+				this.owner.getArea().value = filename+" "+_("was saved to Dropbox");
 			}
-		}.bind(us));
-	});
+		}.bind(this));
+	}.bind(this));
 }
 
 SQL.Storage.Dropbox.prototype._load = function(keyword) {
-	var us = this;
-	us.authenticate( function() {
+	this.authenticate( function() {
 		var filename = keyword + ".xml";
-		us.owner.owner.window.showThrobber();
+		this.owner.owner.window.showThrobber();
 
-		us.dropboxClient.readFile(filename, function(error, data) {
-			us.owner.owner.window.hideThrobber();
+		this.dropboxClient.readFile(filename, function(error, data) {
+			this.owner.owner.window.hideThrobber();
 			if (error) {
-				us.showDropboxError(error);
+				this.showDropboxError(error);
 			} else {
-				us.owner.fromXMLText(data);
-				us._keyword = keyword;
+				this.owner.fromXMLText(data);
+				this._keyword = keyword;
 			}
-		}.bind(us));
-	});
+		}.bind(this));
+	}.bind(this));
 }
 
 SQL.Storage.Dropbox.prototype._clickSave = function(e) {
@@ -139,16 +136,15 @@ SQL.Storage.Dropbox.prototype._clickLoad = function(e) {
 }
 
 SQL.Storage.Dropbox.prototype._clickList = function(e) {
-	var us = this;
-	us.authenticate( function() {
-		us.owner.owner.window.showThrobber();
-		us.dropboxClient.readdir("/", function(error, entries) {
-			us.owner.owner.window.hideThrobber();
+	this.authenticate( function() {
+		this.owner.owner.window.showThrobber();
+		this.dropboxClient.readdir("/", function(error, entries) {
+			this.owner.owner.window.hideThrobber();
 			if (error) {
-				us.showDropboxError(error);
+				this.showDropboxError(error);
 			} else {
-				us.owner.getArea().value = entries.join("\n")+"\n"
+				this.owner.getArea().value = entries.join("\n")+"\n";
 			}
-		}.bind(us));
-	});
+		}.bind(this));
+	}.bind(this));
 }
