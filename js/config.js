@@ -25,5 +25,5 @@ var CONFIG = {
 	 * http://localhost/sqldesigner/dropbox-oauth-receiver.html as a Redirection URI.
 	 * Copy the shown "App key" and paste it here below:
 	 */
-	DROPBOX_KEY: null // "your app key";
+	DROPBOX_KEY: null // "your app key"
 }
