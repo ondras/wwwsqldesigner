@@ -53,6 +53,10 @@ var SQL = {
 	unsubscribe: function(message, subscriber) {
 		var index = this._subscribers[message].indexOf(subscriber);
 		if (index > -1) { this._subscribers[message].splice(index, 1); }
+	},
+
+	escape: function(str) {
+		return str.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;");
 	}
 }
 

@@ -245,8 +245,7 @@ SQL.Table.prototype.toXML = function() {
 	}
 	var c = this.getComment();
 	if (c) { 
-		c = c.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;");
-		xml += "<comment>"+c+"</comment>\n"; 
+		xml += "<comment>"+SQL.escape(c)+"</comment>\n"; 
 	}
 	xml += "</table>\n";
 	return xml;
