@@ -133,7 +133,7 @@ SQL.Table.prototype.addKey = function(name) {
 	return k;
 }
 
-SQL.Table.prototype.removeKey = function(i) {
+SQL.Table.prototype.removeKey = function(k) {
 	var idx = this.keys.indexOf(k);
 	if (idx == -1) { return; }
 	k.destroy();
@@ -291,19 +291,6 @@ SQL.Table.prototype.findNamedRow = function(n) { /* return row with a given name
 		if (this.rows[i].getTitle() == n) { return this.rows[i]; }
 	}
 	return false;
-}
-
-SQL.Table.prototype.addKey = function(type, name) {
-	var i = new SQL.Key(this, type, name);
-	this.keys.push(i);
-	return i;
-}
-
-SQL.Table.prototype.removeKey = function(i) {
-	var idx = this.keys.indexOf(i);
-	if (idx == -1) { return; }
-	i.destroy();
-	this.keys.splice(idx,1);
 }
 
 SQL.Table.prototype.setComment = function(c) {
