@@ -308,6 +308,8 @@ SQL.Designer.prototype.fromXML = function(node) {
 
 		this.addRelation(r1, r2);
 	}
+	
+	this.sync();
 }
 
 SQL.Designer.prototype.setTitle = function(t) {
