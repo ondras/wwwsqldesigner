@@ -9,7 +9,7 @@
 	<string name="cleartables">Tabellen löschen</string>
 	<string name="confirmall">Wirklich alle Tabellen löschen</string>
 	<string name="newtable">Neue Tabelle</string>
-	<string name="addpending">Tabelle plazieren</string>
+	<string name="addpending">Tabelle platzieren</string>
 	<string name="tablenamelabel">Name</string>
 	<string name="tablecommentlabel">Kommentar</string>
 	
@@ -51,9 +51,10 @@
 	<string name="optionsnapnotice">in Pixel, 0 = einrasten deaktivieren</string>
 	<string name="pattern">Format für die Namen der Fremdschlüssel</string>
 	<string name="optionpatternnotice">%T = Primärtabelle, %R = Primärschlüssel, %t = Fremdtabelle</string>
-	<string name="hide">Verstecke Verbindungslinien beim bewegen von Tabellen?</string>
-	<string name="vector">Zeichne gegrümmte Verbindungslinien (Browser-abhängig)?</string>
-	
+	<string name="hide">Verstecke Verbindungslinien beim Bewegen von Tabellen?</string>
+	<string name="vector">Zeichne gekrümmte Verbindungslinien (Browser-abhängig)?</string>
+	<string name="showsize">Zeige Feldgröße im Tabellendesign?</string>
+	<string name="showtype">Zeige Felddatentyp im Tabellendesign?</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Schlüssel</string>
@@ -68,21 +69,28 @@
 	
 	<!-- io -->
 	<string name="saveload">Speichern / Laden</string>
-	<string name="empty">Bitte fügen Sie die XML-Daten in das untere Textfeld ein und versuchen es erneut.</string>
+	<string name="empty">Bitte fügen Sie die XML-Daten in das untere Textfeld ein und versuchen Sie es erneut.</string>
 	<string name="client">Client</string>
 	<string name="server">Server</string>
 	<string name="output">Eingabe / Ausgabe</string>
 	<string name="clientsave">XML speichern</string>
 	<string name="clientload">XML laden</string>
+	<string name="clientlocalsave">In Browser speichern</string>
+	<string name="clientlocalload">Von Browser laden</string>
+	<string name="clientlocallist">Von Browser auflisten</string>
+	<string name="dropboxsave">In Dropbox speichern</string>
+	<string name="dropboxload">Von Dropbox laden</string>
+	<string name="dropboxlist">Von Dropbox auflisten</string>
 	<string name="clientsql">SQL erzeugen</string>
 	<string name="backendlabel">Server Basis:</string>
 	<string name="serversave">Speichern</string>
+	<string name="quicksave">Schnellspeichern</string>
 	<string name="serverload">Laden</string>
-	<string name="serverlist">Einträge listen</string>
+	<string name="serverlist">Einträge auflisten</string>
 	<string name="serverimport">Import aus DB</string>
 	<string name="serverloadprompt">Geben Sie das Stichwort ihres Diagramms ein, unter dem es gespeichert wurde:</string>
 	<string name="serversaveprompt">Geben Sie das Stichwort ihres Diagramms ein, unter dem es gespeichert werden soll:</string>
-	<string name="serverimportprompt">Geben Sie den Namen der zuimportierenden Datenbank ein:</string>
+	<string name="serverimportprompt">Geben Sie den Namen der zu importierenden Datenbank ein:</string>
 	<string name="httpresponse">Server Antwort</string>
 	<string name="http201">gespeichert</string>
 	<string name="http404">Nicht gefunden</string>
