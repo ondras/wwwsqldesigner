@@ -15,8 +15,8 @@ body {
 #area {
 	position: relative;
 	background: transparent url(../images/back.png);
-	width: 2000px;
-	height: 2000px;
+	width: 3000px;
+	height: 3000px;
 }
 
 #controls {
