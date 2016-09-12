@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Aggiungi tabella</string>
+	<string name="edittable">Modifica tabella</string>
+	<string name="removetable">Elimina tabella</string>
+	<string name="removetables">Elimina tabelle</string>
+	<string name="aligntables">Allinea tabelle</string>
+	<string name="cleartables">Cancella tabelle</string>
+	<string name="confirmall">Eliminare veramente le tabelle</string>
+	<string name="newtable">nuova tabella</string>
+	<string name="addpending">posiziona la tabella</string>
+	<string name="tablenamelabel">Nome</string>
+	<string name="tablecommentlabel">Oggetto</string>
+
+	<!-- row management -->
+	<string name="addrow">Aggiungi campo</string>
+	<string name="editrow">Modifica campo</string>
+	<string name="removerow">Elimina campo</string>
+	<string name="uprow">Su</string>
+	<string name="downrow">Giù</string>
+	<string name="newrow">nuovo campo</string>
+	<string name="foreigncreate">Crea chiave esterna</string>
+	<string name="foreignpending">fai clic sulla destinazione</string>
+	<string name="foreignconnect">Connetti chiave esterna</string>
+	<string name="foreignconnectpending">fai clic sulla riga di destinazione</string>
+	<string name="foreigndisconnect">Rimuovi chiave esterna</string>
+	<string name="confirmtable">Cancellare veramente la tabella</string>
+	<string name="confirmrow">Cancellare veramente la riga</string>
+
+	<!-- row edit -->
+	<string name="name">Nome</string>
+	<string name="type">Tipo</string>
+	<string name="size">Dimensione</string>
+	<string name="def">Predefinito</string>
+	<string name="notnull">QUALCOSA</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincremento</string>
+	<string name="comment">Modifica commento</string>
+	<string name="commenttext">Inserisci commento per questo campo</string>
+
+	<!-- windows & options -->
+	<string name="windowok">Conferma</string>
+	<string name="windowcancel">Annulla</string>
+	<string name="throbber">Attendere...</string>
+	<string name="options">Opzioni</string>
+	<string name="language">Lingua</string>
+	<string name="db">Database per nuovi progetti</string>
+	<string name="optionsnotice">Alcune opzioni diventano attive solo dopo il ricaricamento della pagina. Affinché le opzioni vengano mantenute, devono essere abilitati i cookies.</string>
+	<string name="snap">Griglia magnetica</string>
+	<string name="optionsnapnotice">In pixel, 0 = magnetismo disabilitato</string>
+	<string name="pattern">Modello per le chiavi esterne</string>
+	<string name="optionpatternnotice">%T = tabella principale, %R = chiave primaria, %t = tabella secondaria</string>
+	<string name="hide">Nascondi i connettori durante il trascinamento?</string>
+	<string name="vector">Disegna connettori arrotondati (se supportato dal browser)?</string>
+	<string name="showsize">Show field size in table design?</string>
+	<string name="showtype">Show field datatype in table design?</string>
+
+	<!-- keys -->
+	<string name="tablekeys">Chiavi</string>
+	<string name="keyslistlabel">Chiavi nella tabella "%s"</string>
+	<string name="keytypelabel">Tipo:</string>
+	<string name="keynamelabel">Nome:</string>
+	<string name="keyfieldslabel">Campi nella chiave</string>
+	<string name="keyavaillabel">Campi disponibili</string>
+	<string name="keyedit">Modifica chiave</string>
+	<string name="keyadd">Aggiungi chiave</string>
+	<string name="keyremove">Rimuovi chiave</string>
+
+	<!-- io -->
+	<string name="saveload">Salva / Carica</string>
+	<string name="empty">Reincolla i dati XML nell'area sottostante e prova di nuovo.</string>
+	<string name="client">Intestatario</string>
+	<string name="server">Server</string>
+	<string name="output">Ingresso / Uscita</string>
+	<string name="clientsave">Salva XML</string>
+	<string name="clientload">Carica XML</string>
+	<string name="clientsql">Genera SQL</string>
+	<string name="backendlabel">Server di backend:</string>
+	<string name="serversave">Salva</string>
+	<string name="quicksave">Quicksave</string>
+	<string name="serverload">Carica</string>
+	<string name="serverlist">Elenca elementi</string>
+	<string name="serverimport">Importa dal DB</string>
+	<string name="serverloadprompt">Inserisci la parola chiave con cui è stato salvato il progetto:</string>
+	<string name="serversaveprompt">Inserisci la parola chiave con cui salvare il progetto:</string>
+	<string name="serverimportprompt">Inserisci il nome del database da importare</string>
+	<string name="httpresponse">Risposta del server</string>
+	<string name="http201">Salvato</string>
+	<string name="http404">Non trovato</string>
+	<string name="http500">Errore interno del server</string>
+	<string name="http501">Non implementato</string>
+	<string name="http503">Servizio non disponibile</string>
+
+	<!-- misc -->
+	<string name="xmlerror">Errore XML</string>
+	<string name="docs">Documentazione</string>
+
+</locale>

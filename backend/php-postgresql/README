@@ -1,0 +1,20 @@
+Postgresql server backend for wwwsqldesigner
+version 0.1 beta
+
+
+Instructions:
+
+If you want to save/load your diagrams in a database...
+
+1) Create a login role called 'wwwsqldesigner' using 'xxx' as password.
+2) Create a databse called 'wwwsqldesigner' with...
+      owner as 'wwwsqldesigner',
+      UTF-8 encoding,
+      and template0
+3) Connect to this newly created database and run the database.sql script
+   located in this folder.
+4) Edit config.js located in the js directory...
+      change default database to postgresql,
+      add postgresql to available backends
+5) If you want to import the schema of an an already created database,
+   edit the index.php script located in this directory

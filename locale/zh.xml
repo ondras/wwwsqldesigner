@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">添加表</string>
+	<string name="edittable">修改表</string>
+	<string name="removetable">移除表</string>
+	<string name="aligntables">重组表格位置</string>
+	<string name="cleartables">删除所有表</string>
+	<string name="confirmall">真的要删除所有表么</string>
+	<string name="newtable">表名称</string>
+	<string name="addpending">放置表格……</string>
+	<string name="tablenamelabel">表名</string>
+	<string name="tablecommentlabel">注释</string>
+
+	<!-- row management -->
+	<string name="addrow">添加列</string>
+	<string name="editrow">修改列</string>
+	<string name="removerow">删除列</string>
+	<string name="uprow">上移</string>
+	<string name="downrow">下移</string>
+	<string name="newrow">newfield</string>
+	<string name="foreigncreate">创建外连表格列</string>
+	<string name="foreignpending">点击选择目标表</string>
+	<string name="foreignconnect">连接到外部列</string>
+	<string name="foreignconnectpending">点击选择目标列</string>
+	<string name="foreigndisconnect">断开外部连接</string>
+	<string name="confirmtable">真的删除表么</string>
+	<string name="confirmrow">真的删除列么</string>
+
+	<!-- row edit -->
+	<string name="name">列名</string>
+	<string name="type">类型</string>
+	<string name="size">大小</string>
+	<string name="def">默认</string>
+	<string name="notnull">不能为空</string>
+	<string name="null">可留空</string>
+	<string name="ai">自增长</string>
+	<string name="comment">改备注</string>
+	<string name="commenttext">输入此列备注</string>
+
+	<!-- windows & options -->
+	<string name="windowok">搞定</string>
+	<string name="windowcancel">不要了</string>
+	<string name="throbber">请等待...</string>
+	<string name="options">选项设置</string>
+	<string name="language">语言</string>
+	<string name="db">新建的数据库设为：</string>
+	<string name="optionsnotice">有些属性需要刷新页面后才能起作用，所以，浏览器的Cookies必须启用。</string>
+	<string name="snap">表格捕捉距离</string>
+	<string name="optionsnapnotice">像素, 0 = 关闭捕捉</string>
+	<string name="pattern">外连名称规则</string>
+	<string name="optionpatternnotice">%T = 主表, %R = 主键, %t = 外连表</string>
+	<string name="hide">在表格移动时不显示连接?</string>
+	<string name="vector">绘制平滑的连接 (如果浏览器支持)?</string>
+    <string name="showsize">设计表格时显示字段大小?</string>
+	<string name="showtype">设计表格时显示字段数据类型?</string>
+
+
+	<!-- keys -->
+	<string name="tablekeys">设置表键</string>
+	<string name="keyslistlabel">在 "%s" 表中可用列属性</string>
+	<string name="keytypelabel">类型:</string>
+	<string name="keynamelabel">属性名称:</string>
+	<string name="keyfieldslabel">此属性中的列</string>
+	<string name="keyavaillabel">可用列</string>
+	<string name="keyedit">修改属性</string>
+	<string name="keyadd">添加属性</string>
+	<string name="keyremove">删除属性</string>
+
+	<!-- io -->
+    <string name="login">登录</string>
+    <string name="logout">注销</string>
+	<string name="saveload">保存 / 载入</string>
+	<string name="empty">请先粘帖一个XML文件内容到文本框中，然后再导入。</string>
+	<string name="client">客户端</string>
+	<string name="server">服务端</string>
+	<string name="output">输入 / 输出</string>
+	<string name="clientsave">保存为XML</string>
+	<string name="clientload">载入XML</string>
+	<string name="clientsql">传化为数据库脚本</string>
+	<string name="backendlabel">服务后台:</string>
+	<string name="serversave">保存</string>
+	<string name="serverload">载入</string>
+	<string name="serverlist">显示清单</string>
+	<string name="quicksave">快速保存</string>
+	<string name="serverimport">从数据库中导入</string>
+	<string name="serverloadprompt">输入你所保存的名字:</string>
+	<string name="serversaveprompt">输入所要保存的名字:</string>
+	<string name="serverimportprompt">输入所要导入的数据库名称:</string>
+	<string name="httpresponse">服务器反馈</string>
+	<string name="http201">已存</string>
+	<string name="http404">找不到</string>
+	<string name="http500">网络服务错误</string>
+	<string name="http501">未执行</string>
+	<string name="http503">服务暂不可用</string>
+
+	<!-- misc -->
+	<string name="xmlerror">XML 错误</string>
+	<string name="docs">文档</string>
+
+</locale>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">إنشاء جدول</string>
+	<string name="edittable">تحرير جدول</string>
+	<string name="removetable">حذف جدول</string>
+	<string name="aligntables">محاذاة الجداول</string>
+	<string name="cleartables">حذف جميع البيانات</string>
+	<string name="confirmall">هل أنت متأكد من أنك تريد حذف جميع البيانات</string>
+	<string name="newtable">new table</string>
+	<string name="addpending">اختر المنطقة المحددة</string>
+	<string name="tablenamelabel">اسم الجول</string>
+	<string name="tablecommentlabel">وصف الجدول</string>
+
+	<!-- row management -->
+	<string name="addrow">إنشاء حقل</string>
+	<string name="editrow">تحرير حقل</string>
+	<string name="removerow">حذف حقل</string>
+	<string name="uprow">أعلى</string>
+	<string name="downrow">أسفل</string>
+	<string name="newrow">new field</string>
+	<string name="foreigncreate">إنشاء مفتاح خارجي</string>
+	<string name="foreignpending">اختر الجدول المطلوب</string>
+	<string name="foreignconnect">ربط حقل بمفتاح خارجي</string>
+	<string name="foreignconnectpending">اختر الحقل المطلوب</string>
+	<string name="foreigndisconnect">حذف مفتاح خارجي</string>
+	<string name="confirmtable">هل أنت متأكد من أنك تريد حذف الجدول</string>
+	<string name="confirmrow">هل أنت متأكد من أنك تريد حذف الحقل</string>
+
+	<!-- row edit -->
+	<string name="name">الإسم</string>
+	<string name="type">النوع</string>
+	<string name="size">الحجم</string>
+	<string name="def">الإفتراضي</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">ترقيم تلقائي</string>
+	<string name="comment">تحرير تعليق</string>
+	<string name="commenttext">اكتب تعليقاً لهذا الحقل</string>
+
+	<!-- windows & options -->
+	<string name="windowok">موافق</string>
+	<string name="windowcancel">إلغاء</string>
+	<string name="throbber">يرجى الإنتظار ...</string>
+	<string name="options">الخيارات</string>
+	<string name="language">لغة العرض</string>
+	<string name="db">قاعدة البيانات المستخدمة لحفظ التصاميم</string>
+	<string name="optionsnotice">بعض الخيارات يتم تفعيلها بعد تحديث الصفحة مع ملاحظة أنه يجب تفعيل (الكوكيز) لتعمل هذه الخيارات</string>
+	<string name="snap">Table snap distance</string>
+	<string name="optionsnapnotice">In pixels, 0 = disable snapping</string>
+	<string name="pattern">طريقة تنسيق أسماء المفاتيح الخارجية</string>
+	<string name="optionpatternnotice">%T = الجدول الرئيسي, %R = المفتاح الرئيسي, %t = الجدول الخارجي</string>
+	<string name="hide">إخفاء الخطوط عند تحريك الجدول؟</string>
+	<string name="vector">رسم خطوط ناعمة (إذا كان المتصفح يدعم ذلك) ؟</string>
+
+
+	<!-- keys -->
+	<string name="tablekeys">المفاتيح</string>
+	<string name="keyslistlabel">المفاتيح في الجدول "%s"</string>
+	<string name="keytypelabel">الأنواع:</string>
+	<string name="keynamelabel">الإسم:</string>
+	<string name="keyfieldslabel">مفاتيح الجدول</string>
+	<string name="keyavaillabel">الحقول المتاحة</string>
+	<string name="keyedit">تحرير مفتاح</string>
+	<string name="keyadd">إنشاء مفتاح</string>
+	<string name="keyremove">حذف مفتاح</string>
+
+	<!-- io -->
+	<string name="saveload">حفظ / تحميل</string>
+	<string name="empty">قم بوضع بيانات نموذج XML في المربع أدناه، ثم حاول مرّة أخرى.</string>
+	<string name="client">العميل</string>
+	<string name="server">الخادم</string>
+	<string name="output">المدخلات / المخرجات</string>
+	<string name="clientsave">حفظ كنموذح XML</string>
+	<string name="clientload">إستيراد نموذج XML</string>
+	<string name="clientsql">حفظ كنموذج SQL</string>
+	<string name="backendlabel">Server backend:</string>
+	<string name="serversave">حفظ</string>
+	<string name="serverload">تحميل</string>
+	<string name="serverlist">List items</string>
+	<string name="serverimport">إستيراد من قاعدة بيانات</string>
+	<string name="serverloadprompt">Enter keyword under which your design was saved:</string>
+	<string name="serversaveprompt">Enter keyword under which your design will be saved:</string>
+	<string name="serverimportprompt">أدخل إسم قاعدة البيانات التي تريد إستيرادها:</string>
+	<string name="httpresponse">رد الخادم</string>
+	<string name="http201">تم الحفظ بنجاح</string>
+	<string name="http404">لم يتم العثور عليه</string>
+	<string name="http500">خطأ داخلي في الخادم</string>
+	<string name="http501">الخاصية غير موجودة</string>
+	<string name="http503">الخدمة غير متوفرة</string>
+
+	<!-- misc -->
+	<string name="xmlerror">خطأ في نموذح XML</string>
+	<string name="docs">التوثيق</string>
+
+</locale>

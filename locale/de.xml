@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Tabelle hinzufügen</string>
+	<string name="edittable">Tabelle bearbeiten</string>
+	<string name="removetable">Tabelle entfernen</string>
+	<string name="removetables">Tabellen entfernen</string>
+	<string name="aligntables">Tabellen ausrichten</string>
+	<string name="cleartables">Tabellen löschen</string>
+	<string name="confirmall">Wirklich alle Tabellen löschen</string>
+	<string name="newtable">Neue Tabelle</string>
+	<string name="addpending">Tabelle platzieren</string>
+	<string name="tablenamelabel">Name</string>
+	<string name="tablecommentlabel">Kommentar</string>
+
+	<!-- row management -->
+	<string name="addrow">Feld hinzufügen</string>
+	<string name="editrow">Feld bearbeiten</string>
+	<string name="removerow">Feld entfernen</string>
+	<string name="uprow">Hoch</string>
+	<string name="downrow">Runter</string>
+	<string name="newrow">Neues Feld</string>
+	<string name="foreigncreate">Fremdschlüssel erstellen</string>
+	<string name="foreignpending">Ziel-Tabelle wählen</string>
+	<string name="foreignconnect">Fremdschlüssel Verknüpfung</string>
+	<string name="foreignconnectpending">Ziel-Zeile auswählen</string>
+	<string name="foreigndisconnect">Ziel-Zeile entfernen</string>
+	<string name="confirmtable">Tabelle wirklich löschen</string>
+	<string name="confirmrow">Feld wirklich löschen</string>
+
+	<!-- row edit -->
+	<string name="name">Name</string>
+	<string name="type">Typ</string>
+	<string name="size">Größe</string>
+	<string name="def">Default</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincrement</string>
+	<string name="comment">Kommentar bearbeiten</string>
+	<string name="commenttext">Kommentar zu diesem Feld eintragen:</string>
+
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Abbrechen</string>
+	<string name="throbber">Bitte warten...</string>
+	<string name="options">Einstellungen</string>
+	<string name="language">Sprache</string>
+	<string name="db">Datenbank für neue Diagramme</string>
+	<string name="optionsnotice">Einige Optionen werden erst nach einem erneutem Seitenaufruf wirksam. Cookies müssen erlaubt sein.</string>
+	<string name="snap">Tabellen Ausrichtungsabstand</string>
+	<string name="optionsnapnotice">in Pixel, 0 = einrasten deaktivieren</string>
+	<string name="pattern">Format für die Namen der Fremdschlüssel</string>
+	<string name="optionpatternnotice">%T = Primärtabelle, %R = Primärschlüssel, %t = Fremdtabelle</string>
+	<string name="hide">Verstecke Verbindungslinien beim Bewegen von Tabellen?</string>
+	<string name="vector">Zeichne gekrümmte Verbindungslinien (Browser-abhängig)?</string>
+	<string name="showsize">Zeige Feldgröße im Tabellendesign?</string>
+	<string name="showtype">Zeige Felddatentyp im Tabellendesign?</string>
+
+	<!-- keys -->
+	<string name="tablekeys">Schlüssel</string>
+	<string name="keyslistlabel">Schlüssel in Tabelle "%s"</string>
+	<string name="keytypelabel">Typ:</string>
+	<string name="keynamelabel">Name:</string>
+	<string name="keyfieldslabel">Felder im Schlüssel</string>
+	<string name="keyavaillabel">Verfügbare Felder</string>
+	<string name="keyedit">Schlüssel bearbeiten</string>
+	<string name="keyadd">Schlüssel hinzufügen</string>
+	<string name="keyremove">Schlüssel entfernen</string>
+
+	<!-- io -->
+	<string name="saveload">Speichern / Laden</string>
+	<string name="empty">Bitte fügen Sie die XML-Daten in das untere Textfeld ein und versuchen Sie es erneut.</string>
+	<string name="client">Client</string>
+	<string name="server">Server</string>
+	<string name="output">Eingabe / Ausgabe</string>
+	<string name="clientsave">XML speichern</string>
+	<string name="clientload">XML laden</string>
+	<string name="clientlocalsave">In Browser speichern</string>
+	<string name="clientlocalload">Von Browser laden</string>
+	<string name="clientlocallist">Von Browser auflisten</string>
+	<string name="dropboxsave">In Dropbox speichern</string>
+	<string name="dropboxload">Von Dropbox laden</string>
+	<string name="dropboxlist">Von Dropbox auflisten</string>
+	<string name="clientsql">SQL erzeugen</string>
+	<string name="backendlabel">Server Basis:</string>
+	<string name="serversave">Speichern</string>
+	<string name="quicksave">Schnellspeichern</string>
+	<string name="serverload">Laden</string>
+	<string name="serverlist">Einträge auflisten</string>
+	<string name="serverimport">Import aus DB</string>
+	<string name="serverloadprompt">Geben Sie das Stichwort ihres Diagramms ein, unter dem es gespeichert wurde:</string>
+	<string name="serversaveprompt">Geben Sie das Stichwort ihres Diagramms ein, unter dem es gespeichert werden soll:</string>
+	<string name="serverimportprompt">Geben Sie den Namen der zu importierenden Datenbank ein:</string>
+	<string name="httpresponse">Server Antwort</string>
+	<string name="http201">gespeichert</string>
+	<string name="http404">Nicht gefunden</string>
+	<string name="http500">Interner Server Fehler</string>
+	<string name="http501">Nicht implementiert</string>
+	<string name="http503">Dienst nicht erreichbar</string>
+
+	<!-- misc -->
+	<string name="xmlerror">XML Fehler</string>
+	<string name="docs">Dokumentation</string>
+
+</locale>

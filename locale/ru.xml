@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Добавить таблицу</string>
+	<string name="edittable">Редактировать таблицу</string>
+	<string name="removetable">Удалить таблицу</string>
+	<string name="removetables">Удалить таблицы</string>
+	<string name="aligntables">Выровнять таблицы</string>
+	<string name="cleartables">Очистить таблицы</string>
+	<string name="confirmall">Действительно удалить все таблицы</string>
+	<string name="newtable">новая таблица</string>
+	<string name="addpending">расположите таблицу</string>
+	<string name="tablenamelabel">Имя</string>
+	<string name="tablecommentlabel">Коментарий</string>
+
+	<!-- row management -->
+	<string name="addrow">Добавить поле</string>
+	<string name="editrow">Редактировать поле</string>
+	<string name="removerow">Удалить поле</string>
+	<string name="uprow">Вверх</string>
+	<string name="downrow">Вниз</string>
+	<string name="newrow">новое поле</string>
+	<string name="foreigncreate">Создать внешний ключ</string>
+	<string name="foreignpending">щелкните по целевой таблице</string>
+	<string name="foreignconnect">Присоединить внешний ключ</string>
+	<string name="foreignconnectpending">щёлкните по целевой таблице</string>
+	<string name="foreigndisconnect">Удалить внешний ключ</string>
+	<string name="confirmtable">Действительно удалить таблицу</string>
+	<string name="confirmrow">Действительно удалить поле</string>
+
+	<!-- row edit -->
+	<string name="name">Имя</string>
+	<string name="type">Тип</string>
+	<string name="size">Размер</string>
+	<string name="def">По умолчанию</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Автоинкремент</string>
+	<string name="comment">Изменить коментарий</string>
+	<string name="commenttext">Введите коментарий для этого поля</string>
+
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Отменить</string>
+	<string name="throbber">Пожалуйста подождите...</string>
+	<string name="options">Опции</string>
+	<string name="language">Язык</string>
+	<string name="db">База данных для новых схем</string>
+	<string name="optionsnotice">Некоторые опции заработают только после полной перезагрузки страницы. Cookie должны быть включены.</string>
+	<string name="snap">Шаг при перемещении таблицы</string>
+	<string name="optionsnapnotice">В пикселях, 0 = отключить</string>
+	<string name="pattern">Шаблон для имён внешних ключей</string>
+	<string name="optionpatternnotice">%T = первичная таблица, %R = первичный ключ, %t = внешняя таблица</string>
+	<string name="hide">Прятать связи при перетаскивании таблиц?</string>
+	<string name="vector">Рисовать сглаженные связи (если поддерживается браузером)?</string>
+	<string name="showsize">Показывать размеры полей таблиц?</string>
+	<string name="showtype">Показывать типы данных полей таблиц?</string>
+
+	<!-- keys -->
+	<string name="tablekeys">Ключи</string>
+	<string name="keyslistlabel">Ключи в таблице "%s"</string>
+	<string name="keytypelabel">Тип:</string>
+	<string name="keynamelabel">Имя:</string>
+	<string name="keyfieldslabel">Поля в ключе</string>
+	<string name="keyavaillabel">Доступные поля</string>
+	<string name="keyedit">Редактировать ключ</string>
+	<string name="keyadd">Добавить ключ</string>
+	<string name="keyremove">Удалить ключ</string>
+
+	<!-- io -->
+	<string name="saveload">Сохранить / Загрузить</string>
+	<string name="empty">Пожалуйста, вставьте XML данные в поле ниже и попробуйте ещё раз.</string>
+	<string name="client">Клиент</string>
+	<string name="server">Сервер</string>
+	<string name="output">Ввод / Вывод</string>
+	<string name="clientsave">Сохранить XML</string>
+	<string name="clientload">Загрузить XML</string>
+	<string name="clientlocalsave">Сохранить в браузере</string>
+	<string name="clientlocalload">Загрузить из браузера</string>
+	<string name="clientlocallist">Получить список схем из браузера</string>
+	<string name="dropboxsave">Сохранить в Dropbox</string>
+	<string name="dropboxload">Загрузить из Dropbox</string>
+	<string name="dropboxlist">Получить список из Dropbox</string>
+	<string name="clientsql">Генерировать SQL</string>
+	<string name="backendlabel">Серверные технологии:</string>
+	<string name="serversave">Сохранить</string>
+	<string name="quicksave">Быстрое сохранение</string>
+	<string name="serverload">Загрузить</string>
+	<string name="serverlist">Получить список схем</string>
+	<string name="serverimport">Импортировать из БД</string>
+	<string name="serverloadprompt">Введите ключевое слово под которым сохранена ваша схема:</string>
+	<string name="serversaveprompt">Введите ключевое слово под которым будет сохранена ваша схема:</string>
+	<string name="serverimportprompt">Введите имя импортируемой базы данных:</string>
+	<string name="httpresponse">Ответ сервера</string>
+	<string name="http201">Сохранено</string>
+	<string name="http404">Не найдено</string>
+	<string name="http500">Внутренняя ошибка сервера</string>
+	<string name="http501">Не реализовано</string>
+	<string name="http503">Служба недоступна</string>
+
+	<!-- misc -->
+	<string name="xmlerror">Ошибка XML</string>
+	<string name="docs">Документация</string>
+
+</locale>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Dodaj tabelę</string>
+	<string name="edittable">Edytuj tabelę</string>
+	<string name="removetable">Usuń tabelę</string>
+	<string name="removetables">Usuń tabele</string>
+	<string name="aligntables">Wyrównaj tabele</string>
+	<string name="cleartables">Wyczyść tabele</string>
+	<string name="confirmall">Czy na pewno usunąć wszystkie tabele</string>
+	<string name="newtable">nowa tabela</string>
+	<string name="addpending">miejsce tabeli</string>
+	<string name="tablenamelabel">Nazwa</string>
+	<string name="tablecommentlabel">Opis</string>
+
+	<!-- row management -->
+	<string name="addrow">Dodaj pole</string>
+	<string name="editrow">Edytuj pole</string>
+	<string name="removerow">Usuń pole</string>
+	<string name="uprow">W górę</string>
+	<string name="downrow">W dół</string>
+	<string name="newrow">nowe pole</string>
+	<string name="foreigncreate">Utwórz klucz zewnętrzny</string>
+	<string name="foreignpending">kliknij w docelową tabelę</string>
+	<string name="foreignconnect">Utwórz klucz zewnętrzny</string>
+	<string name="foreignconnectpending">kliknij w docelową tabelę</string>
+	<string name="foreigndisconnect">Smazat cizí klíč</string>
+	<string name="confirmtable">Czy na pewno usunąć tabelę</string>
+	<string name="confirmrow">Czy na pewno usunąć pole</string>
+
+	<!-- row edit -->
+	<string name="name">Nazwa</string>
+	<string name="type">Typ</string>
+	<string name="size">Rozmiar</string>
+	<string name="def">Domyślnie</string>
+	<string name="notnull">Niepuste</string>
+	<string name="null">Zerowy</string>
+	<string name="ai">Automatyczne zwiększanie o 1</string>
+	<string name="comment">Edytuj komentarz</string>
+	<string name="commenttext">Wpisz komentarz dla tego pola</string>
+
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Anuluj</string>
+	<string name="throbber">Proszę czekać...</string>
+	<string name="options">Opcje</string>
+	<string name="language">Język</string>
+	<string name="db">Bazy danych dla nowych projektów</string>
+	<string name="optionsnotice">Niektóre opcje są zatwierdzane wyłącznie po kompletnym przeładowaniu strony. Ciasteczka muszą być akceptowane dla działania opcji.</string>
+	<string name="snap">Ustalana odległość tabel</string>
+	<string name="optionsnapnotice">W pikselach, 0 = wyłącznie ustalania</string>
+	<string name="pattern">Wzorzec dla zewnętrznych nazw</string>
+	<string name="optionpatternnotice">%T = główna tabela, %R = klucz główny, %t = zewnętrzna tabela</string>
+	<string name="hide">Ukryć złącza w tabeli podczas przeciągania?</string>
+	<string name="vector">Rysuj pływające złącza (jesli wsperane jest przez przeglądarkę)?</string>
+	<string name="showsize">Show field size in table design?</string>
+	<string name="showtype">Show field datatype in table design?</string>
+
+	<!-- keys -->
+	<string name="tablekeys">Klucze</string>
+	<string name="keyslistlabel">Klucze w tabeli "%s"</string>
+	<string name="keytypelabel">Typ:</string>
+	<string name="keynamelabel">Nazwa:</string>
+	<string name="keyfieldslabel">Pola w kluczu</string>
+	<string name="keyavaillabel">Dostępne pola</string>
+	<string name="keyedit">Edytuj klucz</string>
+	<string name="keyadd">Dodaj klucz</string>
+	<string name="keyremove">Usuń klucz</string>
+
+	<!-- io -->
+	<string name="saveload">Zapisz / Otwórz</string>
+	<string name="empty">Proszę wklej kod XML w poniższe pole tekstowe i spróbuj ponownie.</string>
+	<string name="client">Klient</string>
+	<string name="server">Serwer</string>
+	<string name="output">Wejście / Wyjście</string>
+	<string name="clientsave">Zapisz XML</string>
+	<string name="clientload">Załaduj XML</string>
+	<string name="clientsql">Generuj SQL</string>
+	<string name="backendlabel">Serwer wejściowy:</string>
+	<string name="serversave">Zapisz</string>
+	<string name="quicksave">Quicksave</string>
+	<string name="serverload">Otwórz</string>
+	<string name="serverlist">Lista pozycji</string>
+	<string name="serverimport">Importuj z DB</string>
+	<string name="serverloadprompt">Wpisz słowo kluczowe pod którym twój projekt został zapisany:</string>
+	<string name="serversaveprompt">Wpisz słowo kluczowe pod którym twój projekt ma zostać zapisany:</string>
+	<string name="serverimportprompt">Wpisz nazwę bazy danych do zaimportowania:</string>
+	<string name="httpresponse">Odpowiedź serwera</string>
+	<string name="http201">Zapisano</string>
+	<string name="http404">Nie znaleziono</string>
+	<string name="http500">Wewnętrzny błąd serwera</string>
+	<string name="http501">Niezaimplementowane</string>
+	<string name="http503">Serwer niedostępny</string>
+
+	<!-- misc -->
+	<string name="xmlerror">Błąd XML</string>
+	<string name="docs">Dokumentacja</string>
+
+</locale>

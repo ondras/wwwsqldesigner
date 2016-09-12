@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Ajouter une table</string>
+	<string name="edittable">Éditer la table</string>
+	<string name="removetable">Supprimer la table</string>
+	<string name="removetables">Supprimer les tables</string>
+	<string name="aligntables">Aligner les tables</string>
+	<string name="cleartables">Supprimer les tables</string>
+	<string name="confirmall">Vraiment supprimer toutes les tables</string>
+	<string name="newtable">nouvelle table</string>
+	<string name="addpending">positionner la table</string>
+	<string name="tablenamelabel">Nom</string>
+	<string name="tablecommentlabel">Commentaire</string>
+
+	<!-- row management -->
+	<string name="addrow">Ajouter un champ</string>
+	<string name="editrow">Éditer un champ</string>
+	<string name="removerow">Supprimer le champ</string>
+	<string name="uprow">Remonter</string>
+	<string name="downrow">Descendre</string>
+	<string name="newrow">Éditer un champ</string>
+	<string name="foreigncreate">Créer une clé étrangère</string>
+	<string name="foreignpending">Cliquez la destination</string>
+	<string name="foreignconnect">Connecter une clé étrangère</string>
+	<string name="foreignconnectpending">Cliquez la propriété cible</string>
+	<string name="foreigndisconnect">Supprimer la clé étrangère</string>
+	<string name="confirmtable">Voulez-vous vraiment supprimer cette table ?</string>
+	<string name="confirmrow">Voulez-vous vraiment supprimer ce champ ?</string>
+
+	<!-- row edit -->
+	<string name="name">Nom</string>
+	<string name="type">Type</string>
+	<string name="size">Taille</string>
+	<string name="def">Défaut</string>
+	<string name="notnull">NON NUL</string>
+	<string name="null">valeur nulle</string>
+	<string name="ai">Auto-incrémental</string>
+	<string name="comment">Éditer le commentaire</string>
+	<string name="commenttext">Saisir un commentaire à propos de ce champ</string>
+
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Annuler</string>
+	<string name="throbber">Veuillez patienter...</string>
+	<string name="options">Options</string>
+	<string name="language">Langue</string>
+	<string name="db">Format des nouvelles base de données</string>
+	<string name="optionsnotice">Ces options ne seront appliquées qu'après le rafraichissement complet de la page. Les cookies doivent être autorisés.</string>
+	<string name="snap">Magnétisme des tables</string>
+	<string name="optionsnapnotice">En pixels, 0 = magnétisme désactivé</string>
+	<string name="pattern">Motif pour les noms de clés étrangères</string>
+	<string name="optionpatternnotice">%T = table primaire, %R = clé primaire, %t = table étrangère</string>
+	<string name="hide">Cacher les connecteurs lors du déplacement des tables ?</string>
+	<string name="vector">Dessiner des connecteurs « adoucis » (si le navigateur le supporte) ?</string>
+	<string name="showsize">Afficher la taille du champ dans le schéma de table ?</string>
+	<string name="showtype">Afficher le type du champ dans le schéma de table ?</string>
+
+	<!-- keys -->
+	<string name="tablekeys">Clés</string>
+	<string name="keyslistlabel">Clés dans la table « %s »</string>
+	<string name="keytypelabel">Type :</string>
+	<string name="keynamelabel">Nom :</string>
+	<string name="keyfieldslabel">Champs de clé</string>
+	<string name="keyavaillabel">Champs disponibles</string>
+	<string name="keyedit">Éditer la clé</string>
+	<string name="keyadd">Ajouter une clé</string>
+	<string name="keyremove">Supprimer la clé</string>
+
+	<!-- io -->
+	<string name="saveload">Enregistrer / Charger</string>
+	<string name="empty">Merci de coller les données XML dans le champs prévu avant de ré-essayer.</string>
+	<string name="client">Client</string>
+	<string name="server">Serveur</string>
+	<string name="output">Entrée / Sortie</string>
+	<string name="clientsave">Enregistrer XML</string>
+	<string name="clientload">Charger XML</string>
+	<string name="clientlocalsave">Enregistrer dans le navigateur</string>
+	<string name="clientlocalload">Charger depuis le navigateur</string>
+	<string name="clientlocallist">Lister depuis le navigateur</string>
+	<string name="clientsql">Génerer SQL</string>
+	<string name="backendlabel">Méthode du serveur :</string>
+	<string name="serversave">Enregistrer</string>
+	<string name="quicksave">Enregistrer rapidement</string>
+	<string name="serverload">Charger</string>
+	<string name="serverlist">Éléments disponibles</string>
+	<string name="serverimport">Importer d'une base de données</string>
+	<string name="serverloadprompt">Saisir le mot-clé de votre schéma :</string>
+	<string name="serversaveprompt">Saisir un mot-clé pour sauvegarder votre schéma :</string>
+	<string name="serverimportprompt">Saisir le nom de la base de données à importer :</string>
+	<string name="httpresponse">Réponse du serveur</string>
+	<string name="http201">Sauvegardé</string>
+	<string name="http404">Introuvable</string>
+	<string name="http500">Erreur interne du serveur</string>
+	<string name="http501">Non Implementé</string>
+	<string name="http503">Service indisponible</string>
+
+	<!-- misc -->
+	<string name="xmlerror">Erreur XML</string>
+	<string name="docs">Documentation</string>
+
+</locale>

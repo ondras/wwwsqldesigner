@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Προσθήκη πίνακα</string>
+	<string name="edittable">Επεξεργασία πίνακα</string>
+	<string name="removetable">Διαγραφή πίνακα</string>
+	<string name="removetables">Διαγραφή πινάκων</string>
+	<string name="aligntables">Στοίχιση Πινάκων</string>
+	<string name="cleartables">Καθαρισμός πινάκων</string>
+	<string name="confirmall">Διαγραφή όλων των πινάκων</string>
+	<string name="newtable">Νέος πίνακας</string>
+	<string name="addpending">τοποθέτηση πίνακα</string>
+	<string name="tablenamelabel">Όνομα</string>
+	<string name="tablecommentlabel">Σχόλιο</string>
+
+	<!-- row management -->
+	<string name="addrow">Προσθήκη πεδίου</string>
+	<string name="editrow">Επεξεργασία πεδίου</string>
+	<string name="removerow">Διαγραφή πεδίου</string>
+	<string name="uprow">Πάνω</string>
+	<string name="downrow">Κάτω</string>
+	<string name="newrow">νέο πεδίο</string>
+	<string name="foreigncreate">Δημιουργία ξένου κλειδιού</string>
+	<string name="foreignpending">Κάντε κλικ στο άλλο πίνακα</string>
+	<string name="foreignconnect">Σένδεση ξένου κλειδιού</string>
+	<string name="foreignconnectpending">Κάντε κλικ στη γραμμή</string>
+	<string name="foreigndisconnect">Κάντε κλικ πεδίου</string>
+	<string name="confirmtable">Διαγραφή πίνακα. Είστε σίγουρος</string>
+	<string name="confirmrow">Διαγραφή πεδίου. Είστε σίγουρος</string>
+
+	<!-- row edit -->
+	<string name="name">Όνομα</string>
+	<string name="type">Τύπος</string>
+	<string name="size">Μέγεθος</string>
+	<string name="def">Προεπιλογή</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincrement</string>
+	<string name="comment">Επεξεργασία σχολίου</string>
+	<string name="commenttext">Σχολιάστε γι' αυτό το πεδίο</string>
+
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Άκυρο</string>
+	<string name="throbber">Παρακαλώ περιμένετε...</string>
+	<string name="options">Επιλογές</string>
+	<string name="language">Γλώσσα</string>
+	<string name="db">Βάση δεδομένων για νέα σχέδιαγράμματα</string>
+	<string name="optionsnotice">Μερικές επιλογές ενεργοποιούνται μόνο μετά από καθολική ανανέωση της σελίδας.Τα Cookies πρέπει να είναι ενεργοποιημένα για να λειτουργούν οι επιλογές.</string>
+	<string name="snap">Απόσταση πινάκων</string>
+	<string name="optionsnapnotice">Σε pixels, 0 = απενεργοποίηση απόστασης</string>
+	<string name="pattern">Πρότυπο για ξένα κλειδιά</string>
+	<string name="optionpatternnotice">%T = πρωτεύων πίνακας, %R = προτεύον κλειδί, %t = ξένος πίνακας</string>
+	<string name="hide">Απόκρυψη συνδέσμων όταν σύρονται οι πίνακες;</string>
+	<string name="vector">Διάγραμμα με ομαλούς συνδέσμους(αν παρέχεται από τον περιηγητή);</string>
+
+
+	<!-- keys -->
+	<string name="tablekeys">Κλειδιά</string>
+	<string name="keyslistlabel">Κλειδιά στον πίνακα "%s"</string>
+	<string name="keytypelabel">Τύπος:</string>
+	<string name="keynamelabel">Όνομα:</string>
+	<string name="keyfieldslabel">Πεδία σε κλειδιά</string>
+	<string name="keyavaillabel">Διαθέσιμα πεδία</string>
+	<string name="keyedit">Επεξεργασία κλειδιού</string>
+	<string name="keyadd">Προσθήκη κλειδιού</string>
+	<string name="keyremove">Διαγραφή κλειδιού</string>
+
+	<!-- io -->
+	<string name="saveload">Αποθήκ./Άνοιγμα</string>
+	<string name="empty">Κάντε επικόλληση των δεδομένων XML στο πεδίο κειμένου παρακάτω και δοκιμάστε ξανά.</string>
+	<string name="client">Πελάτης</string>
+	<string name="server">Διακομιστής</string>
+	<string name="output">Εισαγωγή/Εξαγωγή</string>
+	<string name="clientsave">Αποθήκευση XML</string>
+	<string name="clientload">Άνοιγμα XML</string>
+	<string name="clientsql">Δημιουργία SQL</string>
+	<string name="backendlabel">Διακομιστής:</string>
+	<string name="serversave">Αποθήκευση</string>
+	<string name="serverload">Άνοιγμα</string>
+	<string name="serverlist">Εμφάνιση λίστας</string>
+	<string name="serverimport">Εισαγωγή από βάση δεδομένων</string>
+	<string name="serverloadprompt">Πληκτρολογήστε το τίτλο του αποθηκευμένου σχεδιαγράμματος:</string>
+	<string name="serversaveprompt">Πληκτρολογήστε το τίτλο για την αποθήκευση του σχεδιαγράμματος:</string>
+	<string name="serverimportprompt">Δώστς όνομα βάσης δεδομένων για εισαγωγή:</string>
+	<string name="httpresponse">Απάντηση διακομιστή</string>
+	<string name="http201">Αποθηκεύθηκε</string>
+	<string name="http404">Δεν βρέθηκε</string>
+	<string name="http500">Εσωτερικό σφάλμα διακομιστή</string>
+	<string name="http501">Χωρίς σχεδίαση</string>
+	<string name="http503">Μη-διαθέσιμη Παροχή</string>
+
+	<!-- misc -->
+	<string name="xmlerror">Σφάλμα XML</string>
+	<string name="docs">Οδηγίες</string>
+
+</locale>

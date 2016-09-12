@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<datatypes db="web2py">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="1" sql="integer" re="INTEGER" quote=""/>
+		<type label="Double precision" length="1" sql="double" re="DOUBLE" quote=""/>
+	</group>
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="String" length="1" sql="string" quote="'"/>
+		<type label="Text" length="1" sql="text" quote="'"/>
+		<type label="BLOB" length="1" sql="blob" quote="'"/>
+	</group>
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Time" length="0" sql="time" quote="'"/>
+		<type label="Date" length="0" sql="date" quote="'"/>
+		<type label="Datetime" length="0" sql="datetime" quote="'"/>
+	</group>
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="Boolean" length="0" sql="boolean" quote=""/>
+		<type label="Upload" length="0" sql="upload" quote=""/>
+		<type label="Password" length="0" sql="password" quote=""/>
+	</group>
+</datatypes>

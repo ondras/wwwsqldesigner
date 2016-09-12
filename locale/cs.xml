@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Přidat tabulku</string>
+	<string name="edittable">Upravit tabulku</string>
+	<string name="removetable">Smazat tabulku</string>
+	<string name="removetables">Smazat tabulky</string>
+	<string name="aligntables">Srovnat tabulky</string>
+	<string name="cleartables">Zrušit tabulky</string>
+	<string name="confirmall">Opravdu zrušit všechny tabulky</string>
+	<string name="newtable">nová tabulka</string>
+	<string name="addpending">umístit tabulku</string>
+	<string name="tablenamelabel">Jméno</string>
+	<string name="tablecommentlabel">Komentář</string>
+
+	<!-- row management -->
+	<string name="addrow">Přidat položku</string>
+	<string name="editrow">Upravit položku</string>
+	<string name="removerow">Smazat položku</string>
+	<string name="uprow">Nahoru</string>
+	<string name="downrow">Dolů</string>
+	<string name="newrow">nová položka</string>
+	<string name="foreigncreate">Vyrobit cizí klíč</string>
+	<string name="foreignpending">klikni na cílovou tabulku</string>
+    <string name="foreignconnect">Propojit cizí klíč</string>
+	<string name="foreignconnectpending">klikni na cílové pole</string>
+    <string name="foreigndisconnect">Smazat cizí klíč</string>
+	<string name="confirmtable">Opravdu smazat tabulku</string>
+	<string name="confirmrow">Opravdu smazat položku</string>
+
+	<!-- row edit -->
+	<string name="name">Jméno</string>
+	<string name="type">Typ</string>
+	<string name="size">Velikost</string>
+	<string name="def">Výchozí</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincrement</string>
+	<string name="comment">Upravit komentář</string>
+	<string name="commenttext">VLožte komentář pro tuto položku</string>
+
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Storno</string>
+	<string name="throbber">Prosím čekejte...</string>
+	<string name="options">Nastavení</string>
+	<string name="language">Jazyk</string>
+	<string name="db">Databáze pro nová schémata</string>
+	<string name="optionsnotice">Některá nastavení se projeví až po znovunačtení stránky. Aby nastavení fungovala, je nutné mít zapnuté cookies.</string>
+	<string name="snap">Vzdálenost přichytávání tabulek</string>
+	<string name="optionsnapnotice">V pixelech, 0 = bez přichytávání</string>
+	<string name="pattern">Vzor pro cizí jména</string>
+	<string name="optionpatternnotice">%T = primární tabulka, %R = primární klíč, %t = cizí tabulka</string>
+	<string name="hide">Schovat spojovníky při tažení tabulkou?</string>
+	<string name="vector">Vykreslovat oblé spojovníky (pakliže to prohlížeč podporuje)?</string>
+	<string name="showsize">Zobrazovat velikost polí v tabulce?</string>
+	<string name="showtype">Zobrazovat datový typ polí v tabulce?</string>
+
+	<!-- keys -->
+	<string name="tablekeys">Klíče</string>
+	<string name="keyslistlabel">Klíče v tabulce "%s"</string>
+	<string name="keytypelabel">Typ:</string>
+	<string name="keynamelabel">Název:</string>
+	<string name="keyfieldslabel">Položky v klíči</string>
+	<string name="keyavaillabel">Dostupné položky</string>
+	<string name="keyedit">Upravit klíč</string>
+	<string name="keyadd">Přidat klíč</string>
+	<string name="keyremove">Smazat klíč</string>
+
+	<!-- io -->
+	<string name="saveload">Uložit / Načíst</string>
+	<string name="empty">Prosím vložte XML data do textového pole níže.</string>
+	<string name="client">Klient</string>
+	<string name="server">Server</string>
+	<string name="output">Vstup / Výstup</string>
+	<string name="clientsave">Uložit XML</string>
+	<string name="clientload">Načíst XML</string>
+	<string name="clientlocalsave">Uložit v prohlížeči</string>
+	<string name="clientlocalload">Načíst z prohlížeče</string>
+	<string name="clientsql">Generovat SQL</string>
+	<string name="backendlabel">Server backend:</string>
+	<string name="serversave">Uložit</string>
+	<string name="quicksave">Rychle uložit</string>
+	<string name="serverload">Načíst</string>
+	<string name="serverlist">Vypsat položky</string>
+	<string name="serverimport">Importovat z databáze</string>
+	<string name="serverloadprompt">Zadejte označení, pod kterým bylo vaše schéma uloženo:</string>
+	<string name="serversaveprompt">Zadejte označení, pod kterým bude vaše schéma uloženo:</string>
+	<string name="serverimportprompt">Zadejte název databáze k importu:</string>
+	<string name="httpresponse">Odpověď od serveru</string>
+	<string name="http201">Uloženo</string>
+	<string name="http404">Neexistuje</string>
+	<string name="http500">Vnitřní chyba serveru</string>
+	<string name="http501">Není implementováno</string>
+	<string name="http503">Služba není dostupná</string>
+
+	<!-- misc -->
+	<string name="xmlerror">XML chyba</string>
+	<string name="docs">Dokumentace</string>
+
+</locale>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Tábla létrehozása</string>
+	<string name="edittable">Tábla módosítása</string>
+	<string name="removetable">Tábla törlése</string>
+	<string name="removetables">Táblak törlése</string>
+	<string name="aligntables">Táblák rendezése</string>
+	<string name="cleartables">Táblák törlése</string>
+	<string name="confirmall">Valóban töröljem az összes táblát</string>
+	<string name="newtable">tábla létrehozása</string>
+	<string name="addpending">tábla elhelyezése</string>
+	<string name="tablenamelabel">Név</string>
+	<string name="tablecommentlabel">Megjegyzés</string>
+
+	<!-- row management -->
+	<string name="addrow">Mező létrehozása</string>
+	<string name="editrow">Mező módosítása</string>
+	<string name="removerow">Mező törlése</string>
+	<string name="uprow">Fel</string>
+	<string name="downrow">Le</string>
+	<string name="newrow">új mező</string>
+	<string name="foreigncreate">Idegen kulcs létrehozása</string>
+	<string name="foreignpending">kattintson a cél-táblára</string>
+	<string name="foreignconnect">Idegen kulcs kapcsolása</string>
+	<string name="foreignconnectpending">kattintson a cél-mezőre</string>
+	<string name="foreigndisconnect">Mező kulcs létrehozása</string>
+	<string name="confirmtable">Valóban töröljem a táblát</string>
+	<string name="confirmrow">Valóban töröljem a mezőt</string>
+
+	<!-- row edit -->
+	<string name="name">Név</string>
+	<string name="type">Típus</string>
+	<string name="size">Méret</string>
+	<string name="def">Alapérték</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Automatikus növelés</string>
+	<string name="comment">Megjegyzés módosítása</string>
+	<string name="commenttext">Írjon megjegyzést ehhez a mezőhöz</string>
+
+	<!-- windows & options -->
+	<string name="windowok">OK</string>
+	<string name="windowcancel">Mégsem</string>
+	<string name="throbber">Kérem várjon...</string>
+	<string name="options">Beállítások</string>
+	<string name="language">Nyelv</string>
+	<string name="db">Adatbázis az új terveknek</string>
+	<string name="optionsnotice">Egyes beállítások csak az oldal teljes újratöltése után érvényesülnek. A munkához szükséges engedélyezni a sütiket (cooky-kat).</string>
+	<string name="snap">Táblák illesztési távolsága</string>
+	<string name="optionsnapnotice">Pixel-ben megadva, 0 = illesztés tiltása</string>
+	<string name="pattern">Idegen nevek sablonja</string>
+	<string name="optionpatternnotice">%T = elsődleges tábla, %R = elsődleges kulcs, %t = idegen tábla</string>
+	<string name="hide">Elrejtsem a kapcsolókat a rajztáblán?</string>
+	<string name="vector">Kapcsolók finom kirajzolása (ha a böngésző lehetővé teszi)?</string>
+
+
+	<!-- keys -->
+	<string name="tablekeys">Kulcsok</string>
+	<string name="keyslistlabel">Kulcsok a "%s" táblában</string>
+	<string name="keytypelabel">Típus:</string>
+	<string name="keynamelabel">Név:</string>
+	<string name="keyfieldslabel">A kulcs mezői</string>
+	<string name="keyavaillabel">Elérhető mezők</string>
+	<string name="keyedit">Kulcs módosítása</string>
+	<string name="keyadd">Kulcs létrehozása</string>
+	<string name="keyremove">Kulcs törlése</string>
+
+	<!-- io -->
+	<string name="saveload">Mentés / Beolvasás</string>
+	<string name="empty">Kérem illessze be az XML-tartalmat az alábbi szöveges mezőbe, és próbálja újra.</string>
+	<string name="client">Kliens</string>
+	<string name="server">Szerver</string>
+	<string name="output">Bemenet / Kimenet</string>
+	<string name="clientsave">XML mentése</string>
+	<string name="clientload">XML beolvasása</string>
+	<string name="clientsql">SQL generálása</string>
+	<string name="backendlabel">Szerver végpont:</string>
+	<string name="serversave">Mentés</string>
+	<string name="serverload">Betöltés</string>
+	<string name="serverlist">Tételek listázása</string>
+	<string name="serverimport">Importálás adatbázisból</string>
+	<string name="serverloadprompt">Írja be a kulcsszót, amely alapján a tervet elmentette:</string>
+	<string name="serversaveprompt">Írja be a kulcsszót, amely alapján a tervet el szeretné menteni:</string>
+	<string name="serverimportprompt">Írja be az importálandó adatbázis nevét:</string>
+	<string name="httpresponse">A szerver válasza</string>
+	<string name="http201">Elmentve</string>
+	<string name="http404">Nem találom</string>
+	<string name="http500">Belső szerver hiba</string>
+	<string name="http501">Nem lett végrehajtva</string>
+	<string name="http503">Szolgáltatás nem elérhető</string>
+
+	<!-- misc -->
+	<string name="xmlerror">XML hiba</string>
+	<string name="docs">Dokumentáció</string>
+
+</locale>

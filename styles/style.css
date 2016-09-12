@@ -1,0 +1,272 @@
+body {
+	font-family: verdana, sans serif;
+	font-size: small;
+	padding: 0px;
+	margin: 0px;
+	background: #FFF;
+	visibility: hidden;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#area {
+	position: relative;
+	background: transparent url(../images/back.png);
+    opacity: 0.7;
+	width: 3000px;
+	height: 3000px;
+}
+
+#controls {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#bar {
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+    height: 100px;
+}
+
+#sub_bar {
+    width: 960px;
+    margin: 0 auto;
+    padding-bottom: 6px;
+    overflow: hidden;
+}
+
+#sub_bar div.holder {
+    overflow: hidden;
+    float: left;
+}
+
+#bar a {
+	width: 60px;
+    height: 60px;
+    margin: 0 7.4px;
+    float: left;
+}
+
+#bar input:hover {
+    background-color: #fafafa;
+}
+
+#bar input.small {
+	width: 30px;
+    height: 30px;
+    float: none;
+}
+
+#toggle_bar {
+    box-sizing: border-box;
+    padding: 8px;
+    overflow: hidden;
+}
+
+#toggle {
+	padding: 5px 0px;
+	cursor: pointer;
+	background-position: 50% 5px;
+	background-repeat: no-repeat;
+	height: 5px;
+}
+
+#toggle:hover {
+	background-color: #f0f0f0;
+}
+
+#toggle.on {
+	background-image: url(../images/down.gif);
+}
+
+#toggle.off {
+	background-image: url(../images/up.gif);
+}
+
+#minimap {
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	right: 5px;
+	top: 5px;
+	background-color: #fff;
+	border: 1px solid #000;
+	opacity: 0.9;
+	overflow: hidden;
+}
+
+.mini {
+	position: absolute;
+	border: 1px solid #000;
+	background-color: #eea;
+	font-size: 1px;
+	line-height: 1px;
+}
+
+.mini_selected {
+	background-color: #f85;
+}
+
+.port {
+	position: absolute;
+	border: 2px solid #f00;
+}
+
+.table {
+	position: absolute;
+/*	border: 1px solid #000;*/
+	background-color: #ddd;
+	cursor: pointer;
+	-moz-box-shadow: 4px 4px 8px #ccc; /* FF 3.5+ */
+	-webkit-box-shadow: 4px 4px 8px #ccc; /* Safari 3.0+, Chrome */
+	box-shadow: 4px 4px 8px #ccc; /* Opera 10.5, IE 9.0 */
+	border-radius: 2px;
+}
+
+.table table {
+	border-collapse: collapse;
+}
+
+.table.selected {
+/*	border: 0.5px solid #000;*/
+    -moz-box-shadow: 4px 4px 8px #888; /* FF 3.5+ */
+	-webkit-box-shadow: 4px 4px 8px #888; /* Safari 3.0+, Chrome */
+	box-shadow: 4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
+}
+
+.table thead .title {
+	text-align: center;
+	padding: 3px 30px;
+}
+
+.table tbody {
+	border-top: 1px dotted #888;
+}
+
+.table tbody td {
+	padding: 3px;
+}
+
+.table tbody .selected {
+	font-weight: bold;
+	color: #f00;
+	display: inline-block;
+}
+
+.table tbody .title {
+	display: inline-block;
+}
+
+.primary {
+	font-weight: bold;
+}
+
+.key {
+	font-style: italic;
+}
+
+.primary.key {
+	font-style: normal;
+}
+
+.typehint {
+	font-size: 80%;
+	color: gray;
+}
+
+.comment {
+	font-size: 80%;
+	font-weight: normal;
+	margin-right: 0.5em;
+}
+
+.adding {
+	cursor: crosshair;
+}
+
+.relation {
+	overflow: hidden;
+}
+
+#background {
+	position: absolute;
+	background-color: #000;
+	opacity: 0.5;
+	visibility: hidden;
+}
+
+#window {
+	position: absolute;
+	visibility: hidden;
+	background-color: #fff;
+	border: 6px double #333;
+}
+
+#windowtitle {
+	border-bottom: 2px solid #333;
+	padding: 2px;
+	padding-left: 1em;
+	font-weight: bold;
+	background-color: rgb(238, 238, 170);
+}
+
+#windowcontent {
+	padding: 1em;
+}
+
+#windowok, #windowcancel {
+	margin: 0em 1em 1em;
+}
+
+.small {
+	font-size: 85%;
+}
+
+#textarea {
+	width: 650px;
+	height: 200px;
+}
+
+#opts {
+	width: 700px;
+}
+
+#keys {
+	white-space: nowrap;
+	text-align: center;
+}
+
+legend {
+	font-weight: bold;
+}
+
+label, input, select {
+	vertical-align: middle;
+}
+
+#throbber {
+	position: absolute;
+	top: 2px;
+	right: 3px;
+}
+
+#rubberband {
+	position: absolute;
+	border: 1px solid #000;
+	background: #888;
+	opacity: 0.5;
+	visibility: hidden;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+}

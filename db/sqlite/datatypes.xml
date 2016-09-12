@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<datatypes db="sqlite">
+	<group label="Affinity">
+		<type label="Text" default="" length="1" sql="TEXT" quote="'" color="rgb(255,200,200)" />
+		<type label="Numeric" default="0" length="0" sql="NUMERIC" quote="" color="rgb(238,238,170)" />
+		<type label="Integer" default="0" length="0" sql="INTEGER" quote="" color="rgb(238,238,170)" />
+		<type label="Real" default="0" length="0" sql="REAL" quote="" color="rgb(238,238,170)" />
+		<type label="None" default="" length="0" sql="NONE" quote="" color="rgb(200,255,200)" />
+	</group>
+</datatypes>
