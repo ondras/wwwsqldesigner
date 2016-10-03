@@ -52,8 +52,9 @@
 	<string name="optionpatternnotice">%T = 親テーブル, %R = プライマリーキー, %t = 子テーブル</string>
 	<string name="hide">テーブルをドラッグ中は線を隠す</string>
 	<string name="vector">滑らかな線を使う（要ブラウザのサポート）</string>
-	
-	
+	<string name="showsize">フィールドサイズを表示</string>
+	<string name="showtype">フィールドタイプを表示</string>
+
 	<!-- keys -->
 	<string name="tablekeys">キーの設定</string>
 	<string name="keyslistlabel">テーブル"%s"のキー</string>
@@ -74,8 +75,12 @@
 	<string name="clientsave">XMLを出力</string>
 	<string name="clientload">XMLを読込</string>
 	<string name="clientsql">SQLを生成</string>
+	<string name="clientlocalsave">ブラウザに保存</string>
+	<string name="clientlocalload">ブラウザから読込</string>
+	<string name="clientlocallist">ブラウザの保存一覧</string>
 	<string name="backendlabel">サーバのバックエンド:</string>
 	<string name="serversave">保存</string>
+	<string name="quicksave">Quicksave</string>
 	<string name="serverload">読込</string>
 	<string name="serverlist">一覧</string>
 	<string name="serverimport">DBからインポート</string>
