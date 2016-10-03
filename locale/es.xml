@@ -3,87 +3,94 @@
 	<!-- table management -->
 	<string name="addtable">Agregar tabla</string>
 	<string name="edittable">Editar tabla</string>
-	<string name="removetable">Remover tabla</string>
-	<string name="removetable">Remover tablas</string>
+	<string name="removetable">Eliminar tabla</string>
+	<string name="removetables">Eliminar tablas</string>
 	<string name="aligntables">Alinear tablas</string>
 	<string name="cleartables">Limpiar tablas</string>
-	<string name="confirmall">Realmente borrar todas las tablas</string>
+	<string name="confirmall">¿Realmente deseas eliminar todas las tablas</string>
 	<string name="newtable">Nueva tabla</string>
-	<string name="addpending">Posicionar tabla</string>
+	<string name="addpending">Colocar tabla</string>
 	<string name="tablenamelabel">Nombre</string>
 	<string name="tablecommentlabel">Comentario</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Agregar campo</string>
 	<string name="editrow">Editar campo</string>
-	<string name="removerow">Remover campo</string>
+	<string name="removerow">Eliminar campo</string>
 	<string name="uprow">Arriba</string>
 	<string name="downrow">Abajo</string>
 	<string name="newrow">Nuevo campo</string>
-	<string name="foreigncreate">Crear llave for&#225;nea</string>
-	<string name="foreignpending">Conectar llave for&#225;nea</string>
-	<string name="foreignconnect">Conectar llave for&#225;nea</string>
-	<string name="foreignconnectpending">Hacer clic en el registro</string>
-	<string name="foreigndisconnect">Remover llave for&#225;nea</string>
-	<string name="confirmtable">Realmente borrar tabla</string>
-	<string name="confirmrow">Realmente borrar campo</string>
+	<string name="foreigncreate">Crear clave foránea</string>
+	<string name="foreignpending">Haz clic en tabla objetivo</string>
+	<string name="foreignconnect">Conectar clave foránea</string>
+	<string name="foreignconnectpending">Haz clic en campo objetivo</string>
+	<string name="foreigndisconnect">Eliminar clave foránea</string>
+	<string name="confirmtable">¿Realmente deseas borrar la tabla</string>
+	<string name="confirmrow">¿Realmente deseas borrar el campo</string>
 
 	<!-- row edit -->
 	<string name="name">Nombre</string>
 	<string name="type">Tipo</string>
-	<string name="size">Tama&#241;o</string>
-	<string name="def">Valor por predeterminado</string>
+	<string name="size">Tamaño</string>
+	<string name="def">Predeterminado</string>
 	<string name="notnull">NOT NULL</string>
 	<string name="null">NULL</string>
 	<string name="ai">Auto incremento</string>
 	<string name="comment">Editar comentario</string>
-	<string name="commenttext">Entrar comentario para este campo</string>
-	
+	<string name="commenttext">Ingresa un comentario para este campo</string>
+
 	<!-- windows & options -->
 	<string name="windowok">Aceptar</string>
 	<string name="windowcancel">Cancelar</string>
-	<string name="throbber">Por favor esperar...</string>
+	<string name="throbber">Por favor, espera...</string>
 	<string name="options">Opciones</string>
-	<string name="language">Lenguaje</string>
-	<string name="db">Base de datos para nuevos dise&#241;os</string>
-	<string name="optionsnotice">Algunas opciones son aplicadas solo despúes de recargar totalmente la pagina. Las cookies deben estar 
-habilitadas para opciones de trabajo.</string>
-	<string name="snap">Tabla acceso remoto</string>
-	<string name="optionsnapnotice">En píxeles, 0 = deshabilitar acceso remoto</string>
-	<string name="pattern">Patrón para nombres for&#225;neos</string>
-	<string name="optionpatternnotice">%T = tabla primaria, %R = llave primaria, %t = tabla for&#225;nea</string>
-	<string name="hide">Esconder conectores en la tabla al arrastrar?</string>
-	<string name="vector">Dibujar conectores suave (si son soportados por el navegador)?</string>
-	
-	
+	<string name="language">Idioma</string>
+	<string name="db">Base de datos para nuevos diseños</string>
+	<string name="optionsnotice">Algunas opciones se aplican solo despúes de recargar totalmente la pagina. Las cookies deben estar habilitadas para que funcione la personalización.</string>
+	<string name="snap">Distancia de ajuste de tablas</string>
+	<string name="optionsnapnotice">En píxeles, 0 = deshabilitar ajuste</string>
+	<string name="pattern">Patrón para nombres de clave foránea</string>
+	<string name="optionpatternnotice">%T = tabla primaria, %R = clave primaria, %t = tabla foránea</string>
+	<string name="hide">¿Ocultar conectores de tablas al arrastrar?</string>
+	<string name="vector">¿Dibujar conectores suaves (si son soportados por el navegador)?</string>
+	<string name="showsize">¿Mostrar tamaño del campo en el diseño de tabla?</string>
+	<string name="showtype">¿Mostrar tipo de dato del campo en el diseño de tabla?</string>	
+
 	<!-- keys -->
-	<string name="tablekeys">Llaves</string>
+	<string name="tablekeys">Claves</string>
 	<string name="keyslistlabel">Llaves en la tabla "%s"</string>
 	<string name="keytypelabel">Tipo:</string>
 	<string name="keynamelabel">Nombre:</string>
-	<string name="keyfieldslabel">Campos en la llave</string>
+	<string name="keyfieldslabel">Campos en la clave</string>
 	<string name="keyavaillabel">Campos disponibles</string>
-	<string name="keyedit">Editar llave</string>
-	<string name="keyadd">Agregar llave</string>
-	<string name="keyremove">Remover llave</string>
-	
+	<string name="keyedit">Editar clave</string>
+	<string name="keyadd">Agregar clave</string>
+	<string name="keyremove">Eliminar clave</string>
+
 	<!-- io -->
 	<string name="saveload">Guardar / Cargar</string>
-	<string name="empty">Favor de pegar el XML dentro del &#225;rea de texto siguiente e intentar nuevamente.</string>
+	<string name="empty">Por favor, pega los datos XML dentro del área de texto de abajo y vuelve a intentar.</string>
 	<string name="client">Cliente</string>
 	<string name="server">Servidor</string>
 	<string name="output">Entrada / Salida</string>
 	<string name="clientsave">Guardar XML</string>
 	<string name="clientload">Cargar XML</string>
+	<string name="clientlocalsave">Guardar en el Navegador</string>
+	<string name="clientlocalload">Cargar desde el Navegador</string>
+	<string name="clientlocallist">Listar desde el Navegador</string>
+	<string name="dropboxsave">Guardar en Dropbox</string>
+	<string name="dropboxload">Cargar desde Dropbox</string>
+	<string name="dropboxlist">Listar desde Dropbox</string>
 	<string name="clientsql">Generar SQL</string>
-	<string name="backendlabel">Servidor backend:</string>
+	<string name="backendlabel">Servidor de fondo:</string>
 	<string name="serversave">Guardar</string>
+	<string name="quicksave">Guardar rápido</string>
 	<string name="serverload">Cargar</string>
-	<string name="serverlist">Lista de articulos</string>
-	<string name="serverimport">Importar desde BD</string>
-	<string name="serverloadprompt">Entrar palabra bajo la cual tu dise&#241;o fue guardado:</string>
-	<string name="serversaveprompt">Entrar palabra bajo la cual tu dise&#241;o va a ser guardado:</string>
-	<string name="serverimportprompt">Entrar nombre de base de datos a ser importada:</string>
+	<string name="serverlist">Listar elementos</string>
+	<string name="serverimport">Importar desde Base de Datos</string>
+	<string name="serverloadprompt">Ingrese la palabra clave bajo la cual tu diseño fue guardado:</string>
+	<string name="serversaveprompt">Ingrese una palabra clave bajo la cual tu diseño será guardado:</string>
+	<string name="serverimportprompt">Ingresa el nombre de la base de datos a ser importada:</string>
 	<string name="httpresponse">Respuesta del servidor</string>
 	<string name="http201">Guardado</string>
 	<string name="http404">No Encontrado</string>
@@ -92,7 +99,7 @@ habilitadas para opciones de trabajo.</string>
 	<string name="http503">Servicio No Disponible</string>
 	
 	<!-- misc -->
-	<string name="xmlerror">XML error</string>
+	<string name="xmlerror">Error XML</string>
 	<string name="docs">Documentación</string>
 	
 </locale>
