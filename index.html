@@ -1,329 +1,326 @@
 <!doctype html>
 <!--
-	WWW SQL Designer, (C) 2005-2015 Ondrej Zara, ondras@zarovi.cz
-	Version: 2.7
-	See license.txt for licencing information.
+        WWW SQL Designer, (C) 2005-2015 Ondrej Zara, ondras@zarovi.cz
+        Version: 2.7
+        See license.txt for licencing information.
 -->
 <html>
 
-<head>
-    <title>Desktop SQL Designer</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--[if IE 6]><link rel="stylesheet" type="text/css" href="styles/ie6.css" /><![endif]-->
-    <!--[if IE 7]><link rel="stylesheet" type="text/css" href="styles/ie7.css" /><![endif]-->
-    <link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link rel="stylesheet" href="styles/materialize.min.css" media="screen,projection" />
-    <link rel="stylesheet" href="styles/style.css" media="all" />
+    <head>
+        <title>Desktop SQL Designer</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link rel="stylesheet" href="styles/mui.min.css" />
+        <link rel="stylesheet" href="styles/style.css" media="all" />
 
-    <!--Let browser know website is optimized for mobile-->
+        <!--Let browser know website is optimized for mobile-->
 
-    <script src="js/jquery.js"></script>
-    <script src="js/oz.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/globals.js"></script>
-    <script src="js/visual.js"></script>
-    <script src="js/row.js"></script>
-    <script src="js/table.js"></script>
-    <script src="js/relation.js"></script>
-    <script src="js/key.js"></script>
-    <script src="js/rubberband.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/toggle.js"></script>
-    <script src="js/io.js"></script>
-    <script src="js/tablemanager.js"></script>
-    <script src="js/rowmanager.js"></script>
-    <script src="js/keymanager.js"></script>
-    <script src="js/window.js"></script>
-    <script src="js/options.js"></script>
-    <script src="js/wwwsqldesigner.js"></script>
-</head>
+        <script src="js/jquery.js"></script>
+        <script src="js/oz.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/globals.js"></script>
+        <script src="js/visual.js"></script>
+        <script src="js/row.js"></script>
+        <script src="js/table.js"></script>
+        <script src="js/relation.js"></script>
+        <script src="js/key.js"></script>
+        <script src="js/rubberband.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/toggle.js"></script>
+        <script src="js/snackbar.js"></script>
+        <script src="js/io.js"></script>
+        <script src="js/tablemanager.js"></script>
+        <script src="js/rowmanager.js"></script>
+        <script src="js/keymanager.js"></script>
+        <script src="js/window.js"></script>
+        <script src="js/options.js"></script>
+        <script src="js/wwwsqldesigner.js"></script>
+        <script src="js/mui.min.js"></script>
+    </head>
 
-<body>
-    <div id="area"></div>
-
-    <div id="controls">
-        <div id="menu">
-            <input type="button" id="saveload" />
-            <input type="button" id="options" />
-            <a href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank">
-                <input type="button" id="docs" value="" />
-            </a>
-        </div>
-        <div id="bar">
-            <div id="sub_bar" class="card">
-                <div id="toggle" class="waves-effect waves-teal btn-flat" ></div>
-                <div id="toggle_bar">
+    <body>
+        <div id="area"></div>
+        <div id="controls">
+            <div id="menu" class="mui-dropdown mui--z1">
+                <button class="mui-btn mui-btn--raised mui-btn" data-mui-toggle="dropdown"><i class="material-icons">menu</i></button>
+                <ul class="mui-dropdown__menu">
+                    <li>
+                        <button class="mui-btn mui-btn--flat" type="button" id="saveload"></button>
+                    </li>
+                    <li>
+                        <button class="mui-btn mui-btn--flat" type="button" id="options">Hola</button>
+                    </li>
+                    <li>
+                        <a id="docs" class="mui-btn mui-btn--flat" href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank">Docs</a>
+                    </li>
+                </ul>
+            </div>
+            <button id="toogle_min" class="mui-btn mui-btn--raised mui-btn--small mui--align-middle"><i class="material-icons">keyboard_arrow_up</i></button>
+            
+            <div id="bar" class="mui-panel mui--z2">
+                <div class="holder">
+                    <button type="button" id="addtable" class="mui-btn mui-btn--raised mui-btn--accent"><i class="material-icons">add</i></button>
+                    <button type="button" id="edittable" class="mui-btn mui-btn--raised"><i class="material-icons">edit</i></button>
+                    <button type="button" id="tablekeys"  class="mui-btn mui-btn--raised"><i class="material-icons">vpn_key</i></button>
+                    <button type="button" id="removetable"  class="mui-btn mui-btn--raised"><i class="material-icons">delete</i></button>
+                </div>
+                <div class="holder mui--divider-left">
+                    <button type="button" id="addrow"  class="mui-btn mui-btn--raised"><i class="material-icons">add_circle_outline</i></button>
+                    <button type="button" id="editrow"  class="mui-btn mui-btn--raised" ><i class="material-icons">border_color</i></button>
                     <div class="holder">
-                        <input type="button" id="addtable" class="btn" />
-                        <input type="button" id="edittable" class="btn-flat" />
-                        <input type="button" id="tablekeys" class="waves-effect waves-teal btn-flat" />
-                        <input type="button" id="removetable" class="waves-effect waves-teal btn-flat" />
-                        <input type="button" id="aligntables" class="waves-effect waves-teal btn-flat" />
-                        <input type="button" id="cleartables" class="waves-effect waves-teal btn-flat" />
+                        <button type="button" id="uprow" class="small mui-btn mui-btn--raised"><i class="material-icons">arrow_drop_up</i></button>
+                        <button type="button" id="downrow" class="small mui-btn mui-btn--raised" ><i class="material-icons">arrow_drop_down</i></button>
                     </div>
-                    <div class="holder">
-                        <input type="button" id="addrow" class="waves-effect waves-teal btn-flat" />
-                        <input type="button" id="editrow" class="waves-effect waves-teal btn-flat" />
-                        <div class="holder">
-                            <input type="button" id="uprow" class="small waves-effect waves-teal btn-flat" />
-                            <input type="button" id="downrow" class="small waves-effect waves-teal btn-flat" />
-                        </div>
-                        <input type="button" id="foreigncreate" class="waves-effect waves-teal btn-flat" />
-                        <input type="button" id="foreignconnect" class="waves-effect waves-teal btn-flat" />
-                        <input type="button" id="foreigndisconnect" class="waves-effect waves-teal btn-flat" />
-                        <input type="button" id="removerow" class="waves-effect waves-teal btn-flat" />
+                    <button type="button" id="foreigncreate"  class="mui-btn mui-btn--raised" ><i class="material-icons">play_circle_outline</i></button>
+                    <button type="button" id="foreignconnect"  class="mui-btn mui-btn--raised" ><i class="material-icons">compare_arrows</i></button>
+                    <button type="button" id="foreigndisconnect"  class="mui-btn mui-btn--raised" ><i class="material-icons">content_cut</i></button>
+                    <button type="button" id="removerow"  class="mui-btn mui-btn--raised" ><i class="material-icons">remove</i></button>
+                </div>
+                <div class="holder mui--divider-left">
+                    <button type="button" id="aligntables"  class="mui-btn mui-btn--raised" ><i class="material-icons">grid_on</i></button>
+                    <button type="button" id="cleartables"  class="mui-btn mui-btn--raised" ><i class="material-icons">delete_sweep</i></button>
+                    <button type="button" id="toggle" class="mui-btn mui-btn--flat" ><i class="material-icons">keyboard_arrow_down</i></button>
+                </div>
+            </div>
+
+            <div id="rubberband"></div>
+
+            <div id="minimap" class="mui--z1"></div>
+
+            <div id="snackbar"></div>
+
+            <div id="background"></div>
+
+            <div id="window" class="mui-panel mui--z3">
+                <img id="throbber" src="images/throbber.gif" alt="" title="" />
+                <div>
+                    <h2 id="windowtitle"></h2>
+                </div>
+                <div id="windowcontent"></div>
+                <div id="windowcontrol">
+                    <button id="windowok" class="mui-btn mui-btn--flat mui-btn--accent"><i class="material-icons">done</i></button>
+                    <button id="windowcancel" class="mui-btn mui-btn--flat" ><i class="material-icons">clear</i></button>
+                </div>
+            </div>
+        </div>
+        <!-- #controls -->
+
+        <div id="opts">
+            <small>* <span class="small" id="optionsnotice"></span></small>
+            <hr>
+            <div class="mui-container-fluid">
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-select">
+                        <label id="language" for="optionlocale"></label>
+                        <select id="optionlocale">
+                            <option></option>
+                        </select>
+                        <small>*</small>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-select">
+                        <label id="db" for="optiondb"></label>
+                        <select id="optiondb">
+                            <option></option>
+                        </select>
+                        <small>*</small>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-textfield">
+                        <input type="text" size="4" id="optionsnap" />
+                        <label id="snap" for="optionsnap"></label>
+                        <span class="small" id="optionsnapnotice"></span>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-textfield">
+                        <input type="text" size="6" id="optionpattern" />
+                        <label id="pattern" for="optionpattern"></label>
+                        <span class="small" id="optionpatternnotice"></span>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-checkbox">
+                        <input type="checkbox" id="optionhide"/>
+                        <label id="hide" for="optionhide">
+                        </label>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-checkbox">
+                        <input type="checkbox" id="optionvector" />
+                        <label id="vector" for="optionvector">
+                        </label>
+                        <small>*</small>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-checkbox">
+                        <input type="checkbox" id="optionshowsize" />
+                        <label id="showsize" for="optionshowsize">
+                        </label>
+                        <small>*</small>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-checkbox">
+                        <input type="checkbox" id="optionshowtype" />
+                        <label id="showtype" for="optionshowtype"></label>
+                        <small>*</small>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="rubberband"></div>
-
-        <div id="minimap"></div>
-
-        <div id="background"></div>
-
-        <div id="window">
-            <div id="windowtitle"><img id="throbber" src="images/throbber.gif" alt="" title="" /></div>
-            <div id="windowcontent"></div>
-            <input type="button" id="windowok" />
-            <input type="button" id="windowcancel" />
-        </div>
-    </div>
-    <!-- #controls -->
-
-    <div id="opts">
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        *
-                        <label id="language" for="optionlocale"></label>
-                    </td>
-                    <td>
-                        <select id="optionlocale">
-                            <option></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        *
-                        <label id="db" for="optiondb"></label>
-                    </td>
-                    <td>
-                        <select id="optiondb">
-                            <option></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label id="snap" for="optionsnap"></label>
-                    </td>
-                    <td>
-                        <input type="text" size="4" id="optionsnap" />
-                        <span class="small" id="optionsnapnotice"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label id="pattern" for="optionpattern"></label>
-                    </td>
-                    <td>
-                        <input type="text" size="6" id="optionpattern" />
-                        <span class="small" id="optionpatternnotice"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label id="hide" for="optionhide"></label>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="optionhide" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        *
-                        <label id="vector" for="optionvector"></label>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="optionvector" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        *
-                        <label id="showsize" for="optionshowsize"></label>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="optionshowsize" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        *
-                        <label id="showtype" for="optionshowtype"></label>
-                    </td>
-                    <td>
-                        <input type="checkbox" id="optionshowtype" />
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <hr /> * <span class="small" id="optionsnotice"></span>
-    </div>
-
-    <div id="io">
-        <table>
-            <tbody>
-                <tr>
-                    <td style="width:60%">
-                        <fieldset>
-                            <legend id="client"></legend>
-                            <div id="singlerow">
-                                <input type="button" id="clientsave" />
-                                <input type="button" id="clientload" />
+        <div id="io">
+            <div class="mui-container-fluid">
+                <div class="mui-row">
+                    <div class="mui-col-md-12">
+                        <ul class="mui-tabs__bar mui-tabs__bar--justified">
+                            <li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-client" id="client"></a></li>
+                            <li><a data-mui-toggle="tab" data-mui-controls="pane-server" id="server"></a></li>
+                        </ul>
+                        <div class="mui-tabs__pane mui--is-active" id="pane-client">
+                            <!--<h3 id="client"></h3>-->
+                            <div>
+                                <button class="mui-btn mui-btn--raised" id="clientsave" ></button>
+                                <button class="mui-btn mui-btn--raised" id="clientload" ></button>
                             </div>
-                            <div id="singlerow">
-                                <input type="button" id="clientlocalsave" />
-                                <input type="button" id="clientlocalload" />
-                                <input type="button" id="clientlocallist" />
+                            <div>
+                                <button class="mui-btn mui-btn--raised" id="clientlocalsave" ></button>
+                                <button class="mui-btn mui-btn--raised" id="clientlocalload" ></button>
+                                <button class="mui-btn mui-btn--raised" id="clientlocallist" ></button>
                             </div>
-                            <div id="singlerow">
-                                <input type="button" id="dropboxsave" />
+                            <div>
+                                <button class="mui-btn mui-btn--raised" id="dropboxsave" ></button>
                                 <!-- may get hidden by dropBoxInit() -->
-                                <input type="button" id="dropboxload" />
+                                <button class="mui-btn mui-btn--raised" id="dropboxload" ></button>
                                 <!-- may get hidden by dropBoxInit() -->
-                                <input type="button" id="dropboxlist" />
+                                <button class="mui-btn mui-btn--raised" id="dropboxlist" ></button>
                                 <!-- may get hidden by dropBoxInit() -->
                             </div>
-                            <hr/>
-                            <input type="button" id="clientsql" />
-                        </fieldset>
-                    </td>
-                    <td style="width:40%">
-                        <fieldset>
-                            <legend id="server"></legend>
-                            <label for="backend" id="backendlabel"></label>
-                            <select id="backend">
-                                <option></option>
-                            </select>
-                            <hr/>
-                            <input type="button" id="serversave" />
-                            <input type="button" id="quicksave" />
-                            <input type="button" id="serverload" />
-                            <input type="button" id="serverlist" />
-                            <input type="button" id="serverimport" />
-                        </fieldset>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <fieldset>
-                            <legend id="output"></legend>
+                        </div>
+                        <div class="mui-tabs__pane" id="pane-server"  style="padding-top: 16px;">
+                            <div class="mui-select">
+                                <label for="backend" id="backendlabel"></label>
+                                <select id="backend">
+                                    <option></option>
+                                </select>
+                            </div>
+                            <button class="mui-btn mui-btn--raised" id="serversave" ></button>
+                            <button class="mui-btn mui-btn--raised" id="quicksave" ></button>
+                            <button class="mui-btn mui-btn--raised" id="serverload" ></button>
+                            <button class="mui-btn mui-btn--raised" id="serverlist" ></button>
+                            <button class="mui-btn mui-btn--raised" id="serverimport" ></button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="mui-row">
+                    <div class="mui-col-md-12">
+                        <h3 id="output"></h3>
+                        <div class="mui-textfield">
                             <textarea id="textarea" rows="1" cols="1"></textarea>
-                            <!--modified by javascript later-->
-                        </fieldset>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        </div>
+                        <button class="mui-btn mui-btn--raised mui-btn--accent" id="clientsql" ></button>
+                        <!--modified by javascript later-->
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div id="keys">
-        <fieldset>
-            <legend id="keyslistlabel"></legend>
-            <select id="keyslist">
-                <option></option>
-            </select>
-            <input type="button" id="keyadd" />
-            <input type="button" id="keyremove" />
-        </fieldset>
-        <fieldset>
-            <legend id="keyedit"></legend>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <label for="keytype" id="keytypelabel"></label>
-                            <select id="keytype">
+        <div id="keys" class="mui-container-fluid">
+            <div class="mui-row">
+                <h3 id="keyslistlabel"></h3>
+                <div class="mui-col-md-12">
+                    <div class="mui-select">
+                        <label for="keyslist">Keys</label>
+                        <select id="keyslist">
+                            <option></option>
+                        </select>
+                    </div>
+                    <button id="keyadd" class="mui-btn mui-btn--primary" ></button>
+                    <button id="keyremove" class="mui-btn mui-btn--danger" ></button>
+                </div>
+            </div>
+            <div class="mui-row">
+                <h3 id="keyedit"></h3>
+                <div class="mui-col-md-12">
+                    <div class="mui-row">
+                        <div class="mui-col-md-6">
+                            <div class="mui-select">
+                                <label for="keytype" id="keytypelabel"></label>
+                                <select id="keytype">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mui-col-md-6">
+                            <div class="mui-textfield">
+                                <input type="text" id="keyname" size="10" />
+                                <label for="keyname" id="keynamelabel"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mui-row">
+                        <div class="mui-col-md-5">
+                            <div>
+                                <label for="keyfields" id="keyfieldslabel"></label>
+                            </div>
+                            <select style="width: 100%" id="keyfields" size="5" multiple="multiple">
                                 <option></option>
                             </select>
-                        </td>
-                        <td></td>
-                        <td>
-                            <label for="keyname" id="keynamelabel"></label>
-                            <input type="text" id="keyname" size="10" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">
-                            <hr/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="keyfields" id="keyfieldslabel"></label>
-                            <br/>
-                            <select id="keyfields" size="5" multiple="multiple">
+                        </div>
+                        <div class="mui-col-md-2">
+                            <ul class="mui-list--unstyled">
+                                <li>                                        
+                                    <button class="mui-btn mui-btn--raised small" id="keyleft"><i class="material-icons">fast_rewind</i></button>
+                                </li>
+                                <li>
+                                    <button class="mui-btn mui-btn--raised small" id="keyright"><i class="material-icons">fast_forward</i></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mui-col-md-5">
+                            <div>
+                                <label for="keyavail" id="keyavaillabel"></label>
+                            </div>
+                            <select style="width: 100%" id="keyavail" size="5" multiple="multiple">
                                 <option></option>
                             </select>
-                        </td>
-                        <td>
-                            <input type="button" id="keyleft" value="&lt;&lt;" />
-                            <br/>
-                            <input type="button" id="keyright" value="&gt;&gt;" />
-                            <br/>
-                        </td>
-                        <td>
-                            <label for="keyavail" id="keyavaillabel"></label>
-                            <br/>
-                            <select id="keyavail" size="5" multiple="multiple">
-                                <option></option>
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </fieldset>
-    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div id="table">
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        <label id="tablenamelabel" for="tablename"></label>
-                    </td>
-                    <td>
+        <div id="table" class="mui-container-fluid">
+            <div class="mui-row">
+                <div class="mui-col-md-12">
+                    <div class="mui-textfield">
                         <input id="tablename" type="text" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label id="tablecommentlabel" for="tablecomment"></label>
-                    </td>
-                    <td>
+                        <label id="tablenamelabel" for="tablename"></label>
+                    </div>
+                </div>
+                <div class="mui-col-md-12">
+                    <div class="mui-textfield">
                         <textarea rows="5" cols="40" id="tablecomment"></textarea>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        <label id="tablecommentlabel" for="tablecomment"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var d = new SQL.Designer();
 
-    <script src="js/materialize.min.js"></script>
-    <script type="text/javascript">
-        var d = new SQL.Designer();
-
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
