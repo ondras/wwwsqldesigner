@@ -115,7 +115,7 @@ SQL.TableManager.prototype.selectRect = function (x, y, width, height) { /* sele
         var ty = t.y;
         var ty1 = t.y + t.height;
         console.log('ruberband', x, x1, y, y1);
-        console.log('table', tx,tx1, ty, ty1);
+        console.log('table', tx, tx1, ty, ty1);
         if (((tx >= x && tx < x1) || (tx1 >= x && tx1 < x1) || (tx < x && tx1 > x1)) &&
                 ((ty >= y && ty < y1) || (ty1 >= y && ty1 < y1) || (ty < y && ty1 > y1)))
         {
@@ -228,7 +228,7 @@ SQL.TableManager.prototype.press = function (e) {
         // ctrl + a
         if (this.owner.window.state)
             return;
-        
+
         this.selectAll();
     } else if (this.adding && e.keyCode === 27) {
         this.preAdd(e);
@@ -237,6 +237,15 @@ SQL.TableManager.prototype.press = function (e) {
         if (target == "textarea" || target == "input") {
             return;
         } /* not when in form field */
+
+        if (e.keyCode === 70) {
+            // f
+            if (e.ctrlKey)
+                return;
+            this.addRow();
+            OZ.Event.prevent(e);
+            return;
+        }
 
         if (this.owner.rowManager.selected) {
             return;
@@ -254,13 +263,14 @@ SQL.TableManager.prototype.press = function (e) {
                     OZ.Event.prevent(e);
                 }
                 break;
-            case 70:
-                // f
+            case 69:
+                // e
                 if (e.ctrlKey)
                     return;
-                this.addRow();
-                OZ.Event.prevent(e);
-                OZ.Event.stop(e);
+                if (this.selection.length) {
+                    this.edit(e);
+                    OZ.Event.prevent(e);
+                }
                 break;
         }
     }

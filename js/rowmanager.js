@@ -233,13 +233,6 @@ SQL.RowManager.prototype.press = function (e) {
             this.selected.expand();
             OZ.Event.prevent(e);
             break;
-        case 70:
-            // f
-            if (e.ctrlKey)
-                return;
-            this.owner.tableManager.addRow();
-            OZ.Event.prevent(e);
-            break;
         case 88:
             // x
             if (!this.dom.foreigncreate.disabled)
