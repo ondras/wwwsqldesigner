@@ -19,7 +19,7 @@ body {
     width: 8px;
     height: 8px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
     -webkit-border-radius: 0px;
@@ -29,7 +29,7 @@ body {
 ::-webkit-scrollbar-track:hover {
     background: rgba(125,125,125,0.5);
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 0px;
@@ -43,7 +43,7 @@ body {
     background: rgba(0,0,0,0.8); 
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-	background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.1);
 }
 
 #area {
@@ -308,4 +308,47 @@ body {
 }
 #menu li button {
     width: 100%;
+}
+
+.tooltip {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+    z-index: 999;
+    background: rgba(97,97,97,.9);
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 14px;
+    max-width: 170px;
+    position: fixed;
+    top: -500px;
+    left: -500px;
+    padding: 8px;
+    text-align: center;
+}
+.tooltip.is-active {
+    -webkit-animation: pulse 200ms cubic-bezier(0,0,.2,1)forwards;
+    animation: pulse 200ms cubic-bezier(0,0,.2,1)forwards;
+}
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        -webkit-transform: scale(.99);
+        transform: scale(.99);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
 }

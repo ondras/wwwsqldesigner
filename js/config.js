@@ -27,5 +27,27 @@ var CONFIG = {
         'character': '#8BC34A',
         'date & time': '#FFC107',
         'miscellaneous': '#795548'
+    },
+    SHORTCUTS: {
+        saveLocal: {
+            key: 'F2',
+            code: false
+        },
+        loadLocal: {
+            key: 'F4',
+            code: false
+        },
+        addtable: {key: 'a', code: 65},
+        edittable: {key: 'e', code: 69},
+        editrow: {key: 'e', code: 69},
+        addrow: {key: 'f', code: 70},
+        removetable: {key: 'DELETE', code: 46},
+        removerow: {key: 'DELETE', code: 46},
+        uprow: {key: 'UP', code: 38},
+        downrow: {key: 'DOWN', code: 40},
+        foreigncreate: {key: 'x', code: 88},
+        foreignconnect: {key: 'c', code: 67},
+        zoomin: {key: '+', code: false},
+        zoomout: {key: '-', code: false}
     }
 };

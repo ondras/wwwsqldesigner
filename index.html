@@ -33,6 +33,7 @@
         <script src="js/map.js"></script>
         <script src="js/toggle.js"></script>
         <script src="js/snackbar.js"></script>
+        <script src="js/tooltip.js"></script>
         <script src="js/io.js"></script>
         <script src="js/tablemanager.js"></script>
         <script src="js/rowmanager.js"></script>
@@ -56,13 +57,32 @@
                         <button class="mui-btn mui-btn--flat" type="button" id="options">Hola</button>
                     </li>
                     <li>
-                        <a id="docs" class="mui-btn mui-btn--flat" href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank">Docs</a>
+                        <a id="docs" class="mui-btn mui-btn--flat" href="https://github.com/lt-mayonesa/sqldesigner/wiki" target="_blank">Docs</a>
                     </li>
                 </ul>
             </div>
+            <p style="margin-left: 12px; padding-top: 60px;">
+                <small>[F2] Save local | [F4] Load local<br>[+] / [-] zoom</small>
+            </p>
             <button id="toogle_min" class="mui-btn mui-btn--raised mui-btn--small mui--align-middle"><i class="material-icons">keyboard_arrow_up</i></button>
-            
+
             <div id="bar" class="mui-panel mui--z2">
+                <!--tooltips-->
+                <span class="tooltip" data-for="addtable"></span>
+                <span class="tooltip" data-for="edittable"></span>
+                <span class="tooltip" data-for="tablekeys"></span>
+                <span class="tooltip" data-for="removetable"></span>
+                <span class="tooltip" data-for="addrow"></span>
+                <span class="tooltip" data-for="editrow"></span>
+                <span class="tooltip" data-for="uprow"></span>
+                <span class="tooltip" data-for="downrow"></span>
+                <span class="tooltip" data-for="foreigncreate"></span>
+                <span class="tooltip" data-for="foreignconnect"></span>
+                <span class="tooltip" data-for="foreigndisconnect"></span>
+                <span class="tooltip" data-for="removerow"></span>
+                <span class="tooltip" data-for="aligntables"></span>
+                <span class="tooltip" data-for="cleartables"></span>
+
                 <div class="holder">
                     <button type="button" id="addtable" class="mui-btn mui-btn--raised mui-btn--accent"><i class="material-icons">add</i></button>
                     <button type="button" id="edittable" class="mui-btn mui-btn--raised"><i class="material-icons">edit</i></button>

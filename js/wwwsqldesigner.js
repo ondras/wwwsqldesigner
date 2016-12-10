@@ -40,6 +40,10 @@ SQL.Designer = function () {
     this.flag = 2;
     this.requestLanguage();
     this.requestDB();
+    
+    OZ.select('.tooltip').forEach(function (each) {
+        new SQL.Tooltip(OZ.$(each.dataset.for), each);
+    });
 };
 SQL.Designer.prototype = Object.create(SQL.Visual.prototype);
 

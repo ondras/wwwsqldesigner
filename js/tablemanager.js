@@ -17,7 +17,7 @@ SQL.TableManager = function (owner) {
         var id = ids[i];
         var elm = OZ.$(id);
         this.dom[id] = elm;
-        elm.title = _(id);
+        //elm.title = _(id);
     }
 
     var ids = ["tablenamelabel", "tablecommentlabel"];
@@ -81,7 +81,7 @@ SQL.TableManager.prototype.processSelection = function () {
         this.dom.addrow.disabled = false;
         this.dom.edittable.disabled = false;
         this.dom.tablekeys.disabled = false;
-        this.dom.removetable.title = _("removetable");
+        //this.dom.removetable.title = _("removetable");
     } else {
         this.dom.addrow.disabled = true;
         this.dom.edittable.disabled = true;
@@ -90,11 +90,11 @@ SQL.TableManager.prototype.processSelection = function () {
     if (this.selection.length) {
         this.dom.removetable.disabled = false;
         if (this.selection.length > 1) {
-            this.dom.removetable.title = _("removetables");
+            //this.dom.removetable.title = _("removetables");
         }
     } else {
         this.dom.removetable.disabled = true;
-        this.dom.removetable.title = _("removetable");
+        //this.dom.removetable.title = _("removetable");
     }
     for (var i = 0; i < this.selection.length; i++) {
         var t = this.selection[i];

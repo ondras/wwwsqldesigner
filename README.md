@@ -3,8 +3,7 @@ This is a fork of WWW SQL Designer by Ondrej Zara [Link](https://github.com/ondr
 
 # About
 
-Hi and welcome to WWW SQL Designer! This tool allows you to draw and create database schemas (E-R diagrams) directly in browser, without the need for any external programs (flash). You only need JavaScript enabled.
-The Designer works perfectly in Mozillas (Firefox, Seamonkey), Internet Explorers (6, 7, 8), Safari and Operas. Konqueror works, but the experience is limited.
+Hi and welcome to WWW SQL Designer! This tool allows you to draw and create database schemas (E-R diagrams) directly in browser.
 
 Many database features are supported, such as keys, foreign key constraints, comments and indexes. You can either save your design (for further loading & modifications), print it or export as SQL script. It is possible to retrieve (import) schema from existing database.
 
@@ -18,12 +17,12 @@ WWW SQL Designer was created by [Ondrej Zara](http://ondras.zarovi.cz/) and is b
 
 # Shortcuts
 
-[F2] = save local
-[F4] = load local
+- **F2** = save local
+- **F4** = load local
 
-[a] = New table
-[e] = Edit table | Edit row
-[f] = add field
-[x] = create foreign key
-[c] = connect foreign key
-[+|-] = zoom in or out
+- **a** = New table
+- **e** = Edit table | Edit row
+- **f** = add field
+- **x** = create foreign key
+- **c** = connect foreign key
+- **+** / **-** = zoom in or out
