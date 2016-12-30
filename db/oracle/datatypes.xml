@@ -1,30 +1,29 @@
 <?xml version="1.0"?>
 <datatypes db="oracle">
 	<group label="Number" color="rgb(238,238,170)">
-		<type label="NUMERIC" length="0" sql="DECIMAL" re="INT" quote="" />
-		<type label="NUMBER" length="0" sql="DECIMAL" re="INT" quote="" />
-		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote="" />
-		<type label="Single precision" length="0" sql="FLOAT" quote="" />
-		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote="" />
+		<type label="INTEGER" length="0" sql="INTEGER" re="INT" quote="" />
+		<type label="NUMBER" length="1" sql="NUMBER" re="INT" quote="" />
 	</group>
 
 	<group label="Character" color="rgb(255,200,200)">
-		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="CHAR" length="1" sql="CHAR" quote="'"/>
+		<type label="VARCHAR2" length="1" sql="VARCHAR2"  quote="'"/>
+		<type label="CLOB" length="0" sql="CLOB" re="TEXT" quote="'"/>
 		<type label="NCHAR" length="1" sql="NCHAR" quote="'"/>
-		<type label="Varchar2" length="1" sql="VARCHAR2"  quote="'"/>
-		<type label="CLOB" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
-		<type label="Binary" length="1" sql="BINARY" quote="'"/>
-		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
-		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+		<type label="NVARCHAR2" length="1" sql="NVARCHAR2"  quote="'"/>
+		<type label="NCLOB" length="0" sql="NCLOB" re="TEXT" quote="'"/>
 	</group>
 
 	<group label="Date &amp; Time" color="rgb(200,255,200)">
-		<type label="Date" length="0" sql="DATE" quote="'" />
-		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'" />
+		<type label="DATE" length="0" sql="DATE" quote="" />
+		<type label="TIMESTAMP" length="1" sql="TIMESTAMP" quote="" />
 	</group>
 	
-	<group label="Miscellaneous" color="rgb(200,200,255)">
-		<type label="ENUM" length="1" sql="ENUM" quote="" />
-		<type label="SET" length="1" sql="SET" quote="" />
+	<group label="Other" color="rgb(200,200,255)">
+		<type label="RAW" length="1" sql="RAW" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+		<type label="DECIMAL" length="1" sql="DECIMAL" re="DEC" quote="" />
+		<type label="FLOAT" length="1" sql="FLOAT" quote="" />
+		<type label="DOUBLE" length="0" sql="DOUBLE PRECISION" quote="" />
 	</group>
 </datatypes>
