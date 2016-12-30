@@ -4,7 +4,7 @@
 <!-- Define which symbol to use for quoting identifiers, may be empty -->
 <xsl:variable name="quote">"</xsl:variable>
 
-<!-- Predefine usefull global variables -->
+<!-- Predefine useful global variables -->
 <xsl:variable name="apos" >'</xsl:variable>
 <xsl:variable name="crlf" ><xsl:text>
 </xsl:text></xsl:variable>
@@ -63,7 +63,7 @@
 
 <xsl:template match="/sql">
 
-<!-- Generate commented DROPs for same objects that later would be created. This is usefull when re-creating DB schema. -->
+<!-- Generate commented DROPs for same objects that later would be created. This is useful when re-creating DB schema. -->
 	<xsl:if test="0 &lt; count( table )">
 		<xsl:value-of select="concat( $crlf, '/*' )"/>
 		<xsl:for-each select="table">
@@ -292,7 +292,7 @@
 	</xsl:if>
 	<xsl:for-each select="table/row/relation/../.."> <!--  loop through tables which have relations -->
 		<xsl:variable name="tbl_fr" select="@name" />
-<!-- This is a straight-forward algorithm: each <row> produces one ALTER TABLE statement -->
+<!-- This is a straight-forward algorithm: each <relation> produces one ALTER TABLE statement -->
 		<xsl:for-each select="row">
 			<xsl:for-each select="relation">
 				<xsl:variable name="tbl_to" select="@table" />
@@ -320,7 +320,7 @@
 				<xsl:value-of select="concat( ' );', '' )"/>
 			</xsl:for-each>
 		</xsl:for-each>
-<!-- @TODO: While it seems that XML DB model would contain several <row>-s for FK constraints which use compound keys: one <row> per column -->
+<!-- @TODO: While it seems that XML DB model would contain several <relation>-s for FK constraints which use compound keys: one <relation> per column -->
 	</xsl:for-each>
 
 </xsl:template>
