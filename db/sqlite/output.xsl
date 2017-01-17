@@ -58,14 +58,10 @@
 		
 		<!-- keys after table -->
 		<xsl:for-each select="key">
-			<xsl:if test="@type = 'UNIQUE' or (@type = 'PRIMARY' and count(child::part) > 1)">
+			<xsl:if test="@type = 'UNIQUE' or (@type = 'PRIMARY' and count(child::part) &gt; 1)">
 				<xsl:text>,
 </xsl:text>
-				<xsl:choose>
-					<xsl:when test="@type = 'PRIMARY'">PRIMARY KEY</xsl:when>
-					<xsl:when test="@type = 'UNIQUE'">UNIQUE</xsl:when>
-				</xsl:choose>
-				<xsl:text> (</xsl:text>
+				<xsl:text>UNIQUE (</xsl:text>
 				
 				<xsl:for-each select="part">
 					<xsl:value-of select="." />
