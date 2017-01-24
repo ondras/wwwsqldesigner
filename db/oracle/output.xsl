@@ -71,7 +71,7 @@
 			<xsl:for-each select="row">
 				<xsl:for-each select="relation">
 					<xsl:variable name="tbl_to" select="@table" />
-					<xsl:value-of select="concat( $crlf, 'ALTER TABLE ', ' DROP CONSTRAINT ' )"/>
+					<xsl:value-of select="concat( $crlf, 'ALTER TABLE ', '' )"/>
 					<xsl:call-template name="ora_ident">
 						<xsl:with-param name="ident" select="$tbl_fr" />
 					</xsl:call-template>
