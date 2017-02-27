@@ -67,6 +67,6 @@ The project was recently moved to Google Code hosting, which (amongst many other
 
 ## 2.0 is here
 
-Good news: A new version of WWW SQL Designer, rewritten from scratch, is now available. I has many new features, including bezier connectors, support for various customizations, localization, options and more.
+Good news: A new version of WWW SQL Designer, rewritten from scratch, is now available. It has many new features, including bezier connectors, support for various customizations, localization, options and more.
 
 Bad news: This new version is not backwards compatible with 1.x, so all old localizations and XSLT templates won't work with 2.x. Sorry for inconvenience :/
