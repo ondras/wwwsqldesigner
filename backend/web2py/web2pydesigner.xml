@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sql>
+	<datatypes db="web2py">
+		<group label="Numeric" color="rgb(238,238,170)">
+			<type label="Integer" length="1" sql="integer" re="INTEGER" quote=""/>
+			<type label="Double precision" length="1" sql="double" re="DOUBLE" quote=""/>
+		</group>
+		<group label="Character" color="rgb(255,200,200)">
+			<type label="String" length="1" sql="string" quote="'"/>
+			<type label="Text" length="1" sql="text" quote="'"/>
+			<type label="BLOB" length="1" sql="blob" quote="'"/>
+		</group>
+		<group label="Date &amp; Time" color="rgb(200,255,200)">
+			<type label="Time" length="0" sql="time" quote="'"/>
+			<type label="Date" length="0" sql="date" quote="'"/>
+			<type label="Datetime" length="0" sql="datetime" quote="'"/>
+		</group>
+		<group label="Miscellaneous" color="rgb(200,200,255)">
+			<type label="Boolean" length="0" sql="boolean" quote=""/>
+			<type label="Upload" length="0" sql="upload" quote=""/>
+			<type label="Password" length="0" sql="password" quote=""/>
+		</group>
+	</datatypes>
+	<table x="498" y="174" name="projects">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="name" null="1" autoincrement="0">
+			<datatype>string(50)</datatype>
+			<default>'newproject'</default>
+		</row>
+		<row name="created" null="1" autoincrement="0">
+			<datatype>datetime</datatype>
+			<default>'request.now'</default>
+		</row>
+		<row name="users_id" null="1" autoincrement="0">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+			<relation table="users" row="id"/>
+		</row>
+		<row name="categories_id" null="1" autoincrement="0">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+			<relation table="categories" row="id"/>
+		</row>
+		<row name="locked" null="1" autoincrement="0">
+			<datatype>boolean</datatype>
+			<default>False</default>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="244" y="64" name="data">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="id_projects" null="1" autoincrement="0">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+			<relation table="projects" row="id"/>
+		</row>
+		<row name="created" null="1" autoincrement="0">
+			<datatype>datetime</datatype>
+			<default>'request.now'</default>
+		</row>
+		<row name="data" null="1" autoincrement="0">
+			<datatype>blob</datatype>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="518" y="63" name="tags">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="name" null="1" autoincrement="0">
+			<datatype>string</datatype>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="721" y="65" name="projects_tags">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="tags_id" null="1" autoincrement="0">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+			<relation table="tags" row="id"/>
+		</row>
+		<row name="projects_id" null="1" autoincrement="0">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+			<relation table="projects" row="id"/>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="735" y="236" name="categories">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="name" null="1" autoincrement="0">
+			<datatype>string</datatype>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+	<table x="265" y="291" name="users">
+		<row name="id" null="1" autoincrement="1">
+			<datatype>integer</datatype>
+			<default>NULL</default>
+		</row>
+		<row name="firstname" null="1" autoincrement="0">
+			<datatype>string(50)</datatype>
+		</row>
+		<row name="lastname" null="1" autoincrement="0">
+			<datatype>string(50)</datatype>
+		</row>
+		<row name="email" null="1" autoincrement="0">
+			<datatype>string</datatype>
+			<datatype>string(80)</datatype>
+			<default>'email@domain.com'</default>
+		</row>
+		<row name="username" null="1" autoincrement="0">
+			<datatype>string(50)</datatype>
+		</row>
+		<row name="password" null="1" autoincrement="0">
+			<datatype>password</datatype>
+		</row>
+		<key type="PRIMARY" name="">
+			<part>id</part>
+		</key>
+	</table>
+</sql>
