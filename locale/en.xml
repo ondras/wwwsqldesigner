@@ -82,6 +82,7 @@
 	<string name="dropboxload">Load from Dropbox</string>
 	<string name="dropboxlist">List from Dropbox</string>
 	<string name="clientsql">Generate SQL</string>
+	<string name="railssave">Generate Rails Script</string>
 	<string name="backendlabel">Server backend:</string>
 	<string name="serversave">Save</string>
 	<string name="quicksave">Quicksave</string>
