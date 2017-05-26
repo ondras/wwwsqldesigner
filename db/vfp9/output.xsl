@@ -92,17 +92,17 @@
 
 			<xsl:value-of select="datatype" />
 			<xsl:text> </xsl:text>
-
+			
 			<xsl:if test="@null = 0">
 				<xsl:text>NOT NULL </xsl:text>
-			</xsl:if>
+			</xsl:if> 
 			<xsl:if test="@null = 1">
 				<xsl:text>NULL </xsl:text>
-			</xsl:if>
-
+			</xsl:if> 
+			
 			<xsl:if test="@autoincrement = 1">
 				<xsl:text>AutoInc </xsl:text>
-			</xsl:if>
+			</xsl:if> 
 
 			<xsl:if test="default">
 				<!-- VFP9 Support DEFAULT.., NOCPTRANS, ..<xsl:text>DEFAULT </xsl:text> -->
@@ -126,13 +126,13 @@
 			<xsl:if test="not (position()=last())">
 				<xsl:text>, ;
 </xsl:text>
-			</xsl:if>
+			</xsl:if> 
 			<xsl:if test="position()=last()">
 				<xsl:text> ;
 </xsl:text>
-			</xsl:if>
+			</xsl:if> 
 		</xsl:for-each>
-
+		
 <!-- keys -->
 <xsl:if test="1=2"> <!-- VFP9 no .dbc support yet -->
 		<xsl:for-each select="key">
@@ -144,7 +144,7 @@
 				<xsl:when test="@type = 'UNIQUE'">UNIQUE KEY (</xsl:when>
 				<xsl:otherwise>KEY (</xsl:otherwise>
 			</xsl:choose>
-
+			
 			<xsl:for-each select="part">
 				<xsl:text></xsl:text><xsl:value-of select="." /><xsl:text></xsl:text>
 				<xsl:if test="not (position() = last())">
@@ -152,7 +152,7 @@
 				</xsl:if>
 			</xsl:for-each>
 			<xsl:text>)</xsl:text>
-
+			
 		</xsl:for-each>
 
 </xsl:if> <!-- VFP9 no .dbc support yet -->

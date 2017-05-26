@@ -18,7 +18,7 @@
 			}
 			fwrite($f, $data);
 			fclose($f);
-			header("HTTP/1.0 201 Created");
+			header("HTTP/1.0 201 Created");			
 		break;
 		case "load":
 			$keyword = (isset($_GET["keyword"]) ? $_GET["keyword"] : "");

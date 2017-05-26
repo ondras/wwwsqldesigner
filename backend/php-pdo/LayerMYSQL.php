@@ -79,7 +79,7 @@ class LayerMYSQL extends AbstractLayer
     public static function Columns($table)
     {
         if(isset(self::$columns[$table['name']]))
-           return self::$columns[$table['name']];
+           return self::$columns[$table['name']]; 
         if(!empty(self::$columns))
             return array();
 

@@ -7,7 +7,7 @@
 <html>
 
     <head>
-        <title>Desktop SQL Designer</title>
+        <title>WWW SQL Designer</title>
         <meta name="viewport" content="initial-scale=1,maximum-scale=1" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,8 +16,11 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link rel="stylesheet" href="styles/mui.min.css" />
-        <link rel="stylesheet" href="styles/style.css" media="all" />
-
+        <link rel="stylesheet" href="styles/style.css" media="all" />     
+        <!--[if IE 6]><link rel="stylesheet" type="text/css" href="styles/ie6.css" /><![endif]-->
+        <!--[if IE 7]><link rel="stylesheet" type="text/css" href="styles/ie7.css" /><![endif]-->
+        <link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
         <!--Let browser know website is optimized for mobile-->
 
         <script src="js/jquery.js"></script>
@@ -155,14 +158,14 @@
                 <div class="mui-row">
                     <div class="mui-col-md-12 mui-textfield">
                         <input type="text" size="4" id="optionsnap" />
-                        <label id="snap" for="optionsnap"></label>
+                        <label id="snap" for="optionsnap"></label> 
                         <span class="small" id="optionsnapnotice"></span>
                     </div>
                 </div>
                 <div class="mui-row">
                     <div class="mui-col-md-12 mui-textfield">
                         <input type="text" size="6" id="optionpattern" />
-                        <label id="pattern" for="optionpattern"></label>
+                        <label id="pattern" for="optionpattern"></label> 
                         <span class="small" id="optionpatternnotice"></span>
                     </div>
                 </div>
@@ -332,7 +335,7 @@
                 <div class="mui-col-md-12">
                     <div class="mui-textfield">
                         <textarea rows="5" cols="40" id="tablecomment"></textarea>
-                        <label id="tablecommentlabel" for="tablecomment"></label>
+                        <label id="tablecommentlabel" for="tablecomment"></label> 
                     </div>
                 </div>
             </div>

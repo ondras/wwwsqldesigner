@@ -18,7 +18,7 @@
         <type label="Timestamp" length="0" sql="sa.Timestamp" quote="'"/>
         <type label="Interval" length="0" sql="sa.Interval" quote="'"/>
     </group>
-
+    
     <group label="Miscellaneous" color="rgb(200,200,255)">
         <type label="Boolean" length="0" sql="sa.Boolean" quote=""/>
         <type label="BLOB" length="1" sql="sa.Binary" quote="'"/>

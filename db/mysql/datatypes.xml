@@ -28,7 +28,7 @@
 		<type label="Year" length="0" sql="YEAR" quote="" />
 		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'" />
 	</group>
-
+	
 	<group label="Miscellaneous" color="rgb(200,200,255)">
 		<type label="ENUM" length="1" sql="ENUM" quote="" />
 		<type label="SET" length="1" sql="SET" quote="" />

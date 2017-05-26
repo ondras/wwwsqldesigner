@@ -81,7 +81,7 @@
         <xsl:text>&#xa;session = sessionmaker(bind=db_engine)&#xa;</xsl:text>
 
     </xsl:template>
-
+    
     <!-- What a Table look like -->
     <xsl:template match="table">
         <xsl:variable name="keys" select="''" />
@@ -152,7 +152,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-
+    
     <xsl:template match="relation">
         <xsl:text>, sa.ForeignKey("</xsl:text>
         <xsl:value-of select="@table" />
@@ -168,5 +168,5 @@
         <xsl:value-of select="." />
         <xsl:text>&#xa;</xsl:text>
     </xsl:template>
-
+    
 </xsl:stylesheet>

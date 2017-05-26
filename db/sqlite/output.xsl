@@ -13,19 +13,19 @@
 			<xsl:variable name="name" select="@name" />
 
 			<xsl:text>'</xsl:text><xsl:value-of select="@name" /><xsl:text>' </xsl:text>
-
+	
 			<xsl:value-of select="datatype" />
-
+			
 			<xsl:if test="@null = 0">
 				<xsl:text> NOT NULL </xsl:text>
-			</xsl:if>
-
+			</xsl:if> 
+			
 
 			<xsl:if test="default">
 				<xsl:text> DEFAULT </xsl:text>
 				<xsl:value-of select="default" />
 			</xsl:if>
-
+			
 			<!-- autoincrement/primary key after column - only when composed of 1 part -->
 			<xsl:for-each select="../key">
 				<xsl:if test="@type = 'PRIMARY' and count(child::part) = 1">
@@ -39,7 +39,7 @@
 
 			<xsl:if test="@autoincrement = 1">
 				<xsl:text> AUTOINCREMENT</xsl:text>
-			</xsl:if>
+			</xsl:if> 
 
 			<!-- fk -->
 			<xsl:for-each select="relation">
@@ -53,20 +53,16 @@
 			<xsl:if test="not (position()=last())">
 				<xsl:text>,
 </xsl:text>
-			</xsl:if>
+			</xsl:if> 
 		</xsl:for-each>
-
+		
 		<!-- keys after table -->
 		<xsl:for-each select="key">
-			<xsl:if test="@type = 'UNIQUE' or (@type = 'PRIMARY' and count(child::part) > 1)">
+			<xsl:if test="@type = 'UNIQUE' or (@type = 'PRIMARY' and count(child::part) &gt; 1)">
 				<xsl:text>,
 </xsl:text>
-				<xsl:choose>
-					<xsl:when test="@type = 'PRIMARY'">PRIMARY KEY</xsl:when>
-					<xsl:when test="@type = 'UNIQUE'">UNIQUE</xsl:when>
-				</xsl:choose>
-				<xsl:text> (</xsl:text>
-
+				<xsl:text>UNIQUE (</xsl:text>
+				
 				<xsl:for-each select="part">
 					<xsl:value-of select="." />
 					<xsl:if test="not (position() = last())">
@@ -75,9 +71,9 @@
 				</xsl:for-each>
 				<xsl:text>)</xsl:text>
 			</xsl:if>
-
+			
 		</xsl:for-each>
-
+		
 		<xsl:text>
 );
 

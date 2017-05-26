@@ -12,7 +12,7 @@
 	<string name="addpending">umístit tabulku</string>
 	<string name="tablenamelabel">Jméno</string>
 	<string name="tablecommentlabel">Komentář</string>
-
+	
 	<!-- row management -->
 	<string name="addrow">Přidat položku</string>
 	<string name="editrow">Upravit položku</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Upravit komentář</string>
 	<string name="commenttext">VLožte komentář pro tuto položku</string>
-
+	
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Storno</string>
@@ -55,7 +55,7 @@
 	<string name="vector">Vykreslovat oblé spojovníky (pakliže to prohlížeč podporuje)?</string>
 	<string name="showsize">Zobrazovat velikost polí v tabulce?</string>
 	<string name="showtype">Zobrazovat datový typ polí v tabulce?</string>
-
+	
 	<!-- keys -->
 	<string name="tablekeys">Klíče</string>
 	<string name="keyslistlabel">Klíče v tabulce "%s"</string>
@@ -66,7 +66,7 @@
 	<string name="keyedit">Upravit klíč</string>
 	<string name="keyadd">Přidat klíč</string>
 	<string name="keyremove">Smazat klíč</string>
-
+	
 	<!-- io -->
 	<string name="saveload">Uložit / Načíst</string>
 	<string name="empty">Prosím vložte XML data do textového pole níže.</string>
@@ -93,9 +93,9 @@
 	<string name="http500">Vnitřní chyba serveru</string>
 	<string name="http501">Není implementováno</string>
 	<string name="http503">Služba není dostupná</string>
-
+	
 	<!-- misc -->
 	<string name="xmlerror">XML chyba</string>
 	<string name="docs">Dokumentace</string>
-
+	
 </locale>

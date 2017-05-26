@@ -45,15 +45,15 @@
 			</xsl:if>
 		</xsl:for-each>
 
-
+		
 		<xsl:for-each select="key">
-			<xsl:if test="@type = 'PRIMARY' or @type = 'FULLTEXT' or @type = 'UNIQUE'">
-				<xsl:text>,
+			<xsl:if test="@type = 'PRIMARY' or @type = 'FULLTEXT' or @type = 'UNIQUE'"> 
+				<xsl:text>, 
 </xsl:text>
-
-				<xsl:if test="not (@name='')">
+				
+				<xsl:if test="not (@name='')"> 
 					<xsl:text>CONSTRAINT </xsl:text>
-					<xsl:value-of select="@name"/>
+					<xsl:value-of select="@name"/> 
 				</xsl:if>
 				<xsl:choose>
 					<xsl:when test="@type = 'PRIMARY'"> PRIMARY KEY (</xsl:when>
@@ -61,10 +61,10 @@
 					<xsl:when test="@type = 'UNIQUE'"> UNIQUE KEY (</xsl:when>
 				<!--	<xsl:otherwise>KEY (</xsl:otherwise> --> <!-- No otherwise for MSSQL -->
 				</xsl:choose>
-
+				
 				<!-- MSSQL only recognises these 'key' types -->
 
-
+				
 					<xsl:for-each select="part">
 						<xsl:text>[</xsl:text><xsl:value-of select="."/><xsl:text>]</xsl:text>
 						<xsl:if test="not (position() = last())">
@@ -73,20 +73,20 @@
 					</xsl:for-each>
 					<xsl:text>)</xsl:text>
 			</xsl:if>
-
-
+			
+			
 		</xsl:for-each>
-
-
-
-
+		
+		
+		
+		
 		<xsl:text>
 ) ON [PRIMARY]
 GO
 
 </xsl:text>
 
-	</xsl:for-each>
+	</xsl:for-each>	
 <!-- fk -->
 	<xsl:for-each select="table">
 		<xsl:for-each select="row">
@@ -100,12 +100,12 @@ GO
 				<xsl:text>] ([</xsl:text>
 				<xsl:value-of select="@row"/>
 				<xsl:text>]);
-
+				
 </xsl:text>
 			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:for-each>
-
+	
 	<!-- fk -->
 	<xsl:for-each select="table">
 		<xsl:for-each select="key">

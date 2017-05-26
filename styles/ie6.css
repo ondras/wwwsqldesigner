@@ -1,0 +1,62 @@
+v\:* { 
+	behavior:url(#default#VML);
+}
+
+#bar {
+	position: absolute;
+	right: auto;
+	left: expression(eval(document.documentElement.scrollLeft)+document.documentElement.clientWidth-eval(this.offsetWidth)); 
+	top: expression(eval(document.documentElement.scrollTop)); 
+}
+
+#bar .shadow-corner {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bar_corner.png',sizingMethod='crop');
+	overflow: hidden;
+}
+
+#bar .shadow-left {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bar_left.png',sizingMethod='crop');
+	height: expression(eval(this.parentNode.offsetHeight));
+	overflow: hidden;
+}
+
+#bar .shadow-bottom {
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/bar_bottom.png',sizingMethod='crop');
+	width: expression(eval(this.parentNode.offsetWidth));
+	overflow: hidden;
+}
+
+.table .shadow-corner {
+	background-image: none;
+}
+
+.table .shadow-right {
+	background-image: none;
+}
+
+.table .shadow-bottom {
+	background-image: none;
+}
+
+#minimap {
+	filter: alpha(opacity=90);
+	position: absolute;
+	right: auto;
+	left: expression(eval(document.documentElement.scrollLeft)+document.documentElement.clientWidth-eval(this.offsetWidth)); 
+	top: expression(eval(document.documentElement.scrollTop)+document.documentElement.clientHeight-eval(this.offsetHeight)); 
+}
+
+#background {
+	filter: alpha(opacity=50);
+}
+
+#keys, #opts {
+	width: expression(eval(document.documentElement.clientWidth)/2);
+}
+
+#rubberband {
+	filter: alpha(opacity=50);
+}

@@ -1,4 +1,4 @@
-<?php
+<?php 
 	function import() {
 		$db = (isset($_GET["database"]) ? $_GET["database"] : "information_schema");
 		$db = mysql_real_escape_string($db);

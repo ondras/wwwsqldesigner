@@ -3,12 +3,12 @@
 <cfset db = {
 	datasource = "wwwsqldesigner",
 	table = "wwwsqldesigner",
-
+	
 	info_db = "information_schema",
-
+	
 	info_databases_table = "schemata",
 	info_database_col = "schema_name",
-
+	
 	info_tables_table = "tables",
 	info_table_col = "table_name",
 
@@ -157,7 +157,7 @@
 				<cfset local.ai = 1>
 			<cfelse>
 				<cfset local.ai = 0>
-			</cfif>
+			</cfif>			
 
 			<cfset local.def = column_default>
 
@@ -219,14 +219,14 @@
 			<cfset local.obj = local.idx[local.name]>
 
 			<cfset local.xml &= '<key name="#local.name#" type="#local.obj["type"]#">'>
-
+			
 			<cfloop array="#local.obj["columns"]#" index="local.col">
 				<cfset local.xml &= '<part>#local.col#</part>'>
 			</cfloop>
 
 			<cfset local.xml &= '</key>'>
 		</cfloop>
-
+	
 		<cfset local.xml &= "</table>">
 	</cfloop>
 

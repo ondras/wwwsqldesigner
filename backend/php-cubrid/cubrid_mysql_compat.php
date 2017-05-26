@@ -21,7 +21,7 @@
 *
 * Ver 1.2.1
 * Last update: November 2010
-*
+* 
 */
 
 // Global variables
@@ -32,7 +32,7 @@ $cubrid_default_port;   // default port used to coonect to Cubrid, if not explic
 $cubrid_database;       // keeps the current database name
 
 // MySQL syntax:
-// resource mysql_connect ( [string server [, string username [, string password [, bool new_link [, int client_flags]]]]] )
+// resource mysql_connect ( [string server [, string username [, string password [, bool new_link [, int client_flags]]]]] )  
 function cubrid_mysql_connect($server, $username, $password, $database) {
   // Note: In Cubrid, the database name is mandatory
   // initialize globals
@@ -180,13 +180,13 @@ function cubrid_mysql_data_seek($result, $row_number) {
 }
 
 // MySQL syntax:
-// Zero if successful. Non-zero if an error occurred.
+// Zero if successful. Non-zero if an error occurred. 
 function cubrid_mysql_commit($link_identifier) {
   return cubrid_commit($link_identifier);
 }
 
 // MySQL syntax:
-// Zero if successful. Non-zero if an error occurred.
+// Zero if successful. Non-zero if an error occurred. 
 function cubrid_mysql_rollback($link_identifier) {
   return cubrid_rollback($link_identifier);
 }

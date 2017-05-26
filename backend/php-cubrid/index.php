@@ -8,7 +8,7 @@
   }
 
 	set_time_limit(0);
-
+  
 	function setup_saveloadlist() {
 		define("SERVER", "localhost:30000");
 		define("USER", "dba");
@@ -24,7 +24,7 @@
 	}
 	function connect() {
 		$conn = cubrid_mysql_connect(SERVER, USER, PASSWORD, DB);
-		if (!$conn) {
+		if (!$conn) { 
       return false;
     }
 		return $conn;
@@ -55,8 +55,8 @@
 				  $null = ($row["Null"] == "YES" ? "1" : "0");
 				  $def = $row["Default"];
 				  $ai = (preg_match("/auto_increment/i",$row["Extra"]) ? "1" : "0");
-				  if ($def == "NULL") {
-            $def = "";
+				  if ($def == "NULL") { 
+            $def = ""; 
           }
 				  $xml .= '<row name="'.$name.'" null="'.$null.'" autoincrement="'.$ai.'">';
 				  $xml .= '<datatype>'.strtoupper($type).'</datatype>';
@@ -88,19 +88,19 @@
 	  		$result2 = cubrid_mysql_query_native($q, $conn);
 			  $idx = array();
 
-			  while ($row = cubrid_mysql_fetch_assoc($result2)) {
+			  while ($row = cubrid_mysql_fetch_assoc($result2)) {                                                       
 				  $name = $row["Key_name"];
 				  if (array_key_exists($name, $idx)) {
 					  $obj = $idx[$name];
 				  } else {
 					  $t = "INDEX";
 
-					  if ($row["Non_unique"] == "0") {
-              $t = "UNIQUE";
+					  if ($row["Non_unique"] == "0") { 
+              $t = "UNIQUE"; 
             }
 
             if(columnIsPK($conn, $table, $row["Column_name"])) {
-              $t = "PRIMARY";
+              $t = "PRIMARY"; 
             }
 
 					  $obj = array(
@@ -132,7 +132,7 @@
 	}
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
+  
 	$a = (isset($_GET["action"]) ? $_GET["action"] : false);
 	switch ($a) {
 		case "list":

@@ -4,9 +4,9 @@
 // Postgresql server backend for wwwsqldesigner
 // version 0.1 beta
 // Based on the mysql server backend provided with wwwsqldesigner 2.3.2
-//
-//
-//
+// 
+// 
+// 
 // Issues relating to using wwwsqldesigner with postgresl:
 //  * Request dialog for a database name is not needed. Enter anything when
 //    requested.
@@ -62,10 +62,10 @@
 		// in Postgresql comments are not stored in the ANSI information_schema (compliant to the standard);
 		// so we will need to access the pg_catalog and may as well get the table names at the same time.
 		$qstr = "
-				SELECT 	relname as table_name,
+				SELECT 	relname as table_name, 
 						c.oid as table_oid,
 						(SELECT pg_catalog.obj_description(c.oid, 'pg_class')) as comment
-				FROM pg_catalog.pg_class c
+				FROM pg_catalog.pg_class c 
 				WHERE c.relname !~ '^(pg_|sql_)' AND relkind = 'r'
 				ORDER BY table_name;
 		;";
@@ -78,8 +78,8 @@
 			$comment = (isset($row["comment"]) ? $row["comment"] : "");
 			if ($comment) { $xml .= '<comment>'.$comment.'</comment>'; }
 			$qstr = "
-				SELECT *, col_description(".$table_oid.",ordinal_position) as column_comment
-				FROM information_schema.columns
+				SELECT *, col_description(".$table_oid.",ordinal_position) as column_comment 
+				FROM information_schema.columns 
 				WHERE table_name = '".$table."'
 				ORDER BY ordinal_position
 			;";
@@ -108,8 +108,8 @@
 						ON tc.constraint_name = ccu.constraint_name
 					LEFT JOIN information_schema.key_column_usage kku
 						ON kku.constraint_name = ccu.constraint_name
-					WHERE constraint_type = 'FOREIGN KEY'
-						AND kku.table_name = '".$table."'
+					WHERE constraint_type = 'FOREIGN KEY' 
+						AND kku.table_name = '".$table."' 
 						AND kku.column_name = '".$name."'
 				;";
 
@@ -121,18 +121,18 @@
 
 				$xml .= '</row>';
 			}
-
-			// keys
+			
+			// keys	
 			$qstr = "
 				SELECT	tc.constraint_name,
 						tc.constraint_type,
 						kcu.column_name
-				FROM information_schema.table_constraints tc
-				LEFT JOIN information_schema.key_column_usage kcu
-					ON tc.constraint_catalog = kcu.constraint_catalog
-					AND tc.constraint_schema = kcu.constraint_schema
-					AND tc.constraint_name = kcu.constraint_name
-				WHERE tc.table_name = '".$table."' AND constraint_type != 'FOREIGN KEY'
+				FROM information_schema.table_constraints tc 
+				LEFT JOIN information_schema.key_column_usage kcu 
+					ON tc.constraint_catalog = kcu.constraint_catalog 
+					AND tc.constraint_schema = kcu.constraint_schema 
+					AND tc.constraint_name = kcu.constraint_name 
+				WHERE tc.table_name = '".$table."' AND constraint_type != 'FOREIGN KEY' 
 				ORDER BY tc.constraint_name
 			;";
 			$result2 = pg_query($conn, $qstr);

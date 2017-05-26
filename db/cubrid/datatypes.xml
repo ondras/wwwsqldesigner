@@ -30,7 +30,7 @@
 		<type label="Datetime" length="0" sql="DATETIME" quote="'" />
 		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'" />
 	</group>
-
+	
 	<group label="Collections" color="rgb(200,200,255)">
 		<type label="Set" length="0" sql="SET" quote="" />
     <type label="Multiset" length="0" sql="MULTISET" quote="" />

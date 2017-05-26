@@ -13,7 +13,7 @@
 	<group label="Logical" color="rgb(100,100,255)">
 		<type label="Logical" length="0" sql="Logical" quote="'"/>
 	</group>
-
+	
 	<group label="Text short (NOCPTR->DEFAULT)" color="rgb(255,200,200)">
 		<type label="Character" length="1" sql="Character" quote="'"/>
 		<type label="Varchar" length="1" sql="Varchar"  quote="'"/>
@@ -30,7 +30,7 @@
 	<group label="Currency" color="rgb(200,100,255)">
 		<type label="Currency" length="0" sql="Currency" quote="'"/>
 	</group>
-
+	
 	<group label="Binary/Hexa" color="rgb(150,200,255)">
 		<type label="Varbinary" length="1" sql="Varbinary" quote="'"/>
 		<type label="Blob" length="0" sql="Blob" quote="'"/>
