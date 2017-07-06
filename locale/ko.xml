@@ -4,7 +4,7 @@
 	<string name="addtable">테이블 추가</string>
 	<string name="edittable">테이블 수정</string>
 	<string name="removetable">테이블 삭제</string>
-	<string name="removetables">테이블 삭제</string>
+	<string name="removetables">선택한 테이블 삭제</string>
 	<string name="aligntables">테이블 정렬</string>
 	<string name="cleartables">전체 테이블 삭제</string>
 	<string name="confirmall">정말로 전체 테이블을 삭제하시겠습니까</string>
@@ -14,19 +14,19 @@
 	<string name="tablecommentlabel">설명</string>
 	
 	<!-- row management -->
-	<string name="addrow">열 추가</string>
-	<string name="editrow">열 수정</string>
-	<string name="removerow">열 삭제</string>
+	<string name="addrow">필드 추가</string>
+	<string name="editrow">필드 수정</string>
+	<string name="removerow">필드 삭제</string>
 	<string name="uprow">위로</string>
 	<string name="downrow">아래로</string>
-	<string name="newrow">신규 열</string>
+	<string name="newrow">신규 필드</string>
 	<string name="foreigncreate">외래 키 생성</string>
 	<string name="foreignpending">대상 테이블 선택</string>
 	<string name="foreignconnect">외래 키 연결</string>
-	<string name="foreignconnectpending">대상 열 선택</string>
+	<string name="foreignconnectpending">대상 필드 선택</string>
 	<string name="foreigndisconnect">외래 키 삭제</string>
 	<string name="confirmtable">정말로 테이블을 삭제하시겠습니까</string>
-	<string name="confirmrow">정말로 열을 삭제하시겠습니까</string>
+	<string name="confirmrow">정말로 필드를 삭제하시겠습니까</string>
 
 	<!-- row edit -->
 	<string name="name">이름</string>
@@ -37,12 +37,12 @@
 	<string name="null">NULL</string>
 	<string name="ai">자동 증가</string>
 	<string name="comment">설명 수정</string>
-	<string name="commenttext">이 열의 설명을 입력해 주세요</string>
+	<string name="commenttext">이 필드의 설명을 입력해 주세요</string>
 	
 	<!-- windows & options -->
-	<string name="windowok">OK</string>
+	<string name="windowok">확인</string>
 	<string name="windowcancel">취소</string>
-	<string name="throbber">처리 중입니다...</string>
+	<string name="throbber">잠시만 기다려주세요...</string>
 	<string name="options">옵션</string>
 	<string name="language">언어</string>
 	<string name="db">새로운 디자인의 데이터베이스</string>
@@ -53,16 +53,16 @@
 	<string name="optionpatternnotice">%T = 기본 테이블, %R = 기본 키, %t = 외래 테이블</string>
 	<string name="hide">테이블을 이동할 때, 연결선 숨기기</string>
 	<string name="vector">부드러운 연결선 사용 (브라우저 지원 필요)?</string>
-	<string name="showsize">디자인에서 열 사이즈를 표시</string>
-	<string name="showtype">디자인에서 열 타입을 표시</string>
+	<string name="showsize">디자인에서 필드 사이즈를 표시</string>
+	<string name="showtype">디자인에서 필드 타입을 표시</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">키 설정</string>
 	<string name="keyslistlabel">"%s" 테이블 키 정보</string>
 	<string name="keytypelabel">타입:</string>
 	<string name="keynamelabel">이름:</string>
-	<string name="keyfieldslabel">키 열</string>
-	<string name="keyavaillabel">추가 가능한 열</string>
+	<string name="keyfieldslabel">키 필드</string>
+	<string name="keyavaillabel">추가 가능한 필드</string>
 	<string name="keyedit">키 수정</string>
 	<string name="keyadd">키 추가</string>
 	<string name="keyremove">키 삭제</string>
