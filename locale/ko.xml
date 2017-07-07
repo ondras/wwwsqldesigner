@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">테이블 추가</string>
+	<string name="edittable">테이블 수정</string>
+	<string name="removetable">테이블 삭제</string>
+	<string name="removetables">선택한 테이블 삭제</string>
+	<string name="aligntables">테이블 정렬</string>
+	<string name="cleartables">전체 테이블 삭제</string>
+	<string name="confirmall">정말로 전체 테이블을 삭제하시겠습니까</string>
+	<string name="newtable">신규 테이블</string>
+	<string name="addpending">테이블 놓기</string>
+	<string name="tablenamelabel">이름</string>
+	<string name="tablecommentlabel">설명</string>
+	
+	<!-- row management -->
+	<string name="addrow">필드 추가</string>
+	<string name="editrow">필드 수정</string>
+	<string name="removerow">필드 삭제</string>
+	<string name="uprow">위로</string>
+	<string name="downrow">아래로</string>
+	<string name="newrow">신규 필드</string>
+	<string name="foreigncreate">외래 키 생성</string>
+	<string name="foreignpending">대상 테이블 선택</string>
+	<string name="foreignconnect">외래 키 연결</string>
+	<string name="foreignconnectpending">대상 필드 선택</string>
+	<string name="foreigndisconnect">외래 키 삭제</string>
+	<string name="confirmtable">정말로 테이블을 삭제하시겠습니까</string>
+	<string name="confirmrow">정말로 필드를 삭제하시겠습니까</string>
+
+	<!-- row edit -->
+	<string name="name">이름</string>
+	<string name="type">타입</string>
+	<string name="size">사이즈</string>
+	<string name="def">기본값</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">자동 증가</string>
+	<string name="comment">설명 수정</string>
+	<string name="commenttext">이 필드의 설명을 입력해 주세요</string>
+	
+	<!-- windows & options -->
+	<string name="windowok">확인</string>
+	<string name="windowcancel">취소</string>
+	<string name="throbber">잠시만 기다려주세요...</string>
+	<string name="options">옵션</string>
+	<string name="language">언어</string>
+	<string name="db">새로운 디자인의 데이터베이스</string>
+	<string name="optionsnotice">몇몇 옵션들은 페이지를 다시 불러와야 적용이 됩니다. 이를 위해서는 쿠키 사용이 활성화 되어 있어야 합니다.</string>
+	<string name="snap">테이블 스냅 거리</string>
+	<string name="optionsnapnotice">픽셀, 0 = 스냅 비활성화</string>
+	<string name="pattern">외래 키 명명 규식</string>
+	<string name="optionpatternnotice">%T = 기본 테이블, %R = 기본 키, %t = 외래 테이블</string>
+	<string name="hide">테이블을 이동할 때, 연결선 숨기기</string>
+	<string name="vector">부드러운 연결선 사용 (브라우저 지원 필요)?</string>
+	<string name="showsize">디자인에서 필드 사이즈를 표시</string>
+	<string name="showtype">디자인에서 필드 타입을 표시</string>
+	
+	<!-- keys -->
+	<string name="tablekeys">키 설정</string>
+	<string name="keyslistlabel">"%s" 테이블 키 정보</string>
+	<string name="keytypelabel">타입:</string>
+	<string name="keynamelabel">이름:</string>
+	<string name="keyfieldslabel">키 필드</string>
+	<string name="keyavaillabel">추가 가능한 필드</string>
+	<string name="keyedit">키 수정</string>
+	<string name="keyadd">키 추가</string>
+	<string name="keyremove">키 삭제</string>
+	
+	<!-- io -->
+	<string name="saveload">저장 / 불러오기</string>
+	<string name="empty">불러오려고 하는 XML 데이터를 아래 텍스트 영역에 붙여 넣고 다시 시도해 주세요.</string>
+	<string name="client">클라이언트</string>
+	<string name="server">서버</string>
+	<string name="output">입력 / 출력</string>
+	<string name="clientsave">XML 저장</string>
+	<string name="clientload">XML 불러오기</string>
+	<string name="clientlocalsave">브라우저에 저장</string>
+	<string name="clientlocalload">브라우저에서 불러오기</string>
+	<string name="clientlocallist">브라우저 저장 목록</string>
+	<string name="dropboxsave">드롭박스에 저장</string>
+	<string name="dropboxload">드롭박스에서 불러오기</string>
+	<string name="dropboxlist">드롭박스 저장 목록</string>
+	<string name="clientsql">SQL 생성</string>
+	<string name="backendlabel">벡엔드 서버:</string>
+	<string name="serversave">저장</string>
+	<string name="quicksave">빠른저장</string>
+	<string name="serverload">불러오기</string>
+	<string name="serverlist">목록보기</string>
+	<string name="serverimport">DB에서 가져오기</string>
+	<string name="serverloadprompt">저장된 디자인의 키워드를 입력해 주세요:</string>
+	<string name="serversaveprompt">저장할 디자인의 키워드를 입력해 주세요:</string>
+	<string name="serverimportprompt">가져올 데이터베이스의 이름을 입력해 주세요:</string>
+	<string name="httpresponse">서버 응답</string>
+	<string name="http201">저장되었습니다</string>
+	<string name="http404">찾을 수 없습니다(Not Found)</string>
+	<string name="http500">내부 서버 에러(Internal Server Error)</string>
+	<string name="http501">구현되지 않았습니다(Not Implemented)</string>
+	<string name="http503">서비스를 사용할 수 없습니다(Service Unavailable)</string>
+	
+	<!-- misc -->
+	<string name="xmlerror">XML 에러</string>
+	<string name="docs">문서</string>
+	
+</locale>
