@@ -20,8 +20,9 @@ SQL.Options.prototype.build = function () {
     this.dom.optionvector = OZ.$("optionvector");
     this.dom.optionshowsize = OZ.$("optionshowsize");
     this.dom.optionshowtype = OZ.$("optionshowtype");
+    this.dom.optionusematerialcolors = OZ.$("optionusematerialcolors");
 
-    var ids = ["language", "db", "snap", "pattern", "hide", "vector", "showsize", "showtype", "optionsnapnotice", "optionpatternnotice", "optionsnotice"];
+    var ids = ["language", "db", "snap", "pattern", "hide", "vector", "showsize", "showtype", "optionsnapnotice", "optionpatternnotice", "optionsnotice", "materialcolors"];
     for (var i = 0; i < ids.length; i++) {
         var id = ids[i];
         var elm = OZ.$(id);
@@ -67,6 +68,7 @@ SQL.Options.prototype.save = function () {
     this.owner.setOption("vector", this.dom.optionvector.checked ? "1" : "");
     this.owner.setOption("showsize", this.dom.optionshowsize.checked ? "1" : "");
     this.owner.setOption("showtype", this.dom.optionshowtype.checked ? "1" : "");
+    this.owner.setOption("materialcolors", this.dom.optionusematerialcolors.checked ? "1" : "");
 }
 
 SQL.Options.prototype.click = function () {
@@ -77,4 +79,5 @@ SQL.Options.prototype.click = function () {
     this.dom.optionvector.checked = this.owner.getOption("vector");
     this.dom.optionshowsize.checked = this.owner.getOption("showsize");
     this.dom.optionshowtype.checked = this.owner.getOption("showtype");
+    this.dom.optionusematerialcolors.checked = this.owner.getOption("materialcolors");
 }

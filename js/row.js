@@ -3,6 +3,8 @@
 
 SQL.Row = function (owner, title, data) {
     this.owner = owner;
+
+    this.index;
     this.relations = [];
     this.keys = [];
     this.selected = false;
@@ -214,7 +216,7 @@ SQL.Row.prototype.buildEdit = function () {
 };
 
 SQL.Row.prototype.selectChange = function (e) {
-    this.dom.container.style.borderColor = this.getColor(e.target.value);
+    this.dom.container.style.borderColor = this.getColor(e.target.selectedIndex);
 };
 
 SQL.Row.prototype.changeComment = function (e) {
@@ -339,10 +341,10 @@ SQL.Row.prototype.getDataType = function (t) {
 SQL.Row.prototype.getColor = function (t) {
     var elm = this.getDataType(t);
     var g = this.getDataType(t).parentNode;
-    var cElm = CONFIG.CUSTOM_TYPE_COLORS[elm.getAttribute('label').toLowerCase()];
-    var cG = CONFIG.CUSTOM_TYPE_COLORS[g.getAttribute('label').toLowerCase()];
 
-    return cElm || cG || elm.getAttribute("color") || g.getAttribute("color") || "#fff";
+    return SQL.Designer.getOption('materialcolors') ?
+            CONFIG.MATERIAL_TYPE_COLORS[t || this.data.type] || '#222' :
+            elm.getAttribute("color") || g.getAttribute("color") || "#222";
 };
 
 SQL.Row.prototype.buildTypeSelect = function (id) { /* build selectbox with avail datatypes */

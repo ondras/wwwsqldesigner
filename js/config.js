@@ -27,12 +27,7 @@ var CONFIG = {
      */
     DROPBOX_KEY: null, // such as: "d6stdscwewhl6sa"
 
-    CUSTOM_TYPE_COLORS: {
-        'numeric': '#2196F3',
-        'character': '#8BC34A',
-        'date & time': '#FFC107',
-        'miscellaneous': '#795548'
-    },
+    MATERIAL_TYPE_COLORS: ["#2196F3", "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", "#8BC34A", "#CDDC39", "#FFC107", "#FF5722", "#795548", "#607D8B"],
     SHORTCUTS: {
         saveLocal: {
             key: 'F2',
@@ -48,11 +43,12 @@ var CONFIG = {
         addrow: {key: 'f', code: 70},
         removetable: {key: 'DELETE', code: 46},
         removerow: {key: 'DELETE', code: 46},
-        uprow: {key: 'UP', code: 38},
-        downrow: {key: 'DOWN', code: 40},
+        uprow: {key: 'CTRL + UP', code: 38},
+        downrow: {key: 'CTRL + DOWN', code: 40},
         foreigncreate: {key: 'x', code: 88},
         foreignconnect: {key: 'c', code: 67},
         zoomin: {key: '+', code: false},
-        zoomout: {key: '-', code: false}
+        zoomout: {key: '-', code: false},
+        toggle: {key: 'spacebar', code: 32}
     }
 };

@@ -57,10 +57,10 @@
                         <button class="mui-btn mui-btn--flat" type="button" id="saveload"></button>
                     </li>
                     <li>
-                        <button class="mui-btn mui-btn--flat" type="button" id="options">Hola</button>
+                        <button class="mui-btn mui-btn--flat" type="button" id="options"></button>
                     </li>
                     <li>
-                        <a id="docs" class="mui-btn mui-btn--flat" href="https://github.com/lt-mayonesa/sqldesigner/wiki" target="_blank">Docs</a>
+                        <a id="docs" class="mui-btn mui-btn--flat" href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank">Docs</a>
                     </li>
                 </ul>
             </div>
@@ -85,6 +85,7 @@
                 <span class="tooltip" data-for="removerow"></span>
                 <span class="tooltip" data-for="aligntables"></span>
                 <span class="tooltip" data-for="cleartables"></span>
+                <span class="tooltip" data-for="toggle"></span>
 
                 <div class="holder">
                     <button type="button" id="addtable" class="mui-btn mui-btn--raised mui-btn--accent"><i class="material-icons">add</i></button>
@@ -113,7 +114,15 @@
 
             <div id="rubberband"></div>
 
-            <div id="minimap" class="mui--z1"></div>
+            <div id="minimapcontainer">
+                <div id="minimap" class="mui--z1">
+                    <p id="zoomlevel"></p>
+                </div>
+                <div id="minimapbuttons">
+                    <button id="zoomin" class="mui-btn mui-btn--tiny mui-btn--raised">+</button>
+                    <button id="zoomout" class="mui-btn mui-btn--tiny mui-btn--raised">-</button>
+                </div>
+            </div>
 
             <div id="snackbar"></div>
 
@@ -121,7 +130,7 @@
 
             <div id="window" class="mui-panel mui--z3">
                 <img id="throbber" src="images/throbber.gif" alt="" title="" />
-                <div>
+                <div class="mui-container-fluid">
                     <h2 id="windowtitle"></h2>
                 </div>
                 <div id="windowcontent"></div>
@@ -134,8 +143,6 @@
         <!-- #controls -->
 
         <div id="opts">
-            <small>* <span class="small" id="optionsnotice"></span></small>
-            <hr>
             <div class="mui-container-fluid">
                 <div class="mui-row">
                     <div class="mui-col-md-12 mui-select">
@@ -199,6 +206,13 @@
                         <small>*</small>
                     </div>
                 </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-checkbox">
+                        <input type="checkbox" id="optionusematerialcolors" />
+                        <label id="materialcolors" for="optionusematerialcolors"></label>
+                    </div>
+                </div>
+                <small>* <span class="small" id="optionsnotice"></span></small>
             </div>
         </div>
 

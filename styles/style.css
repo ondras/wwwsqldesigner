@@ -15,6 +15,17 @@ body {
     line-height: 0px;
 }
 
+.mui-btn--tiny {
+    height: 26px;
+    line-height: 26px;
+    min-width: 26px;
+    padding: 0 8px;
+    font-size: 11px;
+}
+.mui-btn+.mui-btn.mui-btn--tiny {
+    margin-left: 4px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -22,7 +33,6 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-border-radius: 0px;
     border-radius: 0px;
     background: rgba(125,125,125,0.3);
 }
@@ -32,7 +42,6 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 0px;
     border-radius: 0px;
     background: rgba(0,0,0,0.4); 
 }
@@ -66,7 +75,10 @@ body {
     bottom: 0;
     left: 0;
     /*width: 100%;*/
+    -webkit-transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
     transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 #sub_bar {
@@ -102,7 +114,11 @@ body {
     position: fixed;
     bottom: 0px;
     z-index: 200;
+    -webkit-transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
     transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-transform: translate(0px, -160px);
     transform: translate(0px, -160px);
 }
 
@@ -116,7 +132,11 @@ body {
     background-color: #323232;
     padding: 0px 24px;
     height: 48px;
+    -webkit-transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transition: -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
     transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms, -webkit-transform 400ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    -webkit-transform: translate(0px, -48px);
     transform: translate(0px, -48px);
 }
 #snackbar>p {
@@ -129,33 +149,62 @@ body {
     padding: 0;
 }
 
-#minimap {
+#minimapcontainer {
     position: fixed;
     width: 100px;
-    height: 100px;
     right: 5px;
     top: 5px;
+}
+
+#minimap {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    float: right;
     background-color: #fff;
     /*border: 1px solid #000;*/
     opacity: 0.9;
     overflow: hidden;
 }
-
+#minimapbuttons {
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px);
+    opacity: 0;
+    -webkit-transition: opacity .3s cubic-bezier(0.23, 1, 0.32, 1),
+        -webkit-transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: opacity .3s cubic-bezier(0.23, 1, 0.32, 1),
+        -webkit-transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1),
+        opacity .3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform .3s cubic-bezier(0.23, 1, 0.32, 1),
+        opacity .3s cubic-bezier(0.23, 1, 0.32, 1),
+        -webkit-transform .3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+#zoomlevel {
+    position: absolute;
+    font-size: 8px;
+    left: 2px;
+    bottom: 0;
+    margin: 0;
+}
 .mini {
     position: absolute;
-    border: 1px solid #000;
-    background-color: #eea;
+    /*border: 1px solid #000;*/
+    background-color: #ff8fb5;
     font-size: 1px;
     line-height: 1px;
 }
 
 .mini_selected {
-    background-color: #f85;
+    background-color: #de2665;
 }
 
 .port {
     position: absolute;
-    border: 2px solid #f00;
+    border: 2px solid rgba(0,0,0,.3);
+    -webkit-transition: background-color 300ms;
+    transition: background-color 300ms;
 }
 
 .table {
@@ -248,6 +297,8 @@ body {
     position: absolute;
     background-color: #000;
     opacity: 0.5;
+    -webkit-transition: opacity 200ms;
+    transition: opacity 200ms;
     visibility: hidden;
 }
 
@@ -256,6 +307,8 @@ body {
     visibility: hidden;
     border-radius: 2px;
     max-width: 960px;
+    -webkit-transition: opacity 200ms;
+    transition: opacity 200ms;
 }
 
 #keys button.small {
@@ -266,9 +319,13 @@ body {
 }
 
 #windowtitle {
-    margin-top: 0;
+    margin-top: 15px;
+    margin-bottom: 24px;
 }
 
+#windowcontrol {
+    padding-top: 15px;
+}
 #windowcontrol button {
     float: right;
 }
@@ -285,8 +342,8 @@ body {
 
 #rubberband {
     position: absolute;
-    border: 1px solid #000;
-    background: #888;
+    border: .2px solid #FF4081;
+    background: rgba(255, 64, 129, 0.5);
     opacity: 0.5;
     visibility: hidden;
 }
@@ -331,8 +388,28 @@ body {
     text-align: center;
 }
 .tooltip.is-active {
-    -webkit-animation: pulse 200ms cubic-bezier(0,0,.2,1)forwards;
-    animation: pulse 200ms cubic-bezier(0,0,.2,1)forwards;
+    -webkit-animation: pulse 200ms cubic-bezier(0,0,.2,1);
+    animation: pulse 200ms cubic-bezier(0,0,.2,1);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        -webkit-transform: scale(.99);
+        transform: scale(.99);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
 }
 @keyframes pulse {
     0% {

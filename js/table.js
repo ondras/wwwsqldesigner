@@ -36,7 +36,7 @@ SQL.Table.prototype._build = function () {
             );
 
     this.dom.mini = OZ.DOM.elm("div", {className: "mini"});
-    this.owner.map.dom.container.appendChild(this.dom.mini);
+    this.owner.map.appendChild(this.dom.mini);
 
     this._ec.push(OZ.Event.add(this.dom.container, "click", this.click.bind(this)));
     this._ec.push(OZ.Event.add(this.dom.container, "dblclick", this.dblclick.bind(this)));
@@ -134,6 +134,7 @@ SQL.Table.prototype.deselect = function () {
 SQL.Table.prototype.addRow = function (title, data) {
     var r = new SQL.Row(this, title, data);
     this.rows.push(r);
+    r.index = this.rows.length - 1;
     this.dom.content.appendChild(r.dom.container);
     this.redraw();
     return r;

@@ -46,6 +46,8 @@ SQL.Window.prototype.open = function (title, content, callback) {
     var txt = OZ.DOM.text(title);
     this.dom.title.appendChild(txt);
     this.dom.background.style.visibility = "visible";
+    this.dom.background.style.opacity = .5;
+    this.dom.container.style.opacity = 1;
     OZ.DOM.clear(this.dom.content);
     this.dom.content.appendChild(content);
     this.dom.container.style.display = "block";
@@ -91,9 +93,14 @@ SQL.Window.prototype.close = function () {
         return;
     }
     this.state = 0;
-    this.dom.background.style.visibility = "hidden";
-    this.dom.container.style.display = "none";
-    this.dom.container.style.visibility = "hidden";
+    this.dom.background.style.opacity = 0;
+    this.dom.container.style.opacity = 0;
+    var self = this;
+    setTimeout(function () {
+        self.dom.background.style.visibility = "hidden";
+        self.dom.container.style.display = "none";
+        self.dom.container.style.visibility = "hidden";
+    }, 200, this);
 };
 
 SQL.Window.prototype.sync = function () { /* adjust background position */

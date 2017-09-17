@@ -140,6 +140,24 @@ SQL.RowManager.prototype.down = function (e) {
     this.redraw();
 };
 
+SQL.RowManager.prototype.next = function (e) {
+    var t = this.selected.owner;
+    var next = false;
+    if (t.rows) {
+        next = t.rows[this.selected.index + 1 <= t.rows.length - 1 ? this.selected.index + 1 : 0];
+    }
+    this.select(next);
+};
+
+SQL.RowManager.prototype.prev = function (e) {
+    var t = this.selected.owner;
+    var prev = false;
+    if (t.rows) {
+        prev = t.rows[this.selected.index - 1 >= 0 ? this.selected.index - 1 : t.rows.length - 1];
+    }
+    this.select(prev);
+};
+
 SQL.RowManager.prototype.remove = function (e) {
     var result = confirm(_("confirmrow") + " '" + this.selected.getTitle() + "' ?");
     if (!result) {
@@ -201,12 +219,18 @@ SQL.RowManager.prototype.press = function (e) {
     switch (e.keyCode) {
         case 38:
             // up
-            this.up();
+            if (e.ctrlKey)
+                this.up();
+            else
+                this.prev();
             OZ.Event.prevent(e);
             break;
         case 40:
             // down
-            this.down();
+            if (e.ctrlKey)
+                this.down();
+            else
+                this.next();
             OZ.Event.prevent(e);
             break;
         case 46:

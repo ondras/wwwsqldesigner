@@ -3,29 +3,47 @@
 SQL.Map = function(owner) {
 	this.owner = owner;
 	SQL.Visual.apply(this);
-	this.dom.container = OZ.$("minimap");
-	this.width = this.dom.container.offsetWidth - 2;
-	this.height = this.dom.container.offsetHeight - 2;
+        this.dom.container = OZ.$("minimapcontainer");
+	this.dom.minimap = OZ.$("minimap");
+        this.dom.zoomlevel = OZ.$("zoomlevel");
+        this.dom.buttons = OZ.$('minimapbuttons');
+        this.dom.zoomin = OZ.$("zoomin");
+        this.dom.zoomout = OZ.$("zoomout");
+        
+	this.width = this.dom.minimap.offsetWidth - 2;
+	this.height = this.dom.minimap.offsetHeight - 2;
 
 	this.dom.port = OZ.DOM.elm("div",{className:"port", zIndex:1});
-	this.dom.container.appendChild(this.dom.port);
+	this.dom.minimap.appendChild(this.dom.port);
 	this.sync = this.sync.bind(this);
-
+        this.zScale = 1;
+        
 	this.flag = false;
 	this.sync();
 
 	OZ.Event.add(window, "resize", this.sync);
 	OZ.Event.add(window, "scroll", this.sync);
-	OZ.Event.add(this.dom.container, "mousedown", this.down.bind(this));
-	OZ.Event.add(this.dom.container, "touchstart", this.down.bind(this));
-	OZ.Event.add(this.dom.container, "touchmove", OZ.Event.prevent);
+        OZ.Event.add(this.dom.container, "mouseenter", this.onEnter.bind(this));
+        OZ.Event.add(this.dom.container, "mouseleave", this.onLeave.bind(this));
+	OZ.Event.add(this.dom.minimap, "mousedown", this.down.bind(this));
+	OZ.Event.add(this.dom.minimap, "touchstart", this.down.bind(this));
+	OZ.Event.add(this.dom.minimap, "touchmove", OZ.Event.prevent);
+        OZ.Event.add(this.dom.zoomin, "click", this.zoom.bind(this, .05));
+        OZ.Event.add(this.dom.zoomout, "click", this.zoom.bind(this, -.05));
+        OZ.Event.add(document, "keydown", this.press.bind(this));
+
 }
 SQL.Map.prototype = Object.create(SQL.Visual.prototype);
 
+SQL.Map.prototype.appendChild = function (elm) {
+        if (elm instanceof Element)
+            this.dom.minimap.appendChild(elm);
+};
+
 SQL.Map.prototype.down = function(e) { /* mousedown - move view and start drag */
 	this.flag = true;
-	this.dom.container.style.cursor = "move";
-	var pos = OZ.DOM.pos(this.dom.container);
+	this.dom.minimap.style.cursor = "move";
+	var pos = OZ.DOM.pos(this.dom.minimap);
 
 	this.x = Math.round(pos[0] + this.l + this.w/2);
 	this.y = Math.round(pos[1] + this.t + this.h/2);
@@ -86,7 +104,7 @@ SQL.Map.prototype.move = function(e) { /* mousemove */
 
 SQL.Map.prototype.up = function(e) { /* mouseup */
 	this.flag = false;
-	this.dom.container.style.cursor = "";
+	this.dom.minimap.style.cursor = "";
 	OZ.Event.remove(this.documentMove);
 	OZ.Event.remove(this.documentUp);
 }
@@ -116,3 +134,44 @@ SQL.Map.prototype.redraw = function() {
 	this.dom.port.style.left = this.l+"px";
 	this.dom.port.style.top = this.t+"px";
 }
+
+SQL.Map.prototype.zoom = function (level) {
+        this.zScale += level;
+        this.dom.zoomlevel.innerHTML = this.zScale === 1 ? '' : this.zScale.toFixed(2);
+        OZ.$('area').style.transform = "scale(" + this.zScale + "," + this.zScale +")";
+};
+
+SQL.Map.prototype.press = function (e) {
+        var target = OZ.Event.target(e).nodeName.toLowerCase();
+
+        if (target === "textarea" || target === "input") {
+            return;
+        } /* not when in form field */
+
+        if (this.owner.rowManager.selected) {
+            return;
+        } /* do not process keypresses if a row is selected */
+
+        switch (e.keyCode) {
+            case 107:
+                //num plus
+                this.zoom(0.05);
+                break;
+            case 109:
+                //num minus
+                this.zoom(-0.05);
+                break;
+        }
+};
+
+SQL.Map.prototype.onEnter = function (e) {
+        this.dom.port.style.borderColor = "rgba(0,0,0,0.8)";
+        this.dom.buttons.style.transform = "translateY(0)";
+        this.dom.buttons.style.opacity = "1";
+};
+
+SQL.Map.prototype.onLeave = function (e) {
+        this.dom.port.style.borderColor = "rgba(0,0,0,0.3)";
+        this.dom.buttons.style.transform = "translateY(-40px)";
+        this.dom.buttons.style.opacity = "0";
+};

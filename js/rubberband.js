@@ -1,15 +1,14 @@
 /* --------------------- rubberband -------------------- */
 
-/* global OZ */
-
-/* global SQL */
+/* global SQL, OZ */
 
 SQL.Rubberband = function (owner) {
     this.owner = owner;
     SQL.Visual.apply(this);
     this.dom.container = OZ.$("rubberband");
+    this.areaPadding = 1;
     OZ.Event.add("area", "mousedown", this.down.bind(this));
-}
+};
 SQL.Rubberband.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Rubberband.prototype.down = function (e) {
@@ -22,7 +21,7 @@ SQL.Rubberband.prototype.down = function (e) {
     this.redraw();
     this.documentMove = OZ.Event.add(document, "mousemove", this.move.bind(this));
     this.documentUp = OZ.Event.add(document, "mouseup", this.up.bind(this));
-}
+};
 
 SQL.Rubberband.prototype.move = function (e) {
     var scroll = OZ.DOM.scroll();
@@ -54,8 +53,8 @@ SQL.Rubberband.prototype.up = function (e) {
 };
 
 SQL.Rubberband.prototype.redraw = function () {
-    this.dom.container.style.left = this.x + "px";
-    this.dom.container.style.top = this.y + "px";
-    this.dom.container.style.width = this.width + "px";
-    this.dom.container.style.height = this.height + "px";
-}
+    this.dom.container.style.left = (this.x - this.areaPadding) + "px";
+    this.dom.container.style.top = (this.y - this.areaPadding) + "px";
+    this.dom.container.style.width = (this.width + this.areaPadding * 2) + "px";
+    this.dom.container.style.height = (this.height + this.areaPadding * 2) + "px";
+};

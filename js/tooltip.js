@@ -1,4 +1,3 @@
-/* ------------------ minimize/restore bar ----------- */
 /* global SQL, OZ, CONFIG */
 
 SQL.Tooltip = function (owner, elm) {
@@ -26,7 +25,7 @@ SQL.Tooltip.prototype._leave = function (e) {
 
 SQL.Tooltip.prototype._update = function () {
     var shortcut = CONFIG.SHORTCUTS[this.owner.id];
-    this.elm.innerHTML = _(this.owner.id) + (shortcut && shortcut.code ? ' [' + shortcut.key + ']' : '');
+    this.elm.innerHTML = _(this.owner.dataset.i18n || this.owner.id) + (shortcut && shortcut.code ? ' [' + shortcut.key + ']' : '');
     this.x = (this.owner.offsetLeft + (this.owner.offsetWidth / 2)) - (this.elm.offsetWidth / 2);
 
     if (this.owner.className.indexOf('small') !== -1)

@@ -54,7 +54,8 @@
 	<string name="hide">¿Ocultar conectores de tablas al arrastrar?</string>
 	<string name="vector">¿Dibujar conectores suaves (si son soportados por el navegador)?</string>
 	<string name="showsize">¿Mostrar tamaño del campo en el diseño de tabla?</string>
-	<string name="showtype">¿Mostrar tipo de dato del campo en el diseño de tabla?</string>	
+	<string name="showtype">¿Mostrar tipo de dato del campo en el diseño de tabla?</string>
+	<string name="materialcolors">¿Usar colores de tipo dato de estilo Material?</string>
 
 	<!-- keys -->
 	<string name="tablekeys">Claves</string>

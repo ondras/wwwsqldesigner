@@ -8,16 +8,11 @@ SQL.Designer = function () {
     this.title = document.title;
 
     SQL.Visual.apply(this);
-    new SQL.Toggle(OZ.$("toggle"), OZ.$("toogle_min"));
+    new SQL.Toggle(OZ.$("toggle"), OZ.$("toogle_min"), this);
 
     this.snackbar = new SQL.Snackbar(this, OZ.$("snackbar"));
 
     var style = window.getComputedStyle(document.body, null).getPropertyValue('font-size');
-//    this.fontSize = parseFloat(style);
-//    this.bgSize = 100;
-    this.zScale = 1;
-
-    OZ.Event.add(document, "keydown", this.press.bind(this));
 
     this.dom.container = OZ.$("area");
     this.minSize = [
@@ -416,35 +411,4 @@ SQL.Designer.prototype.getFKTypeFor = function (typeIndex) {
         }
     }
     return this.fkTypeFor[typeIndex];
-};
-
-SQL.Designer.prototype.zoom = function (level) {
-//    this.fontSize += level;
-//    this.bgSize += level;
-    this.zScale += level;
-//    document.body.style.fontSize = this.fontSize + "px";
-    OZ.$('area').style.transform = "scale(" + this.zScale + "," + this.zScale +")";
-};
-
-SQL.Designer.prototype.press = function (e) {
-    var target = OZ.Event.target(e).nodeName.toLowerCase();
-    
-    if (target == "textarea" || target == "input") {
-        return;
-    } /* not when in form field */
-
-    if (this.rowManager.selected) {
-        return;
-    } /* do not process keypresses if a row is selected */
-
-    switch (e.keyCode) {
-        case 107:
-            //num plus
-            this.zoom(0.05);
-            break;
-        case 109:
-            //num minus
-            this.zoom(-0.05);
-            break;
-    }
 };

@@ -1,7 +1,8 @@
 /* ------------------ minimize/restore bar ----------- */
 /* global SQL, OZ */
 
-SQL.Toggle = function (elm, min) {
+SQL.Toggle = function (elm, min, owner) {
+    this.owner = owner;
     this._state = null;
     this.elm = elm;
     this.elmMin = min;
@@ -17,6 +18,7 @@ SQL.Toggle = function (elm, min) {
     OZ.Event.add(this.elm, "click", this._click.bind(this));
     OZ.Event.add(this.elmMin, "click", this._click.bind(this));
     OZ.Event.add(window, "resize", this.sync.bind(this));
+    OZ.Event.add(document, "keydown", this.press.bind(this));
     this._switch(defaultState);
 };
 
@@ -48,4 +50,23 @@ SQL.Toggle.prototype.sync = function () {
         this.bar.style.left = Math.round((win[0] - this.bar.offsetWidth) / 2) + "px";
     else
         this.elmMin.style.left = Math.round((win[0] - this.elmMin.offsetWidth) / 2) + "px";
+};
+
+SQL.Toggle.prototype.press = function (e) {
+        var target = OZ.Event.target(e).nodeName.toLowerCase();
+
+        if (target === "textarea" || target === "input") {
+            return;
+        } /* not when in form field */
+
+        if (this.owner.rowManager.selected) {
+            return;
+        } /* do not process keypresses if a row is selected */
+
+        switch (e.keyCode) {
+            case 32:
+                OZ.Event.prevent(e);
+                this._switch(!this._state);
+                break;
+        }
 };

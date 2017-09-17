@@ -17,7 +17,7 @@ SQL.TableManager = function (owner) {
         var id = ids[i];
         var elm = OZ.$(id);
         this.dom[id] = elm;
-        //elm.title = _(id);
+        elm.dataset.i18n = id;
     }
 
     var ids = ["tablenamelabel", "tablecommentlabel"];
@@ -77,11 +77,11 @@ SQL.TableManager.prototype.processSelection = function () {
     for (var i = 0; i < tables.length; i++) {
         tables[i].deselect();
     }
-    if (this.selection.length == 1) {
+    if (this.selection.length === 1) {
         this.dom.addrow.disabled = false;
         this.dom.edittable.disabled = false;
         this.dom.tablekeys.disabled = false;
-        //this.dom.removetable.title = _("removetable");
+        this.dom.removetable.dataset.i18n = "removetable";
     } else {
         this.dom.addrow.disabled = true;
         this.dom.edittable.disabled = true;
@@ -90,11 +90,11 @@ SQL.TableManager.prototype.processSelection = function () {
     if (this.selection.length) {
         this.dom.removetable.disabled = false;
         if (this.selection.length > 1) {
-            //this.dom.removetable.title = _("removetables");
+            this.dom.removetable.dataset.i18n = "removetables";
         }
     } else {
         this.dom.removetable.disabled = true;
-        //this.dom.removetable.title = _("removetable");
+        this.dom.removetable.dataset.i18n = "removetable";
     }
     for (var i = 0; i < this.selection.length; i++) {
         var t = this.selection[i];
@@ -114,8 +114,6 @@ SQL.TableManager.prototype.selectRect = function (x, y, width, height) { /* sele
         var tx1 = t.x + t.width;
         var ty = t.y;
         var ty1 = t.y + t.height;
-        console.log('ruberband', x, x1, y, y1);
-        console.log('table', tx, tx1, ty, ty1);
         if (((tx >= x && tx < x1) || (tx1 >= x && tx1 < x1) || (tx < x && tx1 > x1)) &&
                 ((ty >= y && ty < y1) || (ty1 >= y && ty1 < y1) || (ty < y && ty1 > y1)))
         {
@@ -146,7 +144,7 @@ SQL.TableManager.prototype.click = function (e) { /* finish adding new table */
     }
     this.select(newtable);
     this.owner.rowManager.select(false);
-    if (this.selection.length == 1) {
+    if (this.selection.length === 1) {
         this.edit(e);
     }
 };
