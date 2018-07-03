@@ -75,6 +75,7 @@
 	<string name="clientsave">Salvar XML</string>
 	<string name="clientload">Carregar XML</string>
 	<string name="clientsql">Gerar SQL</string>
+	<string name="exportsvg">Exportar SVG</string>
 	<string name="backendlabel"> Parâmetros do Servidor:</string>
 	<string name="serversave">Salvar</string>
 	<string name="serverload">Carregar</string>
