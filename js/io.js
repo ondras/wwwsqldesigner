@@ -462,22 +462,35 @@ SQL.IO.prototype.exportsvg = function() {
 	for (var i=0;i<this.owner.tables.length;i++) {
 		var t = this.owner.tables[i];
 
+		var gt = document.createElementNS(this.owner.svgNS, "g");
+		gt.classList.add("table");
+		gt.dataset.title = t.getTitle();
+		svg.appendChild(gt);
+
 		var border = this.createSVGRectFromDOMElement(t.dom.container, { "stroke-width": 2 });
-		svg.appendChild(border);
+		gt.appendChild(border);
 
 		var title = this.createSVGTextFromDOMElement(t.dom.title);
-		svg.appendChild(title);
+		gt.appendChild(title);
 
 		for (var j=0;j<t.rows.length;j++) {
 			var row = t.rows[j];
 
-			var rect = this.createSVGRectFromDOMElement(row.dom.container);
-			svg.appendChild(rect);
+			var gr = document.createElementNS(this.owner.svgNS, "g");
+			gr.classList.add("row");
+			gr.dataset.title = row.getTitle();
+			gr.dataset.typehint = row.getDataType().getAttribute("sql");
+			gr.dataset.typesize = row.data.size;
+			gr.dataset.null = (row.data.nll ? "1" : "0");
+			gr.dataset.autoincrement = (row.data.ai ? "1" : "0");
+			gt.appendChild(gr);
 
+			var rect = this.createSVGRectFromDOMElement(row.dom.container);
+			gr.appendChild(rect);
 			var title = this.createSVGTextFromDOMElement(row.dom.title);
-			svg.appendChild(title);
+			gr.appendChild(title);
 			var typehint = this.createSVGTextFromDOMElement(row.dom.typehint);
-			svg.appendChild(typehint);
+			gr.appendChild(typehint);
 		}
 	}
 
