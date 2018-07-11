@@ -488,8 +488,10 @@ SQL.IO.prototype.exportsvg = function() {
 			var rect = this.createSVGRectFromDOMElement(row.dom.container);
 			gr.appendChild(rect);
 			var title = this.createSVGTextFromDOMElement(row.dom.title);
+			title.classList.add("rowtitle");
 			gr.appendChild(title);
 			var typehint = this.createSVGTextFromDOMElement(row.dom.typehint);
+			title.classList.add("rowtypehint");
 			gr.appendChild(typehint);
 		}
 	}

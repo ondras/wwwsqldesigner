@@ -27,6 +27,11 @@ SQL.Relation = function(owner, row1, row2) {
 		path.setAttribute("stroke", this.color);
 		path.setAttribute("stroke-width", CONFIG.RELATION_THICKNESS);
 		path.setAttribute("fill", "none");
+		path.classList.add("relation");
+		path.dataset.row1 = row1.getTitle();
+		path.dataset.row2 = row2.getTitle();
+		path.dataset.table1 = row1.owner.getTitle();
+		path.dataset.table2 = row2.owner.getTitle();
 		this.owner.dom.svg.appendChild(path);
 		this.dom.push(path);
 	} else {
