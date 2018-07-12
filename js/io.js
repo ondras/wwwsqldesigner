@@ -383,10 +383,10 @@ SQL.IO.prototype.getBoundingClientRect_relative_to_root = function(dom_elem) {
 	// More testing is needed.
 	var box = dom_elem.getBoundingClientRect();
 	var ret = {
-		"left"  : box.left   + window.scrollX,
-		"right" : box.right  + window.scrollX,
-		"top"   : box.top    + window.scrollY,
-		"bottom": box.bottom + window.scrollY,
+		"left"  : box.x              + window.scrollX,
+		"right" : box.x + box.width  + window.scrollX,
+		"top"   : box.y              + window.scrollY,
+		"bottom": box.y + box.height + window.scrollY,
 		"width" : box.width,
 		"height": box.height,
 	};
