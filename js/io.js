@@ -459,8 +459,19 @@ SQL.IO.prototype.exportsvg = function() {
 	svg.setAttribute("xmlns", this.owner.svgNS);
 	svg.setAttribute("xmlns:svg", this.owner.svgNS);
 
+	var min_x = null;
+	var min_y = null;
+	var max_x = null;
+	var max_y = null;
+
 	for (var i=0;i<this.owner.tables.length;i++) {
 		var t = this.owner.tables[i];
+
+		var table_box = this.getBoundingClientRect_relative_to_root(t.dom.container);
+		if (min_x === null || table_box.left   < min_x) min_x = table_box.left;
+		if (min_y === null || table_box.top    < min_y) min_y = table_box.top;
+		if (max_x === null || table_box.right  > max_x) max_x = table_box.right;
+		if (max_y === null || table_box.bottom > max_y) max_y = table_box.bottom;
 
 		var gt = document.createElementNS(this.owner.svgNS, "g");
 		gt.classList.add("table");
@@ -495,6 +506,24 @@ SQL.IO.prototype.exportsvg = function() {
 			gr.appendChild(typehint);
 		}
 	}
+
+	// Overall SVG dimensions (fit to content).
+	if (min_x === null || min_y === null || max_x === null || max_y === null) {
+		min_x = 0;
+		min_y = 0;
+		max_x = 3000;
+		max_y = 3000;
+	} else {
+		min_x -= CONFIG.RELATION_SPACING;
+		min_y -= CONFIG.RELATION_SPACING;
+		max_x += CONFIG.RELATION_SPACING;
+		max_y += CONFIG.RELATION_SPACING;
+	}
+	var width = max_x - min_x;
+	var height = max_y - min_y;
+	svg.setAttribute("width", width);
+	svg.setAttribute("height", height);
+	svg.setAttribute("viewBox", min_x + " " + min_y + " " + width + " " + height);
 
 	var blob = new Blob([svg.outerHTML], {"type": "image/svg+xml"});
 
