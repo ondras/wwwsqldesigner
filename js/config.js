@@ -14,7 +14,13 @@ var CONFIG = {
 	
 	STATIC_PATH: "",
 	XHR_PATH: "",
-
+	
+	SNAP: 0,
+	SHOWSIZE: false,
+	SHOWTYPE: false,
+	PATTERN: "%R_%T",
+	HIDE: false,
+	VECTOR: true,
 	/*
 	 * The key below needs to be set individually by you if you want to use the Dropbox load/save feature.
 	 * To do that, first sign up with Dropbox (may require a specific developer / SDK sign-up), go to
