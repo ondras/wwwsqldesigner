@@ -181,12 +181,12 @@ SQL.Designer.prototype.getOption = function(name) {
 		case "db": return CONFIG.DEFAULT_DB;
 		case "staticpath": return CONFIG.STATIC_PATH || "";
 		case "xhrpath": return CONFIG.XHR_PATH || "";
-		case "snap": return 0;
-		case "showsize": return 0;
-		case "showtype": return 0;
-		case "pattern": return "%R_%T";
-		case "hide": return false;
-		case "vector": return true;
+		case "snap": return CONFIG.SNAP;
+		case "showsize": return CONFIG.SHOWSIZE;
+		case "showtype": return CONFIG.SHOWTYPE;
+		case "pattern": return CONFIG.PATTERN;
+		case "hide": return CONFIG.HIDE;
+		case "vector": return CONFIG.VECTOR;
 		default: return null;
 	}
 }
