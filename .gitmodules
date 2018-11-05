@@ -1,0 +1,3 @@
+[submodule "backend/php-s3/amazon-s3-php"]
+	path = backend/php-s3/amazon-s3-php
+	url = https://github.com/ericnorris/amazon-s3-php.git
