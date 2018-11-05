@@ -16,7 +16,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link rel="stylesheet" href="styles/mui.min.css" />
-        <link rel="stylesheet" href="styles/style.css" media="all" />     
+        <link rel="stylesheet" href="styles/style.css" media="all" />
         <!--[if IE 6]><link rel="stylesheet" type="text/css" href="styles/ie6.css" /><![endif]-->
         <!--[if IE 7]><link rel="stylesheet" type="text/css" href="styles/ie7.css" /><![endif]-->
         <link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
@@ -164,16 +164,25 @@
                 </div>
                 <div class="mui-row">
                     <div class="mui-col-md-12 mui-textfield">
-                        <input type="text" size="4" id="optionsnap" />
-                        <label id="snap" for="optionsnap"></label> 
-                        <span class="small" id="optionsnapnotice"></span>
+                        <input type="text" size="6" id="optionpattern" />
+                        <label id="pattern" for="optionpattern"></label>
+                        <span class="small" id="optionpatternnotice"></span>
                     </div>
                 </div>
                 <div class="mui-row">
                     <div class="mui-col-md-12 mui-textfield">
-                        <input type="text" size="6" id="optionpattern" />
-                        <label id="pattern" for="optionpattern"></label> 
-                        <span class="small" id="optionpatternnotice"></span>
+                        <input type="text" size="4" id="optionsnap" />
+                        <label id="snap" for="optionsnap"></label>
+                        <span class="small" id="optionsnapnotice"></span>
+                    </div>
+                </div>
+                <div class="mui-row">
+                    <div class="mui-col-md-12 mui-select">
+                        <label id="selectstrategy" for="optionselectstrategy"></label>
+                        <select id="optionselectstrategy" >
+                            <option id="optionprecise" value="precise"></option>
+                            <option id="optionlazy" value="lazy"></option>
+                        </select>
                     </div>
                 </div>
                 <div class="mui-row">
@@ -317,7 +326,7 @@
                         </div>
                         <div class="mui-col-md-2">
                             <ul class="mui-list--unstyled">
-                                <li>                                        
+                                <li>
                                     <button class="mui-btn mui-btn--raised small" id="keyleft"><i class="material-icons">fast_rewind</i></button>
                                 </li>
                                 <li>
@@ -349,7 +358,7 @@
                 <div class="mui-col-md-12">
                     <div class="mui-textfield">
                         <textarea rows="5" cols="40" id="tablecomment"></textarea>
-                        <label id="tablecommentlabel" for="tablecomment"></label> 
+                        <label id="tablecommentlabel" for="tablecomment"></label>
                     </div>
                 </div>
             </div>
