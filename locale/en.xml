@@ -48,6 +48,9 @@
 	<string name="db">Database for new designs</string>
 	<string name="optionsnotice">Some options are applied only after full page reload. Cookies must be enabled for options to work.</string>
 	<string name="snap">Table snap distance</string>
+	<string name="selectstrategy">Selection strategy</string>
+	<string name="optionprecise">Precise (complete bodies inside rubberband)</string>
+	<string name="optionlazy">Lazy (only parts inside rubberband)</string>
 	<string name="optionsnapnotice">In pixels, 0 = disable snapping</string>
 	<string name="pattern">Pattern for foreign names</string>
 	<string name="optionpatternnotice">%T = primary table, %R = primary key, %t = foreign table</string>

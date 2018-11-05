@@ -114,13 +114,21 @@ SQL.TableManager.prototype.selectRect = function (x, y, width, height) { /* sele
         var tx1 = t.x + t.width;
         var ty = t.y;
         var ty1 = t.y + t.height;
-        if (((tx >= x && tx < x1) || (tx1 >= x && tx1 < x1) || (tx < x && tx1 > x1)) &&
-                ((ty >= y && ty < y1) || (ty1 >= y && ty1 < y1) || (ty < y && ty1 > y1)))
+        if (this.selectedByStrategy(x, x1, y, y1, tx, tx1, ty, ty1))
         {
             this.selection.push(t);
         }
     }
     this.processSelection();
+};
+
+SQL.TableManager.prototype.selectedByStrategy = function(x, x1, y, y1, tx, tx1, ty, ty1) {
+    if (this.owner.getOption("selectstrategy") === "lazy")
+        return (((tx >= x && tx < x1) || (tx1 >= x && tx1 < x1) || (tx < x && tx1 > x1)) &&
+            ((ty >= y && ty < y1) || (ty1 >= y && ty1 < y1) || (ty < y && ty1 > y1)));
+    else
+        return ((tx >= x && tx < x1) && (tx1 >= x && tx1 < x1)) &&
+            ((ty >= y && ty < y1) && (ty1 >= y && ty1 < y1));
 };
 
 SQL.TableManager.prototype.selectAll = function () {
