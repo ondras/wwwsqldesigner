@@ -9,7 +9,7 @@ SQL.Map = function(owner) {
         this.dom.buttons = OZ.$('minimapbuttons');
         this.dom.zoomin = OZ.$("zoomin");
         this.dom.zoomout = OZ.$("zoomout");
-        
+
 	this.width = this.dom.minimap.offsetWidth - 2;
 	this.height = this.dom.minimap.offsetHeight - 2;
 
@@ -17,7 +17,7 @@ SQL.Map = function(owner) {
 	this.dom.minimap.appendChild(this.dom.port);
 	this.sync = this.sync.bind(this);
         this.zScale = 1;
-        
+
 	this.flag = false;
 	this.sync();
 
@@ -26,8 +26,8 @@ SQL.Map = function(owner) {
         OZ.Event.add(this.dom.container, "mouseenter", this.onEnter.bind(this));
         OZ.Event.add(this.dom.container, "mouseleave", this.onLeave.bind(this));
 	OZ.Event.add(this.dom.minimap, "mousedown", this.down.bind(this));
-	OZ.Event.add(this.dom.minimap, "touchstart", this.down.bind(this));
-	OZ.Event.add(this.dom.minimap, "touchmove", OZ.Event.prevent);
+	// OZ.Event.add(this.dom.minimap, "touchstart", this.down.bind(this));
+	// OZ.Event.add(this.dom.minimap, "touchmove", OZ.Event.prevent);
         OZ.Event.add(this.dom.zoomin, "click", this.zoom.bind(this, .05));
         OZ.Event.add(this.dom.zoomout, "click", this.zoom.bind(this, -.05));
         OZ.Event.add(document, "keydown", this.press.bind(this));
@@ -91,14 +91,8 @@ SQL.Map.prototype.move = function(e) { /* mousemove */
 	var left = this.l / coefX;
 	var top = this.t / coefY;
 
-	if (OZ.webkit) {
-		document.body.scrollLeft = Math.round(left);
-		document.body.scrollTop = Math.round(top);
-	} else {
 		document.documentElement.scrollLeft = Math.round(left);
 		document.documentElement.scrollTop = Math.round(top);
-	}
-
 	this.redraw();
 }
 
