@@ -1,26 +1,72 @@
 /* ------------------ minimize/restore bar ----------- */
+/* global SQL, OZ */
 
-SQL.Toggle = function(elm) {
-	this._state = null;
-	this._elm = elm;
-	OZ.Event.add(elm, "click", this._click.bind(this));
-	
-	var defaultState = true;
-	if (document.location.href.match(/toolbar=hidden/)) { defaultState = false; }
-	this._switch(defaultState);
-}
+SQL.Toggle = function (elm, min, owner) {
+    this.owner = owner;
+    this._state = null;
+    this.elm = elm;
+    this.elmMin = min;
+    this.bar = OZ.$("bar");
 
-SQL.Toggle.prototype._click = function(e) {
-	this._switch(!this._state);
-}
+    var win = OZ.DOM.win();
+    this.bar.style.left = Math.round((win[0] - this.bar.offsetWidth) / 2) + "px";
 
-SQL.Toggle.prototype._switch = function(state) {
-	this._state = state;
-	if (this._state) {
-		OZ.$("bar").style.height = "";
-	} else {
-		OZ.$("bar").style.overflow = "hidden";
-		OZ.$("bar").style.height = this._elm.offsetHeight + "px";
-	}
-	this._elm.className = (this._state ? "on" : "off");
-}
+    var defaultState = true;
+    if (document.location.href.match(/toolbar=hidden/)) {
+        defaultState = false;
+    }
+    OZ.Event.add(this.elm, "click", this._click.bind(this));
+    OZ.Event.add(this.elmMin, "click", this._click.bind(this));
+    OZ.Event.add(window, "resize", this.sync.bind(this));
+    OZ.Event.add(document, "keydown", this.press.bind(this));
+    this._switch(defaultState);
+};
+
+SQL.Toggle.prototype._click = function (e) {
+    this._switch(!this._state);
+};
+
+SQL.Toggle.prototype._switch = function (state) {
+    this._state = state;
+    var win = OZ.DOM.win();
+    if (this._state) {
+        // show full bar
+        this.bar.style.left = Math.round((win[0] - this.bar.offsetWidth) / 2) + "px";
+        this.bar.style.transform = "translate(0px, 0px)";
+        this.elmMin.style.transitionDelay = "0s";
+        this.elmMin.style.transform = "translate(0px, 100px)";
+    } else {
+        // hide bar
+        this.bar.style.transform = "translate(0px, 160px)";
+        this.elmMin.style.left = Math.round((win[0] - this.elmMin.offsetWidth) / 2) + "px";
+        this.elmMin.style.transitionDelay = "350ms";
+        this.elmMin.style.transform = "translate(0px, 0px)";
+    }
+};
+
+SQL.Toggle.prototype.sync = function () {
+    var win = OZ.DOM.win();
+    if (this._state)
+        this.bar.style.left = Math.round((win[0] - this.bar.offsetWidth) / 2) + "px";
+    else
+        this.elmMin.style.left = Math.round((win[0] - this.elmMin.offsetWidth) / 2) + "px";
+};
+
+SQL.Toggle.prototype.press = function (e) {
+        var target = OZ.Event.target(e).nodeName.toLowerCase();
+
+        if (target === "textarea" || target === "input") {
+            return;
+        } /* not when in form field */
+
+        if (this.owner.rowManager.selected) {
+            return;
+        } /* do not process keypresses if a row is selected */
+
+        switch (e.keyCode) {
+            case 32:
+                OZ.Event.prevent(e);
+                this._switch(!this._state);
+                break;
+        }
+};

@@ -48,13 +48,17 @@
 	<string name="db">Base de datos para nuevos diseños</string>
 	<string name="optionsnotice">Algunas opciones se aplican solo despúes de recargar totalmente la pagina. Las cookies deben estar habilitadas para que funcione la personalización.</string>
 	<string name="snap">Distancia de ajuste de tablas</string>
+	<string name="selectstrategy">Estrategia de selección</string>
+	<string name="optionprecise">Precisa (cuerpos completos dentro del area)</string>
+	<string name="optionlazy">Vaga (solo partes dentro del area)</string>
 	<string name="optionsnapnotice">En píxeles, 0 = deshabilitar ajuste</string>
 	<string name="pattern">Patrón para nombres de clave foránea</string>
 	<string name="optionpatternnotice">%T = tabla primaria, %R = clave primaria, %t = tabla foránea</string>
 	<string name="hide">¿Ocultar conectores de tablas al arrastrar?</string>
 	<string name="vector">¿Dibujar conectores suaves (si son soportados por el navegador)?</string>
 	<string name="showsize">¿Mostrar tamaño del campo en el diseño de tabla?</string>
-	<string name="showtype">¿Mostrar tipo de dato del campo en el diseño de tabla?</string>	
+	<string name="showtype">¿Mostrar tipo de dato del campo en el diseño de tabla?</string>
+	<string name="materialcolors">¿Usar colores de tipo dato de estilo Material?</string>
 
 	<!-- keys -->
 	<string name="tablekeys">Claves</string>
