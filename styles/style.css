@@ -145,7 +145,7 @@ body {
 	display: inline-block;
 }
 
-.table thead td[title]:after{
+.table thead td[title]:not([title=""]):after{
 	content: '';
 	position: absolute;
 	top: 0;
