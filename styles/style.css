@@ -157,11 +157,11 @@ body {
 	border-left-color: transparent;
 }
 
-.table tbody tr {
+.table tbody td {
 	position: relative;
 }
 
-.table tbody[title]:not(.expanded):not([title=""]) tr:after{
+.table tbody[title]:not(.expanded):not([title=""]) td:last-child:after{
 	content: '';
 	position: absolute;
 	top: 0;
