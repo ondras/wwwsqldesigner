@@ -13,6 +13,14 @@ WWW SQL Designer was created by [Ondrej Zara](http://ondras.zarovi.cz/) and is b
 
 If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3340079'><img src='https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif' alt='Donate at PayPal' title='Donate at PayPal' /></a> at PayPal!
 
+# Quick Start
+
+## Local Installation:
+
+1. `npm install http-server -g`
+2. Run `http-server` in the root of this repo to start a simple http server
+3. Visit http://127.0.0.1:8080
+
 # News
 
 ## Moved to GitHub
