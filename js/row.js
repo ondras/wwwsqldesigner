@@ -191,6 +191,7 @@ SQL.Row.prototype.expand = function() {
 	this.buildEdit();
 	this.load();
 	this.redraw();
+	this.dom.container.classList.add('expanded');
 	this.dom.name.focus();
 	this.dom.name.select();
 }
@@ -198,6 +199,7 @@ SQL.Row.prototype.expand = function() {
 SQL.Row.prototype.collapse = function() {
 	if (!this.expanded) { return; }
 	this.expanded = false;
+	this.dom.container.classList.remove('expanded');
 
 	var data = {
 		type: this.dom.type.selectedIndex,

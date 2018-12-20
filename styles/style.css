@@ -145,6 +145,34 @@ body {
 	display: inline-block;
 }
 
+.table thead td[title]:not([title=""]):after{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-color: royalblue;
+	border-style: solid;
+	border-width: 5px;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+}
+
+.table tbody td {
+	position: relative;
+}
+
+.table tbody[title]:not(.expanded):not([title=""]) td:last-child:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-color: royalblue;
+	border-style: solid;
+	border-width: 5px;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+}
+
 .primary {
 	font-weight: bold;
 }
