@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+	<!-- table management -->
+	<string name="addtable">Tablo Ekle</string>
+	<string name="edittable">Tablo Düzenle</string>
+	<string name="removetable">Tablo Sil</string>
+	<string name="removetables">Tabloları Sil</string>
+	<string name="aligntables">Tabloları Hizala</string>
+	<string name="cleartables">Tabloları Temizle</string>
+	<string name="confirmall">Gerçekten tabloları sil</string>
+	<string name="newtable">Yeni Tablo</string>
+	<string name="addpending">Tablo Yerleşim Yeri</string>
+	<string name="tablenamelabel">Adı</string>
+	<string name="tablecommentlabel">Açıklama</string>
+	
+	<!-- row management -->
+	<string name="addrow">Alan Ekle</string>
+	<string name="editrow">Alan Düzenle</string>
+	<string name="removerow">Alan Sil</string>
+	<string name="uprow">Yukarı</string>
+	<string name="downrow">Aşağıya</string>
+	<string name="newrow">Yeni Alan</string>
+	<string name="foreigncreate">Foreign Key Oluştur</string>
+	<string name="foreignpending">Hedef Tablosuna Tıkla</string>
+	<string name="foreignconnect">Foreign Key Bağlan</string>
+	<string name="foreignconnectpending">Hedef Satırı Tıklayın</string>
+	<string name="foreigndisconnect">Foreign Key Sil</string>
+	<string name="confirmtable">Gerçekten Tabloyu Sil</string>
+	<string name="confirmrow">Gerçekten Alanı Sil</string>
+
+	<!-- row edit -->
+	<string name="name">Name</string>
+	<string name="type">Type</string>
+	<string name="size">Size</string>
+	<string name="def">Default</string>
+	<string name="notnull">NOT NULL</string>
+	<string name="null">NULL</string>
+	<string name="ai">Autoincrement</string>
+	<string name="comment">Yorumu düzenle</string>
+	<string name="commenttext">Bu alan için yorum girin</string>
+	
+	<!-- windows & options -->
+	<string name="windowok">Tamam</string>
+	<string name="windowcancel">İptal</string>
+	<string name="throbber">Lütfen Bekleyiniz...</string>
+	<string name="options">Ayarlar</string>
+	<string name="language">Diller</string>
+	<string name="db">Yeni tasarımlar için veritabanı</string>
+	<string name="optionsnotice">Bazı seçenekler yalnızca tam sayfa yeniden yüklendikten sonra uygulanır. Seçeneklerin çalışması için çerezlerin etkinleştirilmesi gerekir.</string>
+	<string name="snap">Table snap distance</string>
+	<string name="optionsnapnotice">In pixels, 0 = disable snapping</string>
+	<string name="pattern">Pattern for foreign names</string>
+	<string name="optionpatternnotice">%T = primary table, %R = primary key, %t = foreign table</string>
+	<string name="hide">Tablo sürüklemesindeki bağlayıcıları gizle?</string>
+	<string name="vector">Draw smooth connectors (if supported by browser)?</string>
+	<string name="showsize">Tablo tasarımında alan boyutunu gösterme?</string>
+	<string name="showtype">Alan veri tipini tablo tasarımında göster?</string>
+	
+	<!-- keys -->
+	<string name="tablekeys">Anahtarlar</string>
+	<string name="keyslistlabel">Tablodaki tuşlar "%s"</string>
+	<string name="keytypelabel">Tipi:</string>
+	<string name="keynamelabel">Adı:</string>
+	<string name="keyfieldslabel">Anahtardaki Alanlar</string>
+	<string name="keyavaillabel">Mevcut Alanlar</string>
+	<string name="keyedit">Anahtar Düzenle</string>
+	<string name="keyadd">Anahtar Ekle</string>
+	<string name="keyremove">Anahtar Sil</string>
+	
+	<!-- io -->
+	<string name="saveload">Kaydet / Yükle</string>
+	<string name="empty">Lütfen XML verilerini aşağıdaki metin alanına yapıştırın ve tekrar deneyin.</string>
+	<string name="client">İstemci</string>
+	<string name="server">Sunucu</string>
+	<string name="output">Giriş / Çıkış</string>
+	<string name="clientsave">XML Kaydet</string>
+	<string name="clientload">XML Yükle</string>
+	<string name="clientlocalsave">Browser'a Kaydet</string>
+	<string name="clientlocalload">Browser'a Yükle</string>
+	<string name="clientlocallist">Browser'da Listele</string>
+	<string name="dropboxsave">Dropbox Kaydet</string>
+	<string name="dropboxload">Dropbox Yükle</string>
+	<string name="dropboxlist">Dropbox Listele</string>
+	<string name="clientsql">SQL oluştur</string>
+	<string name="backendlabel">Sunucu Kısmı:</string>
+	<string name="serversave">Kaydet</string>
+	<string name="quicksave">Hızlı Kayıt</string>
+	<string name="serverload">Yükle</string>
+	<string name="serverlist">Ürünleri Listele</string>
+	<string name="serverimport">DB'den içe aktar</string>
+	<string name="serverloadprompt">Tasarımınızın kaydedildiği anahtar kelimeyi girin:</string>
+	<string name="serversaveprompt">Tasarımınızın kaydedileceği anahtar kelimeyi girin:</string>
+	<string name="serverimportprompt">Yüklenecek veritabanının adını girin:</string>
+	<string name="httpresponse">Sunucu yanıtı</string>
+	<string name="http201">Kaydedilmiş</string>
+	<string name="http404">Bulunamadı</string>
+	<string name="http500">İç Sunucu Hatası</string>
+	<string name="http501">Uygulanmadı</string>
+	<string name="http503">Hizmet Kullanılamıyor</string>
+	
+	<!-- misc -->
+	<string name="xmlerror">XML hatası</string>
+	<string name="docs">Belgeleme</string>
+	
+</locale>
