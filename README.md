@@ -21,6 +21,12 @@ If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/web
 2. Run `http-server` in the root of this repo to start a simple http server
 3. Visit http://127.0.0.1:8080
 
+## Docker Installation:
+
+1. Build `docker build -t wwwsqldesigner .`
+2. Run   `docker run -d -p 8080:80 wwwsqldesigner`
+3. Visit http://127.0.0.1:8080
+
 # News
 
 ## Moved to GitHub
