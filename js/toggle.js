@@ -17,10 +17,10 @@ SQL.Toggle.prototype._click = function(e) {
 SQL.Toggle.prototype._switch = function(state) {
 	this._state = state;
 	if (this._state) {
-		OZ.$("bar").style.height = "";
+		OZ.$("bar").style.maxHeight = "";
 	} else {
 		OZ.$("bar").style.overflow = "hidden";
-		OZ.$("bar").style.height = this._elm.offsetHeight + "px";
+		OZ.$("bar").style.maxHeight = this._elm.offsetHeight + "px";
 	}
 	this._elm.className = (this._state ? "on" : "off");
 }
