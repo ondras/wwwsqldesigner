@@ -102,7 +102,20 @@ input[type=button] {
 }
 
 legend {
-	font-weight: bold;
+	text-align: left;
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin-bottom: 10px;
+	font-size: 21px;
+	color: rgba(0, 0, 0, .87);
+	line-height: inherit;
+}
+
+fieldset {
+	border: none;
+	padding: 0px;
+	margin: 0px 0px 10px 0px;
 }
 
 label, input, select {
@@ -111,6 +124,66 @@ label, input, select {
 
 label {
 	opacity: 0.7;
+}
+
+#keys hr {
+	visibility: hidden;
+}
+
+#keyadd {
+	margin: 15px;
+	color: #FFF;
+	background-color: #2196F3;
+}
+
+#keyremove {
+	margin: 15px;
+	color: #FFF;
+	background-color: #F44336;
+}
+
+#keyremove:hover {
+	transition: all .2s ease-in-out;
+	background-color: #f55a4e;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#keyadd:hover {
+	transition: all .2s ease-in-out;
+	background-color: #39a1f4;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#keyleft, #keyright {
+	height: auto;
+	line-height: normal;
+	box-shadow: none;
+	padding: 3px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#keyfields, #keyavail {
+	height: auto;
+	background-image: none;
+	font-size: small;
+	border: 1px solid rgba(0, 0, 0, .26);
+	padding: 0px;
+}
+
+#keys table {
+	width: 100%;
+}
+
+#keys table td {
+	width: 42%;
+}
+
+#keys table td+td {
+	width: 16%;
+}
+
+#keys table td+td+td {
+	width: 42%;
 }
 
 #commentbtn {
@@ -186,7 +259,7 @@ select optgroup {
 	transition: all .2s ease-in-out;
 	right: 4px;
 	top: 0px;
-	width: 200px;
+	width: 190px;
 	margin: 0px 0px 20px 0px;
 	padding: 0px;
 	background-color: rgb(255, 255, 255);
@@ -205,8 +278,8 @@ select optgroup {
 	margin: auto auto 3px auto;
 	padding: 2px;
 	line-height: 1.3;
-	font-size: small;
 	opacity: .7;
+	text-transform: none;
 }
 
 #bar input:hover {
@@ -240,7 +313,7 @@ select optgroup {
 	border-radius: 2px;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 21px;
+	height: 22px;
 	opacity: .7;
 }
 
@@ -327,6 +400,7 @@ select optgroup {
 
 .table tbody td {
 	padding: 3px;
+	position: relative;
 }
 
 .table tbody.expanded {
@@ -354,10 +428,6 @@ select optgroup {
 	border-width: 5px;
 	border-bottom-color: transparent;
 	border-left-color: transparent;
-}
-
-.table tbody td {
-	position: relative;
 }
 
 .table tbody[title]:not(.expanded):not([title=""]) td:last-child:after {
@@ -438,8 +508,38 @@ select optgroup {
 }
 
 #textarea {
-	width: 650px;
+	width: 100%;
 	height: 200px;
+	font-size: small;
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+#io hr {
+	visibility: hidden;
+}
+
+#io input[type=button] {
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#io input[type=button]:active {
+	background-color: #f2f2f2; 
+	transition: all .2s ease-out;
+}
+
+#io #clientsql {
+	color: #FFF;
+	background-color: #FF4081;
+}
+
+#io #clientsql:hover {
+	transition: all .2s ease-in-out;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+	background-color: #ff5a92;
+}
+
+#io {
+	min-width: 860px;
 }
 
 #opts {
@@ -464,9 +564,9 @@ select optgroup {
 
 #keys {
 	white-space: nowrap;
+	padding: 0px 10px;
 	text-align: center;
 }
-
 
 #throbber {
 	position: absolute;
@@ -476,8 +576,8 @@ select optgroup {
 
 #rubberband {
 	position: absolute;
-	border: 1px solid #000;
-	background: #888;
+	border: .2px solid #FF4081;
+	background: rgba(255, 64, 129, 0.5);
 	opacity: 0.5;
 	visibility: hidden;
 }
