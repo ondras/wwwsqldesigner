@@ -1,15 +1,170 @@
 body {
-	font-family: verdana, sans serif;
-	font-size: small;
+	font-family: verdana, sans-serif;
+	font-size: 12px;
 	padding: 0px;
 	margin: 0px;
 	background: #FFF;
+	font-weight: 400;
+	line-height: 1.429;
+	color: rgba(0, 0, 0, .87);
 	visibility: hidden;
 	-moz-user-select: -moz-none;
 	-khtml-user-select: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+}
+
+input[type=text] {
+	font-family: verdana, sans-serif;
+	height: 32px;
+	display: block;
+	background-color: transparent;
+	color: rgba(0, 0, 0, .87);
+	border: none;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	border-bottom: 1px solid rgba(0, 0, 0, .26);
+	outline: 0;
+	width: 100%;
+	font-size: 16px;
+	padding: 0;
+	box-shadow: none;
+	border-radius: 0;
+	background-image: none;
+}
+
+input[type=text]:focus {
+	border-color: #2196F3;
+	border-width: 2px;
+}
+
+textarea {
+	min-width: 500px;
+	font-family: verdana, sans-serif;
+	min-height: 64px;
+	display: block;
+	background-color: transparent;
+	color: rgba(0, 0, 0, .87);
+	border: none;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	border-bottom: 1px solid rgba(0, 0, 0, .26);
+	outline: 0;
+	width: 100%;
+	font-size: 16px;
+	padding: 0;
+	box-shadow: none;
+	border-radius: 0;
+	background-image: none;
+}
+
+textarea:focus {
+	border-color: #2196F3;
+	border-width: 2px;
+}
+
+input[type=button] {
+	font-family: verdana, sans-serif;
+	-webkit-appearance: button;
+	cursor: pointer;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+	text-transform: uppercase;
+	color: rgba(0, 0, 0, .87);
+	background-color: #FFF;
+	display: inline-block;
+	height: 36px;
+	padding: 0 26px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	background-image: none;
+	text-align: center;
+	line-height: 36px;
+	vertical-align: middle;
+	white-space: nowrap;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size: 14px;
+	letter-spacing: .03em;
+	position: relative;
+	overflow: hidden;
+}
+
+legend {
+	font-weight: bold;
+}
+
+label, input, select {
+	vertical-align: middle;
+}
+
+label {
+	opacity: 0.7;
+}
+
+#commentbtn {
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#windowok {
+	color: #FF4081;
+}
+
+#windowok, #windowcancel {
+	float: right;
+}
+
+#windowok:hover, #windowcancel:hover {
+	background-color: #f2f2f2;
+}
+
+select {
+	font-family: verdana, sans-serif;
+	display: block;
+	height: 32px;
+	width: 100%;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: 0;
+	border: none;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	border-bottom: 1px solid rgba(0, 0, 0, .26);
+	border-radius: 0;
+	box-shadow: none;
+	background-color: transparent;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuMjQpOyIvPjwvc3ZnPg==);
+	background-repeat: no-repeat;
+	background-position: right center;
+	cursor: pointer;
+	color: rgba(0, 0, 0, .87);
+	font-size: 16px;
+	padding: 0 25px 0 0;
+}
+
+select:focus {
+	border-color: #2196F3;
+	border-width: 2px;
+}
+
+select optgroup {
+	color: rgba(0, 0, 0, .54);
+	font-size: .9em;
+	background: white !important;
+	font-style: normal;
 }
 
 #area {
@@ -36,7 +191,6 @@ body {
 	padding: 0px;
 	background-color: rgb(255, 255, 255);
 	text-align: center;
-	color: rgba(0, 0, 0, 0.87);
 	border-radius: 0px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px 0px, rgba(0, 0, 0, 0.23) 0px 3px 6px 0px;
 	box-sizing: border-box;
@@ -44,32 +198,26 @@ body {
 }
 
 #bar input {
-	display: block;
-	cursor: pointer;
 	transition: all .2s ease-in-out;
 	border-radius: 2px;
 	width: 100%;
 	height: auto;
-	background-color: transparent;
-	border: none;
 	margin: auto auto 3px auto;
 	padding: 2px;
 	line-height: 1.3;
 	font-size: small;
-	text-transform: uppercase;
-	letter-spacing: .03em;
-	font-family: verdana, sans-serif;
+	opacity: .7;
 }
 
 #bar input:hover {
-	background-color: #FF4081;
+	background-color: #e9115d;
 	color: #fff;
 }
 
 #bar input:disabled {
 	cursor: not-allowed;
 	pointer-events: none;
-	opacity: .6;
+	opacity: .4;
 	box-shadow: none;
 }
 
@@ -93,10 +241,11 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 21px;
+	opacity: .7;
 }
 
 #toggle:hover {
-	background-color: #FF4081;
+	background-color: #e9115d;
 }
 
 #toggle.on:hover {
@@ -124,7 +273,7 @@ body {
 	background-color: #fff;
 	opacity: 0.9;
 	overflow: hidden;
-	box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
 }
 
 .mini {
@@ -141,29 +290,21 @@ body {
 .port {
 	position: absolute;
 	transition: border 0.2s ease-in-out;
-	border: 2px solid rgba(0,0,0,.3);
+	border: 2px solid rgba(0, 0, 0, .3);
 }
 
 #minimap:hover .port {
-	border: 2px solid rgba(0,0,0,.8);
+	border: 2px solid rgba(0, 0, 0, .8);
 }
 
 .table {
 	position: absolute;
-	border: 1px solid #000;
-	background-color: #ddd;
+	padding: 0 6px 6px 6px;
 	cursor: pointer;
-	-moz-box-shadow: 4px 4px 8px #888;
-	/* FF 3.5+ */
-	-webkit-box-shadow: 4px 4px 8px #888;
-	/* Safari 3.0+, Chrome */
-	box-shadow: 4px 4px 8px #888;
-	/* Opera 10.5, IE 9.0 */
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888');
-	/* IE 6, IE 7 */
-	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888');
-	/* IE 8 */
-	border-radius: 3px;
+	margin-bottom: 20px;
+	border-radius: 0;
+	background-color: #FFF;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 2px 0 rgba(0, 0, 0, .12);
 }
 
 .table table {
@@ -171,20 +312,26 @@ body {
 }
 
 .table.selected {
-	border: 2px solid #000;
+	border: 1px solid #FF4081;
 }
 
 .table thead .title {
 	text-align: center;
-	padding: 3px 30px;
+	padding: 6px 30px;
 }
 
 .table tbody {
-	border-top: 1px dotted #888;
+	border-right: 4px solid transparent;
+	background: none !important;
 }
 
 .table tbody td {
 	padding: 3px;
+}
+
+.table tbody.expanded {
+	border-right: 6px solid rgba(0, 0, 0, .12);
+	background-color: whitesmoke !important;
 }
 
 .table tbody .selected {
@@ -202,7 +349,7 @@ body {
 	position: absolute;
 	top: 0;
 	right: 0;
-	border-color: royalblue;
+	border-color: rgb(125, 178, 221);
 	border-style: solid;
 	border-width: 5px;
 	border-bottom-color: transparent;
@@ -215,14 +362,14 @@ body {
 
 .table tbody[title]:not(.expanded):not([title=""]) td:last-child:after {
 	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-color: royalblue;
+	position: relative;
+	border-color: rgb(125, 178, 221);
 	border-style: solid;
-	border-width: 5px;
+	border-width: 6px;
 	border-bottom-color: transparent;
 	border-left-color: transparent;
+	border-top-color: transparent;
+	float: right;
 }
 
 .primary {
@@ -267,23 +414,23 @@ body {
 	position: absolute;
 	visibility: hidden;
 	background-color: #fff;
-	border: 6px double #333;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+	padding: 15px;
 }
 
 #windowtitle {
-	border-bottom: 2px solid #333;
-	padding: 2px;
-	padding-left: 1em;
-	font-weight: bold;
-	background-color: rgb(238, 238, 170);
+	font-size: x-large;
+	margin: 15px 15px 24px 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 #windowcontent {
 	padding: 1em;
 }
 
-#windowok, #windowcancel {
-	margin: 0em 1em 1em;
+#tablename, #tablecomment {
+	margin-bottom: 10px;
 }
 
 .small {
@@ -299,18 +446,27 @@ body {
 	width: 700px;
 }
 
+#opts td {
+	padding-top: 15px;
+	margin-bottom: 20px;
+}
+
+#opts #optionsnotice {
+	opacity: 0.7;
+}
+
+#opts hr {
+	background-color: #ddd;
+	height: 1px;
+	border: none;
+	margin: 25px 0px 25px 0px;
+}
+
 #keys {
 	white-space: nowrap;
 	text-align: center;
 }
 
-legend {
-	font-weight: bold;
-}
-
-label, input, select {
-	vertical-align: middle;
-}
 
 #throbber {
 	position: absolute;
