@@ -4,6 +4,7 @@ SQL.Relation = function(owner, row1, row2) {
 	this.owner = owner;
 	this.row1 = row1;
 	this.row2 = row2;
+	this.colorIndex = 0;
 	this.color = "#000";
 	this.hidden = false;
 	SQL.Visual.apply(this);
@@ -12,10 +13,11 @@ SQL.Relation = function(owner, row1, row2) {
 	var all = row1.relations.concat(row2.relations);
 	if (all.length) { /* inherit */
 		this.color = all[0].getColor();
+		this.colorIndex = all[0].getColorIndex();
 	} else if (CONFIG.RELATION_COLORS) { /* pick next */
 		SQL.Relation._counter++;
-		var colorIndex = SQL.Relation._counter - 1;
-		this.color = CONFIG.RELATION_COLORS[colorIndex % CONFIG.RELATION_COLORS.length];
+		this.colorIndex = (SQL.Relation._counter - 1) % CONFIG.RELATION_COLORS.length;
+		this.color = CONFIG.RELATION_COLORS[this.colorIndex];
 	}
 
 	this.row1.addRelation(this);
@@ -25,6 +27,7 @@ SQL.Relation = function(owner, row1, row2) {
 	if (this.owner.vector) {
 		var path = document.createElementNS(this.owner.svgNS, "path");
 		path.setAttribute("stroke", this.color);
+		path.setAttribute("class", "relation_" + this.colorIndex);
 		path.setAttribute("stroke-width", CONFIG.RELATION_THICKNESS);
 		path.setAttribute("fill", "none");
 		this.owner.dom.svg.appendChild(path);
@@ -49,6 +52,10 @@ SQL.Relation.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Relation.prototype.getColor = function() {
 	return this.color;
+}
+
+SQL.Relation.prototype.getColorIndex = function() {
+	return this.colorIndex;
 }
 
 SQL.Relation.prototype.show = function() {

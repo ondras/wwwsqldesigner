@@ -283,7 +283,7 @@ select optgroup {
 }
 
 #bar input:hover {
-	background-color: #e9115d;
+	background-color: #de2665;
 	color: #fff;
 }
 
@@ -318,7 +318,7 @@ select optgroup {
 }
 
 #toggle:hover {
-	background-color: #e9115d;
+	background-color: #de2665;
 }
 
 #toggle.on:hover {
@@ -523,7 +523,7 @@ select optgroup {
 }
 
 #io input[type=button]:active {
-	background-color: #f2f2f2; 
+	background-color: #f2f2f2;
 	transition: all .2s ease-out;
 }
 
@@ -580,4 +580,32 @@ select optgroup {
 	background: rgba(255, 64, 129, 0.5);
 	opacity: 0.5;
 	visibility: hidden;
+}
+
+.relation_0 {
+	stroke: #673AB7;
+}
+
+.relation_1 {
+	stroke: #F44336;
+}
+
+.relation_2 {
+	stroke: #8BC34A;
+}
+
+.relation_3 {
+	stroke: #00BCD4;
+}
+
+.relation_4 {
+	stroke: #4CAF50;
+}
+
+.relation_5 {
+	stroke: #FF5722;
+}
+
+.relation_6 {
+	stroke: #FFC107;
 }
