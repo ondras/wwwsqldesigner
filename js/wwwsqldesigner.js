@@ -29,7 +29,7 @@ SQL.Designer = function() {
 	this.flag = 2;
 	this.requestLanguage();
 	this.requestDB();
-	this.requestStyle();
+	this.setStyle();
 }
 SQL.Designer.prototype = Object.create(SQL.Visual.prototype);
 
@@ -80,7 +80,15 @@ SQL.Designer.prototype.requestDB = function() { /* get datatypes file */
 	OZ.Request(url, this.dbResponse.bind(this), {method:"get", xml:true});
 }
 
-SQL.Designer.prototype.requestStyle = function() { /* set style */
+SQL.Designer.prototype.dbResponse = function(xmlDoc) {
+	if (xmlDoc) {
+		window.DATATYPES = xmlDoc.documentElement;
+	}
+	this.flag--;
+	if (!this.flag) { this.init2(); }
+}
+
+SQL.Designer.prototype.setStyle = function() { /* set style */
 	var style = this.getOption("style");
 	var i, link_elms;
 	for (i=0; link_elms = document.getElementsByTagName("link"); i++) {
@@ -89,14 +97,6 @@ SQL.Designer.prototype.requestStyle = function() { /* set style */
 			if (link_elms[i].getAttribute("title") == style) link_elms[i].disabled = false;
 		}
 	}
-}
-
-SQL.Designer.prototype.dbResponse = function(xmlDoc) {
-	if (xmlDoc) {
-		window.DATATYPES = xmlDoc.documentElement;
-	}
-	this.flag--;
-	if (!this.flag) { this.init2(); }
 }
 
 SQL.Designer.prototype.init2 = function() { /* secondary init, after locale & datatypes were retrieved */

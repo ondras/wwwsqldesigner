@@ -585,31 +585,3 @@ select optgroup {
 	opacity: 0.5;
 	visibility: hidden;
 }
-
-.relation_0 {
-	stroke: #673AB7;
-}
-
-.relation_1 {
-	stroke: #F44336;
-}
-
-.relation_2 {
-	stroke: #8BC34A;
-}
-
-.relation_3 {
-	stroke: #00BCD4;
-}
-
-.relation_4 {
-	stroke: #4CAF50;
-}
-
-.relation_5 {
-	stroke: #FF5722;
-}
-
-.relation_6 {
-	stroke: #FFC107;
-}
