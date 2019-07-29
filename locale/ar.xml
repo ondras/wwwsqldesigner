@@ -52,6 +52,7 @@
 	<string name="optionpatternnotice">%T = الجدول الرئيسي, %R = المفتاح الرئيسي, %t = الجدول الخارجي</string>
 	<string name="hide">إخفاء الخطوط عند تحريك الجدول؟</string>
 	<string name="vector">رسم خطوط ناعمة (إذا كان المتصفح يدعم ذلك) ؟</string>
+	<string name="style">قلم المدقة</string>
 
 
 	<!-- keys -->

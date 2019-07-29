@@ -55,6 +55,7 @@
 	<string name="vector">Disegna connettori arrotondati (se supportato dal browser)?</string>
 	<string name="showsize">Show field size in table design?</string>	
 	<string name="showtype">Show field datatype in table design?</string>
+	<string name="style">Stile</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Chiavi</string>

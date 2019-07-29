@@ -55,6 +55,7 @@
 	<string name="vector">부드러운 연결선 사용 (브라우저 지원 필요)?</string>
 	<string name="showsize">디자인에서 필드 사이즈를 표시</string>
 	<string name="showtype">디자인에서 필드 타입을 표시</string>
+	<string name="style">스타일</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">키 설정</string>

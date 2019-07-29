@@ -53,6 +53,7 @@
 	<string name="optionpatternnotice">%T = πρωτεύων πίνακας, %R = προτεύον κλειδί, %t = ξένος πίνακας</string>
 	<string name="hide">Απόκρυψη συνδέσμων όταν σύρονται οι πίνακες;</string>
 	<string name="vector">Διάγραμμα με ομαλούς συνδέσμους(αν παρέχεται από τον περιηγητή);</string>
+	<string name="style">Στυλ</string>
 	
 	
 	<!-- keys -->

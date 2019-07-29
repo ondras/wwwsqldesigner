@@ -55,6 +55,7 @@
 	<string name="vector">Teken gekromde relaties (als de browser dit ondersteund)?</string>
 	<string name="showsize">Toon veld omvang in tabelontwerp?</string>
 	<string name="showtype">Toon veld type in tabelontwerp?</string>
+	<string name="style">Stijl</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Sleutels</string>

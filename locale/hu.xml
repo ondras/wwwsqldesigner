@@ -53,6 +53,7 @@
 	<string name="optionpatternnotice">%T = elsődleges tábla, %R = elsődleges kulcs, %t = idegen tábla</string>
 	<string name="hide">Elrejtsem a kapcsolókat a rajztáblán?</string>
 	<string name="vector">Kapcsolók finom kirajzolása (ha a böngésző lehetővé teszi)?</string>
+	<string name="style">Stílus</string>
 	
 	
 	<!-- keys -->

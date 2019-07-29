@@ -55,6 +55,7 @@
 	<string name="vector">Vykreslovat oblé spojovníky (pakliže to prohlížeč podporuje)?</string>
 	<string name="showsize">Zobrazovat velikost polí v tabulce?</string>
 	<string name="showtype">Zobrazovat datový typ polí v tabulce?</string>
+	<string name="style">Styl</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Klíče</string>

@@ -55,6 +55,7 @@
 	<string name="vector">Desegni glatajn konektilojn (se subtenata de retumilo)?</string>
 	<string name="showsize">Show field size in table design?</string>	
 	<string name="showtype">Show field datatype in table design?</string>
+	<string name="style">Stilo</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Klavoj</string>

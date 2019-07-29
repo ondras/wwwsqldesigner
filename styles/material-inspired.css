@@ -514,6 +514,10 @@ select optgroup {
 	font-family: "Lucida Console", Monaco, monospace;
 }
 
+#io table {
+	width: 100%;
+}
+
 #io hr {
 	visibility: hidden;
 }

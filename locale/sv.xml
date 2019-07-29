@@ -53,7 +53,7 @@
 	<string name="optionpatternnotice">%T = primär tabell, %R = primär nycke, %t = främmande tabell</string>
 	<string name="hide">Dölj anslutningar när du drar i tabellen?</string>
 	<string name="vector">Rita mjuka anslutningar (om din webbläsare stöder det)?</string>
-	
+	<string name="style">Stil</string>	
 	
 	<!-- keys -->
 	<string name="tablekeys">Nycklar</string>

@@ -55,6 +55,7 @@
 	<string name="vector">Draw smooth connectors (if supported by browser)?</string>
 	<string name="showsize">Tablo tasarımında alan boyutunu gösterme?</string>
 	<string name="showtype">Alan veri tipini tablo tasarımında göster?</string>
+	<string name="style">Stil</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Anahtarlar</string>

@@ -55,7 +55,8 @@
 	<string name="vector">Dessiner des connecteurs « adoucis » (si le navigateur le supporte) ?</string>
 	<string name="showsize">Afficher la taille du champ dans le schéma de table ?</string>	
 	<string name="showtype">Afficher le type du champ dans le schéma de table ?</string>
-	
+	<string name="style">Style</string>
+
 	<!-- keys -->
 	<string name="tablekeys">Clés</string>
 	<string name="keyslistlabel">Clés dans la table « %s »</string>

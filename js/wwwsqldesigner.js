@@ -29,6 +29,7 @@ SQL.Designer = function() {
 	this.flag = 2;
 	this.requestLanguage();
 	this.requestDB();
+	this.requestStyle();
 }
 SQL.Designer.prototype = Object.create(SQL.Visual.prototype);
 
@@ -77,6 +78,17 @@ SQL.Designer.prototype.requestDB = function() { /* get datatypes file */
 	var bp = this.getOption("staticpath");
 	var url = bp + "db/"+db+"/datatypes.xml";
 	OZ.Request(url, this.dbResponse.bind(this), {method:"get", xml:true});
+}
+
+SQL.Designer.prototype.requestStyle = function() { /* set style */
+	var style = this.getOption("style");
+	var i, link_elms;
+	for (i=0; link_elms = document.getElementsByTagName("link"); i++) {
+		if (link_elms[i].getAttribute("rel").indexOf("style") != -1 && link_elms[i].getAttribute("title")) {
+			link_elms[i].disabled = true;
+			if (link_elms[i].getAttribute("title") == style) link_elms[i].disabled = false;
+		}
+	}
 }
 
 SQL.Designer.prototype.dbResponse = function(xmlDoc) {
@@ -187,6 +199,7 @@ SQL.Designer.prototype.getOption = function(name) {
 		case "pattern": return "%R_%T";
 		case "hide": return false;
 		case "vector": return true;
+		case "style": return "material-inspired";
 		default: return null;
 	}
 }
