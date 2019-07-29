@@ -29,7 +29,7 @@ SQL.Designer = function() {
 	this.flag = 2;
 	this.requestLanguage();
 	this.requestDB();
-	this.setStyle();
+	this.applyStyle();
 }
 SQL.Designer.prototype = Object.create(SQL.Visual.prototype);
 
@@ -88,7 +88,7 @@ SQL.Designer.prototype.dbResponse = function(xmlDoc) {
 	if (!this.flag) { this.init2(); }
 }
 
-SQL.Designer.prototype.setStyle = function() { /* set style */
+SQL.Designer.prototype.applyStyle = function() { /* apply style */
 	var style = this.getOption("style");
 	var i, link_elms;
 	for (i=0; link_elms = document.getElementsByTagName("link"); i++) {

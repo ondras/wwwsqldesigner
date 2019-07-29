@@ -1,3 +1,5 @@
+/* Generic styles */
+
 body {
 	font-family: verdana, sans-serif;
 	font-size: 12px;
@@ -13,57 +15,6 @@ body {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-
-input[type=text] {
-	font-family: verdana, sans-serif;
-	height: 32px;
-	display: block;
-	background-color: transparent;
-	color: rgba(0, 0, 0, .87);
-	border: none;
-	border-bottom-color: currentcolor;
-	border-bottom-style: none;
-	border-bottom-width: medium;
-	border-bottom: 1px solid rgba(0, 0, 0, .26);
-	outline: 0;
-	width: 100%;
-	font-size: 16px;
-	padding: 0;
-	box-shadow: none;
-	border-radius: 0;
-	background-image: none;
-}
-
-input[type=text]:focus {
-	border-color: #2196F3;
-	border-width: 2px;
-}
-
-textarea {
-	min-width: 500px;
-	font-family: verdana, sans-serif;
-	min-height: 64px;
-	display: block;
-	background-color: transparent;
-	color: rgba(0, 0, 0, .87);
-	border: none;
-	border-bottom-color: currentcolor;
-	border-bottom-style: none;
-	border-bottom-width: medium;
-	border-bottom: 1px solid rgba(0, 0, 0, .26);
-	outline: 0;
-	width: 100%;
-	font-size: 16px;
-	padding: 0;
-	box-shadow: none;
-	border-radius: 0;
-	background-image: none;
-}
-
-textarea:focus {
-	border-color: #2196F3;
-	border-width: 2px;
 }
 
 input[type=button] {
@@ -101,105 +52,45 @@ input[type=button] {
 	overflow: hidden;
 }
 
-legend {
-	text-align: left;
+input[type=text] {
+	font-family: verdana, sans-serif;
+	height: 32px;
 	display: block;
-	width: 100%;
-	padding: 0;
-	margin-bottom: 10px;
-	font-size: 21px;
+	background-color: transparent;
 	color: rgba(0, 0, 0, .87);
-	line-height: inherit;
-}
-
-fieldset {
 	border: none;
-	padding: 0px;
-	margin: 0px 0px 10px 0px;
-}
-
-label, input, select {
-	vertical-align: middle;
-}
-
-label {
-	opacity: 0.7;
-}
-
-#keys hr {
-	visibility: hidden;
-}
-
-#keyadd {
-	margin: 15px;
-	color: #FFF;
-	background-color: #2196F3;
-}
-
-#keyremove {
-	margin: 15px;
-	color: #FFF;
-	background-color: #F44336;
-}
-
-#keyremove:hover {
-	transition: all .2s ease-in-out;
-	background-color: #f55a4e;
-	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
-}
-
-#keyadd:hover {
-	transition: all .2s ease-in-out;
-	background-color: #39a1f4;
-	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
-}
-
-#keyleft, #keyright {
-	height: auto;
-	line-height: normal;
-	box-shadow: none;
-	padding: 3px;
-	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
-}
-
-#keyfields, #keyavail {
-	height: auto;
-	background-image: none;
-	font-size: small;
-	border: 1px solid rgba(0, 0, 0, .26);
-	padding: 0px;
-}
-
-#keys table {
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	border-bottom: 1px solid rgba(0, 0, 0, .26);
+	outline: 0;
 	width: 100%;
+	font-size: 16px;
+	padding: 0;
+	box-shadow: none;
+	border-radius: 0;
+	background-image: none;
 }
 
-#keys table td {
-	width: 42%;
-}
-
-#keys table td+td {
-	width: 16%;
-}
-
-#keys table td+td+td {
-	width: 42%;
-}
-
-#commentbtn {
-	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
-}
-
-#windowok {
-	color: #FF4081;
-}
-
-#windowok, #windowcancel {
-	float: right;
-}
-
-#windowok:hover, #windowcancel:hover {
-	background-color: #f2f2f2;
+textarea {
+	min-width: 500px;
+	font-family: verdana, sans-serif;
+	min-height: 64px;
+	display: block;
+	background-color: transparent;
+	color: rgba(0, 0, 0, .87);
+	border: none;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	border-bottom: 1px solid rgba(0, 0, 0, .26);
+	outline: 0;
+	width: 100%;
+	font-size: 16px;
+	padding: 0;
+	box-shadow: none;
+	border-radius: 0;
+	background-image: none;
 }
 
 select {
@@ -228,7 +119,7 @@ select {
 	padding: 0 25px 0 0;
 }
 
-select:focus {
+textarea:focus, select:focus, input[type=text]:focus {
 	border-color: #2196F3;
 	border-width: 2px;
 }
@@ -240,6 +131,33 @@ select optgroup {
 	font-style: normal;
 }
 
+legend {
+	text-align: left;
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin-bottom: 10px;
+	font-size: 21px;
+	color: rgba(0, 0, 0, .87);
+	line-height: inherit;
+}
+
+fieldset {
+	border: none;
+	padding: 0px;
+	margin: 0px 0px 10px 0px;
+}
+
+label {
+	opacity: 0.7;
+}
+
+label, input, select {
+	vertical-align: middle;
+}
+
+/* Area */
+
 #area {
 	position: relative;
 	background: transparent url(../images/back_dim.png);
@@ -247,6 +165,23 @@ select optgroup {
 	height: 3000px;
 	opacity: 0.7;
 }
+
+#rubberband {
+	position: absolute;
+	border: .2px solid #FF4081;
+	background: rgba(255, 64, 129, 0.5);
+	opacity: 0.5;
+	visibility: hidden;
+}
+
+#background {
+	position: absolute;
+	background-color: #000;
+	opacity: 0.5;
+	visibility: hidden;
+}
+
+/* Main menu */
 
 #controls {
 	position: absolute;
@@ -294,16 +229,16 @@ select optgroup {
 	box-shadow: none;
 }
 
+#bar input.small {
+	width: 45%;
+	display: inline;
+}
+
 #bar hr {
 	margin: 8px;
 	background-color: #ddd;
 	height: 1px;
 	border: none;
-}
-
-#bar input.small {
-	width: 45%;
-	display: inline;
 }
 
 #toggle {
@@ -321,21 +256,23 @@ select optgroup {
 	background-color: #de2665;
 }
 
+#toggle.on {
+	background-image: url(../images/up_2_black.png);
+}
+
 #toggle.on:hover {
 	background-image: url(../images/up_2_white.png);
+}
+
+#toggle.off {
+	background-image: url(../images/down_2_black.png);
 }
 
 #toggle.off:hover {
 	background-image: url(../images/down_2_white.png);
 }
 
-#toggle.on {
-	background-image: url(../images/up_2_black.png);
-}
-
-#toggle.off {
-	background-image: url(../images/down_2_black.png);
-}
+/* Minimap */
 
 #minimap {
 	position: fixed;
@@ -369,6 +306,8 @@ select optgroup {
 #minimap:hover .port {
 	border: 2px solid rgba(0, 0, 0, .8);
 }
+
+/* Tables */
 
 .table {
 	position: absolute;
@@ -465,6 +404,10 @@ select optgroup {
 	margin-right: 0.5em;
 }
 
+#commentbtn {
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
 .adding {
 	cursor: crosshair;
 }
@@ -473,12 +416,11 @@ select optgroup {
 	overflow: hidden;
 }
 
-#background {
-	position: absolute;
-	background-color: #000;
-	opacity: 0.5;
-	visibility: hidden;
+#tablename, #tablecomment {
+	margin-bottom: 10px;
 }
+
+/* Window */
 
 #window {
 	position: absolute;
@@ -499,27 +441,36 @@ select optgroup {
 	padding: 1em;
 }
 
-#tablename, #tablecomment {
-	margin-bottom: 10px;
+#windowok {
+	color: #FF4081;
 }
 
-.small {
-	font-size: 85%;
+#windowok, #windowcancel {
+	float: right;
 }
 
-#textarea {
-	width: 100%;
-	height: 200px;
-	font-size: small;
-	font-family: "Lucida Console", Monaco, monospace;
+#windowok:hover, #windowcancel:hover {
+	background-color: #f2f2f2;
 }
 
-#io table {
-	width: 100%;
+#throbber {
+	position: absolute;
+	top: 2px;
+	right: 3px;
+}
+
+/* Save / Load */
+
+#io {
+	min-width: 860px;
 }
 
 #io hr {
 	visibility: hidden;
+}
+
+#io table {
+	width: 100%;
 }
 
 #io input[type=button] {
@@ -542,9 +493,14 @@ select optgroup {
 	background-color: #ff5a92;
 }
 
-#io {
-	min-width: 860px;
+#textarea {
+	width: 100%;
+	height: 200px;
+	font-size: small;
+	font-family: "Lucida Console", Monaco, monospace;
 }
+
+/* Options */
 
 #opts {
 	width: 700px;
@@ -566,22 +522,74 @@ select optgroup {
 	margin: 25px 0px 25px 0px;
 }
 
+.small {
+	font-size: 85%;
+}
+
+/* Keys */
+
 #keys {
 	white-space: nowrap;
 	padding: 0px 10px;
 	text-align: center;
 }
 
-#throbber {
-	position: absolute;
-	top: 2px;
-	right: 3px;
+#keys hr {
+	visibility: hidden;
 }
 
-#rubberband {
-	position: absolute;
-	border: .2px solid #FF4081;
-	background: rgba(255, 64, 129, 0.5);
-	opacity: 0.5;
-	visibility: hidden;
+#keys table {
+	width: 100%;
+}
+
+#keys table td {
+	width: 42%;
+}
+
+#keys table td+td {
+	width: 16%;
+}
+
+#keys table td+td+td {
+	width: 42%;
+}
+
+#keyadd {
+	margin: 15px;
+	color: #FFF;
+	background-color: #2196F3;
+}
+
+#keyadd:hover {
+	transition: all .2s ease-in-out;
+	background-color: #39a1f4;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#keyremove {
+	margin: 15px;
+	color: #FFF;
+	background-color: #F44336;
+}
+
+#keyremove:hover {
+	transition: all .2s ease-in-out;
+	background-color: #f55a4e;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#keyleft, #keyright {
+	height: auto;
+	line-height: normal;
+	box-shadow: none;
+	padding: 3px;
+	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+#keyfields, #keyavail {
+	height: auto;
+	background-image: none;
+	font-size: small;
+	border: 1px solid rgba(0, 0, 0, .26);
+	padding: 0px;
 }
