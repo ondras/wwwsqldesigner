@@ -1,17 +1,17 @@
 /* --------------------- options ------------ */
 
-SQL.Options = function (owner) {
+SQL.Options = function(owner) {
 	this.owner = owner;
 	this.dom = {
-		container: OZ.$("opts"),
-		btn: OZ.$("options")
+		container:OZ.$("opts"),
+		btn:OZ.$("options")
 	}
 	this.dom.btn.value = _("options");
 	this.save = this.save.bind(this);
 	this.build();
 }
 
-SQL.Options.prototype.build = function () {
+SQL.Options.prototype.build = function() {
 	this.dom.optionlocale = OZ.$("optionlocale");
 	this.dom.optiondb = OZ.$("optiondb");
 	this.dom.optionsnap = OZ.$("optionsnap");
@@ -22,8 +22,8 @@ SQL.Options.prototype.build = function () {
 	this.dom.optionshowsize = OZ.$("optionshowsize");
 	this.dom.optionshowtype = OZ.$("optionshowtype");
 
-	var ids = ["language", "db", "snap", "pattern", "style", "hide", "vector", "showsize", "showtype", "optionsnapnotice", "optionpatternnotice", "optionsnotice"];
-	for (var i = 0; i < ids.length; i++) {
+	var ids = ["language","db","snap","pattern","style","hide","vector","showsize","showtype","optionsnapnotice","optionpatternnotice","optionsnotice"];
+	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
 		elm.innerHTML = _(id);
@@ -31,7 +31,7 @@ SQL.Options.prototype.build = function () {
 
 	var ls = CONFIG.AVAILABLE_LOCALES;
 	OZ.DOM.clear(this.dom.optionlocale);
-	for (var i = 0; i < ls.length; i++) {
+	for (var i=0;i<ls.length;i++) {
 		var o = OZ.DOM.elm("option");
 		o.value = ls[i];
 		o.innerHTML = ls[i];
@@ -41,7 +41,7 @@ SQL.Options.prototype.build = function () {
 
 	var dbs = CONFIG.AVAILABLE_DBS;
 	OZ.DOM.clear(this.dom.optiondb);
-	for (var i = 0; i < dbs.length; i++) {
+	for (var i=0;i<dbs.length;i++) {
 		var o = OZ.DOM.elm("option");
 		o.value = dbs[i];
 		o.innerHTML = dbs[i];
@@ -51,7 +51,7 @@ SQL.Options.prototype.build = function () {
 
 	var styles = CONFIG.STYLES;
 	OZ.DOM.clear(this.dom.optionstyle);
-	for (var i = 0; i < styles.length; i++) {
+	for (var i=0;i<styles.length;i++) {
 		var o = OZ.DOM.elm("option");
 		o.value = styles[i];
 		o.innerHTML= styles[i];
@@ -65,20 +65,20 @@ SQL.Options.prototype.build = function () {
 	this.dom.container.parentNode.removeChild(this.dom.container);
 }
 
-SQL.Options.prototype.save = function () {
-	this.owner.setOption("locale", this.dom.optionlocale.value);
-	this.owner.setOption("db", this.dom.optiondb.value);
-	this.owner.setOption("snap", this.dom.optionsnap.value);
-	this.owner.setOption("pattern", this.dom.optionpattern.value);
-	this.owner.setOption("style", this.dom.optionstyle.value);
-	this.owner.setOption("hide", this.dom.optionhide.checked ? "1" : "");
-	this.owner.setOption("vector", this.dom.optionvector.checked ? "1" : "");
-	this.owner.setOption("showsize", this.dom.optionshowsize.checked ? "1" : "");
-	this.owner.setOption("showtype", this.dom.optionshowtype.checked ? "1" : "");
+SQL.Options.prototype.save = function() {
+	this.owner.setOption("locale",this.dom.optionlocale.value);
+	this.owner.setOption("db",this.dom.optiondb.value);
+	this.owner.setOption("snap",this.dom.optionsnap.value);
+	this.owner.setOption("pattern",this.dom.optionpattern.value);
+	this.owner.setOption("style",this.dom.optionstyle.value);
+	this.owner.setOption("hide",this.dom.optionhide.checked ? "1" : "");
+	this.owner.setOption("vector",this.dom.optionvector.checked ? "1" : "");
+	this.owner.setOption("showsize",this.dom.optionshowsize.checked ? "1" : "");
+	this.owner.setOption("showtype",this.dom.optionshowtype.checked ? "1" : "");
 }
 
-SQL.Options.prototype.click = function () {
-	this.owner.window.open(_("options"), this.dom.container, this.save);
+SQL.Options.prototype.click = function() {
+	this.owner.window.open(_("options"),this.dom.container,this.save);
 	this.dom.optionsnap.value = this.owner.getOption("snap");
 	this.dom.optionpattern.value = this.owner.getOption("pattern");
 	this.dom.optionhide.checked = this.owner.getOption("hide");
