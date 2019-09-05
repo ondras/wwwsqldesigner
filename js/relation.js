@@ -6,16 +6,27 @@ SQL.Relation = function(owner, row1, row2) {
 	this.row2 = row2;
 	this.color = "#000";
 	this.hidden = false;
+	this.relationColors = CONFIG.RELATION_COLORS;
 	SQL.Visual.apply(this);
+
+	this.style = SQL.Designer.getOption("style");
+	switch (this.style) {
+		case "material-inspired": 
+			this.relationColors = CONFIG.MATERIAL_RELATION_COLORS;
+			break;
+		case "original": 
+		default:
+			this.relationColors = CONFIG.RELATION_COLORS;
+	}
 
 	/* if one of the rows already has relations, inherit color */
 	var all = row1.relations.concat(row2.relations);
 	if (all.length) { /* inherit */
 		this.color = all[0].getColor();
-	} else if (CONFIG.RELATION_COLORS) { /* pick next */
+	} else if (this.relationColors) { /* pick next */
 		SQL.Relation._counter++;
-		var colorIndex = SQL.Relation._counter - 1;
-		this.color = CONFIG.RELATION_COLORS[colorIndex % CONFIG.RELATION_COLORS.length];
+		var colorIndex = (SQL.Relation._counter - 1) % this.relationColors.length;
+		this.color = this.relationColors[colorIndex];
 	}
 
 	this.row1.addRelation(this);

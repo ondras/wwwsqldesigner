@@ -29,6 +29,7 @@ SQL.Designer = function() {
 	this.flag = 2;
 	this.requestLanguage();
 	this.requestDB();
+	this.applyStyle();
 }
 SQL.Designer.prototype = Object.create(SQL.Visual.prototype);
 
@@ -85,6 +86,17 @@ SQL.Designer.prototype.dbResponse = function(xmlDoc) {
 	}
 	this.flag--;
 	if (!this.flag) { this.init2(); }
+}
+
+SQL.Designer.prototype.applyStyle = function() { /* apply style */
+	var style = this.getOption("style");
+	var i, link_elms;
+	for (i=0; link_elms = document.getElementsByTagName("link"); i++) {
+		if (link_elms[i].getAttribute("rel").indexOf("style") != -1 && link_elms[i].getAttribute("title")) {
+			link_elms[i].disabled = true;
+			if (link_elms[i].getAttribute("title") == style) link_elms[i].disabled = false;
+		}
+	}
 }
 
 SQL.Designer.prototype.init2 = function() { /* secondary init, after locale & datatypes were retrieved */
@@ -187,6 +199,7 @@ SQL.Designer.prototype.getOption = function(name) {
 		case "pattern": return "%R_%T";
 		case "hide": return false;
 		case "vector": return true;
+		case "style": return "material-inspired";
 		default: return null;
 	}
 }

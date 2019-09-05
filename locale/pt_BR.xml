@@ -53,6 +53,7 @@
 	<string name="optionpatternnotice">%T = tabela primária, %R = chave primária, %t = tabela estrangeira</string>
 	<string name="hide">Esconder connectores na tela?</string>
 	<string name="vector">Desenhar conectores suaves (se suportado pelo navegador)?</string>
+	<string name="style">Estilo</string>
 	
 	
 	<!-- keys -->

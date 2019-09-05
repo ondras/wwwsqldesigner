@@ -5,16 +5,16 @@ SQL.Row = function(owner, title, data) {
 	this.keys = [];
 	this.selected = false;
 	this.expanded = false;
-	
+
 	SQL.Visual.apply(this);
-	
+
 	this.data.type = 0;
 	this.data.size = "";
 	this.data.def = null;
 	this.data.nll = true;
 	this.data.ai = false;
 	this.data.comment = "";
-	
+
 	if (data) { this.update(data); }
 	this.setTitle(title);
 }
@@ -22,7 +22,7 @@ SQL.Row.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Row.prototype._build = function() {
 	this.dom.container = OZ.DOM.elm("tbody");
-	
+
 	this.dom.content = OZ.DOM.elm("tr");
 	this.dom.selected = OZ.DOM.elm("div", {className:"selected",innerHTML:"&raquo;&nbsp;"});
 	this.dom.title = OZ.DOM.elm("div", {className:"title"});
@@ -64,7 +64,7 @@ SQL.Row.prototype.setTitle = function(t) {
 		var tt = r.row2.getTitle().replace(new RegExp(old,"g"),t);
 		if (tt != r.row2.getTitle()) { r.row2.setTitle(tt); }
 	}
-	
+
 	SQL.Visual.prototype.setTitle.apply(this, [t]);
 }
 
@@ -82,7 +82,7 @@ SQL.Row.prototype.dblclick = function(e) { /* dblclicked on row */
 SQL.Row.prototype.update = function(data) { /* update subset of row data */
 	var des = SQL.Designer;
 	if (data.nll && data.def && data.def.match(/^null$/i)) { data.def = null; }
-	
+
 	for (var p in data) { this.data[p] = data[p]; }
 	if (!this.data.nll && this.data.def === null) { this.data.def = ""; }
 
@@ -116,7 +116,7 @@ SQL.Row.prototype.down = function() { /* shift down */
 
 SQL.Row.prototype.buildEdit = function() {
 	OZ.DOM.clear(this.dom.container);
-	
+
 	var elms = [];
 	this.dom.name = OZ.DOM.elm("input");
 	this.dom.name.type = "text";
@@ -141,15 +141,16 @@ SQL.Row.prototype.buildEdit = function() {
 	this.dom.nll = OZ.DOM.elm("input");
 	this.dom.nll.type = "checkbox";
 	elms.push(["null",this.dom.nll]);
-	
+
 	this.dom.comment = OZ.DOM.elm("span",{className:"comment"});
 	this.dom.comment.innerHTML = "";
 	this.dom.comment.appendChild(document.createTextNode(this.data.comment));
 
 	this.dom.commentbtn = OZ.DOM.elm("input");
 	this.dom.commentbtn.type = "button";
+	this.dom.commentbtn.id = "commentbtn"
 	this.dom.commentbtn.value = _("comment");
-	
+
 	OZ.Event.add(this.dom.commentbtn, "click", this.changeComment);
 
 	for (var i=0;i<elms.length;i++) {
@@ -165,7 +166,7 @@ SQL.Row.prototype.buildEdit = function() {
 		);
 		this.dom.container.appendChild(tr);
 	}
-	
+
 	var tr = OZ.DOM.elm("tr");
 	var td1 = OZ.DOM.elm("td");
 	var td2 = OZ.DOM.elm("td");
@@ -208,7 +209,7 @@ SQL.Row.prototype.collapse = function() {
 		nll: this.dom.nll.checked,
 		ai: this.dom.ai.checked
 	}
-	
+
 	OZ.DOM.clear(this.dom.container);
 	this.dom.container.appendChild(this.dom.content);
 
@@ -220,7 +221,7 @@ SQL.Row.prototype.load = function() { /* put data to expanded form */
 	this.dom.name.value = this.getTitle();
 	var def = this.data.def;
 	if (def === null) { def = "NULL"; }
-	
+
 	this.dom.def.value = def;
 	this.dom.size.value = this.data.size;
 	this.dom.nll.checked = this.data.nll;
@@ -230,23 +231,24 @@ SQL.Row.prototype.load = function() { /* put data to expanded form */
 SQL.Row.prototype.redraw = function() {
 	var color = this.getColor();
 	this.dom.container.style.backgroundColor = color;
+	this.dom.container.style.borderColor = color;
 	OZ.DOM.removeClass(this.dom.title, "primary");
 	OZ.DOM.removeClass(this.dom.title, "key");
 	if (this.isPrimary()) { OZ.DOM.addClass(this.dom.title, "primary"); }
 	if (this.isKey()) { OZ.DOM.addClass(this.dom.title, "key"); }
 	this.dom.selected.style.display = (this.selected ? "" : "none");
 	this.dom.container.title = this.data.comment;
-	
+
 	var typehint = [];
 	if (this.owner.owner.getOption("showtype")) {
 		var elm = this.getDataType();
 		typehint.push(elm.getAttribute("sql"));
 	}
-	
+
 	if (this.owner.owner.getOption("showsize") && this.data.size) {
 		typehint.push("(" + this.data.size + ")");
 	}
-	
+
 	this.dom.typehint.innerHTML = typehint.join(" ");
 	this.owner.redraw();
 	this.owner.owner.rowManager.redraw();
@@ -321,7 +323,7 @@ SQL.Row.prototype.destroy = function() {
 
 SQL.Row.prototype.toXML = function() {
 	var xml = "";
-	
+
 	var t = this.getTitle().replace(/"/g,"&quot;");
 	var nn = (this.data.nll ? "1" : "0");
 	var ai = (this.data.ai ? "1" : "0");
@@ -331,7 +333,7 @@ SQL.Row.prototype.toXML = function() {
 	var t = elm.getAttribute("sql");
 	if (this.data.size.length) { t += "("+this.data.size+")"; }
 	xml += "<datatype>"+t+"</datatype>\n";
-	
+
 	if (this.data.def || this.data.def === null) {
 		var q = elm.getAttribute("quote");
 		var d = this.data.def;
@@ -348,27 +350,27 @@ SQL.Row.prototype.toXML = function() {
 		if (r.row2 != this) { continue; }
 		xml += '<relation table="'+r.row1.owner.getTitle()+'" row="'+r.row1.getTitle()+'" />\n';
 	}
-	
+
 	if (this.data.comment) { 
 		xml += "<comment>"+SQL.escape(this.data.comment)+"</comment>\n"; 
 	}
-	
+
 	xml += "</row>\n";
 	return xml;
 }
 
 SQL.Row.prototype.fromXML = function(node) {
 	var name = node.getAttribute("name");
-	
+
 	var obj = { type:0, size:"" };
 	obj.nll = (node.getAttribute("null") == "1");
 	obj.ai = (node.getAttribute("autoincrement") == "1");
-	
+
 	var cs = node.getElementsByTagName("comment");
 	if (cs.length && cs[0].firstChild) { obj.comment = cs[0].firstChild.nodeValue; }
-	
+
 	var d = node.getElementsByTagName("datatype");
-	if (d.length && d[0].firstChild) { 
+	if (d.length && d[0].firstChild) {
 		var s = d[0].firstChild.nodeValue;
 		var r = s.match(/^([^\(]+)(\((.*)\))?.*$/);
 		var type = r[1];
@@ -380,7 +382,7 @@ SQL.Row.prototype.fromXML = function(node) {
 			if (sql == type || (re && new RegExp(re).exec(type)) ) { obj.type = i; }
 		}
 	}
-	
+
 	var elm = DATATYPES.getElementsByTagName("type")[obj.type];
 	var d = node.getElementsByTagName("default");
 	if (d.length && d[0].firstChild) { 

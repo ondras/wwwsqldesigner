@@ -52,9 +52,9 @@
 	<string name="optionpatternnotice">%T = 主表, %R = 主键, %t = 外连表</string>
 	<string name="hide">在表格移动时不显示连接?</string>
 	<string name="vector">绘制平滑的连接 (如果浏览器支持)?</string>
-    <string name="showsize">设计表格时显示字段大小?</string>
+	<string name="showsize">设计表格时显示字段大小?</string>
 	<string name="showtype">设计表格时显示字段数据类型?</string>
-	
+	<string name="style">样式</string>	
 	
 	<!-- keys -->
 	<string name="tablekeys">设置表键</string>

@@ -53,6 +53,7 @@
 	<string name="optionpatternnotice">%T = Tabela primara, %R = Primary key, %t = Tabela cu Foreign key</string>
 	<string name="hide">Ascunde conexiunile la mutarea tabelei?</string>
 	<string name="vector">Deseneaza folosind "smooth connectors" (daca browserul suporta)?</string>
+	<string name="style">Stil</string>
 	
 	
 	<!-- keys -->

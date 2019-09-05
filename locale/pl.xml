@@ -55,6 +55,7 @@
 	<string name="vector">Rysuj pływające złącza (jesli wsperane jest przez przeglądarkę)?</string>
 	<string name="showsize">Show field size in table design?</string>	
 	<string name="showtype">Show field datatype in table design?</string>
+	<string name="style">Styl</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Klucze</string>

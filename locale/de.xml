@@ -55,6 +55,7 @@
 	<string name="vector">Zeichne gekrümmte Verbindungslinien (Browser-abhängig)?</string>
 	<string name="showsize">Zeige Feldgröße im Tabellendesign?</string>
 	<string name="showtype">Zeige Felddatentyp im Tabellendesign?</string>
+	<string name="style">Stil</string>
 	
 	<!-- keys -->
 	<string name="tablekeys">Schlüssel</string>

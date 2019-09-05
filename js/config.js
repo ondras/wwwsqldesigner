@@ -12,6 +12,9 @@ var CONFIG = {
 	RELATION_SPACING: 15,
 	RELATION_COLORS: ["#000", "#800", "#080", "#008", "#088", "#808", "#088"],
 	
+	STYLES: ["material-inspired", "original"],
+	MATERIAL_RELATION_COLORS: ["#323232", "#F44336", "#E91E63", "#9C27B0", "#3F51B5", "#673AB7", "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", "#8BC34A", "#CDDC39", "#FFC107", "#FF5722", "#795548", "#607D8B"],
+	
 	STATIC_PATH: "",
 	XHR_PATH: "",
 

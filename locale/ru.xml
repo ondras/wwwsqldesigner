@@ -55,6 +55,7 @@
 	<string name="vector">Рисовать сглаженные связи (если поддерживается браузером)?</string>
 	<string name="showsize">Показывать размеры полей таблиц?</string>
 	<string name="showtype">Показывать типы данных полей таблиц?</string>
+	<string name="style">Стиль</string>
 
 	<!-- keys -->
 	<string name="tablekeys">Ключи</string>

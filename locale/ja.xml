@@ -54,6 +54,7 @@
 	<string name="vector">滑らかな線を使う（要ブラウザのサポート）</string>
 	<string name="showsize">フィールドサイズを表示</string>
 	<string name="showtype">フィールドタイプを表示</string>
+	<string name="style">スタイル</string>
 
 	<!-- keys -->
 	<string name="tablekeys">キーの設定</string>

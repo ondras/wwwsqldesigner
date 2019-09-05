@@ -16,18 +16,19 @@ SQL.Options.prototype.build = function() {
 	this.dom.optiondb = OZ.$("optiondb");
 	this.dom.optionsnap = OZ.$("optionsnap");
 	this.dom.optionpattern = OZ.$("optionpattern");
+	this.dom.optionstyle = OZ.$("optionstyle");
 	this.dom.optionhide = OZ.$("optionhide");
 	this.dom.optionvector = OZ.$("optionvector");
 	this.dom.optionshowsize = OZ.$("optionshowsize");
 	this.dom.optionshowtype = OZ.$("optionshowtype");
 
-	var ids = ["language","db","snap","pattern","hide","vector","showsize","showtype","optionsnapnotice","optionpatternnotice","optionsnotice"];
+	var ids = ["language","db","snap","pattern","style","hide","vector","showsize","showtype","optionsnapnotice","optionpatternnotice","optionsnotice"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
 		elm.innerHTML = _(id);
 	}
-	
+
 	var ls = CONFIG.AVAILABLE_LOCALES;
 	OZ.DOM.clear(this.dom.optionlocale);
 	for (var i=0;i<ls.length;i++) {
@@ -48,9 +49,19 @@ SQL.Options.prototype.build = function() {
 		if (this.owner.getOption("db") == dbs[i]) { this.dom.optiondb.selectedIndex = i; }
 	}
 
-	
+	var styles = CONFIG.STYLES;
+	OZ.DOM.clear(this.dom.optionstyle);
+	for (var i=0;i<styles.length;i++) {
+		var o = OZ.DOM.elm("option");
+		o.value = styles[i];
+		o.innerHTML= styles[i];
+		this.dom.optionstyle.appendChild(o);
+		if (this.owner.getOption("style") == styles[i]) { this.dom.optionstyle.selectedIndex = i; }
+	}
+
+
 	OZ.Event.add(this.dom.btn, "click", this.click.bind(this));
-	
+
 	this.dom.container.parentNode.removeChild(this.dom.container);
 }
 
@@ -59,6 +70,7 @@ SQL.Options.prototype.save = function() {
 	this.owner.setOption("db",this.dom.optiondb.value);
 	this.owner.setOption("snap",this.dom.optionsnap.value);
 	this.owner.setOption("pattern",this.dom.optionpattern.value);
+	this.owner.setOption("style",this.dom.optionstyle.value);
 	this.owner.setOption("hide",this.dom.optionhide.checked ? "1" : "");
 	this.owner.setOption("vector",this.dom.optionvector.checked ? "1" : "");
 	this.owner.setOption("showsize",this.dom.optionshowsize.checked ? "1" : "");
