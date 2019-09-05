@@ -90,8 +90,8 @@ SQL.Designer.prototype.dbResponse = function(xmlDoc) {
 
 SQL.Designer.prototype.applyStyle = function() { /* apply style */
 	var style = this.getOption("style");
-	var i, link_elms;
-	for (i=0; link_elms = document.getElementsByTagName("link"); i++) {
+	var i, link_elms = document.querySelectorAll("link");
+	for (i=0; i<link_elms.length; i++) {
 		if (link_elms[i].getAttribute("rel").indexOf("style") != -1 && link_elms[i].getAttribute("title")) {
 			link_elms[i].disabled = true;
 			if (link_elms[i].getAttribute("title") == style) link_elms[i].disabled = false;
