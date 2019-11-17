@@ -42,7 +42,6 @@
 		$conn = pg_connect($str);
 		if (!$conn){
 			header("HTTP/1.0 503 Service Unavailable");
-			break;
 		}
 		return $conn;
 	}
