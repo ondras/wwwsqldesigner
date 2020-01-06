@@ -46,12 +46,14 @@ SQL.Row.prototype._build = function() {
 SQL.Row.prototype.select = function() {
 	if (this.selected) { return; }
 	this.selected = true;
+	for (var i = 0; i < this.relations.length; i++) { this.relations[i].highlight(); }
 	this.redraw();
 }
 
 SQL.Row.prototype.deselect = function() {
 	if (!this.selected) { return; }
 	this.selected = false;
+	for (var i = 0; i < this.relations.length; i++) { this.relations[i].dehighlight(); }
 	this.redraw();
 	this.collapse();
 }

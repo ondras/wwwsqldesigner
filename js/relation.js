@@ -7,6 +7,7 @@ SQL.Relation = function(owner, row1, row2) {
 	this.color = "#000";
 	this.hidden = false;
 	this.relationColors = CONFIG.RELATION_COLORS;
+	this.highlighted = null;
 	SQL.Visual.apply(this);
 
 	this.style = SQL.Designer.getOption("style");
@@ -60,6 +61,22 @@ SQL.Relation.prototype = Object.create(SQL.Visual.prototype);
 
 SQL.Relation.prototype.getColor = function() {
 	return this.color;
+}
+
+SQL.Relation.prototype.highlight = function() {
+	if (this.highlighted) { return; }
+	this.highlighted = true;
+	this.dom[0].setAttribute("stroke", CONFIG.RELATION_HIGHLIGHTED_COLOR);
+	this.dom[0].setAttribute("stroke-width", CONFIG.RELATION_HIGHLIGHTED_THICKNESS);
+	this.redraw();
+}
+
+SQL.Relation.prototype.dehighlight = function() {
+	if (!this.highlighted) { return; }
+	this.highlighted = false;
+	this.dom[0].setAttribute("stroke", this.color);
+	this.dom[0].setAttribute("stroke-width", CONFIG.RELATION_THICKNESS);
+	this.redraw();
 }
 
 SQL.Relation.prototype.show = function() {
