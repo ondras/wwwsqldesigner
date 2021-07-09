@@ -1,4 +1,9 @@
-FROM tutum/apache-php
-RUN apt-get update && apt-get install -yq git && rm -rf /var/lib/apt/lists/*
-RUN rm -fr /app
-ADD . /app
+FROM php:5-apache
+
+EXPOSE 80
+
+WORKDIR /var/www/html
+
+USER www-data
+
+COPY . .
