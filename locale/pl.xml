@@ -12,7 +12,7 @@
 	<string name="addpending">miejsce tabeli</string>
 	<string name="tablenamelabel">Nazwa</string>
 	<string name="tablecommentlabel">Opis</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Dodaj pole</string>
 	<string name="editrow">Edytuj pole</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Automatyczne zwiększanie o 1</string>
 	<string name="comment">Edytuj komentarz</string>
 	<string name="commenttext">Wpisz komentarz dla tego pola</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Anuluj</string>
@@ -50,13 +50,13 @@
 	<string name="snap">Ustalana odległość tabel</string>
 	<string name="optionsnapnotice">W pikselach, 0 = wyłącznie ustalania</string>
 	<string name="pattern">Wzorzec dla zewnętrznych nazw</string>
-	<string name="optionpatternnotice">%T = główna tabela, %R = klucz główny, %t = zewnętrzna tabela</string>
+	<string name="optionpatternnotice">%S = główna tabela w liczbie pojedynczej,  %T = główna tabela, %R = klucz główny, %t = zewnętrzna tabela</string>
 	<string name="hide">Ukryć złącza w tabeli podczas przeciągania?</string>
 	<string name="vector">Rysuj pływające złącza (jesli wsperane jest przez przeglądarkę)?</string>
-	<string name="showsize">Show field size in table design?</string>	
+	<string name="showsize">Show field size in table design?</string>
 	<string name="showtype">Show field datatype in table design?</string>
 	<string name="style">Styl</string>
-	
+
 	<!-- keys -->
 	<string name="tablekeys">Klucze</string>
 	<string name="keyslistlabel">Klucze w tabeli "%s"</string>
@@ -67,7 +67,7 @@
 	<string name="keyedit">Edytuj klucz</string>
 	<string name="keyadd">Dodaj klucz</string>
 	<string name="keyremove">Usuń klucz</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Zapisz / Otwórz</string>
 	<string name="empty">Proszę wklej kod XML w poniższe pole tekstowe i spróbuj ponownie.</string>
@@ -92,9 +92,9 @@
 	<string name="http500">Wewnętrzny błąd serwera</string>
 	<string name="http501">Niezaimplementowane</string>
 	<string name="http503">Serwer niedostępny</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">Błąd XML</string>
 	<string name="docs">Dokumentacja</string>
-	
+
 </locale>

@@ -12,7 +12,7 @@
 	<string name="addpending">Clique p/ adicionar</string>
 	<string name="tablenamelabel">Nome</string>
 	<string name="tablecommentlabel">Comentário</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Adicionar campo</string>
 	<string name="editrow">Editar campo</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Auto incrementar</string>
 	<string name="comment">Editar comentário</string>
 	<string name="commenttext">Digite o comentário para este campo</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Cancelar</string>
@@ -50,12 +50,12 @@
 	<string name="snap">Distância entre as tabelas</string>
 	<string name="optionsnapnotice">Em pixels, 0 = desativar snapping</string>
 	<string name="pattern">Padrão p/ nomes estrangeiros</string>
-	<string name="optionpatternnotice">%T = tabela primária, %R = chave primária, %t = tabela estrangeira</string>
+	<string name="optionpatternnotice">%S = tabela primária no singular,  %T = tabela primária, %R = chave primária, %t = tabela estrangeira</string>
 	<string name="hide">Esconder connectores na tela?</string>
 	<string name="vector">Desenhar conectores suaves (se suportado pelo navegador)?</string>
 	<string name="style">Estilo</string>
-	
-	
+
+
 	<!-- keys -->
 	<string name="tablekeys">Chaves</string>
 	<string name="keyslistlabel">Chaves na tabela "%s"</string>
@@ -66,7 +66,7 @@
 	<string name="keyedit">Editar chave</string>
 	<string name="keyadd">Adicionar chave</string>
 	<string name="keyremove">Remover chave</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Salvar / Carregar</string>
 	<string name="empty">Por favor cole os dados XML na área de texto abaixo e tente novamente.</string>
@@ -90,9 +90,9 @@
 	<string name="http500">Erro Interno do Servidor</string>
 	<string name="http501">Não Implementado</string>
 	<string name="http503">Serviço Indisponível</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">Erro de XML</string>
 	<string name="docs">Documentação</string>
-	
+
 </locale>

@@ -12,7 +12,7 @@
 	<string name="addpending">place table</string>
 	<string name="tablenamelabel">Name</string>
 	<string name="tablecommentlabel">Comment</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Add field</string>
 	<string name="editrow">Edit field</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Edit comment</string>
 	<string name="commenttext">Enter comment for this field</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Cancel</string>
@@ -50,13 +50,13 @@
 	<string name="snap">Table snap distance</string>
 	<string name="optionsnapnotice">In pixels, 0 = disable snapping</string>
 	<string name="pattern">Pattern for foreign names</string>
-	<string name="optionpatternnotice">%T = primary table, %R = primary key, %t = foreign table</string>
+	<string name="optionpatternnotice">%S = primary table on singular,  %T = primary table, %R = primary key, %t = foreign table</string>
 	<string name="hide">Hide connectors on table drag?</string>
 	<string name="vector">Draw smooth connectors (if supported by browser)?</string>
 	<string name="showsize">Show field size in table design?</string>
 	<string name="showtype">Show field datatype in table design?</string>
 	<string name="style">Style</string>
-	
+
 	<!-- keys -->
 	<string name="tablekeys">Keys</string>
 	<string name="keyslistlabel">Keys in table "%s"</string>
@@ -67,7 +67,7 @@
 	<string name="keyedit">Edit key</string>
 	<string name="keyadd">Add key</string>
 	<string name="keyremove">Remove key</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Save / Load</string>
 	<string name="empty">Please paste XML data into the text area below and try again.</string>
@@ -98,9 +98,9 @@
 	<string name="http500">Internal Server Error</string>
 	<string name="http501">Not Implemented</string>
 	<string name="http503">Service Unavailable</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML error</string>
 	<string name="docs">Documentation</string>
-	
+
 </locale>

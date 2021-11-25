@@ -49,7 +49,7 @@
 	<string name="snap">Table snap distance</string>
 	<string name="optionsnapnotice">In pixels, 0 = disable snapping</string>
 	<string name="pattern">طريقة تنسيق أسماء المفاتيح الخارجية</string>
-	<string name="optionpatternnotice">%T = الجدول الرئيسي, %R = المفتاح الرئيسي, %t = الجدول الخارجي</string>
+	<string name="optionpatternnotice">%S = الجدول الرئيسي على المفرد,  %T = الجدول الرئيسي, %R = المفتاح الرئيسي, %t = الجدول الخارجي</string>
 	<string name="hide">إخفاء الخطوط عند تحريك الجدول؟</string>
 	<string name="vector">رسم خطوط ناعمة (إذا كان المتصفح يدعم ذلك) ؟</string>
 	<string name="style">قلم المدقة</string>
