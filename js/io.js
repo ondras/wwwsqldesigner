@@ -372,8 +372,9 @@ SQL.IO.prototype.dropboxlist = function() {
 SQL.IO.prototype.clientsql = function() {
 	var bp = this.owner.getOption("staticpath");
 	var path = bp + "db/"+window.DATATYPES.getAttribute("db")+"/output.xsl";
+	var h = this.owner.getXhrHeaders();
 	this.owner.window.showThrobber();
-	OZ.Request(path, this.finish.bind(this), {xml:true});
+	OZ.Request(path, this.finish.bind(this), {xml:true, headers:h});
 }
 
 SQL.IO.prototype.finish = function(xslDoc) {
@@ -409,7 +410,8 @@ SQL.IO.prototype.serversave = function(e, keyword) {
 	var xml = this.owner.toXML();
 	var bp = this.owner.getOption("xhrpath");
 	var url = bp + "backend/"+this.dom.backend.value+"/?action=save&keyword="+encodeURIComponent(name);
-	var h = {"Content-type":"application/xml"};
+	var h = this.owner.getXhrHeaders();
+	h["Content-type"] = "application/xml";
 	this.owner.window.showThrobber();
 	this.owner.setTitle(name);
 	OZ.Request(url, this.saveresponse, {xml:true, method:"post", data:xml, headers:h});
@@ -425,16 +427,18 @@ SQL.IO.prototype.serverload = function(e, keyword) {
 	this._name = name;
 	var bp = this.owner.getOption("xhrpath");
 	var url = bp + "backend/"+this.dom.backend.value+"/?action=load&keyword="+encodeURIComponent(name);
+	var h = this.owner.getXhrHeaders();
 	this.owner.window.showThrobber();
 	this.name = name;
-	OZ.Request(url, this.loadresponse, {xml:true});
+	OZ.Request(url, this.loadresponse, {xml:true, headers:h});
 }
 
 SQL.IO.prototype.serverlist = function(e) {
 	var bp = this.owner.getOption("xhrpath");
 	var url = bp + "backend/"+this.dom.backend.value+"/?action=list";
+	var h = this.owner.getXhrHeaders();
 	this.owner.window.showThrobber();
-	OZ.Request(url, this.listresponse);
+	OZ.Request(url, this.listresponse, {headers:h});
 }
 
 SQL.IO.prototype.serverimport = function(e) {
@@ -442,8 +446,9 @@ SQL.IO.prototype.serverimport = function(e) {
 	if (!name) { return; }
 	var bp = this.owner.getOption("xhrpath");
 	var url = bp + "backend/"+this.dom.backend.value+"/?action=import&database="+name;
+	var h = this.owner.getXhrHeaders();
 	this.owner.window.showThrobber();
-	OZ.Request(url, this.importresponse, {xml:true});
+	OZ.Request(url, this.importresponse, {xml:true, headers:h});
 }
 
 SQL.IO.prototype.check = function(code) {

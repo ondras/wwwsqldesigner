@@ -1,6 +1,7 @@
 SQL.Designer = function() {
 	SQL.Designer = this;
 	
+	this.xhrheaders = {};
 	this.tables = [];
 	this.relations = [];
 	this.title = document.title;
@@ -209,6 +210,14 @@ SQL.Designer.prototype.setOption = function(name, value) {
 	obj[name] = value;
 	this.setCookie(obj);
 }
+
+SQL.Designer.prototype.getXhrHeaders = function (value) {
+	return this.xhrheaders;
+};
+
+SQL.Designer.prototype.setXhrHeaders = function (value) {
+	this.xhrheaders = value;
+};
 
 SQL.Designer.prototype.raise = function(table) { /* raise a table */
 	var old = table.getZ();
