@@ -24,7 +24,7 @@ If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/web
 ## Docker Installation:
 
 1. Build `docker build -t wwwsqldesigner .`
-2. Run   `docker run -d -p 8080:80 wwwsqldesigner`
+2. Run   `docker run -d -p 8080:8080 wwwsqldesigner`
 3. Visit http://127.0.0.1:8080
 
 # News
