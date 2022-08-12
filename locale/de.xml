@@ -12,7 +12,7 @@
 	<string name="addpending">Tabelle platzieren</string>
 	<string name="tablenamelabel">Name</string>
 	<string name="tablecommentlabel">Kommentar</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Feld hinzufügen</string>
 	<string name="editrow">Feld bearbeiten</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Kommentar bearbeiten</string>
 	<string name="commenttext">Kommentar zu diesem Feld eintragen:</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Abbrechen</string>
@@ -50,13 +50,13 @@
 	<string name="snap">Tabellen Ausrichtungsabstand</string>
 	<string name="optionsnapnotice">in Pixel, 0 = einrasten deaktivieren</string>
 	<string name="pattern">Format für die Namen der Fremdschlüssel</string>
-	<string name="optionpatternnotice">%T = Primärtabelle, %R = Primärschlüssel, %t = Fremdtabelle</string>
+	<string name="optionpatternnotice">%S = Primärtabelle im Singular,  %T = Primärtabelle, %R = Primärschlüssel, %t = Fremdtabelle</string>
 	<string name="hide">Verstecke Verbindungslinien beim Bewegen von Tabellen?</string>
 	<string name="vector">Zeichne gekrümmte Verbindungslinien (Browser-abhängig)?</string>
 	<string name="showsize">Zeige Feldgröße im Tabellendesign?</string>
 	<string name="showtype">Zeige Felddatentyp im Tabellendesign?</string>
 	<string name="style">Stil</string>
-	
+
 	<!-- keys -->
 	<string name="tablekeys">Schlüssel</string>
 	<string name="keyslistlabel">Schlüssel in Tabelle "%s"</string>
@@ -67,7 +67,7 @@
 	<string name="keyedit">Schlüssel bearbeiten</string>
 	<string name="keyadd">Schlüssel hinzufügen</string>
 	<string name="keyremove">Schlüssel entfernen</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Speichern / Laden</string>
 	<string name="empty">Bitte fügen Sie die XML-Daten in das untere Textfeld ein und versuchen Sie es erneut.</string>
@@ -98,9 +98,9 @@
 	<string name="http500">Interner Server Fehler</string>
 	<string name="http501">Nicht implementiert</string>
 	<string name="http503">Dienst nicht erreichbar</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML Fehler</string>
 	<string name="docs">Dokumentation</string>
-	
+
 </locale>

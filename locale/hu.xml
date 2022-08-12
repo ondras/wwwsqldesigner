@@ -12,7 +12,7 @@
 	<string name="addpending">tábla elhelyezése</string>
 	<string name="tablenamelabel">Név</string>
 	<string name="tablecommentlabel">Megjegyzés</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Mező létrehozása</string>
 	<string name="editrow">Mező módosítása</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Automatikus növelés</string>
 	<string name="comment">Megjegyzés módosítása</string>
 	<string name="commenttext">Írjon megjegyzést ehhez a mezőhöz</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Mégsem</string>
@@ -50,12 +50,12 @@
 	<string name="snap">Táblák illesztési távolsága</string>
 	<string name="optionsnapnotice">Pixel-ben megadva, 0 = illesztés tiltása</string>
 	<string name="pattern">Idegen nevek sablonja</string>
-	<string name="optionpatternnotice">%T = elsődleges tábla, %R = elsődleges kulcs, %t = idegen tábla</string>
+	<string name="optionpatternnotice">%S = elsődleges táblázat egyes számon,  %T = elsődleges tábla, %R = elsődleges kulcs, %t = idegen tábla</string>
 	<string name="hide">Elrejtsem a kapcsolókat a rajztáblán?</string>
 	<string name="vector">Kapcsolók finom kirajzolása (ha a böngésző lehetővé teszi)?</string>
 	<string name="style">Stílus</string>
-	
-	
+
+
 	<!-- keys -->
 	<string name="tablekeys">Kulcsok</string>
 	<string name="keyslistlabel">Kulcsok a "%s" táblában</string>
@@ -66,7 +66,7 @@
 	<string name="keyedit">Kulcs módosítása</string>
 	<string name="keyadd">Kulcs létrehozása</string>
 	<string name="keyremove">Kulcs törlése</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Mentés / Beolvasás</string>
 	<string name="empty">Kérem illessze be az XML-tartalmat az alábbi szöveges mezőbe, és próbálja újra.</string>
@@ -90,9 +90,9 @@
 	<string name="http500">Belső szerver hiba</string>
 	<string name="http501">Nem lett végrehajtva</string>
 	<string name="http503">Szolgáltatás nem elérhető</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML hiba</string>
 	<string name="docs">Dokumentáció</string>
-	
+
 </locale>

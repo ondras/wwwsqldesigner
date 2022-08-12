@@ -12,7 +12,7 @@
 	<string name="addpending">Placera tabell</string>
 	<string name="tablenamelabel">Namn</string>
 	<string name="tablecommentlabel">Kommentar</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Lägg till fält</string>
 	<string name="editrow">Redigera fält</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Redigera kommentar</string>
 	<string name="commenttext">Ange kommentar för detta fält</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Avbryt</string>
@@ -50,11 +50,11 @@
 	<string name="snap">Tabellers fästavstånd</string>
 	<string name="optionsnapnotice">Ange pixlar, 0 = stäng av fästning</string>
 	<string name="pattern">Mönster för främmande namn</string>
-	<string name="optionpatternnotice">%T = primär tabell, %R = primär nycke, %t = främmande tabell</string>
+	<string name="optionpatternnotice">%S = primärtabell på singularis,  %T = primär tabell, %R = primär nycke, %t = främmande tabell</string>
 	<string name="hide">Dölj anslutningar när du drar i tabellen?</string>
 	<string name="vector">Rita mjuka anslutningar (om din webbläsare stöder det)?</string>
-	<string name="style">Stil</string>	
-	
+	<string name="style">Stil</string>
+
 	<!-- keys -->
 	<string name="tablekeys">Nycklar</string>
 	<string name="keyslistlabel">Nycklar i tabellen "%s"</string>
@@ -65,7 +65,7 @@
 	<string name="keyedit">Edit nyckel</string>
 	<string name="keyadd">Add key</string>
 	<string name="keyremove">Ta bort key</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Spara / Ladda</string>
 	<string name="empty">Vänligen klistra in XML i textrutan nedan och försök igen.</string>
@@ -89,9 +89,9 @@
 	<string name="http500">Intert serverfel</string>
 	<string name="http501">Ej implementerat</string>
 	<string name="http503">Service Unavailable</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML error</string>
 	<string name="docs">Dokumentation</string>
-	
+
 </locale>

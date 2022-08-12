@@ -50,7 +50,7 @@
 	<string name="snap">Шаг при перемещении таблицы</string>
 	<string name="optionsnapnotice">В пикселях, 0 = отключить</string>
 	<string name="pattern">Шаблон для имён внешних ключей</string>
-	<string name="optionpatternnotice">%T = первичная таблица, %R = первичный ключ, %t = внешняя таблица</string>
+	<string name="optionpatternnotice">%S = основная таблица в единственном числе,  %T = первичная таблица, %R = первичный ключ, %t = внешняя таблица</string>
 	<string name="hide">Прятать связи при перетаскивании таблиц?</string>
 	<string name="vector">Рисовать сглаженные связи (если поддерживается браузером)?</string>
 	<string name="showsize">Показывать размеры полей таблиц?</string>

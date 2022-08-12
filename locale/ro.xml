@@ -12,7 +12,7 @@
 	<string name="addpending">plaseaza tabela</string>
 	<string name="tablenamelabel">Nume</string>
 	<string name="tablecommentlabel">Comentariu</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Adauga coloana</string>
 	<string name="editrow">Editeaza coloana</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Auto increment</string>
 	<string name="comment">Editare comentariu</string>
 	<string name="commenttext">Introduceti comentariul pentru aceasta coloana:</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Anuleaza</string>
@@ -50,12 +50,12 @@
 	<string name="snap">Distanta automata intre tabele</string>
 	<string name="optionsnapnotice">In pixeli, 0 = dezactiveaza asezarea automata</string>
 	<string name="pattern">Modelul pentru nume de Foreign Keys</string>
-	<string name="optionpatternnotice">%T = Tabela primara, %R = Primary key, %t = Tabela cu Foreign key</string>
+	<string name="optionpatternnotice">%S = Tabelul primar pe singular,  %T = Tabela primara, %R = Primary key, %t = Tabela cu Foreign key</string>
 	<string name="hide">Ascunde conexiunile la mutarea tabelei?</string>
 	<string name="vector">Deseneaza folosind "smooth connectors" (daca browserul suporta)?</string>
 	<string name="style">Stil</string>
-	
-	
+
+
 	<!-- keys -->
 	<string name="tablekeys">Keys / Indexes</string>
 	<string name="keyslistlabel">Keys / Indexes in tabela "%s"</string>
@@ -66,7 +66,7 @@
 	<string name="keyedit">Editeaza</string>
 	<string name="keyadd">Adauga</string>
 	<string name="keyremove">Sterge</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Salveaza / Incarca</string>
 	<string name="empty">Introduceti codul XML si re-incercati.</string>
@@ -90,9 +90,9 @@
 	<string name="http500">Internal Server Error</string>
 	<string name="http501">Not Implemented</string>
 	<string name="http503">Service Unavailable</string>
-	
+
 	<!-- diverse -->
 	<string name="xmlerror">Eroare XML</string>
 	<string name="docs">Documentatie</string>
-	
+
 </locale>

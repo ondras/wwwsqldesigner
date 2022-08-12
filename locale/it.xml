@@ -12,7 +12,7 @@
 	<string name="addpending">posiziona la tabella</string>
 	<string name="tablenamelabel">Nome</string>
 	<string name="tablecommentlabel">Oggetto</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Aggiungi campo</string>
 	<string name="editrow">Modifica campo</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Autoincremento</string>
 	<string name="comment">Modifica commento</string>
 	<string name="commenttext">Inserisci commento per questo campo</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">Conferma</string>
 	<string name="windowcancel">Annulla</string>
@@ -50,13 +50,13 @@
 	<string name="snap">Griglia magnetica</string>
 	<string name="optionsnapnotice">In pixel, 0 = magnetismo disabilitato</string>
 	<string name="pattern">Modello per le chiavi esterne</string>
-	<string name="optionpatternnotice">%T = tabella principale, %R = chiave primaria, %t = tabella secondaria</string>
+	<string name="optionpatternnotice">%S = tavolo principale al singolare,  %T = tabella principale, %R = chiave primaria, %t = tabella secondaria</string>
 	<string name="hide">Nascondi i connettori durante il trascinamento?</string>
 	<string name="vector">Disegna connettori arrotondati (se supportato dal browser)?</string>
-	<string name="showsize">Show field size in table design?</string>	
+	<string name="showsize">Show field size in table design?</string>
 	<string name="showtype">Show field datatype in table design?</string>
 	<string name="style">Stile</string>
-	
+
 	<!-- keys -->
 	<string name="tablekeys">Chiavi</string>
 	<string name="keyslistlabel">Chiavi nella tabella "%s"</string>
@@ -67,7 +67,7 @@
 	<string name="keyedit">Modifica chiave</string>
 	<string name="keyadd">Aggiungi chiave</string>
 	<string name="keyremove">Rimuovi chiave</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Salva / Carica</string>
 	<string name="empty">Reincolla i dati XML nell'area sottostante e prova di nuovo.</string>
@@ -92,9 +92,9 @@
 	<string name="http500">Errore interno del server</string>
 	<string name="http501">Non implementato</string>
 	<string name="http503">Servizio non disponibile</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">Errore XML</string>
 	<string name="docs">Documentazione</string>
-	
+
 </locale>

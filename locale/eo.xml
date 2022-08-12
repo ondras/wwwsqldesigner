@@ -12,7 +12,7 @@
 	<string name="addpending">pozicii la tabelon</string>
 	<string name="tablenamelabel">Nomo</string>
 	<string name="tablecommentlabel">Komento</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Aldoni kampon</string>
 	<string name="editrow">Modifi la kampon</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Memalkremento</string>
 	<string name="comment">Modifi la komenton</string>
 	<string name="commenttext">Entajpi komenton por tiu kampo</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">Jes</string>
 	<string name="windowcancel">Rezigni</string>
@@ -50,13 +50,13 @@
 	<string name="snap">Kapto-distanco de tabelo</string>
 	<string name="optionsnapnotice">En rastrumeroj, 0 = malebligi kapton</string>
 	<string name="pattern">Motivo por fremdaj nomoj</string>
-	<string name="optionpatternnotice">%T = ĉefa tabelo, %R = ĉefa ŝlosilo, %t = fremda tabelo</string>
+	<string name="optionpatternnotice">%S = ĉefa tablo sur singularo,  %T = ĉefa tabelo, %R = ĉefa ŝlosilo, %t = fremda tabelo</string>
 	<string name="hide">Ĉu kaŝi konektiloj dum treno de tabelo?</string>
 	<string name="vector">Desegni glatajn konektilojn (se subtenata de retumilo)?</string>
-	<string name="showsize">Show field size in table design?</string>	
+	<string name="showsize">Show field size in table design?</string>
 	<string name="showtype">Show field datatype in table design?</string>
 	<string name="style">Stilo</string>
-	
+
 	<!-- keys -->
 	<string name="tablekeys">Klavoj</string>
 	<string name="keyslistlabel">Ŝlosiloj en la tabelo "%s"</string>
@@ -67,7 +67,7 @@
 	<string name="keyedit">Modifi ŝlosilon</string>
 	<string name="keyadd">Aldoni ŝlosilon</string>
 	<string name="keyremove">Forigi ŝlosilon</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Konservi / Ŝargi</string>
 	<string name="empty">Bonvolu alglui XML datumon en la tekst-zono sube kaj provi de nove.</string>
@@ -92,9 +92,9 @@
 	<string name="http500">Interna Servilo Eraro</string>
 	<string name="http501">Ne funkciigata</string>
 	<string name="http503">Servo Nedisponebla</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML-eraro</string>
 	<string name="docs">Dokumentaro</string>
-	
+
 </locale>

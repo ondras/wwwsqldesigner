@@ -12,7 +12,7 @@
 	<string name="addpending">Tablo Yerleşim Yeri</string>
 	<string name="tablenamelabel">Adı</string>
 	<string name="tablecommentlabel">Açıklama</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Alan Ekle</string>
 	<string name="editrow">Alan Düzenle</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Yorumu düzenle</string>
 	<string name="commenttext">Bu alan için yorum girin</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">Tamam</string>
 	<string name="windowcancel">İptal</string>
@@ -50,13 +50,13 @@
 	<string name="snap">Table snap distance</string>
 	<string name="optionsnapnotice">In pixels, 0 = disable snapping</string>
 	<string name="pattern">Pattern for foreign names</string>
-	<string name="optionpatternnotice">%T = primary table, %R = primary key, %t = foreign table</string>
+	<string name="optionpatternnotice">%S = tekil birincil tablo,  %T = primary table, %R = primary key, %t = foreign table</string>
 	<string name="hide">Tablo sürüklemesindeki bağlayıcıları gizle?</string>
 	<string name="vector">Draw smooth connectors (if supported by browser)?</string>
 	<string name="showsize">Tablo tasarımında alan boyutunu gösterme?</string>
 	<string name="showtype">Alan veri tipini tablo tasarımında göster?</string>
 	<string name="style">Stil</string>
-	
+
 	<!-- keys -->
 	<string name="tablekeys">Anahtarlar</string>
 	<string name="keyslistlabel">Tablodaki tuşlar "%s"</string>
@@ -67,7 +67,7 @@
 	<string name="keyedit">Anahtar Düzenle</string>
 	<string name="keyadd">Anahtar Ekle</string>
 	<string name="keyremove">Anahtar Sil</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Kaydet / Yükle</string>
 	<string name="empty">Lütfen XML verilerini aşağıdaki metin alanına yapıştırın ve tekrar deneyin.</string>
@@ -98,9 +98,9 @@
 	<string name="http500">İç Sunucu Hatası</string>
 	<string name="http501">Uygulanmadı</string>
 	<string name="http503">Hizmet Kullanılamıyor</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML hatası</string>
 	<string name="docs">Belgeleme</string>
-	
+
 </locale>

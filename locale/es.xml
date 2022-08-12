@@ -50,11 +50,11 @@
 	<string name="snap">Distancia de ajuste de tablas</string>
 	<string name="optionsnapnotice">En píxeles, 0 = deshabilitar ajuste</string>
 	<string name="pattern">Patrón para nombres de clave foránea</string>
-	<string name="optionpatternnotice">%T = tabla primaria, %R = clave primaria, %t = tabla foránea</string>
+	<string name="optionpatternnotice">%S = tabla primaria en singular,  %T = tabla primaria, %R = clave primaria, %t = tabla foránea</string>
 	<string name="hide">¿Ocultar conectores de tablas al arrastrar?</string>
 	<string name="vector">¿Dibujar conectores suaves (si son soportados por el navegador)?</string>
 	<string name="showsize">¿Mostrar tamaño del campo en el diseño de tabla?</string>
-	<string name="showtype">¿Mostrar tipo de dato del campo en el diseño de tabla?</string>	
+	<string name="showtype">¿Mostrar tipo de dato del campo en el diseño de tabla?</string>
 	<string name="style">Estilo</string>
 
 	<!-- keys -->
@@ -98,9 +98,9 @@
 	<string name="http500">Error Interno del Servidor</string>
 	<string name="http501">No Implementado</string>
 	<string name="http503">Servicio No Disponible</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">Error XML</string>
 	<string name="docs">Documentación</string>
-	
+
 </locale>

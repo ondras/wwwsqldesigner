@@ -12,7 +12,7 @@
 	<string name="addpending">τοποθέτηση πίνακα</string>
 	<string name="tablenamelabel">Όνομα</string>
 	<string name="tablecommentlabel">Σχόλιο</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">Προσθήκη πεδίου</string>
 	<string name="editrow">Επεξεργασία πεδίου</string>
@@ -38,7 +38,7 @@
 	<string name="ai">Autoincrement</string>
 	<string name="comment">Επεξεργασία σχολίου</string>
 	<string name="commenttext">Σχολιάστε γι' αυτό το πεδίο</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">Άκυρο</string>
@@ -50,12 +50,12 @@
 	<string name="snap">Απόσταση πινάκων</string>
 	<string name="optionsnapnotice">Σε pixels, 0 = απενεργοποίηση απόστασης</string>
 	<string name="pattern">Πρότυπο για ξένα κλειδιά</string>
-	<string name="optionpatternnotice">%T = πρωτεύων πίνακας, %R = προτεύον κλειδί, %t = ξένος πίνακας</string>
+	<string name="optionpatternnotice">%S = πρωτεύων πίνακας σε ενικό,  %T = πρωτεύων πίνακας, %R = προτεύον κλειδί, %t = ξένος πίνακας</string>
 	<string name="hide">Απόκρυψη συνδέσμων όταν σύρονται οι πίνακες;</string>
 	<string name="vector">Διάγραμμα με ομαλούς συνδέσμους(αν παρέχεται από τον περιηγητή);</string>
 	<string name="style">Στυλ</string>
-	
-	
+
+
 	<!-- keys -->
 	<string name="tablekeys">Κλειδιά</string>
 	<string name="keyslistlabel">Κλειδιά στον πίνακα "%s"</string>
@@ -66,7 +66,7 @@
 	<string name="keyedit">Επεξεργασία κλειδιού</string>
 	<string name="keyadd">Προσθήκη κλειδιού</string>
 	<string name="keyremove">Διαγραφή κλειδιού</string>
-	
+
 	<!-- io -->
 	<string name="saveload">Αποθήκ./Άνοιγμα</string>
 	<string name="empty">Κάντε επικόλληση των δεδομένων XML στο πεδίο κειμένου παρακάτω και δοκιμάστε ξανά.</string>
@@ -90,9 +90,9 @@
 	<string name="http500">Εσωτερικό σφάλμα διακομιστή</string>
 	<string name="http501">Χωρίς σχεδίαση</string>
 	<string name="http503">Μη-διαθέσιμη Παροχή</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">Σφάλμα XML</string>
 	<string name="docs">Οδηγίες</string>
-	
+
 </locale>

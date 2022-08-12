@@ -5,6 +5,7 @@
 	See license.txt for licencing information.
 -->
 <html>
+
 <head>
 	<title>WWW SQL Designer</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1" />
@@ -16,6 +17,7 @@
 	<link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
 
+	<script src="js/pluralize.js"></script>
 	<script src="js/oz.js"></script>
 	<script src="js/config.js"></script>
 	<script src="js/globals.js"></script>
@@ -44,7 +46,7 @@
 			<div id="toggle"></div>
 			<input type="button" id="saveload" />
 
-			<hr/>
+			<hr />
 
 			<input type="button" id="addtable" />
 			<input type="button" id="edittable" />
@@ -52,37 +54,38 @@
 			<input type="button" id="removetable" />
 			<input type="button" id="aligntables" />
 			<input type="button" id="cleartables" />
-		
-			<hr/>
-		
+
+			<hr />
+
 			<input type="button" id="addrow" />
 			<input type="button" id="editrow" />
-			<input type="button" id="uprow" class="small" /><input type="button" id="downrow" class="small"/>
+			<input type="button" id="uprow" class="small" /><input type="button" id="downrow" class="small" />
 			<input type="button" id="foreigncreate" />
 			<input type="button" id="foreignconnect" />
 			<input type="button" id="foreigndisconnect" />
 			<input type="button" id="removerow" />
-		
-			<hr/>
-		
+
+			<hr />
+
 			<input type="button" id="options" />
-			<a href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank"><input type="button" id="docs" value="" /></a>
+			<a href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank"><input type="button" id="docs"
+					value="" /></a>
 		</div>
-	
+
 		<div id="rubberband"></div>
 
 		<div id="minimap"></div>
-	
+
 		<div id="background"></div>
-	
+
 		<div id="window">
-			<div id="windowtitle"><img id="throbber" src="images/throbber.gif" alt="" title=""/></div>
+			<div id="windowtitle"><img id="throbber" src="images/throbber.gif" alt="" title="" /></div>
 			<div id="windowcontent"></div>
 			<input type="button" id="windowok" />
 			<input type="button" id="windowcancel" />
 		</div>
 	</div> <!-- #controls -->
-	
+
 	<div id="opts">
 		<table>
 			<tbody>
@@ -91,20 +94,24 @@
 						* <label id="language" for="optionlocale"></label>
 					</td>
 					<td>
-						<select id="optionlocale"><option></option></select>
+						<select id="optionlocale">
+							<option></option>
+						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						* <label id="db" for="optiondb"></label> 
+						* <label id="db" for="optiondb"></label>
 					</td>
 					<td>
-						<select id="optiondb"><option></option></select>
+						<select id="optiondb">
+							<option></option>
+						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label id="snap" for="optionsnap"></label> 
+						<label id="snap" for="optionsnap"></label>
 					</td>
 					<td>
 						<input type="text" size="4" id="optionsnap" />
@@ -113,7 +120,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label id="pattern" for="optionpattern"></label> 
+						<label id="pattern" for="optionpattern"></label>
 					</td>
 					<td>
 						<input type="text" size="6" id="optionpattern" />
@@ -125,12 +132,14 @@
 						* <label id="style" for="optionstyle"></label>
 					</td>
 					<td>
-						<select id="optionstyle"><option></option></select>
+						<select id="optionstyle">
+							<option></option>
+						</select>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label id="hide" for="optionhide"></label> 
+						<label id="hide" for="optionhide"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionhide" />
@@ -138,7 +147,7 @@
 				</tr>
 				<tr>
 					<td>
-						* <label id="vector" for="optionvector"></label> 
+						* <label id="vector" for="optionvector"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionvector" />
@@ -146,7 +155,7 @@
 				</tr>
 				<tr>
 					<td>
-						* <label id="showsize" for="optionshowsize"></label> 
+						* <label id="showsize" for="optionshowsize"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionshowsize" />
@@ -154,7 +163,7 @@
 				</tr>
 				<tr>
 					<td>
-						* <label id="showtype" for="optionshowtype"></label> 
+						* <label id="showtype" for="optionshowtype"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionshowtype" />
@@ -167,7 +176,7 @@
 
 		* <span class="small" id="optionsnotice"></span>
 	</div>
-	
+
 	<div id="io">
 		<table>
 			<tbody>
@@ -176,33 +185,35 @@
 						<fieldset>
 							<legend id="client"></legend>
 							<div id="singlerow">
-							<input type="button" id="clientsave" /> 
-							<input type="button" id="clientload" />
+								<input type="button" id="clientsave" />
+								<input type="button" id="clientload" />
 							</div>
 							<div id="singlerow">
-							<input type="button" id="clientlocalsave" />
-							<input type="button" id="clientlocalload" />
-							<input type="button" id="clientlocallist" />
+								<input type="button" id="clientlocalsave" />
+								<input type="button" id="clientlocalload" />
+								<input type="button" id="clientlocallist" />
 							</div>
 							<div id="singlerow">
 								<input type="button" id="dropboxsave" /><!-- may get hidden by dropBoxInit() -->
 								<input type="button" id="dropboxload" /><!-- may get hidden by dropBoxInit() -->
 								<input type="button" id="dropboxlist" /><!-- may get hidden by dropBoxInit() -->
 							</div>
-							<hr/>
+							<hr />
 							<input type="button" id="clientsql" />
 						</fieldset>
 					</td>
 					<td style="width:40%">
 						<fieldset>
 							<legend id="server"></legend>
-							<label for="backend" id="backendlabel"></label> <select id="backend"><option></option></select>
-							<hr/>
-							<input type="button" id="serversave" /> 
-							<input type="button" id="quicksave" /> 
-							<input type="button" id="serverload" /> 
-							<input type="button" id="serverlist" /> 
-							<input type="button" id="serverimport" /> 
+							<label for="backend" id="backendlabel"></label> <select id="backend">
+								<option></option>
+							</select>
+							<hr />
+							<input type="button" id="serversave" />
+							<input type="button" id="quicksave" />
+							<input type="button" id="serverload" />
+							<input type="button" id="serverlist" />
+							<input type="button" id="serverimport" />
 						</fieldset>
 					</td>
 				</tr>
@@ -210,18 +221,21 @@
 					<td colspan="2">
 						<fieldset>
 							<legend id="output"></legend>
-							<textarea id="textarea" rows="1" cols="1"></textarea><!--modified by javascript later-->
+							<textarea id="textarea" rows="1" cols="1"></textarea>
+							<!--modified by javascript later-->
 						</fieldset>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	
+
 	<div id="keys">
 		<fieldset>
-			<legend id="keyslistlabel"></legend> 
-			<select id="keyslist"><option></option></select>
+			<legend id="keyslistlabel"></legend>
+			<select id="keyslist">
+				<option></option>
+			</select>
 			<input type="button" id="keyadd" />
 			<input type="button" id="keyremove" />
 		</fieldset>
@@ -232,7 +246,9 @@
 					<tr>
 						<td>
 							<label for="keytype" id="keytypelabel"></label>
-							<select id="keytype"><option></option></select>
+							<select id="keytype">
+								<option></option>
+							</select>
 						</td>
 						<td></td>
 						<td>
@@ -241,27 +257,33 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="3"><hr/></td>
+						<td colspan="3">
+							<hr />
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<label for="keyfields" id="keyfieldslabel"></label><br/>
-							<select id="keyfields" size="5" multiple="multiple"><option></option></select>
+							<label for="keyfields" id="keyfieldslabel"></label><br />
+							<select id="keyfields" size="5" multiple="multiple">
+								<option></option>
+							</select>
 						</td>
 						<td>
-							<input type="button" id="keyleft" value="&lt;&lt;" /><br/>
-							<input type="button" id="keyright" value="&gt;&gt;" /><br/>
+							<input type="button" id="keyleft" value="&lt;&lt;" /><br />
+							<input type="button" id="keyright" value="&gt;&gt;" /><br />
 						</td>
 						<td>
-							<label for="keyavail" id="keyavaillabel"></label><br/>
-							<select id="keyavail" size="5" multiple="multiple"><option></option></select>
+							<label for="keyavail" id="keyavaillabel"></label><br />
+							<select id="keyavail" size="5" multiple="multiple">
+								<option></option>
+							</select>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</fieldset>
 	</div>
-	
+
 	<div id="table">
 		<table>
 			<tbody>
@@ -275,7 +297,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label id="tablecommentlabel" for="tablecomment"></label> 
+						<label id="tablecommentlabel" for="tablecomment"></label>
 					</td>
 					<td>
 						<textarea rows="5" cols="40" id="tablecomment"></textarea>
@@ -284,11 +306,12 @@
 			</tbody>
 		</table>
 	</div>
-	
+
 	<script type="text/javascript">
 		var d = new SQL.Designer();
 		// d.setXhrHeaders({"Authorization": "Bearer xxx"});
 		// d.setXhrHeaders({"X-CSRF-TOKEN": "xxx"});
 	</script>
 </body>
+
 </html>

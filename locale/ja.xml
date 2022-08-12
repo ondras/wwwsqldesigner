@@ -11,7 +11,7 @@
 	<string name="addpending">テーブルを配置</string>
 	<string name="tablenamelabel">テーブル名</string>
 	<string name="tablecommentlabel">コメント</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">列を追加</string>
 	<string name="editrow">列を編集</string>
@@ -37,7 +37,7 @@
 	<string name="ai">自動採番</string>
 	<string name="comment">コメントを編集</string>
 	<string name="commenttext">列のコメントを入力</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">OK</string>
 	<string name="windowcancel">キャンセル</string>
@@ -49,7 +49,7 @@
 	<string name="snap">テーブルのスナップ単位</string>
 	<string name="optionsnapnotice">ピクセル（0 = スナップ無効）</string>
 	<string name="pattern">外部キーの命名規則</string>
-	<string name="optionpatternnotice">%T = 親テーブル, %R = プライマリーキー, %t = 子テーブル</string>
+	<string name="optionpatternnotice">%S = 単数の親テーブル,  %T = 親テーブル, %R = プライマリーキー, %t = 子テーブル</string>
 	<string name="hide">テーブルをドラッグ中は線を隠す</string>
 	<string name="vector">滑らかな線を使う（要ブラウザのサポート）</string>
 	<string name="showsize">フィールドサイズを表示</string>
@@ -66,7 +66,7 @@
 	<string name="keyedit">キーを編集</string>
 	<string name="keyadd">キーを追加</string>
 	<string name="keyremove">キーを削除</string>
-	
+
 	<!-- io -->
 	<string name="saveload">保存／読み込み</string>
 	<string name="empty">下の入出力欄にXMLデータを貼りつけてから実行してください。</string>
@@ -94,9 +94,9 @@
 	<string name="http500">Internal Server Error</string>
 	<string name="http501">Not Implemented</string>
 	<string name="http503">Service Unavailable</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XMLエラー</string>
 	<string name="docs">ドキュメント</string>
-	
+
 </locale>

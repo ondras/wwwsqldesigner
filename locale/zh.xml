@@ -11,7 +11,7 @@
 	<string name="addpending">放置表格……</string>
 	<string name="tablenamelabel">表名</string>
 	<string name="tablecommentlabel">注释</string>
-	
+
 	<!-- row management -->
 	<string name="addrow">添加列</string>
 	<string name="editrow">修改列</string>
@@ -37,7 +37,7 @@
 	<string name="ai">自增长</string>
 	<string name="comment">改备注</string>
 	<string name="commenttext">输入此列备注</string>
-	
+
 	<!-- windows & options -->
 	<string name="windowok">搞定</string>
 	<string name="windowcancel">不要了</string>
@@ -49,13 +49,13 @@
 	<string name="snap">表格捕捉距离</string>
 	<string name="optionsnapnotice">像素, 0 = 关闭捕捉</string>
 	<string name="pattern">外连名称规则</string>
-	<string name="optionpatternnotice">%T = 主表, %R = 主键, %t = 外连表</string>
+	<string name="optionpatternnotice">%S = 单数主表,  %T = 主表, %R = 主键, %t = 外连表</string>
 	<string name="hide">在表格移动时不显示连接?</string>
 	<string name="vector">绘制平滑的连接 (如果浏览器支持)?</string>
 	<string name="showsize">设计表格时显示字段大小?</string>
 	<string name="showtype">设计表格时显示字段数据类型?</string>
-	<string name="style">样式</string>	
-	
+	<string name="style">样式</string>
+
 	<!-- keys -->
 	<string name="tablekeys">设置表键</string>
 	<string name="keyslistlabel">在 "%s" 表中可用列属性</string>
@@ -66,7 +66,7 @@
 	<string name="keyedit">修改属性</string>
 	<string name="keyadd">添加属性</string>
 	<string name="keyremove">删除属性</string>
-	
+
 	<!-- io -->
     <string name="login">登录</string>
     <string name="logout">注销</string>
@@ -93,9 +93,9 @@
 	<string name="http500">网络服务错误</string>
 	<string name="http501">未执行</string>
 	<string name="http503">服务暂不可用</string>
-	
+
 	<!-- misc -->
 	<string name="xmlerror">XML 错误</string>
 	<string name="docs">文档</string>
-	
+
 </locale>
