@@ -9,7 +9,7 @@ SQL.IO = function(owner) {
 	var ids = ["saveload","clientlocalsave", "clientsave", "clientlocalload", "clientlocallist","clientload", "clientsql", 
 				"dropboxsave", "dropboxload", "dropboxlist",
 				"quicksave", "serversave", "serverload",
-				"serverlist", "serverimport"];
+				"serverlist", "serverimport", "exportsvg"];
 	for (var i=0;i<ids.length;i++) {
 		var id = ids[i];
 		var elm = OZ.$(id);
@@ -50,6 +50,7 @@ SQL.IO = function(owner) {
 	OZ.Event.add(this.dom.dropboxsave, "click", this.dropboxsave.bind(this));
 	OZ.Event.add(this.dom.dropboxlist, "click", this.dropboxlist.bind(this));
 	OZ.Event.add(this.dom.clientsql, "click", this.clientsql.bind(this));
+	OZ.Event.add(this.dom.exportsvg, "click", this.exportsvg.bind(this));
 	OZ.Event.add(this.dom.quicksave, "click", this.quicksave.bind(this));
 	OZ.Event.add(this.dom.serversave, "click", this.serversave.bind(this));
 	OZ.Event.add(this.dom.serverload, "click", this.serverload.bind(this));
@@ -375,6 +376,171 @@ SQL.IO.prototype.clientsql = function() {
 	var h = this.owner.getXhrHeaders();
 	this.owner.window.showThrobber();
 	OZ.Request(path, this.finish.bind(this), {xml:true, headers:h});
+}
+
+SQL.IO.prototype.getBoundingClientRect_relative_to_root = function(dom_elem) {
+	// This does not work properly when zooming or pinch-zooming.
+	// And, well, neither does the SQL.Relation.
+	// More testing is needed.
+	var box = dom_elem.getBoundingClientRect();
+	var ret = {
+		"left"  : box.x              + window.scrollX,
+		"right" : box.x + box.width  + window.scrollX,
+		"top"   : box.y              + window.scrollY,
+		"bottom": box.y + box.height + window.scrollY,
+		"width" : box.width,
+		"height": box.height,
+	};
+	return ret;
+}
+SQL.IO.prototype.createSVGRectFromDOMElement = function(dom_elem, opts) {
+	opts = opts || {};
+
+	var box = this.getBoundingClientRect_relative_to_root(dom_elem);
+	var rect = document.createElementNS(this.owner.svgNS, "rect");
+	rect.setAttribute("x", box.left);
+	rect.setAttribute("y", box.top);
+	rect.setAttribute("width", box.width);
+	rect.setAttribute("height", box.height);
+	rect.setAttribute("fill", opts["fill"] || window.getComputedStyle(dom_elem)["background-color"] || "none");
+	rect.setAttribute("stroke", opts["stroke"] || window.getComputedStyle(dom_elem)["border-top-color"] || "none");
+	rect.setAttribute("stroke-width", opts["stroke-width"] || "0");
+	return rect;
+}
+SQL.IO.prototype.createSVGTextFromDOMElement = function(dom_elem, opts) {
+	opts = opts || {};
+
+	var box = this.getBoundingClientRect_relative_to_root(dom_elem);
+	var text = document.createElementNS(this.owner.svgNS, "text");
+	text.textContent = dom_elem.textContent;
+	text.setAttribute("y", box.top + box.height / 2);
+	text.setAttribute("dominant-baseline", "central");
+	switch (opts["text-align"] || window.getComputedStyle(dom_elem)["text-align"] || "left") {
+		case "right":
+		case "end":
+			text.setAttribute("x", box.right);
+			text.setAttribute("text-anchor", "end");
+			break;
+		case "center":
+			text.setAttribute("x", box.left + (box.width / 2));
+			text.setAttribute("text-anchor", "middle");
+			break;
+		case "left":
+		case "justify":
+		case "start":
+		default:
+			text.setAttribute("x", box.left);
+			text.setAttribute("text-anchor", "start");
+			break;
+	}
+	text.setAttribute("font-family", opts["font-family"] || window.getComputedStyle(dom_elem)["font-family"] || "sans-serif");
+	text.setAttribute("font-size", opts["font-size"] || window.getComputedStyle(dom_elem)["font-size"] || "13");
+	text.setAttribute("font-weight", opts["font-weight"] || window.getComputedStyle(dom_elem)["font-weight"] || "normal");
+	text.setAttribute("font-style", opts["font-style"] || window.getComputedStyle(dom_elem)["font-style"] || "normal");
+	text.setAttribute("fill", opts["fill"] || window.getComputedStyle(dom_elem)["color"] || "#000");
+
+	return text;
+}
+SQL.IO.prototype.exportsvg = function() {
+	if (!this.owner.vector || !this.owner.dom.svg) {
+		alert("You have to enable 'Draw smooth connectors' and use a browser capable of SVG in order to export as SVG.");
+		return;
+	}
+
+	// Deselecting everything.
+	for (var i=0;i<this.owner.tables.length;i++) {
+		this.owner.tables[i].deselect(); 
+		for (var j=0;j<this.owner.tables[i].rows.length;j++) {
+			this.owner.tables[i].rows[j].deselect(); 
+		}
+	}
+
+	// Deep clone of document's SVG.
+	var svg = this.owner.dom.svg.cloneNode(true);
+	svg.setAttribute("xmlns", this.owner.svgNS);
+	svg.setAttribute("xmlns:svg", this.owner.svgNS);
+
+	var min_x = null;
+	var min_y = null;
+	var max_x = null;
+	var max_y = null;
+
+	for (var i=0;i<this.owner.tables.length;i++) {
+		var t = this.owner.tables[i];
+
+		var table_box = this.getBoundingClientRect_relative_to_root(t.dom.container);
+		if (min_x === null || table_box.left   < min_x) min_x = table_box.left;
+		if (min_y === null || table_box.top    < min_y) min_y = table_box.top;
+		if (max_x === null || table_box.right  > max_x) max_x = table_box.right;
+		if (max_y === null || table_box.bottom > max_y) max_y = table_box.bottom;
+
+		var gt = document.createElementNS(this.owner.svgNS, "g");
+		gt.classList.add("table");
+		gt.dataset.title = t.getTitle();
+		svg.appendChild(gt);
+
+		var border = this.createSVGRectFromDOMElement(t.dom.container, { "stroke-width": 2 });
+		gt.appendChild(border);
+
+		var title = this.createSVGTextFromDOMElement(t.dom.title);
+		gt.appendChild(title);
+
+		for (var j=0;j<t.rows.length;j++) {
+			var row = t.rows[j];
+
+			var gr = document.createElementNS(this.owner.svgNS, "g");
+			gr.classList.add("row");
+			gr.dataset.title = row.getTitle();
+			gr.dataset.typehint = row.getDataType().getAttribute("sql");
+			gr.dataset.typesize = row.data.size;
+			gr.dataset.null = (row.data.nll ? "1" : "0");
+			gr.dataset.autoincrement = (row.data.ai ? "1" : "0");
+			gt.appendChild(gr);
+
+			var rect = this.createSVGRectFromDOMElement(row.dom.container);
+			gr.appendChild(rect);
+			var title = this.createSVGTextFromDOMElement(row.dom.title);
+			title.classList.add("rowtitle");
+			gr.appendChild(title);
+			var typehint = this.createSVGTextFromDOMElement(row.dom.typehint);
+			title.classList.add("rowtypehint");
+			gr.appendChild(typehint);
+		}
+	}
+
+	// Overall SVG dimensions (fit to content).
+	if (min_x === null || min_y === null || max_x === null || max_y === null) {
+		min_x = 0;
+		min_y = 0;
+		max_x = 3000;
+		max_y = 3000;
+	} else {
+		min_x -= CONFIG.RELATION_SPACING;
+		min_y -= CONFIG.RELATION_SPACING;
+		max_x += CONFIG.RELATION_SPACING;
+		max_y += CONFIG.RELATION_SPACING;
+	}
+	var width = max_x - min_x;
+	var height = max_y - min_y;
+	svg.setAttribute("width", width);
+	svg.setAttribute("height", height);
+	svg.setAttribute("viewBox", min_x + " " + min_y + " " + width + " " + height);
+
+	var blob = new Blob([svg.outerHTML], {"type": "image/svg+xml"});
+
+	// Trick to cause a file download:
+	// https://stackoverflow.com/q/19327749
+	var a = document.createElement("a");
+	a.style.display = "none";
+	a.href = window.URL.createObjectURL(blob);
+	a.download = "wwwsqldesigner.svg";
+	document.body.appendChild(a);
+	a.click();
+	setTimeout(function() {
+		window.URL.revokeObjectURL(a.href);
+		document.body.removeChild(a);
+	}, 100);
+
 }
 
 SQL.IO.prototype.finish = function(xslDoc) {
