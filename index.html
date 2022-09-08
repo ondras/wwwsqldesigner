@@ -6,55 +6,50 @@
 -->
 <html>
 <head>
-	<title>WWW SQL Designer</title>
-	<meta name="viewport" content="initial-scale=1,maximum-scale=1" />
-	<meta charset="utf-8" />
-	<link rel="stylesheet" title="material-inspired" href="styles/material-inspired.css" media="all" />
-	<link rel="alternate stylesheet" title="original" href="styles/original.css" media="all" />
-	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="styles/ie6.css" /><![endif]-->
-	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="styles/ie7.css" /><![endif]-->
-	<link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
+<title>WWW SQL Designer</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1" />
+<meta charset="utf-8" />
+<link rel="stylesheet" title="material-inspired" href="styles/material-inspired.css" media="all" />
+<link rel="alternate stylesheet" title="original" href="styles/original.css" media="all" />
+<!--[if IE 6]><link rel="stylesheet" type="text/css" href="styles/ie6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="styles/ie7.css" /><![endif]-->
+<link rel="stylesheet" href="styles/print.css" type="text/css" media="print" />
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
 
-	<script src="js/oz.js"></script>
-	<script src="js/config.js"></script>
-	<script src="js/globals.js"></script>
-	<script src="js/visual.js"></script>
-	<script src="js/row.js"></script>
-	<script src="js/table.js"></script>
-	<script src="js/relation.js"></script>
-	<script src="js/key.js"></script>
-	<script src="js/rubberband.js"></script>
-	<script src="js/map.js"></script>
-	<script src="js/toggle.js"></script>
-	<script src="js/io.js"></script>
-	<script src="js/tablemanager.js"></script>
-	<script src="js/rowmanager.js"></script>
-	<script src="js/keymanager.js"></script>
-	<script src="js/window.js"></script>
-	<script src="js/options.js"></script>
-	<script src="js/wwwsqldesigner.js"></script>
+<script src="js/oz.js"></script>
+<script src="js/config.js"></script>
+<script src="js/globals.js"></script>
+<script src="js/visual.js"></script>
+<script src="js/row.js"></script>
+<script src="js/table.js"></script>
+<script src="js/relation.js"></script>
+<script src="js/key.js"></script>
+<script src="js/rubberband.js"></script>
+<script src="js/map.js"></script>
+<script src="js/toggle.js"></script>
+<script src="js/io.js"></script>
+<script src="js/tablemanager.js"></script>
+<script src="js/rowmanager.js"></script>
+<script src="js/keymanager.js"></script>
+<script src="js/window.js"></script>
+<script src="js/options.js"></script>
+<script src="js/wwwsqldesigner.js"></script>
 </head>
 
 <body>
 	<div id="area"></div>
-
 	<div id="controls">
 		<div id="bar">
 			<div id="toggle"></div>
 			<input type="button" id="saveload" />
-
 			<hr/>
-
 			<input type="button" id="addtable" />
 			<input type="button" id="edittable" />
 			<input type="button" id="tablekeys" />
 			<input type="button" id="removetable" />
 			<input type="button" id="aligntables" />
 			<input type="button" id="cleartables" />
-		
 			<hr/>
-		
 			<input type="button" id="addrow" />
 			<input type="button" id="editrow" />
 			<input type="button" id="uprow" class="small" /><input type="button" id="downrow" class="small"/>
@@ -62,27 +57,20 @@
 			<input type="button" id="foreignconnect" />
 			<input type="button" id="foreigndisconnect" />
 			<input type="button" id="removerow" />
-		
 			<hr/>
-		
 			<input type="button" id="options" />
 			<a href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank"><input type="button" id="docs" value="" /></a>
 		</div>
-	
 		<div id="rubberband"></div>
-
 		<div id="minimap"></div>
-	
 		<div id="background"></div>
-	
 		<div id="window">
-			<div id="windowtitle"><img id="throbber" src="images/throbber.gif" alt="" title=""/></div>
+			<div id="windowtitle"></div>
 			<div id="windowcontent"></div>
 			<input type="button" id="windowok" />
 			<input type="button" id="windowcancel" />
 		</div>
 	</div> <!-- #controls -->
-	
 	<div id="opts">
 		<table>
 			<tbody>
@@ -96,7 +84,7 @@
 				</tr>
 				<tr>
 					<td>
-						* <label id="db" for="optiondb"></label> 
+						* <label id="db" for="optiondb"></label>
 					</td>
 					<td>
 						<select id="optiondb"><option></option></select>
@@ -104,7 +92,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label id="snap" for="optionsnap"></label> 
+						<label id="snap" for="optionsnap"></label>
 					</td>
 					<td>
 						<input type="text" size="4" id="optionsnap" />
@@ -113,7 +101,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label id="pattern" for="optionpattern"></label> 
+						<label id="pattern" for="optionpattern"></label>
 					</td>
 					<td>
 						<input type="text" size="6" id="optionpattern" />
@@ -130,7 +118,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label id="hide" for="optionhide"></label> 
+						<label id="hide" for="optionhide"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionhide" />
@@ -138,7 +126,7 @@
 				</tr>
 				<tr>
 					<td>
-						* <label id="vector" for="optionvector"></label> 
+						* <label id="vector" for="optionvector"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionvector" />
@@ -146,7 +134,7 @@
 				</tr>
 				<tr>
 					<td>
-						* <label id="showsize" for="optionshowsize"></label> 
+						* <label id="showsize" for="optionshowsize"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionshowsize" />
@@ -154,7 +142,7 @@
 				</tr>
 				<tr>
 					<td>
-						* <label id="showtype" for="optionshowtype"></label> 
+						* <label id="showtype" for="optionshowtype"></label>
 					</td>
 					<td>
 						<input type="checkbox" id="optionshowtype" />
@@ -162,12 +150,9 @@
 				</tr>
 			</tbody>
 		</table>
-
 		<hr />
-
 		* <span class="small" id="optionsnotice"></span>
 	</div>
-	
 	<div id="io">
 		<table>
 			<tbody>
@@ -176,7 +161,7 @@
 						<fieldset>
 							<legend id="client"></legend>
 							<div id="singlerow">
-							<input type="button" id="clientsave" /> 
+							<input type="button" id="clientsave" />
 							<input type="button" id="clientload" />
 							</div>
 							<div id="singlerow">
@@ -198,11 +183,11 @@
 							<legend id="server"></legend>
 							<label for="backend" id="backendlabel"></label> <select id="backend"><option></option></select>
 							<hr/>
-							<input type="button" id="serversave" /> 
-							<input type="button" id="quicksave" /> 
-							<input type="button" id="serverload" /> 
-							<input type="button" id="serverlist" /> 
-							<input type="button" id="serverimport" /> 
+							<input type="button" id="serversave" />
+							<input type="button" id="quicksave" />
+							<input type="button" id="serverload" />
+							<input type="button" id="serverlist" />
+							<input type="button" id="serverimport" />
 						</fieldset>
 					</td>
 				</tr>
@@ -217,10 +202,9 @@
 			</tbody>
 		</table>
 	</div>
-	
 	<div id="keys">
 		<fieldset>
-			<legend id="keyslistlabel"></legend> 
+			<legend id="keyslistlabel"></legend>
 			<select id="keyslist"><option></option></select>
 			<input type="button" id="keyadd" />
 			<input type="button" id="keyremove" />
@@ -261,7 +245,6 @@
 			</table>
 		</fieldset>
 	</div>
-	
 	<div id="table">
 		<table>
 			<tbody>
@@ -275,7 +258,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label id="tablecommentlabel" for="tablecomment"></label> 
+						<label id="tablecommentlabel" for="tablecomment"></label>
 					</td>
 					<td>
 						<textarea rows="5" cols="40" id="tablecomment"></textarea>
@@ -284,7 +267,9 @@
 			</tbody>
 		</table>
 	</div>
-	
+	<div id="loading">
+		<img src="images/loading.gif" alt="" />
+	</div>
 	<script type="text/javascript">
 		var d = new SQL.Designer();
 		// d.setXhrHeaders({"Authorization": "Bearer xxx"});

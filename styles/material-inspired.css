@@ -152,7 +152,9 @@ label {
 	opacity: 0.7;
 }
 
-label, input, select {
+label,
+input,
+select {
 	vertical-align: middle;
 }
 
@@ -416,7 +418,8 @@ label, input, select {
 	overflow: hidden;
 }
 
-#tablename, #tablecomment {
+#tablename,
+#tablecomment {
 	margin-bottom: 10px;
 }
 
@@ -445,12 +448,29 @@ label, input, select {
 	color: #FF4081;
 }
 
-#windowok, #windowcancel {
+#windowok,
+#windowcancel {
 	float: right;
 }
 
-#windowok:hover, #windowcancel:hover {
+#windowok:hover,
+#windowcancel:hover {
 	background-color: #f2f2f2;
+}
+
+#loading {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(255,255,255,0.6);
+}
+#loading img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
 }
 
 #throbber {
@@ -578,7 +598,8 @@ label, input, select {
 	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
 }
 
-#keyleft, #keyright {
+#keyleft,
+#keyright {
 	height: auto;
 	line-height: normal;
 	box-shadow: none;
@@ -586,7 +607,8 @@ label, input, select {
 	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 2px rgba(0, 0, 0, .2);
 }
 
-#keyfields, #keyavail {
+#keyfields,
+#keyavail {
 	height: auto;
 	background-image: none;
 	font-size: small;
