@@ -1,275 +1,285 @@
 body {
-	font-family: verdana, sans serif;
-	font-size: small;
-	padding: 0px;
-	margin: 0px;
-	background: #FFF;
-	visibility: hidden;
-	-moz-user-select: -moz-none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+    font-family: verdana, sans serif;
+    font-size: small;
+    padding: 0px;
+    margin: 0px;
+    background: #FFF;
+    visibility: hidden;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #area {
-	position: relative;
-	background: transparent url(../images/back.png);
-	width: 3000px;
-	height: 3000px;
+    position: relative;
+    background: transparent url(../images/back.png);
+    width: 3000px;
+    height: 3000px;
 }
 
 #controls {
-	position: absolute;
-	left: 0px;
-	top: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
 }
 
 #bar {
-	text-align: center;
-	background-color: #ccc;
-	position: fixed; 
-	top: 0px;
-	right: 0px;
-	width: 150px;
-	padding: 0px 5px 5px;
-	-moz-box-shadow: -4px 4px 8px #888; /* FF 3.5+ */
-	-webkit-box-shadow: -4px 4px 8px #888; /* Safari 3.0+, Chrome */
-	box-shadow: -4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=215, Color='#888888'); /* IE 6, IE 7 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=215, Color='#888888')"; /* IE 8 */
+    text-align: center;
+    background-color: #ccc;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 150px;
+    padding: 0px 5px 5px;
+    -moz-box-shadow: -4px 4px 8px #888;
+    /* FF 3.5+ */
+    -webkit-box-shadow: -4px 4px 8px #888;
+    /* Safari 3.0+, Chrome */
+    box-shadow: -4px 4px 8px #888;
+    /* Opera 10.5, IE 9.0 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=215, Color='#888888');
+    /* IE 6, IE 7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=215, Color='#888888')";
+    /* IE 8 */
 }
 
 #bar input {
-	display: block;
-	width: 90%;
-	margin: auto;
+    display: block;
+    width: 90%;
+    margin: auto;
 }
 
 #bar input.small {
-	width: 45%;
-	display: inline;
+    width: 45%;
+    display: inline;
 }
 
 #toggle {
-	padding: 5px 0px;
-	margin-bottom: 5px;
-	cursor: pointer;
-	background-position: 50% 5px;
-	background-repeat: no-repeat;
-	height: 5px;
+    padding: 5px 0px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-position: 50% 5px;
+    background-repeat: no-repeat;
+    height: 5px;
 }
 
 #toggle:hover {
-	background-color: #bbb;
+    background-color: #bbb;
 }
 
 #toggle.on {
-	background-image: url(../images/up.gif);
+    background-image: url(../images/up.gif);
 }
 
 #toggle.off {
-	background-image: url(../images/down.gif);
+    background-image: url(../images/down.gif);
 }
 
 #minimap {
-	position: fixed;
-	width: 100px;
-	height: 100px;
-	right: 0px;
-	bottom: 0px;
-	background-color: #fff;
-	border: 1px solid #000;
-	opacity: 0.9;
-	overflow: hidden;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #fff;
+    border: 1px solid #000;
+    opacity: 0.9;
+    overflow: hidden;
 }
 
 .mini {
-	position: absolute;
-	border: 1px solid #000;
-	background-color: #eea;
-	font-size: 1px;
-	line-height: 1px;
+    position: absolute;
+    border: 1px solid #000;
+    background-color: #eea;
+    font-size: 1px;
+    line-height: 1px;
 }
 
 .mini_selected {
-	background-color: #f85;
+    background-color: #f85;
 }
 
 .port {
-	position: absolute;
-	border: 2px solid #f00;
+    position: absolute;
+    border: 2px solid #f00;
 }
 
 .table {
-	position: absolute;
-	border: 1px solid #000;
-	background-color: #ddd;
-	cursor: pointer;
-	-moz-box-shadow: 4px 4px 8px #888; /* FF 3.5+ */
-	-webkit-box-shadow: 4px 4px 8px #888; /* Safari 3.0+, Chrome */
-	box-shadow: 4px 4px 8px #888; /* Opera 10.5, IE 9.0 */
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888'); /* IE 6, IE 7 */
-	-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888'); /* IE 8 */
-	border-radius: 3px;
+    position: absolute;
+    border: 1px solid #000;
+    background-color: #ddd;
+    cursor: pointer;
+    -moz-box-shadow: 4px 4px 8px #888;
+    /* FF 3.5+ */
+    -webkit-box-shadow: 4px 4px 8px #888;
+    /* Safari 3.0+, Chrome */
+    box-shadow: 4px 4px 8px #888;
+    /* Opera 10.5, IE 9.0 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888');
+    /* IE 6, IE 7 */
+    -ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=135, Color='#888888');
+    /* IE 8 */
+    border-radius: 3px;
 }
 
 .table table {
-	border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 .table.selected {
-	border: 2px solid #000;
+    border: 2px solid #000;
 }
 
 .table thead .title {
-	text-align: center;
-	padding: 3px 30px;
+    text-align: center;
+    padding: 3px 30px;
 }
 
 .table tbody {
-	border-top: 1px dotted #888;
+    border-top: 1px dotted #888;
 }
 
 .table tbody td {
-	padding: 3px;
+    padding: 3px;
 }
 
 .table tbody .selected {
-	font-weight: bold;
-	color: #f00;
-	display: inline-block;
+    font-weight: bold;
+    color: #f00;
+    display: inline-block;
 }
 
 .table tbody .title {
-	display: inline-block;
+    display: inline-block;
 }
 
-.table thead td[title]:not([title=""]):after{
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-color: royalblue;
-	border-style: solid;
-	border-width: 5px;
-	border-bottom-color: transparent;
-	border-left-color: transparent;
+.table thead td[title]:not([title=""]):after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-color: royalblue;
+    border-style: solid;
+    border-width: 5px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
 }
 
 .table tbody td {
-	position: relative;
+    position: relative;
 }
 
-.table tbody[title]:not(.expanded):not([title=""]) td:last-child:after{
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-color: royalblue;
-	border-style: solid;
-	border-width: 5px;
-	border-bottom-color: transparent;
-	border-left-color: transparent;
+.table tbody[title]:not(.expanded):not([title=""]) td:last-child:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-color: royalblue;
+    border-style: solid;
+    border-width: 5px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
 }
 
 .primary {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .key {
-	font-style: italic;
+    font-style: italic;
 }
 
 .primary.key {
-	font-style: normal;
+    font-style: normal;
 }
 
 .typehint {
-	font-size: 80%;
-	color: gray;
+    font-size: 80%;
+    color: gray;
 }
 
 .comment {
-	font-size: 80%;
-	font-weight: normal;
-	margin-right: 0.5em;
+    font-size: 80%;
+    font-weight: normal;
+    margin-right: 0.5em;
 }
 
 .adding {
-	cursor: crosshair;
+    cursor: crosshair;
 }
 
 .relation {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 #background {
-	position: absolute;
-	background-color: #000;
-	opacity: 0.5;
-	visibility: hidden;
+    position: absolute;
+    background-color: #000;
+    opacity: 0.5;
+    visibility: hidden;
 }
 
 #window {
-	position: absolute;
-	visibility: hidden;
-	background-color: #fff;
-	border: 6px double #333;
+    position: absolute;
+    visibility: hidden;
+    background-color: #fff;
+    border: 6px double #333;
 }
 
 #windowtitle {
-	border-bottom: 2px solid #333;
-	padding: 2px;
-	padding-left: 1em;
-	font-weight: bold;
-	background-color: rgb(238, 238, 170);
+    border-bottom: 2px solid #333;
+    padding: 2px;
+    padding-left: 1em;
+    font-weight: bold;
+    background-color: rgb(238, 238, 170);
 }
 
 #windowcontent {
-	padding: 1em;
+    padding: 1em;
 }
 
 #windowok, #windowcancel {
-	margin: 0em 1em 1em;
+    margin: 0em 1em 1em;
 }
 
 .small {
-	font-size: 85%;
+    font-size: 85%;
 }
 
 #textarea {
-	width: 650px;
-	height: 200px;
+    width: 650px;
+    height: 200px;
 }
 
 #opts {
-	width: 700px;
+    width: 700px;
 }
 
 #keys {
-	white-space: nowrap; 
-	text-align: center;
+    white-space: nowrap;
+    text-align: center;
 }
 
 legend {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 label, input, select {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 #throbber {
-	position: absolute;
-	top: 2px;
-	right: 3px;
+    position: absolute;
+    top: 2px;
+    right: 3px;
 }
 
 #rubberband {
-	position: absolute;
-	border: 1px solid #000;
-	background: #888;
-	opacity: 0.5;
-	visibility: hidden;
+    position: absolute;
+    border: 1px solid #000;
+    background: #888;
+    opacity: 0.5;
+    visibility: hidden;
 }
