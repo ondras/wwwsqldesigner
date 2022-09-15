@@ -1,23 +1,22 @@
 #bar, #background, #minimap {
-	display: none;
+    display: none;
 }
 
 .table {
-	border:1px solid #000000;
-	background-color:none;
+    border: 1px solid #000000;
+    background-color: none;
 }
 
 .row {
-	background-color:none;
+    background-color: none;
 }
 
-.table .shadow-corner, .shadow-right, .shadow-bottom  {
-	display:none;
+.table .shadow-corner, .shadow-right, .shadow-bottom {
+    display: none;
 }
 
 .table_title {
-	font-weight:bold;
-	font-size:115%;
-	background-color:none;
+    font-weight: bold;
+    font-size: 115%;
+    background-color: none;
 }
-
