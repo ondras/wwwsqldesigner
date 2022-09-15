@@ -27,6 +27,16 @@ If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/web
 2. Run   `docker run -d -p 8080:8080 wwwsqldesigner`
 3. Visit http://127.0.0.1:8080
 
+## Code Style
+Please use the following auto formatters to maintain the code style
+
+| File            | Remarks           | Formatter                                                                        |
+|-----------------|-------------------|----------------------------------------------------------------------------------|
+| `/index.html`   |                   | VSCode built-in formatter                                                        |
+| `/js/*.js`      | 4 spaces for tabs | https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode    |
+| `/styles/*.css` |                   | https://marketplace.visualstudio.com/items?itemName=aeschli.vscode-css-formatter |
+| `/locale/*.xml` |                   | https://marketplace.visualstudio.com/items?itemName=DotJoshJohnson.xml           |
+
 # News
 
 ## Moved to GitHub
