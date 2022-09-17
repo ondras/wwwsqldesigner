@@ -35,7 +35,7 @@ If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/web
 - `Space` - edit the selected field
 - `S` - toggle the sidebar
 - `C` - connect an ID to a foreign key
-- `D` - disconnect foreign key from and ID
+- `D` - disconnect foreign key from an ID
 
 # News
 
