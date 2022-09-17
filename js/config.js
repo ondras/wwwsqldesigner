@@ -107,7 +107,7 @@ var CONFIG = {
         // Space - edit the selected field
         EDIT_ROW: { CODE: 32 },
         // S - toggle the menu
-        TOGGLE: { CODE: 85 },
+        TOGGLE: { CODE: 83 },
         CONNECT: { CODE: 67 },
         DISCONNECT: { CODE: 68 },
     },
