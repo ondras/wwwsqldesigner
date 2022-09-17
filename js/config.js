@@ -95,4 +95,18 @@ var CONFIG = {
      * Copy the shown "App key" and paste it here below instead of the null value:
      */
     DROPBOX_KEY: null, // such as: "d6stdscwewhl6sa"
+    SHORTCUTS: {
+        // F2
+        QUICK_SAVE: { CODE: 113 },
+        // A - add a table
+        ADD_TABLE: { CODE: 65 },
+        // F - add a field in table
+        ADD_ROW: { CODE: 70 },
+        // Space - edit the selected the table
+        EDIT_TABLE: { CODE: 32 },
+        // Space - edit the selected field
+        EDIT_ROW: { CODE: 32 },
+        // M - toggle the menu
+        TOGGLE: { CODE: 77 },
+    },
 };

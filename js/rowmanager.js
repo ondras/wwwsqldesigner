@@ -215,6 +215,11 @@ SQL.RowManager.prototype.press = function (e) {
     } /* not when in form field */
 
     switch (e.keyCode) {
+        case CONFIG.SHORTCUTS.EDIT_ROW.CODE:
+            if (e.ctrlKey) return;
+            this.selected.expand();
+            OZ.Event.prevent(e);
+            break;
         case 38:
             this.up();
             OZ.Event.prevent(e);
