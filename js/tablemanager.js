@@ -52,6 +52,17 @@ SQL.TableManager = function (owner) {
     OZ.Event.add(document, "keydown", this.press.bind(this));
 
     this.dom.container.parentNode.removeChild(this.dom.container);
+
+    this.mouse = { X: 0, Y: 0 };
+    var _this = this;
+    document.addEventListener(
+        "mousemove",
+        function (mouseMoveEvent) {
+            _this.mouse.X = mouseMoveEvent.pageX;
+            _this.mouse.Y = mouseMoveEvent.pageY;
+        },
+        false
+    );
 };
 
 SQL.TableManager.prototype.addRow = function (e) {
@@ -146,19 +157,25 @@ SQL.TableManager.prototype.click = function (e) {
         this.adding = false;
         OZ.DOM.removeClass("area", "adding");
         this.dom.addtable.value = this.oldvalue;
-        var scroll = OZ.DOM.scroll();
-        var x = e.clientX + scroll[0];
-        var y = e.clientY + scroll[1];
-        newtable = this.owner.addTable(_("newtable"), x, y);
-        var r = newtable.addRow("id", { ai: true });
-        var k = newtable.addKey("PRIMARY", "");
-        k.addRow(r);
+        newtable = this.add(e);
     }
     this.select(newtable);
     this.owner.rowManager.select(false);
     if (this.selection.length == 1) {
         this.edit(e);
     }
+};
+
+SQL.TableManager.prototype.add = function (e) {
+    var scroll = OZ.DOM.scroll();
+    var x = e.clientX + scroll[0];
+    var y = e.clientY + scroll[1];
+    newtable = this.owner.addTable(_("newtable"), x, y);
+    var r = newtable.addRow("id", { ai: true });
+    var k = newtable.addKey("PRIMARY", "");
+    k.addRow(r);
+
+    return newtable;
 };
 
 SQL.TableManager.prototype.preAdd = function (e) {
@@ -254,7 +271,10 @@ SQL.TableManager.prototype.press = function (e) {
     switch (e.keyCode) {
         case CONFIG.SHORTCUTS.ADD_TABLE.CODE:
             if (e.ctrlKey) return;
-            this.preAdd(e);
+            e.clientX = this.mouse.X;
+            e.clientY = this.mouse.Y;
+            this.select(this.add(e));
+            OZ.Event.prevent(e);
             break;
     }
 
