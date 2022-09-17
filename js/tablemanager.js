@@ -257,18 +257,16 @@ SQL.TableManager.prototype.press = function (e) {
         return;
     } /* not when in form field */
 
-    if (CONFIG.SHORTCUTS.ADD_ROW.CODE === e.keyCode) {
-        if (e.ctrlKey) return;
-        this.addRow();
-        OZ.Event.prevent(e);
-        return;
-    }
-
-    if (this.owner.rowManager.selected) {
-        return;
-    } /* do not process keypresses if a row is selected */
-
     switch (e.keyCode) {
+        case CONFIG.SHORTCUTS.ADD_ROW.CODE:
+            if (e.ctrlKey) return;
+            // add row only when 1 table is selected
+            if (this.selection.length == 1) {
+                this.addRow();
+                OZ.Event.prevent(e);
+                return;
+            }
+            break;
         case CONFIG.SHORTCUTS.ADD_TABLE.CODE:
             if (e.ctrlKey) return;
             e.clientX = this.mouse.X;
@@ -276,13 +274,7 @@ SQL.TableManager.prototype.press = function (e) {
             this.select(this.add(e));
             OZ.Event.prevent(e);
             break;
-    }
 
-    if (!this.selection.length) {
-        return;
-    } /* nothing if selection is active */
-
-    switch (e.keyCode) {
         case CONFIG.SHORTCUTS.EDIT_TABLE.CODE:
             if (e.ctrlKey) return;
             if (this.selection.length) {
@@ -290,6 +282,17 @@ SQL.TableManager.prototype.press = function (e) {
                 OZ.Event.prevent(e);
             }
             break;
+    }
+
+    if (this.owner.rowManager.selected) {
+        return;
+    } /* do not process keypresses if a row is selected */
+
+    if (!this.selection.length) {
+        return;
+    } /* nothing if selection is active */
+
+    switch (e.keyCode) {
         case 46: // delete
             this.remove();
             OZ.Event.prevent(e);

@@ -29,11 +29,13 @@ If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/web
 
 ## Pre-defined configurable shortcuts
 - `F2` - Quick save
-- `A` - Add a table
+- `T` - Add a table
 - `F` - Add a field in the selected table
 - `Space` - edit the selected the table
 - `Space` - edit the selected field
-- `M` - toggle the menu
+- `S` - toggle the sidebar
+- `C` - connect an ID to a foreign key
+- `D` - disconnect foreign key from and ID
 
 # News
 

@@ -98,15 +98,17 @@ var CONFIG = {
     SHORTCUTS: {
         // F2
         QUICK_SAVE: { CODE: 113 },
-        // A - add a table
-        ADD_TABLE: { CODE: 65 },
+        // T - add a table
+        ADD_TABLE: { CODE: 84 },
         // F - add a field in table
         ADD_ROW: { CODE: 70 },
         // Space - edit the selected the table
         EDIT_TABLE: { CODE: 32 },
         // Space - edit the selected field
         EDIT_ROW: { CODE: 32 },
-        // M - toggle the menu
-        TOGGLE: { CODE: 77 },
+        // S - toggle the menu
+        TOGGLE: { CODE: 85 },
+        CONNECT: { CODE: 67 },
+        DISCONNECT: { CODE: 68 },
     },
 };
