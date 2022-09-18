@@ -595,7 +595,7 @@ SQL.IO.prototype.importresponse = function (data, code) {
 
 SQL.IO.prototype.press = function (e) {
     switch (e.keyCode) {
-        case 113:
+        case CONFIG.SHORTCUTS.QUICK_SAVE.CODE:
             if (OZ.opera) {
                 e.preventDefault();
             }

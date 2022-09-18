@@ -215,6 +215,23 @@ SQL.RowManager.prototype.press = function (e) {
     } /* not when in form field */
 
     switch (e.keyCode) {
+        case CONFIG.SHORTCUTS.CONNECT.CODE:
+            if (!this.dom.foreignconnect.disabled) {
+                this.foreignconnect(e);
+                OZ.Event.prevent(e);
+            }
+            break;
+        case CONFIG.SHORTCUTS.DISCONNECT.CODE:
+            if (!this.dom.foreigndisconnect.disabled) {
+                this.foreigndisconnect(e);
+                OZ.Event.prevent(e);
+            }
+            break;
+        case CONFIG.SHORTCUTS.EDIT_ROW.CODE:
+            if (e.ctrlKey) return;
+            this.selected.expand();
+            OZ.Event.prevent(e);
+            break;
         case 38:
             this.up();
             OZ.Event.prevent(e);

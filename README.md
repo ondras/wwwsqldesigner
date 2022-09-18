@@ -27,6 +27,16 @@ If you wish to support this project, <a href='https://www.paypal.com/cgi-bin/web
 2. Run   `docker run -d -p 8080:8080 wwwsqldesigner`
 3. Visit http://127.0.0.1:8080
 
+## Pre-defined configurable shortcuts
+- `F2` - Quick save
+- `T` - Add a table
+- `F` - Add a field in the selected table
+- `Space` - edit the selected the table
+- `Space` - edit the selected field
+- `S` - toggle the sidebar
+- `C` - connect an ID to a foreign key
+- `D` - disconnect foreign key from an ID
+
 # News
 
 ## Moved to GitHub
