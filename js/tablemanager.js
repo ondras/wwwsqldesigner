@@ -188,6 +188,7 @@ SQL.TableManager.prototype.preAdd = function (e) {
         OZ.DOM.removeClass("area", "adding");
         this.dom.addtable.value = this.oldvalue;
     } else {
+        this.select(false);
         this.adding = true;
         OZ.DOM.addClass("area", "adding");
         this.oldvalue = this.dom.addtable.value;
