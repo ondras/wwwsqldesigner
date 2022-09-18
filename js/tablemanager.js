@@ -278,7 +278,13 @@ SQL.TableManager.prototype.press = function (e) {
             this.select(this.add(e));
             OZ.Event.prevent(e);
             break;
+    }
 
+    if (this.owner.rowManager.selected) {
+        return;
+    } /* do not process keypresses if a row is selected */
+
+    switch (e.keyCode) {
         case CONFIG.SHORTCUTS.EDIT_TABLE.CODE:
             if (e.ctrlKey) return;
             if (this.selection.length) {
@@ -287,10 +293,6 @@ SQL.TableManager.prototype.press = function (e) {
             }
             break;
     }
-
-    if (this.owner.rowManager.selected) {
-        return;
-    } /* do not process keypresses if a row is selected */
 
     if (!this.selection.length) {
         return;
