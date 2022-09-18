@@ -155,9 +155,13 @@ SQL.TableManager.prototype.click = function (e) {
     var newtable = false;
     if (this.adding) {
         this.adding = false;
+        var scroll = OZ.DOM.scroll();
         OZ.DOM.removeClass("area", "adding");
         this.dom.addtable.value = this.oldvalue;
-        newtable = this.add(e);
+        newtable = this.add({
+            clientX: e.clientX + scroll[0],
+            clientY: e.clientY + scroll[1],
+        });
     }
     this.select(newtable);
     this.owner.rowManager.select(false);
@@ -167,9 +171,8 @@ SQL.TableManager.prototype.click = function (e) {
 };
 
 SQL.TableManager.prototype.add = function (e) {
-    var scroll = OZ.DOM.scroll();
-    var x = e.clientX + scroll[0];
-    var y = e.clientY + scroll[1];
+    var x = e.clientX;
+    var y = e.clientY;
     newtable = this.owner.addTable(_("newtable"), x, y);
     var r = newtable.addRow("id", { ai: true });
     var k = newtable.addKey("PRIMARY", "");
