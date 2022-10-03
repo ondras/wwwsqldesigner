@@ -37,5 +37,7 @@
 		<type label="Inet Host Addr" length="0" sql="INET" quote="'" />
 		<type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'" />
 		<type label="Geometry" length="0" sql="GEOMETRY" quote="'" />
+        <type label="JSON" length="0" sql="JSON" quote="'" />
+        <type label="JSONB" length="0" sql="JSONB" quote="'" />
 	</group>
 </datatypes>
