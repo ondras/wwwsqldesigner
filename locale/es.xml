@@ -20,9 +20,9 @@
     <string name="uprow">Arriba</string>
     <string name="downrow">Abajo</string>
     <string name="newrow">Nuevo campo</string>
-    <string name="foreigncreate">Crear clave foránea</string>
+    <string name="foreigncreate">Crear llave foránea</string>
     <string name="foreignpending">Haz clic en tabla objetivo</string>
-    <string name="foreignconnect">Conectar clave foránea</string>
+    <string name="foreignconnect">Conectar llave foránea</string>
     <string name="foreignconnectpending">Haz clic en campo objetivo</string>
     <string name="foreigndisconnect">Eliminar clave foránea</string>
     <string name="confirmtable">¿Realmente deseas borrar la tabla</string>
@@ -49,7 +49,7 @@
     <string name="optionsnotice">Algunas opciones se aplican solo despúes de recargar totalmente la pagina. Las cookies deben estar habilitadas para que funcione la personalización.</string>
     <string name="snap">Distancia de ajuste de tablas</string>
     <string name="optionsnapnotice">En píxeles, 0 = deshabilitar ajuste</string>
-    <string name="pattern">Patrón para nombres de clave foránea</string>
+    <string name="pattern">Patrón para nombres de llave foránea</string>
     <string name="optionpatternnotice">%T = tabla primaria, %R = clave primaria, %t = tabla foránea</string>
     <string name="hide">¿Ocultar conectores de tablas al arrastrar?</string>
     <string name="vector">¿Dibujar conectores suaves (si son soportados por el navegador)?</string>
@@ -62,11 +62,11 @@
     <string name="keyslistlabel">Llaves en la tabla "%s"</string>
     <string name="keytypelabel">Tipo:</string>
     <string name="keynamelabel">Nombre:</string>
-    <string name="keyfieldslabel">Campos en la clave</string>
+    <string name="keyfieldslabel">Campos de llave</string>
     <string name="keyavaillabel">Campos disponibles</string>
-    <string name="keyedit">Editar clave</string>
-    <string name="keyadd">Agregar clave</string>
-    <string name="keyremove">Eliminar clave</string>
+    <string name="keyedit">Editar llave</string>
+    <string name="keyadd">Agregar llave</string>
+    <string name="keyremove">Eliminar llave</string>
 
     <!-- io -->
     <string name="saveload">Guardar / Cargar</string>
