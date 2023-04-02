@@ -39,6 +39,7 @@ var CONFIG = {
 
     AVAILABLE_BACKENDS: [
         "php-mysql",
+/*		
         "php-s3",
         "php-blank",
         "php-file",
@@ -50,6 +51,7 @@ var CONFIG = {
         "php-cubrid",
         "asp-file",
         "web2py",
+  */
     ],
     DEFAULT_BACKEND: ["php-mysql"],
 
