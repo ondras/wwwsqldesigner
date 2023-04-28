@@ -1,10 +1,10 @@
 <?php
 	set_time_limit(0);
 	function setup_saveloadlist() {
-		define("SERVER","localhost");
-		define("USER","");
-		define("PASSWORD","");
-		define("DB","home");
+		define("SERVER", getenv("MYSQL_HOST"));
+		define("USER", getenv("MYSQL_USER"));
+		define("PASSWORD", getenv("MYSQL_PASS"));
+		define("DB", getenv("MYSQL_DB"));
 		define("TABLE","wwwsqldesigner");
 	}
 	function setup_import() {
@@ -162,9 +162,6 @@
 			$keyword = (isset($_GET["keyword"]) ? $_GET["keyword"] : "");
 			$keyword = mysqli_real_escape_string($DBHandler->getLink(), $keyword);
 			$data = file_get_contents("php://input");
-			if (get_magic_quotes_gpc() || get_magic_quotes_runtime()) {
-			   $data = stripslashes($data);
-			}
 			$data = mysqli_real_escape_string($DBHandler->getLink(), $data);
 			$r = mysqli_query($DBHandler->getLink(), "SELECT * FROM ".TABLE." WHERE keyword = '".$keyword."'");
 			if (mysqli_num_rows($r) > 0) {
