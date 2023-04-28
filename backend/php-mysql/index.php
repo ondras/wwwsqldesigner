@@ -162,9 +162,6 @@
 			$keyword = (isset($_GET["keyword"]) ? $_GET["keyword"] : "");
 			$keyword = mysqli_real_escape_string($DBHandler->getLink(), $keyword);
 			$data = file_get_contents("php://input");
-			if (get_magic_quotes_gpc() || get_magic_quotes_runtime()) {
-			   $data = stripslashes($data);
-			}
 			$data = mysqli_real_escape_string($DBHandler->getLink(), $data);
 			$r = mysqli_query($DBHandler->getLink(), "SELECT * FROM ".TABLE." WHERE keyword = '".$keyword."'");
 			if (mysqli_num_rows($r) > 0) {
