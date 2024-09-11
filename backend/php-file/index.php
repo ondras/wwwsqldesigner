@@ -13,9 +13,9 @@
 			$keyword = "data/".basename($keyword);
 			$f = fopen($keyword, "w");
 			$data = file_get_contents("php://input");
-			if (get_magic_quotes_gpc() || get_magic_quotes_runtime()) {
-			   $data = stripslashes($data);
-			}
+//			if (get_magic_quotes_gpc() || get_magic_quotes_runtime()) {
+//			   $data = stripslashes($data);
+//			}
 			fwrite($f, $data);
 			fclose($f);
 			header("HTTP/1.0 201 Created");			

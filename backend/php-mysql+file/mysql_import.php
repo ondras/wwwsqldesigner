@@ -1,7 +1,8 @@
 <?php 
 	function import() {
 		$db = (isset($_GET["database"]) ? $_GET["database"] : "information_schema");
-		$db = mysql_real_escape_string($db);
+		$mysqli = mysqli_connect(HOST,USER,PASS,DB);
+		$db = mysqli_real_escape_string($mysqli,$db);
 		$xml = "";
 
 		$arr = array();
@@ -12,16 +13,16 @@
 			$arr[] = $datatypes[$i];
 		}
 
-		$result = mysql_query("SELECT * FROM TABLES WHERE TABLE_SCHEMA = '".$db."'");
-		while ($row = mysql_fetch_array($result)) {
+		$result = mysqli_query($mysqli,"SELECT * FROM TABLES WHERE TABLE_SCHEMA = '".$db."'");
+		while ($row = mysqli_fetch_array($result)) {
 			$table = $row["TABLE_NAME"];
 			$xml .= '<table name="'.$table.'">';
 			$comment = (isset($row["TABLE_COMMENT"]) ? $row["TABLE_COMMENT"] : "");
 			if ($comment) { $xml .= '<comment>'.$comment.'</comment>'; }
 
 			$q = "SELECT * FROM COLUMNS WHERE TABLE_NAME = '".$table."' AND TABLE_SCHEMA = '".$db."'";
-			$result2 = mysql_query($q);
-			while ($row = mysql_fetch_array($result2)) {
+			$result2 = mysqli_query($mysqli,$q);
+			while ($row = mysqli_fetch_array($result2)) {
 				$name  = $row["COLUMN_NAME"];
 				$type  = $row["COLUMN_TYPE"];
 				$comment = (isset($row["COLUMN_COMMENT"]) ? $row["COLUMN_COMMENT"] : "");
@@ -43,9 +44,9 @@
 					WHERE CONSTRAINT_TYPE = 'FOREIGN KEY'
 					AND c.TABLE_SCHEMA = '".$db."' AND c.TABLE_NAME = '".$table."'
 					AND k.COLUMN_NAME = '".$name."'";
-				$result3 = mysql_query($q);
+				$result3 = mysqli_query($mysqli,$q);
 
-				while ($row = mysql_fetch_array($result3)) {
+				while ($row = mysqli_fetch_array($result3)) {
 					$xml .= '<relation table="'.$row["table"].'" row="'.$row["column"].'" />';
 				}
 
@@ -54,10 +55,10 @@
 
 			/* keys */
 			$q = "SELECT * FROM STATISTICS WHERE TABLE_NAME = '".$table."' AND TABLE_SCHEMA = '".$db."' ORDER BY SEQ_IN_INDEX ASC";
-			$result2 = mysql_query($q);
+			$result2 = mysqli_query($mysqli,$q);
 			$idx = array();
 
-			while ($row = mysql_fetch_array($result2)) {
+			while ($row = mysqli_fetch_array($result2)) {
 				$name = $row["INDEX_NAME"];
 				if (array_key_exists($name, $idx)) {
 					$obj = $idx[$name];
