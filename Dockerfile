@@ -1,13 +1,14 @@
-FROM php:5-apache
+FROM busybox:1.37
 
-RUN sed -i 's/Listen 80/Listen ${PORT}/' /etc/apache2/ports.conf
+RUN adduser -D static
 
-ENV PORT=8080
-
-EXPOSE 8080
-
-WORKDIR /var/www/html
+# USER static
+# WORKDIR /home/static
 
 USER www-data
+WORKDIR /var/www/html
 
 COPY . .
+
+# Run BusyBox httpd
+CMD ["busybox", "httpd", "-f", "-v", "-p", "8080"]
