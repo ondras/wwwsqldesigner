@@ -1,14 +1,10 @@
 FROM busybox:1.37
 
-RUN adduser -D static
-
-# USER static
-# WORKDIR /home/static
+WORKDIR /var/www/html
 
 USER www-data
-WORKDIR /var/www/html
 
 COPY . .
 
-# Run BusyBox httpd
+# Run BusyBox httpd on port 8080
 CMD ["busybox", "httpd", "-f", "-v", "-p", "8080"]
