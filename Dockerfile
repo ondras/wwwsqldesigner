@@ -1,13 +1,10 @@
-FROM php:5-apache
-
-RUN sed -i 's/Listen 80/Listen ${PORT}/' /etc/apache2/ports.conf
-
-ENV PORT=8080
-
-EXPOSE 8080
+FROM busybox:1.37
 
 WORKDIR /var/www/html
 
 USER www-data
 
 COPY . .
+
+# Run BusyBox httpd on port 8080
+CMD ["busybox", "httpd", "-f", "-v", "-p", "8080"]
