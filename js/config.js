@@ -33,6 +33,7 @@ var CONFIG = {
         "ru",
         "sv",
         "tr",
+        "uk",
         "zh",
     ],
     DEFAULT_LOCALE: "en",

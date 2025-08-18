@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+    <!-- table management -->
+    <string name="addtable">Додати таблицю</string>
+    <string name="edittable">Змінити таблицю</string>
+    <string name="removetable">Вилучити таблицю</string>
+    <string name="removetables">Вилучити таблиці</string>
+    <string name="aligntables">Вирівняти таблиці</string>
+    <string name="cleartables">Очистити таблиці</string>
+    <string name="confirmall">Справді вилучити всі таблиці</string>
+    <string name="newtable">нова таблиця</string>
+    <string name="addpending">помістити таблицю</string>
+    <string name="tablenamelabel">Назва</string>
+    <string name="tablecommentlabel">Примітка</string>
+
+    <!-- row management -->
+    <string name="addrow">Додати поле</string>
+    <string name="editrow">Змінити поле</string>
+    <string name="removerow">Вилучити поле</string>
+    <string name="uprow">Вгору</string>
+    <string name="downrow">Вниз</string>
+    <string name="newrow">нове поле</string>
+    <string name="foreigncreate">Створити зовнішній ключ</string>
+    <string name="foreignpending">клацніть по цільовій таблиці</string>
+    <string name="foreignconnect">Приєднати зовнішній ключ</string>
+    <string name="foreignconnectpending">клацніть по цільовому рядку</string>
+    <string name="foreigndisconnect">Вилучити зовнішній ключ</string>
+    <string name="confirmtable">Справді вилучити таблицю</string>
+    <string name="confirmrow">Справді знищити поле</string>
+
+    <!-- row edit -->
+    <string name="name">Назва</string>
+    <string name="type">Тип</string>
+    <string name="size">Розмір</string>
+    <string name="def">Стандартно</string>
+    <string name="notnull">NOT NULL</string>
+    <string name="null">NULL</string>
+    <string name="ai">Автоінкремент</string>
+    <string name="comment">Змінити примітку</string>
+    <string name="commenttext">Ввід примітки для цього поля</string>
+
+    <!-- windows & options -->
+    <string name="windowok">Гаразд</string>
+    <string name="windowcancel">Скасувати</string>
+    <string name="throbber">Зачекайте...</string>
+    <string name="options">Параметри</string>
+    <string name="language">Мова</string>
+    <string name="db">База даних для нових дизайнів</string>
+    <string name="optionsnotice">Ряд параметрів будуть застосовані лише після повного перезавантаження сторінки. Для задіяння параметрів повинні бути увімкнені реп'яшки (файли cookie).</string>
+    <string name="snap">Відстань фіксації таблиць</string>
+    <string name="optionsnapnotice">В пікселах, 0 = вимкнути фіксацію</string>
+    <string name="pattern">Шаблон для зовнішніх назв</string>
+    <string name="optionpatternnotice">%T = первинна таблиця, %R = первинний ключ, %t = зовнішня таблиця</string>
+    <string name="hide">Приховувати з'єднання підчас переміщення таблиць?</string>
+    <string name="vector">Креслити плавні з'єднання (якщо підтримується переглядачем)?</string>
+    <string name="showsize">Показувати розмір поля в дизайні таблиці?</string>
+    <string name="showtype">Показувати тип даних поля в дизайні таблиці?</string>
+    <string name="style">Стиль</string>
+
+    <!-- keys -->
+    <string name="tablekeys">Ключі</string>
+    <string name="keyslistlabel">Ключі таблиці "%s"</string>
+    <string name="keytypelabel">Тип:</string>
+    <string name="keynamelabel">Назва:</string>
+    <string name="keyfieldslabel">Поля ключа</string>
+    <string name="keyavaillabel">Доступні поля</string>
+    <string name="keyedit">Зміна ключа</string>
+    <string name="keyadd">Додати ключ</string>
+    <string name="keyremove">Вилучити ключ</string>
+
+    <!-- io -->
+    <string name="saveload">Зберегти / Завантажити</string>
+    <string name="empty">Прошу вставити дані XML у текстову область нижче і спробувати повторно.</string>
+    <string name="client">Клієнт</string>
+    <string name="server">Сервер</string>
+    <string name="output">Ввід / Вивід</string>
+    <string name="clientsave">Зберегти XML</string>
+    <string name="clientload">Звантажити XML</string>
+    <string name="clientlocalsave">Зберегти в переглядачі</string>
+    <string name="clientlocalload">Завантажити з переглядача</string>
+    <string name="clientlocallist">Список з переглядача</string>
+    <string name="dropboxsave">Зберегти у Dropbox</string>
+    <string name="dropboxload">Завантажити з Dropbox'а</string>
+    <string name="dropboxlist">Список із Dropbox'а</string>
+    <string name="clientsql">Згенерувати SQL</string>
+    <string name="backendlabel">Серверна частина:</string>
+    <string name="serversave">Зберегти</string>
+    <string name="quicksave">Швидке збереження</string>
+    <string name="serverload">Завантажити</string>
+    <string name="serverlist">Список елементів</string>
+    <string name="serverimport">Імпортувати з БД</string>
+    <string name="serverloadprompt">Ввести ключове слово, під яким був збережений Ваш дизайн:</string>
+    <string name="serversaveprompt">Ввести ключове слово, під яким Ваш дизайн буде збережений:</string>
+    <string name="serverimportprompt">Ввести назву БД, яка імпортуватиметься:</string>
+    <string name="httpresponse">Відповідь від сервера</string>
+    <string name="http201">Збережено</string>
+    <string name="http404">Не знайдено</string>
+    <string name="http500">Внутрішня помилка сервера</string>
+    <string name="http501">Не реалізовано</string>
+    <string name="http503">Сервіс недоступний</string>
+
+    <!-- misc -->
+    <string name="xmlerror">Помилка XML</string>
+    <string name="docs">Документація</string>
+
+</locale>
