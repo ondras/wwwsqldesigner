@@ -75,7 +75,7 @@
     <string name="server">Сервер</string>
     <string name="output">Ввід / Вивід</string>
     <string name="clientsave">Зберегти XML</string>
-    <string name="clientload">Звантажити XML</string>
+    <string name="clientload">Завантажити XML</string>
     <string name="clientlocalsave">Зберегти в переглядачі</string>
     <string name="clientlocalload">Завантажити з переглядача</string>
     <string name="clientlocallist">Список з переглядача</string>
