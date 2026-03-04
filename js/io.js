@@ -22,6 +22,8 @@ SQL.IO = function (owner) {
         "serversave",
         "serverload",
         "serverlist",
+        "clientcopy",
+        "clientpaste",
         "serverimport",
     ];
     for (var i = 0; i < ids.length; i++) {
@@ -81,6 +83,8 @@ SQL.IO = function (owner) {
     OZ.Event.add(this.dom.serverload, "click", this.serverload.bind(this));
     OZ.Event.add(this.dom.serverlist, "click", this.serverlist.bind(this));
     OZ.Event.add(this.dom.serverimport, "click", this.serverimport.bind(this));
+    OZ.Event.add(this.dom.clientcopy, "click", this.clientcopy.bind(this));
+    OZ.Event.add(this.dom.clientpaste, "click", this.clientpaste.bind(this));
     OZ.Event.add(document, "keydown", this.press.bind(this));
     this.build();
 };
@@ -160,7 +164,28 @@ SQL.IO.prototype.clientload = function () {
     this.fromXMLText(xml);
 };
 
-SQL.IO.prototype.promptName = function (title, suffix) {
+SQL.IO.prototype.clientcopy = function () {
+    var xml = this.owner.toXML();
+    navigator.clipboard.writeText(xml).then(function() {
+        alert(_("clientsave") + " - Copied to clipboard!");
+    }).catch(function(err) {
+        alert("Failed to copy: " + err);
+    });
+};
+
+SQL.IO.prototype.clientpaste = function () {
+    var self = this;
+    navigator.clipboard.readText().then(function(xml) {
+        if (!xml) {
+            alert(_("empty"));
+            return;
+        }
+        self.fromXMLText(xml);
+    }).catch(function(err) {
+        alert("Failed to paste: " + err);
+    });
+
+};SQL.IO.prototype.promptName = function (title, suffix) {
     var lastUsedName =
         this.owner.getOption("lastUsedName") || this.lastUsedName;
     var name = prompt(_(title), lastUsedName);

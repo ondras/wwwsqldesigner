@@ -83,6 +83,8 @@
     <string name="dropboxload">Load from Dropbox</string>
     <string name="dropboxlist">List from Dropbox</string>
     <string name="clientsql">Generate SQL</string>
+    <string name="clientcopy">Copy Output</string>
+    <string name="clientpaste">Paste from Clipboard</string>
     <string name="backendlabel">Server backend:</string>
     <string name="serversave">Save</string>
     <string name="quicksave">Quicksave</string>

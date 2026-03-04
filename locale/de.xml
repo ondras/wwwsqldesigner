@@ -7,7 +7,7 @@
     <string name="removetables">Tabellen entfernen</string>
     <string name="aligntables">Tabellen ausrichten</string>
     <string name="cleartables">Tabellen löschen</string>
-    <string name="confirmall">Wirklich alle Tabellen löschen</string>
+    <string name="confirmall">Wollen sie wirklich alle Tabellen löschen?</string>
     <string name="newtable">Neue Tabelle</string>
     <string name="addpending">Tabelle platzieren</string>
     <string name="tablenamelabel">Name</string>
@@ -23,10 +23,10 @@
     <string name="foreigncreate">Fremdschlüssel erstellen</string>
     <string name="foreignpending">Ziel-Tabelle wählen</string>
     <string name="foreignconnect">Fremdschlüssel Verknüpfung</string>
-    <string name="foreignconnectpending">Ziel-Zeile auswählen</string>
-    <string name="foreigndisconnect">Ziel-Zeile entfernen</string>
-    <string name="confirmtable">Tabelle wirklich löschen</string>
-    <string name="confirmrow">Feld wirklich löschen</string>
+    <string name="foreignconnectpending">Ziel-Key-Zeile auswählen</string>
+    <string name="foreigndisconnect">Ziel-Key-Zeile entfernen</string>
+    <string name="confirmtable">Tabelle wirklich löschen?</string>
+    <string name="confirmrow">Feld wirklich löschen?</string>
 
     <!-- row edit -->
     <string name="name">Name</string>
@@ -51,15 +51,15 @@
     <string name="optionsnapnotice">in Pixel, 0 = einrasten deaktivieren</string>
     <string name="pattern">Format für die Namen der Fremdschlüssel</string>
     <string name="optionpatternnotice">%T = Primärtabelle, %R = Primärschlüssel, %t = Fremdtabelle</string>
-    <string name="hide">Verstecke Verbindungslinien beim Bewegen von Tabellen?</string>
-    <string name="vector">Zeichne gekrümmte Verbindungslinien (Browser-abhängig)?</string>
-    <string name="showsize">Zeige Feldgröße im Tabellendesign?</string>
+    <string name="hide">Verbindungslinien beim bewegen von Tabellen verstecken?</string>
+    <string name="vector">Zeichne runde Verbindungslinien (Browser-abhängig)?</string>
+    <string name="showsize">Feldgröße im Tabellendesign anzeigen?</string>
     <string name="showtype">Zeige Felddatentyp im Tabellendesign?</string>
     <string name="style">Stil</string>
 
     <!-- keys -->
     <string name="tablekeys">Schlüssel</string>
-    <string name="keyslistlabel">Schlüssel in Tabelle "%s"</string>
+    <string name="keyslistlabel">Schlüssel in der Tabelle "%s"</string>
     <string name="keytypelabel">Typ:</string>
     <string name="keynamelabel">Name:</string>
     <string name="keyfieldslabel">Felder im Schlüssel</string>
@@ -71,18 +71,20 @@
     <!-- io -->
     <string name="saveload">Speichern / Laden</string>
     <string name="empty">Bitte fügen Sie die XML-Daten in das untere Textfeld ein und versuchen Sie es erneut.</string>
-    <string name="client">Client</string>
+    <string name="client">Klient</string>
     <string name="server">Server</string>
     <string name="output">Eingabe / Ausgabe</string>
     <string name="clientsave">XML speichern</string>
     <string name="clientload">XML laden</string>
+    <string name="clientcopy">Ausgabe Speichern</string>
+    <string name="clientpaste">Kopierten Code einfügen</string>
     <string name="clientlocalsave">In Browser speichern</string>
     <string name="clientlocalload">Von Browser laden</string>
     <string name="clientlocallist">Von Browser auflisten</string>
     <string name="dropboxsave">In Dropbox speichern</string>
     <string name="dropboxload">Von Dropbox laden</string>
     <string name="dropboxlist">Von Dropbox auflisten</string>
-    <string name="clientsql">SQL erzeugen</string>
+    <string name="clientsql">SQL generieren</string>
     <string name="backendlabel">Server Basis:</string>
     <string name="serversave">Speichern</string>
     <string name="quicksave">Schnellspeichern</string>
