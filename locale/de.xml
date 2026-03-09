@@ -78,6 +78,9 @@
     <string name="clientload">XML laden</string>
     <string name="clientcopy">Ausgabe Speichern</string>
     <string name="clientpaste">Kopierten Code einfügen</string>
+    <string name="clientdownloadxml">als XML speichern</string>
+    <string name="clientdownloadtxt">als TXT speichern</string>
+    <string name="clientloadfromfile">Datenbank von Datei laden</string>
     <string name="clientlocalsave">In Browser speichern</string>
     <string name="clientlocalload">Von Browser laden</string>
     <string name="clientlocallist">Von Browser auflisten</string>

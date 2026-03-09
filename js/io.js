@@ -24,6 +24,9 @@ SQL.IO = function (owner) {
         "serverlist",
         "clientcopy",
         "clientpaste",
+        "clientdownloadxml",
+        "clientdownloadtxt",
+  //      "clientloadfromfile",
         "serverimport",
     ];
     for (var i = 0; i < ids.length; i++) {
@@ -85,6 +88,9 @@ SQL.IO = function (owner) {
     OZ.Event.add(this.dom.serverimport, "click", this.serverimport.bind(this));
     OZ.Event.add(this.dom.clientcopy, "click", this.clientcopy.bind(this));
     OZ.Event.add(this.dom.clientpaste, "click", this.clientpaste.bind(this));
+    OZ.Event.add(this.dom.clientdownloadxml, "click", this.clientdownloadxml.bind(this));
+    OZ.Event.add(this.dom.clientdownloadtxt, "click", this.clientdownloadtxt.bind(this));
+//    OZ.Event.add(this.dom.clientloadfromfile, "click", this.clientloadfromfile.bind(this));
     OZ.Event.add(document, "keydown", this.press.bind(this));
     this.build();
 };
@@ -184,8 +190,29 @@ SQL.IO.prototype.clientpaste = function () {
     }).catch(function(err) {
         alert("Failed to paste: " + err);
     });
+};
 
-};SQL.IO.prototype.promptName = function (title, suffix) {
+SQL.IO.prototype.clientdownloadxml = function () {
+    var xml = this.owner.toXML();
+    this.downloadFile(xml, "new-database.xml", "application/xml");
+};
+
+SQL.IO.prototype.clientdownloadtxt = function () {
+    var xml = this.owner.toXML();
+    this.downloadFile(xml, "new-database.txt", "text/plain");
+};
+SQL.IO.prototype.downloadFile = function (content, filename, mimeType) {
+    var blob = new Blob([content], { type: mimeType });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+};
+SQL.IO.prototype.promptName = function (title, suffix) {
     var lastUsedName =
         this.owner.getOption("lastUsedName") || this.lastUsedName;
     var name = prompt(_(title), lastUsedName);
