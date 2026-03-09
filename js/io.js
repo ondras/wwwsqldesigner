@@ -26,7 +26,7 @@ SQL.IO = function (owner) {
         "clientpaste",
         "clientdownloadxml",
         "clientdownloadtxt",
-  //      "clientloadfromfile",
+        "clientloadfromfile",
         "serverimport",
     ];
     for (var i = 0; i < ids.length; i++) {
@@ -90,7 +90,7 @@ SQL.IO = function (owner) {
     OZ.Event.add(this.dom.clientpaste, "click", this.clientpaste.bind(this));
     OZ.Event.add(this.dom.clientdownloadxml, "click", this.clientdownloadxml.bind(this));
     OZ.Event.add(this.dom.clientdownloadtxt, "click", this.clientdownloadtxt.bind(this));
-//    OZ.Event.add(this.dom.clientloadfromfile, "click", this.clientloadfromfile.bind(this));
+    OZ.Event.add(this.dom.clientloadfromfile, "click", this.clientloadfromfile.bind(this));
     OZ.Event.add(document, "keydown", this.press.bind(this));
     this.build();
 };
@@ -226,6 +226,41 @@ SQL.IO.prototype.promptName = function (title, suffix) {
     this.owner.setOption("lastUsedName", name);
     this.lastUsedName = name; // save this also in variable in case cookies are disabled
     return name;
+};
+
+SQL.IO.prototype.clientloadfromfile = function () {
+    var self = this;
+    var input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".xml,.txt";
+    input.onchange = function(e) {
+        var file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+        
+        // Check file extension
+        var fileName = file.name.toLowerCase();
+        if (!fileName.endsWith(".xml") && !fileName.endsWith(".txt")) {
+            alert(_("clientloadfromfile") + ": Please select an XML or TXT file.");
+            return;
+        }
+        
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var xml = e.target.result;
+            if (!xml || xml.trim() === "") {
+                alert(_("empty"));
+                return;
+            }
+            self.fromXMLText(xml);
+        };
+        reader.onerror = function(e) {
+            alert(_("xmlerror") + ": Failed to read file.");
+        };
+        reader.readAsText(file);
+    };
+    input.click();
 };
 
 SQL.IO.prototype.clientlocalsave = function () {
