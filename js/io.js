@@ -22,6 +22,11 @@ SQL.IO = function (owner) {
         "serversave",
         "serverload",
         "serverlist",
+        "clientcopy",
+        "clientpaste",
+        "clientdownloadxml",
+        "clientdownloadtxt",
+        "clientloadfromfile",
         "serverimport",
     ];
     for (var i = 0; i < ids.length; i++) {
@@ -81,6 +86,11 @@ SQL.IO = function (owner) {
     OZ.Event.add(this.dom.serverload, "click", this.serverload.bind(this));
     OZ.Event.add(this.dom.serverlist, "click", this.serverlist.bind(this));
     OZ.Event.add(this.dom.serverimport, "click", this.serverimport.bind(this));
+    OZ.Event.add(this.dom.clientcopy, "click", this.clientcopy.bind(this));
+    OZ.Event.add(this.dom.clientpaste, "click", this.clientpaste.bind(this));
+    OZ.Event.add(this.dom.clientdownloadxml, "click", this.clientdownloadxml.bind(this));
+    OZ.Event.add(this.dom.clientdownloadtxt, "click", this.clientdownloadtxt.bind(this));
+    OZ.Event.add(this.dom.clientloadfromfile, "click", this.clientloadfromfile.bind(this));
     OZ.Event.add(document, "keydown", this.press.bind(this));
     this.build();
 };
@@ -160,6 +170,48 @@ SQL.IO.prototype.clientload = function () {
     this.fromXMLText(xml);
 };
 
+SQL.IO.prototype.clientcopy = function () {
+    var xml = this.owner.toXML();
+    navigator.clipboard.writeText(xml).then(function() {
+        alert(_("clientsave") + " - Copied to clipboard!");
+    }).catch(function(err) {
+        alert("Failed to copy: " + err);
+    });
+};
+
+SQL.IO.prototype.clientpaste = function () {
+    var self = this;
+    navigator.clipboard.readText().then(function(xml) {
+        if (!xml) {
+            alert(_("empty"));
+            return;
+        }
+        self.fromXMLText(xml);
+    }).catch(function(err) {
+        alert("Failed to paste: " + err);
+    });
+};
+
+SQL.IO.prototype.clientdownloadxml = function () {
+    var xml = this.owner.toXML();
+    this.downloadFile(xml, "new-database.xml", "application/xml");
+};
+
+SQL.IO.prototype.clientdownloadtxt = function () {
+    var xml = this.owner.toXML();
+    this.downloadFile(xml, "new-database.txt", "text/plain");
+};
+SQL.IO.prototype.downloadFile = function (content, filename, mimeType) {
+    var blob = new Blob([content], { type: mimeType });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+};
 SQL.IO.prototype.promptName = function (title, suffix) {
     var lastUsedName =
         this.owner.getOption("lastUsedName") || this.lastUsedName;
@@ -174,6 +226,41 @@ SQL.IO.prototype.promptName = function (title, suffix) {
     this.owner.setOption("lastUsedName", name);
     this.lastUsedName = name; // save this also in variable in case cookies are disabled
     return name;
+};
+
+SQL.IO.prototype.clientloadfromfile = function () {
+    var self = this;
+    var input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".xml,.txt";
+    input.onchange = function(e) {
+        var file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+        
+        // Check file extension
+        var fileName = file.name.toLowerCase();
+        if (!fileName.endsWith(".xml") && !fileName.endsWith(".txt")) {
+            alert(_("clientloadfromfile") + ": Please select an XML or TXT file.");
+            return;
+        }
+        
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var xml = e.target.result;
+            if (!xml || xml.trim() === "") {
+                alert(_("empty"));
+                return;
+            }
+            self.fromXMLText(xml);
+        };
+        reader.onerror = function(e) {
+            alert(_("xmlerror") + ": Failed to read file.");
+        };
+        reader.readAsText(file);
+    };
+    input.click();
 };
 
 SQL.IO.prototype.clientlocalsave = function () {
